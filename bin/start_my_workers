@@ -1,0 +1,4 @@
+#!/bin/bash
+cd /home/katmac3/superlove/otwarchive/
+
+QUEUE="*" bundle exec rake environment resque:work &
