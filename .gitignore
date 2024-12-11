@@ -50,6 +50,10 @@ public/system/development
 public/system/test
 /public/system/work_skins
 /public/tags
+/public/system/*
+/public/*
+/public/skins/*
+/public/images/*
 
 # /public/images/
 /public/images/Thumbs.db
@@ -77,3 +81,5 @@ redis-cucumber-dump.rdb
 
 /storage/*
 /skins/*
+slaybackup.sql
+/system/*
