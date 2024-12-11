@@ -84,3 +84,4 @@ redis-cucumber-dump.rdb
 slaybackup.sql
 /system/*
 /system/collections/icons/000/000/001
+"class search"
