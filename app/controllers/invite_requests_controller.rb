@@ -90,7 +90,7 @@ class InviteRequestsController < ApplicationController
 
   def invite_request_params
     params.require(:invite_request).permit(
-      :email, :query
+      :email, :note, :query
     )
   end
 end

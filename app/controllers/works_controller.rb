@@ -39,7 +39,7 @@ class WorksController < ApplicationController
       if @search.query.present?
         @page_subtitle = ts("Works Matching '%{query}'", query: @search.query)
       end
-
+      
       @works = @search.search_results.scope(:for_blurb)
       set_own_works
       flash_search_warnings(@works)
@@ -889,6 +889,7 @@ class WorksController < ApplicationController
       rating: params[:work][:rating_string],
       relationship: params[:work][:relationship_string],
       category: params[:work][:category_strings],
+      medium: params[:work][:medium_strings],
       freeform: params[:work][:freeform_string],
       notes: params[:notes],
       encoding: params[:encoding],
@@ -903,7 +904,7 @@ class WorksController < ApplicationController
   def work_params
     params.require(:work).permit(
       :rating_string, :fandom_string, :relationship_string, :character_string,
-      :archive_warning_string, :category_string,
+      :archive_warning_string, :category_string, :medium_string,
       :freeform_string, :summary, :notes, :endnotes, :collection_names, :recipients, :wip_length,
       :backdate, :language_id, :work_skin_id, :restricted, :comment_permissions,
       :moderated_commenting_enabled, :title, :pseuds_to_add, :collections_to_add,
@@ -912,6 +913,7 @@ class WorksController < ApplicationController
       challenge_assignment_ids: [],
       challenge_claim_ids: [],
       category_strings: [],
+      medium_strings: [],
       archive_warning_strings: [],
       author_attributes: [:byline, ids: [], coauthors: []],
       series_attributes: [:id, :title],
@@ -928,8 +930,9 @@ class WorksController < ApplicationController
   def work_tag_params
     params.require(:work).permit(
       :rating_string, :fandom_string, :relationship_string, :character_string,
-      :archive_warning_string, :category_string, :freeform_string, :language_id,
+      :archive_warning_string, :category_string, :medium_string, :freeform_string, :language_id,
       category_strings: [],
+      medium_strings: [],
       archive_warning_strings: []
     )
   end
@@ -947,6 +950,7 @@ class WorksController < ApplicationController
       :fandom_names,
       :rating_ids,
       :character_names,
+      :medium_names,
       :relationship_names,
       :freeform_names,
       :hits,
@@ -966,6 +970,7 @@ class WorksController < ApplicationController
       archive_warning_ids: [],
       warning_ids: [], # backwards compatibility
       category_ids: [],
+      medium_ids: [],
       rating_ids: [],
       fandom_ids: [],
       character_ids: [],

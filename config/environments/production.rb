@@ -9,12 +9,16 @@ Otwarchive::Application.configure do
   config.eager_load = true
 
   # Full error reports are disabled and caching is turned on
-  config.consider_all_requests_local       = false
+  config.consider_all_requests_local       = true
   config.action_controller.perform_caching = true
   config.action_mailer.perform_caching     = true
 
   # Specifies the header that your server uses for sending files
   # config.action_dispatch.x_sendfile_header = "X-Sendfile"
+
+  config.whiny_nils = true
+  
+  config.logger = Logger.new(STDOUT)
 
   # For nginx:
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect'
@@ -27,7 +31,7 @@ Otwarchive::Application.configure do
 
   # See everything in the log (default is now :debug)
   # config.log_level = :debug
-  config.log_level = :error
+  config.log_level = :debug
 
   # Use a different logger for distributed setups
   # config.logger = SyslogLogger.new
@@ -38,8 +42,10 @@ Otwarchive::Application.configure do
 
   # Disable Rails's static asset server
   # In production, Apache or nginx will already do this
-  config.serve_static_files = false
+  config.serve_static_files = true
 
+  config.active_storage.service = :production # or :amazon, :google, etc.
+  
   # Enable serving of images, stylesheets, and javascripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
 

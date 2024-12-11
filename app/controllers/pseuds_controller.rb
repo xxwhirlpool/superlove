@@ -23,6 +23,7 @@ class PseudsController < ApplicationController
       redirect_to search_people_path
     end
   end
+  
 
   # GET /users/:user_id/pseuds/:id
   def show
@@ -152,5 +153,8 @@ class PseudsController < ApplicationController
     end
 
     redirect_to(user_pseuds_path(@user))
+    
   end
+  
+  
 end

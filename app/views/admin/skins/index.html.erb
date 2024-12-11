@@ -42,7 +42,6 @@
           </th>
           <td><%= skin.type == 'WorkSkin' ? 'Work Skin' : 'Site Skin' %></td>
           <td><%= skin_author_link(skin) %></td>
-          <td><%= skin_preview_display(skin) %></td>
           <td>
             <%= skin.description.blank? ? ts("(No Description Provided)") : raw(strip_images(sanitize_field(skin, :description))) %>
           </td>

@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby "3.0.5"
+ruby "3.0.2"
 
 gem 'test-unit', '~> 3.2'
 
@@ -57,6 +57,12 @@ gem 'css_parser'
 
 gem "terrapin"
 gem "kt-paperclip", ">= 5.2.0"
+gem 'activestorage'
+gem 'file_validators'
+gem 'open-uri'
+gem 'pry'
+gem 'image_processing'
+gem 'active_storage_validations'
 
 # for looking up image dimensions quickly
 gem 'fastimage'
@@ -114,7 +120,7 @@ gem 'kgio', '2.10.0'
 gem "mimemagic", "0.3.10"
 
 # Library for helping run pt-online-schema-change commands:
-gem "departure", "~> 6.5"
+gem 'departure', "~> 6.5"
 
 group :test do
   gem "rspec-rails", "~> 4.0.1"

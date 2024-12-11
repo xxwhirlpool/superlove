@@ -74,3 +74,6 @@ coverage
 redis-cucumber-dump.rdb
 
 .rspec
+
+/storage/*
+/skins/*

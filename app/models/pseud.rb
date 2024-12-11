@@ -2,27 +2,38 @@ class Pseud < ApplicationRecord
   include Searchable
   include WorksOwner
   include Justifiable
+  
+  has_one_attached :icon
 
-  has_attached_file :icon,
-    styles: { standard: "100x100>" },
-    path: if Rails.env.production?
-            ":attachment/:id/:style.:extension"
-          elsif Rails.env.staging?
-            ":rails_env/:attachment/:id/:style.:extension"
-          else
-            ":rails_root/public/system/:rails_env/:class/:attachment/:id_partition/:style/:filename"
-          end,
-    storage: %w(staging production).include?(Rails.env) ? :s3 : :filesystem,
-    s3_protocol: "https",
-    s3_credentials: "#{Rails.root}/config/s3.yml",
-    bucket: %w(staging production).include?(Rails.env) ? YAML.load_file("#{Rails.root}/config/s3.yml")['bucket'] : "",
-    default_url: "/images/skins/iconsets/default/icon_user.png"
+  def icon_url
+    Rails.application.routes.url_helpers.url_for(icon) if icon.attached?
+  end
 
-  validates_attachment_content_type :icon,
-                                    content_type: %w[image/gif image/jpeg image/png],
-                                    allow_nil: true
+#  has_attached_file :icon,
+#    styles: { standard: "100x100>" },
+#    path: if Rails.env.production?
+#            ":rails_root/icons/:id_partition/:style/:filename"
+#          elsif Rails.env.staging?
+#            ":rails_root/icons/:id_partition/:style/:filename"
+#          else
+#            ":rails_root/icons/:id_partition/:style/:filename"
+#          end,
+ #   storage: %w(staging unproduction).include?(Rails.env) ? :s3 : :filesystem,
+ #   s3_protocol: "https",
+ #   s3_credentials: "#{Rails.root}/config/s3.yml",
+#    bucket: %w(staging unproduction).include?(Rails.env) ? YAML.load_file("#{Rails.root}/config/s3.yml")['bucket'] : "",
+ #   default_url: "/images/skins/iconsets/default/icon_user.png"
 
-  validates_attachment_size :icon, less_than: 500.kilobytes, allow_nil: true
+   validates :icon, file_content_type: {
+     allow: ["image/jpeg", "image/jpg", "image/png", "image/gif"],
+       if: -> { icon.attached? },
+   }
+
+#  validates_attachment_content_type :icon,
+#                                    content_type: %w[image/gif image/jpeg image/png],
+#                                    allow_nil: true
+
+ # validates_attachment_size :icon, less_than: 500.kilobytes, allow_nil: true
 
   NAME_LENGTH_MIN = 1
   NAME_LENGTH_MAX = 40

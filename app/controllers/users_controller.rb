@@ -290,6 +290,7 @@ class UsersController < ApplicationController
       # Orphans co-authored works.
 
       pseuds = @user.pseuds
+      
       works = @coauthored_works
 
       # We change the pseud to the default orphan pseud if use_default is true.
@@ -345,7 +346,7 @@ class UsersController < ApplicationController
   def profile_params
     params.require(:profile_attributes).permit(
       :title, :location, :"date_of_birth(1i)", :"date_of_birth(2i)",
-      :"date_of_birth(3i)", :date_of_birth, :about_me, :ticket_number
+      :"date_of_birth(3i)", :date_of_birth, :about_me, :ticket_number, :icon
     )
   end
 end

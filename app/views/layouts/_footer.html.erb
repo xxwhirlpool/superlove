@@ -2,7 +2,6 @@
 <div id="footer" role="contentinfo" class="region">
 	<h3 class="landmark heading"><%= ts('Footer', key: 'footer') %></h3>
   <ul class="navigation actions" role="navigation">
-    <% if logged_in? || logged_in_as_admin? %>
       <% cache(skin_chooser_key, skip_digest: true) do %>
         <% unless Skin.in_chooser.empty? %>
           <li class="module group">
@@ -16,7 +15,6 @@
           </li>
         <% end %>
       <% end %>
-    <% end %>
     <li class="module group">
       <h4 class="heading"><%= ts('About the Archive', key: 'footer') %></h4>
       <ul class="menu">
@@ -41,6 +39,7 @@
         <% end %>
         <li><%= link_to ts('Known Issues', key: 'footer'), known_issues_path %></li>
         <li><a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.html" title="<%= ts('View License', key: 'footer') %>">GPL</a> <%= ts('by the', key: 'footer') %> <a href="https://transformativeworks.org/" title="<%= ts('The Organization for Transformative Works', key: 'footer') %>"><%= ts('OTW', key: 'footer') %></a></li>
+        <li>superlove is unaffiliated with the Organization for Transformative Works and/or the Archive of Our Own.</li>
       </ul>
     </li>
   </ul>

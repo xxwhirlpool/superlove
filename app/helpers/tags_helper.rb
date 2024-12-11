@@ -265,6 +265,10 @@ module TagsHelper
     categories = tag_groups['Category']
     symbol_block << get_symbol_link(get_category_class(categories), get_title_string(categories, "category"))
 
+    mediums = tag_groups['Medium']
+    symbol_block << get_symbol_link(get_medium_class(mediums), get_title_string(mediums, "medium"))
+
+
     if [Work, Series].include?(item.class)
       if item.complete?
         symbol_block << get_symbol_link( "complete-yes iswip" , "Complete #{item.class.to_s}")
@@ -326,6 +330,24 @@ module TagsHelper
     end
   end
 
+  def get_medium_class(medium_tags = [])
+    if medium_tags.blank?
+      "medium-text medium"
+    else
+      names = medium_tags.collect(&:name)
+      if names.include?(ArchiveConfig.MEDIUM_ART_TAG_NAME)
+        "medium-art medium"
+      elsif names.include?(ArchiveConfig.MEDIUM_AUDIO_TAG_NAME)
+        "medium-audio medium"
+      elsif names.include?(ArchiveConfig.MEDIUM_VIDEO_TAG_NAME)
+        "medium-video medium"
+      else
+        "medium-text medium"
+      end
+    end
+  end
+
+
   def get_category_class(category_tags)
     if category_tags.blank?
       "category-none category"
@@ -345,6 +367,16 @@ module TagsHelper
         "category-multi category"
       when ArchiveConfig.CATEGORY_OTHER_TAG_NAME
         "category-other category"
+      when ArchiveConfig.CATEGORY_VS_TAG_NAME
+        "category-vs category"
+      when ArchiveConfig.CATEGORY_QPR_TAG_NAME
+        "category-qpr category"
+      when ArchiveConfig.CATEGORY_NBNB_TAG_NAME
+        "category-nbnb category"
+      when ArchiveConfig.CATEGORY_NBF_TAG_NAME
+        "category-nbf category"
+      when ArchiveConfig.CATEGORY_NBM_TAG_NAME
+        "category-nbm category"
       else
         "category-none category"
       end

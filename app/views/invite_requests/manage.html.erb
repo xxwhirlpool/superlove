@@ -25,6 +25,7 @@
       <tr>
         <th scope="col"><%= ts("Queue Position") %></th>
         <th scope="col"><%= ts("Email Address") %></th>
+        <th scope="col"><%= ts("Note") %></th>
         <th scope="col"><%= ts("IP Address") %></th>
         <th scope="col"><%= ts("Action") %></th>
       </tr>
@@ -46,6 +47,7 @@
         <tr>
           <td><%= position %></td>
           <td><%= request.email %></td>
+          <td><%= request.note %></td>
           <td><%= ip_address %></td>
           <td>
             <%= form_tag invite_request_path(request, page: params[:page], query: params[:query]), method: "delete", class: "ajax-remove" do |f| %>

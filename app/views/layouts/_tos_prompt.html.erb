@@ -4,17 +4,16 @@
   </h2>
   <div class="agreement">
     <p class="summary">
-      <%= ts("On %{site} (%{short_name}), users can make profiles, create works and
-            other Content, post comments, give Kudos, create Collections and 
-            Bookmarks, participate in Challenges, import works, and more. Any 
-            information you publish in a comment, profile, work, or Content that you 
-            post or import onto %{short_name} including in summaries, notes and tags, 
-            will be accessible by the public (unless you limit access to a work only 
-            to those with %{short_name} Accounts), and it will be available to 
-            %{short_name} personnel. Be mindful when sharing personal information, 
-            including  your religious or political views, health, racial background, 
-            country of origin, sexual identity and/or personal relationships. To 
-            learn more, check out our %{tos} and %{privacy}.",
+      <%= ts("%{site} is run by one person. If you see anything you don't like please
+            don't fucking attack me I am just some guy who decided to self host ao3
+            and none of this is really that serious. I strongly moderate the works
+            posted here and singlehandedly wrangle all tags. As much as I did this
+            for fun I believe in cultivating a safe environment/community for my
+            users, one where we can post our creations without fear of harassment or
+            bullying and all that shit. Be nice to me and all of us or you get the boot.
+            Be mindful when sharing personal information, including  your religious or
+            political views, health, racial background, country of origin, sexual identity
+            and/or personal relationships. To learn more, check out our %{tos} and %{privacy}.",
             site: ArchiveConfig.APP_NAME, 
             short_name: ArchiveConfig.APP_SHORT_NAME, 
             tos: link_to(ts("Terms of Service"), tos_path),

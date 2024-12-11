@@ -30,13 +30,14 @@ services:
   db:
     image: mariadb:10.5.4-focal 
     environment:
-      - MYSQL_ROOT_PASSWORD=change_me
+      - MYSQL_ROOT_PASSWORD=Glu3fl00dc4shs4il1012
     ports:
-      - "3306:3306"
+      - "127.0.0.1:3311:3311"
     command:
       [
         "mysqld",
         "--sql-mode=STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION",
+       
       ]
     volumes:
       - my-datavolume:/var/lib/mysql:rw
@@ -73,12 +74,12 @@ services:
       context: .
       dockerfile: ./config/docker/Dockerfile
     environment:
-      - RAILS_ENV=development
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+      - RAILS_ENV=production
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3500 -b '192.168.1.165:3500'"
     volumes:
       - .:/otwa
     ports:
-      - "3000:3000"
+      - "3500:3500"
     depends_on:
       - db
       - redis

@@ -23,27 +23,36 @@ module UsersHelper
   # Determine which icon to show on user pages
   def standard_icon(user = nil, pseud = nil)
     if pseud && pseud.icon
-      pseud.icon.url(:standard).gsub(/^http:/, "https:")
+      pseud.icon.variant(resize_to_limit: [100, 100])
     elsif user && user.default_pseud && user.default_pseud.icon
-      user.default_pseud.icon.url(:standard).gsub(/^http:/, "https:")
+      user.default_pseud.icon.variant(resize_to_limit: [100, 100])
     else
       '/images/skins/iconsets/default/icon_user.png'
     end
   end
-
-  # no alt text if there isn't specific alt text
-  def icon_display(user = nil, pseud = nil)
+  
+   def icon_display(user = nil, pseud = nil)
     path = user ? (pseud ? user_pseud_path(pseud.user, pseud) : user_path(user)) : nil
-    pseud ||= user.default_pseud if user
+    pseud ||= user.default_pseud if @user
     icon = standard_icon(user, pseud)
     alt_text = pseud.try(:icon_alt_text) || nil
 
-    if path
-      link_to image_tag(icon, alt: alt_text, class: 'icon', skip_pipeline: true), path
+    if path && user.default_pseud.icon.attached?
+      link_to image_tag(icon, class: 'icon'), path
+    elsif user.default_pseud.icon.attached?
+      image_tag(icon, class: 'icon')
     else
-      image_tag(icon, class: 'icon', skip_pipeline: true)
+      link_to image_tag('/images/skins/iconsets/default/icon_user.png', class: 'icon')
     end
   end
+  
+#  def icon_display(user)
+#    if pseud && pseud.icon_file_name
+ #     pseud.icon_file_name_
+ #   elsif user && user.default_pseud && user.default_pseud.icon_file_name
+ #   user.default_pseud.icon_file_name
+ # end
+
 
   # Prints coauthors
   def print_coauthors(user)

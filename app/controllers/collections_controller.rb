@@ -181,6 +181,13 @@ class CollectionsController < ApplicationController
     redirect_to(collections_path)
   end
 
+  def delete_icon
+    @collection.icon = ActiveStorage::Blob.find_signed(params[:id])
+    @collection.icon.purge_later
+  end
+
+  alias_method :delete_icon?, :delete_icon
+
   private
 
   def collection_params

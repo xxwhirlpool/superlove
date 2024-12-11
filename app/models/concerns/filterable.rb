@@ -88,6 +88,11 @@ module Filterable
     filters_for_facets.select { |t| t.type == "Category" }.map(&:id)
   end
 
+  def medium_ids
+    filters_for_facets.select { |t| t.type == "Medium" }.map(&:id)
+  end
+
+
   def fandom_ids
     filters_for_facets.select { |t| t.type == "Fandom" }.map(&:id)
   end

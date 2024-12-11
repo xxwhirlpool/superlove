@@ -1,11 +1,13 @@
 Otwarchive::Application.configure do
   # Settings specified here will take precedence over those in config/environment.rb
 
+  config.hosts = ArchiveConfig.PERMITTED_HOSTS
+
   # In the development environment your application's code is reloaded on
   # every request.  This slows down response time but is perfect for development
   # since you don't have to restart the webserver when you make code changes.
   config.cache_classes = false
-  config.eager_load = false
+  config.eager_load = true
 
   memcached_servers = "127.0.0.1:11211"
   memcached_servers = YAML.load_file(Rails.root.join("config/local.yml")).fetch("MEMCACHED_SERVERS", memcached_servers) if File.file?(Rails.root.join("config/local.yml"))
@@ -38,9 +40,11 @@ Otwarchive::Application.configure do
   config.rack_dev_mark.enable = true
   config.rack_dev_mark.theme = [:title, Rack::DevMark::Theme::GithubForkRibbon.new(position: "left", color: "green", fixed: "true")]
 
-  config.eager_load = false
+  config.eager_load = true
   config.assets.enabled = false
   config.serve_static_files = true
+  
+  config.active_storage.service = :production # or :amazon, :google, etc.
 
   # Enable Bullet gem to monitor application performance
   config.after_initialize do

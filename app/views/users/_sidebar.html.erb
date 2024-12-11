@@ -33,6 +33,7 @@
 	<% end %>
 
   <li><%= span_if_current ts("Collections (%{coll_number})", :coll_number => @user.maintained_collections.count), user_collections_path(@user) %></li>
+  <li><%= span_if_current ts("Owned Tagsets (%{tagset_number})", :tagset_number => OwnedTagSet.owned_by(@user).size), user_tag_sets_path(@user) %></li>
 </ul>
 
 <% if @user == current_user %>

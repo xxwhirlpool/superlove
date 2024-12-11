@@ -22,7 +22,7 @@
 <div id="header" class="region<% if @collection %> collection<% end %>">
 
   <h1 class="heading">
-    <%= link_to(content_tag(:span, "#{ArchiveConfig.APP_NAME}") + content_tag(:sup, " beta") +
+    <%= link_to(content_tag(:span, "#{ArchiveConfig.APP_NAME}") + content_tag(:sup, " slay") +
     image_tag('/images/ao3_logos/logo_42.png', :alt => "#{ArchiveConfig.ALT_LOGO}", :class => "logo", skip_pipeline: true), root_path) %> 
   </h1>
 
@@ -54,6 +54,14 @@
     <li class="dropdown">
       <%= link_to ts('About', key: 'header'), menu_about_path %>
       <%= render 'menu/menu_about' %>
+    </li>
+    <li class="dropdown">
+      <%= link_to ts('Links', key: 'header'), menu_links_path %>
+      <%= render 'menu/menu_links' %>
+    </li>
+    <li class="dropdown">
+      <%= link_to ts('Community', key: 'header'), menu_community_path %>
+      <%= render 'menu/menu_community' %>
     </li>
 	  <li class="search"><%= render 'works/search_box' %></li>
   </ul>

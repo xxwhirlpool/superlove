@@ -82,6 +82,29 @@
       </fieldset>
     </dd>
 
+<dt class="category">
+      <label><%= Medium::NAME.pluralize %></label>
+      <%= link_to_help "categories-help" %>
+    </dt>
+    <dd class="category">
+      <fieldset>
+        <!--<legend class="landmark">Medium</legend>-->
+        <ul>
+          <%= collection_check_boxes(
+            :work, :medium_strings,
+            Medium.canonical.by_name.sort,
+            :name, :name,
+            include_hidden: !include_blank
+          ) do |builder| %>
+            <li>
+              <%= builder.check_box %>
+              <%= builder.label %>
+            </li>
+          <% end %>
+        </ul>
+      </fieldset>
+    </dd>
+
     <dt class="relationship" title="<%= ts('relationships') %>">
       <label for="work_relationship"><%= Relationship::NAME.pluralize %></label>
       <%= link_to_help "relationships-help" %>

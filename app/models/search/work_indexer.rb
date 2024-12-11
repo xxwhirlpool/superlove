@@ -91,6 +91,7 @@ class WorkIndexer < Indexer
         :character_ids,
         :relationship_ids,
         :freeform_ids,
+        :medium_ids,
         :filter_ids,
         :tag,
         :collection_ids,

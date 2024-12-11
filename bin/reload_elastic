@@ -1,0 +1,21 @@
+#!/bin/bash
+export RAILS_ENV=production
+sudo systemctl stop elasticsearch
+sudo rm -rf /var/lib/elasticsearch/*
+sudo rm -rf /var/lib/elasticsearch/tmp
+sudo mkdir  /var/lib/elasticsearch/tmp
+sudo chown elasticsearch:elasticsearch -R /var/lib/elasticsearch
+sudo systemctl start elasticsearch
+
+cd /home/katmac3/superlove/otwarchive/
+
+# Wait for forever until elastic is back
+until $(curl  --output /dev/null --silent --head --fail -XGET 'http://localhost:9200/_cluster/health?wait_for_status=yellow' ); do
+    printf '.'
+    sleep 5
+done
+
+bundle exec rake environment  search:index_bookmarks
+bundle exec rake environment  search:index_pseuds
+bundle exec rake environment  search:index_tags
+bundle exec rake environment  search:index_works

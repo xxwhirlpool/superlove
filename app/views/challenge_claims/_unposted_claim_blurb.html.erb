@@ -35,7 +35,11 @@
     </p>
 
     <div class="icon">
-      <%= image_tag(claim.collection.icon.url(:standard), :size => "100x100", :alt => claim.collection.icon_alt_text, :class => "icon", skip_pipeline: true) %>
+    <% if collection.icon.attached? %>
+<%= image_tag(claim.collection.icon.variant(resize_to_limit: [100, 100])) %>
+<% else %>
+<%= image_tag('/images/skins/iconsets/default/icon_user.png', class: 'icon') %>
+<% end %>
     </div>
   </div>
 

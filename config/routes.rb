@@ -632,6 +632,8 @@ Otwarchive::Application.routes.draw do
   get 'menu/fandoms' => 'menu#fandoms'
   get 'menu/search' => 'menu#search'
   get 'menu/about' => 'menu#about'
+  get 'menu/links' => 'menu#links'
+  get 'menu/community' => 'menu#community'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

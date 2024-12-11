@@ -12,7 +12,7 @@ en:
         unrequested: If you did not request this password reset, you may ignore this email and your previous password will continue to work.
   admin_mailer:
     set_password_notification:
-      created: Your AO3 admin account has been created.
+      created: Your superlove admin account has been created.
       expiration:
         one: 'The link to set your password is good for %{count} day. If it no longer works, you can request a password reset and use the link that will be emailed to you instead: %{request_reset_url}.'
         other: 'The link to set your password is good for %{count} days. If it no longer works, you can request a password reset and use the link that will be emailed to you instead: %{request_reset_url}.'
@@ -23,7 +23,7 @@ en:
       finish_html: Please %{set_password_link} so you can log in.
       request_reset: request a password reset
       set_password: follow this link to set your password
-      subject: "[%{app_name}] Your AO3 admin account"
+      subject: "[%{app_name}] Your superlove admin account"
       url: Admin login URL
       username: Admin username
   kudo_mailer:
@@ -59,8 +59,8 @@ en:
       footer:
         general:
           about:
-            html: The Archive of Our Own is a fan-run and fan-supported archive that relies on %{donate_link}.
-            text: 'The Archive of Our Own is a fan-run and fan-supported archive that relies on your donations: %{donate_url}.'
+            html: superlove is a fan-run and fan-supported archive that relies on %{donate_link}.
+            text: 'superlove is a fan-run and fan-supported archive that relies on your donations: %{donate_url}.'
           html:
             donate_link_text: your donations
             support_link_text: contact Support
@@ -73,14 +73,14 @@ en:
         informal:
           addressed: Hi, %{name}!
           unaddressed: Hi!
-        introductory: Hello from the Archive of Our Own!
+        introductory: Hello from superlove!
       metadata_label_indicator: ": "
       signature:
-        abuse_team: The AO3 Policy & Abuse team
-        app_short_name: AO3
+        abuse_team: The superlove Policy & Abuse team
+        app_short_name: superlove
         open_doors: The Open Doors team
         parent_org: Organization for Transformative Works
-        support: The AO3 Support team
+        support: The superlove Support team
   user_mailer:
     abuse_report:
       copy:
@@ -114,12 +114,12 @@ en:
       html:
         help: If you are uncertain why your work was hidden, and you have not received further communication regarding this matter, please %{contact_abuse_link} directly.
         hidden: Your work %{title} has been hidden by the Policy & Abuse team and is no longer publicly accessible.
-        tos_violation: If your work was hidden due to being in violation of the Archive of Our Own's %{tos_link}, you will be required to take action to correct the violation. Failure to bring your work into compliance with the Terms of Service may lead to your work being deleted from the Archive.
+        tos_violation: If your work was hidden due to being in violation of superlove's %{tos_link}, you will be required to take action to correct the violation. Failure to bring your work into compliance with the Terms of Service may lead to your work being deleted from the Archive.
       subject: "[%{app_name}] Your work has been hidden by the Policy & Abuse team"
       text:
         help: 'If you are uncertain why your work was hidden, and you have not received further communication regarding this matter, please contact Policy & Abuse directly: %{contact_abuse_url}.'
         hidden: Your work "%{title}" (%{work_url}) has been hidden by the Policy & Abuse team and is no longer publicly accessible.
-        tos_violation: If your work was hidden due to being in violation of the Archive of Our Own's Terms of Service (%{tos_url}), you will be required to take action to correct the violation. Failure to bring your work into compliance with the Terms of Service may lead to your work being deleted from the Archive.
+        tos_violation: If your work was hidden due to being in violation of superlove's Terms of Service (%{tos_url}), you will be required to take action to correct the violation. Failure to bring your work into compliance with the Terms of Service may lead to your work being deleted from the Archive.
       tos: Terms of Service
     anonymous_or_unrevealed_notification:
       anonymous_info: Anonymous works are included in tag listings, but not on your works page. On the work, your user name will be replaced with "Anonymous."
@@ -167,7 +167,7 @@ en:
     challenge_assignment_notification:
       any: Any
       assignment:
-        html: You have been assigned the following request in the %{link} challenge at the Archive of Our Own!
+        html: You have been assigned the following request in the %{link} challenge at superlove!
       description: 'Description:'
       due: 'This assignment is due at:'
       html:
@@ -182,7 +182,7 @@ en:
       recipient_missing: 'None: contact a moderator for help!'
       subject: "[%{app_name}][%{collection_title}] Your assignment!"
       text:
-        assignment: You have been assigned the following request in the "%{collection_title}" challenge (%{collection_url}) at the Archive of Our Own!
+        assignment: You have been assigned the following request in the "%{collection_title}" challenge (%{collection_url}) at superlove!
         footer: You're receiving this email because you signed up for the %{title} challenge (%{url}). For more information about this challenge and contact information for the moderators, please visit %{profile_url}.
         look_up: You can look up this assignment from your Assignments page at %{link}.
     change_email:
@@ -262,11 +262,11 @@ en:
       subject: "[%{app_name}] Your work has been deleted"
       support: contact Support
     invitation:
-      been_invited: You've been invited to join the Archive of Our Own!
+      been_invited: You've been invited to join superlove!
       features: With an account, you can post fanworks, use bookmarks to keep track of works you enjoyed, receive subscription emails when your favorite creators or works update, customize the way the site looks for you, and more!
-      has_invited: "%{user_name} has invited you to join the Archive of Our Own!"
+      has_invited: "%{user_name} has invited you to join superlove!"
       html:
-        about: The Archive of Our Own (AO3) is a free, noncommercial archive built by and for fans. Our servers are owned by our parent nonprofit, the %{otw_link}, which works to protect fan rights and preserve fanworks. We welcome all kinds of fanworks, including fanfiction, fanart, fanvids, and podfic from any fandom.
+        about: superlove (superlove) is a free, noncommercial archive built by and for fans. Our servers are owned by our parent nonprofit, the %{otw_link}, which works to protect fan rights and preserve fanworks. We welcome all kinds of fanworks, including fanfiction, fanart, fanvids, and podfic from any fandom.
         activation_support: After you sign up, you'll receive an account activation email. If you do not receive this email after 48 hours, please %{support_link}.
         faq: For more information, please check %{faq_link}.
         faq_link_text: our FAQ
@@ -276,22 +276,22 @@ en:
         support_link_text: contact Support
       subject: "[%{app_name}] Invitation"
       text:
-        about: The Archive of Our Own (AO3) is a free, noncommercial archive built by and for fans. Our servers are owned by our parent nonprofit, the Organization for Transformative Works (%{otw_url}), which works to protect fan rights and preserve fanworks. We welcome all kinds of fanworks, including fanfiction, fanart, fanvids, and podfic from any fandom.
+        about: superlove (superlove) is a free, noncommercial archive built by and for fans. Our servers are owned by our parent nonprofit, the Organization for Transformative Works (%{otw_url}), which works to protect fan rights and preserve fanworks. We welcome all kinds of fanworks, including fanfiction, fanart, fanvids, and podfic from any fandom.
         activation_support: 'After you sign up, you''ll receive an account activation email. If you do not receive this email after 48 hours, please contact Support: %{support_url}.'
         faq: 'For more information, please check our FAQ: %{faq_url}.'
         join: 'If you''d like to join us, please follow this link to sign up: %{invitation_url}.'
     invitation_to_claim:
       access:
         html: Depending on the archive, your works may have been imported restricted to registered users only (to keep them out of Google searches). If this is the case, the works will only be accessible by logged-in users unless you choose to make them fully visible. For help unlocking, orphaning, or deleting your works, please %{contact_support_link}.
-        text: Depending on the archive, your works may have been imported restricted to registered users only (to keep them out of Google searches). If this is the case, the works will only be accessible by logged-in users unless you choose to make them fully visible. For help unlocking, orphaning, or deleting your works, please contact AO3 Support.
+        text: Depending on the archive, your works may have been imported restricted to registered users only (to keep them out of Google searches). If this is the case, the works will only be accessible by logged-in users unless you choose to make them fully visible. For help unlocking, orphaning, or deleting your works, please contact superlove Support.
       claim_or_remove:
         html: Claim or remove your works here.
         text: 'Claim or remove your works here: %{claim_url}'
       email_tips: If you're contacting us, please add email addresses from @transformativeworks.org to your list of safe contacts and check your spam folders for our reply.
       html:
-        ao3_news: AO3 News
+        superlove_news: superlove News
         contact_open_doors: contact Open Doors
-        contact_support: contact AO3 Support
+        contact_support: contact superlove Support
         faq_page: FAQ page
         open_doors_name: Open Doors
         tutorial_page: tutorial page
@@ -302,22 +302,22 @@ en:
         html: If this is a mistake and these are not your works, please don't delete them! Please just %{contact_open_doors_link} and we will sort it out.
         text: If this is a mistake and these are not your works, please don't delete them! Please just contact Open Doors (%{open_doors_link}) and we will sort it out.
       more_info:
-        html: You can read announcements about recent archive moves at %{ao3_news_link}, and find additional information on Open Doors' %{faq_page_link} or %{tutorial_page_link}. For any questions not answered in the FAQ, tutorials, or this e-mail, please %{contact_support_link}.
-        text: You can read announcements about recent archive moves at AO3 News (%{news_link}), and find additional information on Open Doors' FAQ page (%{open_doors_faq_link}) or tutorials page (%{open_doors_tutorial_link}). For any questions not answered in the FAQ, tutorials, or this e-mail, please contact Support at %{support_link}.
+        html: You can read announcements about recent archive moves at %{superlove_news_link}, and find additional information on Open Doors' %{faq_page_link} or %{tutorial_page_link}. For any questions not answered in the FAQ, tutorials, or this e-mail, please %{contact_support_link}.
+        text: You can read announcements about recent archive moves at superlove News (%{news_link}), and find additional information on Open Doors' FAQ page (%{open_doors_faq_link}) or tutorials page (%{open_doors_tutorial_link}). For any questions not answered in the FAQ, tutorials, or this e-mail, please contact Support at %{support_link}.
       other_works:
         html: If you had other works on the imported archive under an e-mail address you can no longer access, please %{contact_open_doors_link} with any information that can help verify your identity.
         text: If you had other works on the imported archive under an e-mail address you can no longer access, please contact Open Doors with any information that can help verify your identity.
       questions:
         html: For other inquiries, please %{contact_support_link}.
-        text: For other inquiries, please contact AO3 Support at %{support_link}.
+        text: For other inquiries, please contact superlove Support at %{support_link}.
       redirects: To preserve rec lists and bookmarks, the imported archive's web addresses may redirect to the imported copy of these works for a limited time (check the announcement post for your archive to be sure). If you've already uploaded a copy of these works and you did NOT use the import from URL feature, there will be two copies of the same work on the archive.
       subject: "[%{app_name}] Invitation to claim works"
       unwanted:
-        html: If these works do belong to you, but you don't want them, you can orphan (so that they remain on the AO3, but with your name removed) or delete them (so that they are entirely removed from the AO3). You do not need to add these works to any account in order to orphan or delete them--you can do this directly from the claim link above. (For assistance, please %{contact_support_link}.)
-        text: If these works do belong to you, but you don't want them, you can orphan (so that they remain on the AO3, but with your name removed) or delete them (so that they are entirely removed from the AO3). You do not need to add these works to any account in order to orphan or delete them--you can do this directly from the claim link above. (For assistance, please contact Support at %{support_link}.)
+        html: If these works do belong to you, but you don't want them, you can orphan (so that they remain on the superlove, but with your name removed) or delete them (so that they are entirely removed from the superlove). You do not need to add these works to any account in order to orphan or delete them--you can do this directly from the claim link above. (For assistance, please %{contact_support_link}.)
+        text: If these works do belong to you, but you don't want them, you can orphan (so that they remain on the superlove, but with your name removed) or delete them (so that they are entirely removed from the superlove). You do not need to add these works to any account in order to orphan or delete them--you can do this directly from the claim link above. (For assistance, please contact Support at %{support_link}.)
       update_redirect:
-        html: If you would like Open Doors to update the redirect to point to your pre-existing work, please delete the imported copy, and %{contact_open_doors_link} with your AO3 account name, your account name on the imported archive, and the title and URL of the fanwork you would like the redirect to point to. (If you have multiple works you would like to change the redirects for, you can list these in one email.)
-        text: If you would like Open Doors to update the redirect to point to your pre-existing work, please delete the imported copy, and contact Open Doors at %{open_doors_link} with your AO3 account name, your account name on the imported archive, and the title and URL of the fanwork you would like the redirect to point to. (If you have multiple works you would like to change the redirects for, you can list these in one email.)
+        html: If you would like Open Doors to update the redirect to point to your pre-existing work, please delete the imported copy, and %{contact_open_doors_link} with your superlove account name, your account name on the imported archive, and the title and URL of the fanwork you would like the redirect to point to. (If you have multiple works you would like to change the redirects for, you can list these in one email.)
+        text: If you would like Open Doors to update the redirect to point to your pre-existing work, please delete the imported copy, and contact Open Doors at %{open_doors_link} with your superlove account name, your account name on the imported archive, and the title and URL of the fanwork you would like the redirect to point to. (If you have multiple works you would like to change the redirects for, you can list these in one email.)
       uploaded_list: 'The works uploaded include:'
     invite_increase_notification:
       html:
@@ -338,19 +338,19 @@ en:
       subject: "[%{app_name}] Additional invitation request declined"
     recipient_notification:
       html:
-        collection: A gift work has been posted for you in the %{collection_link} collection at the Archive of Our Own!
-      no_collection: A gift work has been posted for you at the Archive of Our Own!
+        collection: A gift work has been posted for you in the %{collection_link} collection at superlove!
+      no_collection: A gift work has been posted for you at superlove!
       subject:
         collection: "[%{app_name}][%{collection_title}] A gift work for you from %{collection_title}"
         no_collection: "[%{app_name}] A gift work for you"
       text:
-        collection: A gift work has been posted for you in the "%{collection_title}" collection (%{collection_url}) at the Archive of Our Own!
+        collection: A gift work has been posted for you in the "%{collection_title}" collection (%{collection_url}) at superlove!
     signup_notification:
       activate:
         html: Please %{activate_account_link}.
         text: 'Please follow this link to activate your account: %{activate_account_url}'
       activate_your_account: follow this link to activate your account
-      admin_posts: AO3 News
+      admin_posts: superlove News
       bye: We hope you enjoy using the Archive.
       contact_support: contact Support
       faq: FAQ
@@ -359,9 +359,9 @@ en:
         text: Once your account is up and running, you can post your fanworks, set up email subscriptions to let you know when your favorite creators or works have updated, set preferences to customize the way the site looks and works for you, keep track of the works you've accessed on the Archive via your history, and much more.
       information:
         html: There's lots of information and advice on how to use the Archive in our %{faq_link}. You'll find the latest news about site developments on %{admin_posts_link}. If you need more help, run into a bug, or have questions or comments, please %{contact_support_link}, who are always happy to help out.
-        text: 'There''s lots of information and advice on how to use the Archive in our FAQ at %{faq_url}. You''ll find the latest news about site developments on AO3 News at %{admin_posts_url}. If you need more help, run into a bug, or have questions or comments, please contact Support, who are always happy to help out: %{contact_support_url}.'
+        text: 'There''s lots of information and advice on how to use the Archive in our FAQ at %{faq_url}. You''ll find the latest news about site developments on superlove News at %{admin_posts_url}. If you need more help, run into a bug, or have questions or comments, please contact Support, who are always happy to help out: %{contact_support_url}.'
       subject: "[%{app_name}] Activate your account"
-      welcome: Welcome to the Archive of Our Own, %{login}!
+      welcome: Welcome to superlove, %{login}!
   users:
     mailer:
       reset_password_instructions:
