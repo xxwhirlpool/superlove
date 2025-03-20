@@ -1,10 +1,10 @@
 <h3 class="landmark heading"><%= ts("Admin Navigation") %></h3>
 <ul class="navigation actions" role="navigation">
   <li>
-    <%= span_if_current ts("AO3 News", key: "header"), admin_posts_path %>
+    <%= span_if_current ts("superlove News", key: "header"), admin_posts_path %>
    </li>
   <li>
-    <%= span_if_current ts("Post AO3 News", key: "header"),
+    <%= span_if_current ts("Post superlove News", key: "header"),
                         new_admin_post_path %>
 </li>
   <% if params[:controller] == "admin_posts" && params[:action] == "edit" %>
