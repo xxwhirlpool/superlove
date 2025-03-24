@@ -59,8 +59,8 @@ en:
       footer:
         general:
           about:
-            html: superlove is a fan-run and fan-supported archive that relies on %{donate_link}.
-            text: 'superlove is a fan-run and fan-supported archive that relies on your donations: %{donate_url}.'
+            html: superlove is an independently run website, supported by the admin out of pocket in addition to your donations: %{donate_link}.
+            text: 'superlove is an independently run website, supported by the admin out of pocket in addition to your donations: %{donate_url}.'
           html:
             donate_link_text: your donations
             support_link_text: contact Support
@@ -76,11 +76,11 @@ en:
         introductory: Hello from superlove!
       metadata_label_indicator: ": "
       signature:
-        abuse_team: The superlove Policy & Abuse team
+        abuse_team: superlove admin
         app_short_name: superlove
-        open_doors: The Open Doors team
-        parent_org: Organization for Transformative Works
-        support: The superlove Support team
+        open_doors: no
+        parent_org: girl on the moon
+        support: superlove admin
   user_mailer:
     abuse_report:
       copy:
@@ -88,38 +88,38 @@ en:
         intro: 'Here is a copy of your report for your reference:'
         summary: Terms of Service violation
         url: URL of the reported page
-      report_received: The Policy & Abuse team has received your report, and our volunteers will investigate as soon as they can. Because our team is small and we receive thousands of reports each month, it may take some time for us to get to your report.
+      report_received: your report has been received and will be examined as soon as possible by the superlove admin.
       resubmission: Please do not resubmit this report unless you have additional information that you did not include in your original report. Submitting multiple reports about the same issue may delay our response.
       subject: "[%{app_name}] Abuse - %{summary}"
       thank_you: Thank you for your patience.
     admin_deleted_work_notification:
       bye: Attached is a copy of your work for your reference.
-      contact_abuse: contact our Policy & Abuse team
+      contact_abuse: contact the superlove admin
       deleted:
-        html: Your work %{title} was deleted from the Archive by a site admin.
-        text: Your work "%{title}" was deleted from the Archive by a site admin.
+        html: Your work %{title} was deleted from superlove by the site admin.
+        text: Your work "%{title}" was deleted from superlove by the site admin.
       html:
-        tos_violation: If it's possible your work violated the Archive's Terms of Service, please %{contact_abuse_link}.
+        tos_violation: If it's possible your work violated superlove's Terms of Service, please %{contact_abuse_link}.
       import_project:
         html: If your work was part of an import project managed by our Open Doors team, please %{opendoors_link} with any further questions.
         text: If your work was part of an import project managed by our Open Doors team, please contact Open Doors (%{opendoors_link}) with any further questions.
-      opendoors: contact Open Doors
+      opendoors: contact superlove admin
       subject: "[%{app_name}] Your work has been deleted by an admin"
       text:
-        tos_violation: If it's possible your work violated the Archive's Terms of Service, please contact our Policy & Abuse team (%{contact_abuse_url}).
+        tos_violation: If it's possible your work violated superlove's Terms of Service, please contact the admin (%{contact_abuse_url}).
     admin_hidden_work_notification:
-      access: While your work is hidden, you will still be able to access it through the link provided above, but it will not be listed on your works page, and it won't be available to other users of the Archive.
-      check_email: Please check your email, including your spam folder, as the Policy & Abuse team may have already contacted you explaining why your work was hidden.
-      contact_abuse: contact Policy & Abuse
+      access: While your work is hidden, you will still be able to access it through the link provided above, but it will not be listed on your works page, and it won't be available to other users of superlove.
+      check_email: Please check your email, including your spam folder, as the admin may have already contacted you explaining why your work was hidden.
+      contact_abuse: contact the admin
       html:
         help: If you are uncertain why your work was hidden, and you have not received further communication regarding this matter, please %{contact_abuse_link} directly.
-        hidden: Your work %{title} has been hidden by the Policy & Abuse team and is no longer publicly accessible.
-        tos_violation: If your work was hidden due to being in violation of superlove's %{tos_link}, you will be required to take action to correct the violation. Failure to bring your work into compliance with the Terms of Service may lead to your work being deleted from the Archive.
-      subject: "[%{app_name}] Your work has been hidden by the Policy & Abuse team"
+        hidden: Your work %{title} has been hidden by the site admin and is no longer publicly accessible.
+        tos_violation: If your work was hidden due to being in violation of superlove's %{tos_link}, you will be required to take action to correct the violation. Failure to bring your work into compliance with the Terms of Service may lead to your work being deleted from superlove.
+      subject: "[%{app_name}] Your work has been hidden by the site admin"
       text:
-        help: 'If you are uncertain why your work was hidden, and you have not received further communication regarding this matter, please contact Policy & Abuse directly: %{contact_abuse_url}.'
-        hidden: Your work "%{title}" (%{work_url}) has been hidden by the Policy & Abuse team and is no longer publicly accessible.
-        tos_violation: If your work was hidden due to being in violation of superlove's Terms of Service (%{tos_url}), you will be required to take action to correct the violation. Failure to bring your work into compliance with the Terms of Service may lead to your work being deleted from the Archive.
+        help: 'If you are uncertain why your work was hidden, and you have not received further communication regarding this matter, please contact the site admin directly: %{contact_abuse_url}.'
+        hidden: Your work "%{title}" (%{work_url}) has been hidden by the site admin team and is no longer publicly accessible.
+        tos_violation: If your work was hidden due to being in violation of superlove's Terms of Service (%{tos_url}), you will be required to take action to correct the violation. Failure to bring your work into compliance with the Terms of Service may lead to your work being deleted from superlove.
       tos: Terms of Service
     anonymous_or_unrevealed_notification:
       anonymous_info: Anonymous works are included in tag listings, but not on your works page. On the work, your user name will be replaced with "Anonymous."
@@ -263,31 +263,31 @@ en:
       support: contact Support
     invitation:
       been_invited: You've been invited to join superlove!
-      features: With an account, you can post fanworks, use bookmarks to keep track of works you enjoyed, receive subscription emails when your favorite creators or works update, customize the way the site looks for you, and more!
+      features: With an account, you can post works, use bookmarks to keep track of works you enjoyed, receive subscription emails when your favorite creators or works update, customize the way the site looks for you, and more!
       has_invited: "%{user_name} has invited you to join superlove!"
       html:
-        about: superlove (superlove) is a free, noncommercial archive built by and for fans. Our servers are owned by our parent nonprofit, the %{otw_link}, which works to protect fan rights and preserve fanworks. We welcome all kinds of fanworks, including fanfiction, fanart, fanvids, and podfic from any fandom.
+        about: superlove is a small, independently run repository of user-submitted creative works. we welcome works of any kind, original or fan-based, as long as they follow the site's Terms of Service (%{tos_url}).
         activation_support: After you sign up, you'll receive an account activation email. If you do not receive this email after 48 hours, please %{support_link}.
         faq: For more information, please check %{faq_link}.
         faq_link_text: our FAQ
         invitation_link_text: follow this link to sign up
         join: If you'd like to join us, please %{invitation_link}.
-        otw_link_text: Organization for Transformative Works
+        otw_link_text: girl on the moon
         support_link_text: contact Support
       subject: "[%{app_name}] Invitation"
       text:
-        about: superlove (superlove) is a free, noncommercial archive built by and for fans. Our servers are owned by our parent nonprofit, the Organization for Transformative Works (%{otw_url}), which works to protect fan rights and preserve fanworks. We welcome all kinds of fanworks, including fanfiction, fanart, fanvids, and podfic from any fandom.
+        about: superlove is a small, independently run repository of user-submitted creative works. we welcome works of any kind, original or fan-based, as long as they follow the sites Terms of Service (%{tos_url})
         activation_support: 'After you sign up, you''ll receive an account activation email. If you do not receive this email after 48 hours, please contact Support: %{support_url}.'
         faq: 'For more information, please check our FAQ: %{faq_url}.'
         join: 'If you''d like to join us, please follow this link to sign up: %{invitation_url}.'
     invitation_to_claim:
       access:
-        html: Depending on the archive, your works may have been imported restricted to registered users only (to keep them out of Google searches). If this is the case, the works will only be accessible by logged-in users unless you choose to make them fully visible. For help unlocking, orphaning, or deleting your works, please %{contact_support_link}.
-        text: Depending on the archive, your works may have been imported restricted to registered users only (to keep them out of Google searches). If this is the case, the works will only be accessible by logged-in users unless you choose to make them fully visible. For help unlocking, orphaning, or deleting your works, please contact superlove Support.
+        html: Depending on superlove, your works may have been imported restricted to registered users only (to keep them out of Google searches). If this is the case, the works will only be accessible by logged-in users unless you choose to make them fully visible. For help unlocking, orphaning, or deleting your works, please %{contact_support_link}.
+        text: Depending on superlove, your works may have been imported restricted to registered users only (to keep them out of Google searches). If this is the case, the works will only be accessible by logged-in users unless you choose to make them fully visible. For help unlocking, orphaning, or deleting your works, please contact superlove Support.
       claim_or_remove:
         html: Claim or remove your works here.
         text: 'Claim or remove your works here: %{claim_url}'
-      email_tips: If you're contacting us, please add email addresses from @transformativeworks.org to your list of safe contacts and check your spam folders for our reply.
+      email_tips: If you're contacting us, please add the address dicakemelo@gmail.com to your list of safe contacts and check your spam folders for our reply.
       html:
         superlove_news: superlove News
         contact_open_doors: contact Open Doors
@@ -310,7 +310,7 @@ en:
       questions:
         html: For other inquiries, please %{contact_support_link}.
         text: For other inquiries, please contact superlove Support at %{support_link}.
-      redirects: To preserve rec lists and bookmarks, the imported archive's web addresses may redirect to the imported copy of these works for a limited time (check the announcement post for your archive to be sure). If you've already uploaded a copy of these works and you did NOT use the import from URL feature, there will be two copies of the same work on the archive.
+      redirects: To preserve rec lists and bookmarks, the imported archive's web addresses may redirect to the imported copy of these works for a limited time (check the announcement post for your archive to be sure). If you've already uploaded a copy of these works and you did NOT use the import from URL feature, there will be two copies of the same work on superlove.
       subject: "[%{app_name}] Invitation to claim works"
       unwanted:
         html: If these works do belong to you, but you don't want them, you can orphan (so that they remain on the superlove, but with your name removed) or delete them (so that they are entirely removed from the superlove). You do not need to add these works to any account in order to orphan or delete them--you can do this directly from the claim link above. (For assistance, please %{contact_support_link}.)
@@ -322,14 +322,14 @@ en:
     invite_increase_notification:
       html:
         body:
-          one: We just wanted to let you know that you have %{count} new invitation, which can be used to create a new account at the Archive. You can invite a friend at %{invitation_page_link}.
-          other: We just wanted to let you know that you have %{count} new invitations, which can be used to create new accounts at the Archive. You can invite a friend at %{invitation_page_link}.
+          one: We just wanted to let you know that you have %{count} new invitation, which can be used to create a new account at superlove. You can invite a friend at %{invitation_page_link}.
+          other: We just wanted to let you know that you have %{count} new invitations, which can be used to create new accounts at superlove. You can invite a friend at %{invitation_page_link}.
       invitation_page_link_text: your invitations page
       subject: "[%{app_name}] New invitations"
       text:
         body:
-          one: We just wanted to let you know that you have %{count} new invitation, which can be used to create a new account at the Archive. You can invite a friend at your invitations page (%{invitation_page_url}).
-          other: We just wanted to let you know that you have %{count} new invitations, which can be used to create new accounts at the Archive. You can invite a friend at your invitations page (%{invitation_page_url}).
+          one: We just wanted to let you know that you have %{count} new invitation, which can be used to create a new account at superlove. You can invite a friend at your invitations page (%{invitation_page_url}).
+          other: We just wanted to let you know that you have %{count} new invitations, which can be used to create new accounts at superlove. You can invite a friend at your invitations page (%{invitation_page_url}).
     invite_request_declined:
       main:
         one: We regret to inform you that your request for a new invitation cannot be fulfilled at this time.
@@ -351,15 +351,15 @@ en:
         text: 'Please follow this link to activate your account: %{activate_account_url}'
       activate_your_account: follow this link to activate your account
       admin_posts: superlove News
-      bye: We hope you enjoy using the Archive.
+      bye: We hope you enjoy using superlove.
       contact_support: contact Support
       faq: FAQ
       features:
-        html: Once your account is up and running, you can post your fanworks, set up email subscriptions to let you know when your favorite creators or works have updated, set preferences to customize the way the site looks and works for you, keep track of the works you've accessed on the Archive via your history, and much more.
-        text: Once your account is up and running, you can post your fanworks, set up email subscriptions to let you know when your favorite creators or works have updated, set preferences to customize the way the site looks and works for you, keep track of the works you've accessed on the Archive via your history, and much more.
+        html: Once your account is up and running, you can post your fanworks, set up email subscriptions to let you know when your favorite creators or works have updated, set preferences to customize the way the site looks and works for you, keep track of the works you've accessed on superlove via your history, and much more.
+        text: Once your account is up and running, you can post your fanworks, set up email subscriptions to let you know when your favorite creators or works have updated, set preferences to customize the way the site looks and works for you, keep track of the works you've accessed on superlove via your history, and much more.
       information:
-        html: There's lots of information and advice on how to use the Archive in our %{faq_link}. You'll find the latest news about site developments on %{admin_posts_link}. If you need more help, run into a bug, or have questions or comments, please %{contact_support_link}, who are always happy to help out.
-        text: 'There''s lots of information and advice on how to use the Archive in our FAQ at %{faq_url}. You''ll find the latest news about site developments on superlove News at %{admin_posts_url}. If you need more help, run into a bug, or have questions or comments, please contact Support, who are always happy to help out: %{contact_support_url}.'
+        html: There's lots of information and advice on how to use superlove in our %{faq_link}. You'll find the latest news about site developments on %{admin_posts_link}. If you need more help, run into a bug, or have questions or comments, please %{contact_support_link}, who are always happy to help out.
+        text: 'There''s lots of information and advice on how to use superlove in our FAQ at %{faq_url}. You''ll find the latest news about site developments on superlove News at %{admin_posts_url}. If you need more help, run into a bug, or have questions or comments, please contact Support, who are always happy to help out: %{contact_support_url}.'
       subject: "[%{app_name}] Activate your account"
       welcome: Welcome to superlove, %{login}!
   users:

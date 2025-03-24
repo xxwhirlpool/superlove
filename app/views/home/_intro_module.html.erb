@@ -2,17 +2,17 @@
   <h2 class="heading"><%= ts("for fanfiction, original fiction, multimedia fanworks, and anything i allow") %></h2>
   <p class="stats"><%= ts("more than %{fandom_count} fandoms | %{user_count} users | %{work_count} works", fandom_count: content_tag(:span, number_with_delimiter(@fandom_count), class: "count"), user_count: content_tag(:span, number_with_delimiter(@user_count), class: "count"), work_count: content_tag(:span, number_with_delimiter(@work_count), class: "count")).html_safe %></p>
   <p class="parent"><%= ts("superlove is a project by") %> <%= link_to ts("melo"), "http://eunoia.sayitditto.net" %>.</p>
-  <p class="parent">DAYS SINCE SUPERLOVE GOT CALLED ANTI-RUN: <%= Date.today.mjd - Date.parse("2025-03-08").mjd %></p>
+  <p class="parent">DAYS SINCE SUPERLOVE GOT CALLED ANTI-RUN: <%= Date.today.mjd - Date.parse("2025-03-23").mjd %></p>
 
   <div class="account module">
 
     <% if !AdminSetting.current.invite_from_queue_enabled? && AdminSetting.current.creation_requires_invite? %>
       <p>
-        <%= ts("Joining the Archive currently requires an invitation; however, we 
+        <%= ts("Joining superlove currently requires an invitation; however, we 
                are not accepting new invitation requests at this time. Please check
                the %{news} for more information, or if you have already requested 
                an invitation, you can %{status}.",
-               news: link_to("\"Invitations\" tag on AO3 News",
+               news: link_to("\"Invitations\" tag on superlove News",
                      admin_posts_path(tag: 143)),
                status: link_to("check your position on the waiting list",
                        status_invite_requests_path)
