@@ -23,9 +23,9 @@ module UsersHelper
   # Determine which icon to show on user pages
   def standard_icon(user = nil, pseud = nil)
     if pseud && pseud.icon
-      pseud.icon.variant(resize_to_limit: [100, 100])
+      pseud.icon.variant(resize_to_limit: [100, 100], loader: { page: nil })
     elsif user && user.default_pseud && user.default_pseud.icon
-      user.default_pseud.icon.variant(resize_to_limit: [100, 100])
+      user.default_pseud.icon.variant(resize_to_limit: [100, 100], loader: { page: nil })
     else
       '/images/skins/iconsets/default/icon_user.png'
     end

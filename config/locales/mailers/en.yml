@@ -59,7 +59,7 @@ en:
       footer:
         general:
           about:
-            html: superlove is an independently run website, supported by the admin out of pocket in addition to your donations: %{donate_link}.
+            html: superlove is an independently run website, supported by the admin out of pocket in addition to your donations %{donate_link}.
             text: 'superlove is an independently run website, supported by the admin out of pocket in addition to your donations: %{donate_url}.'
           html:
             donate_link_text: your donations
