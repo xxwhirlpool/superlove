@@ -66,23 +66,17 @@
         <ul class="notes">
           <% unless @collection.new_record? %>
             <li>
-            <% if @collection.icon.attached? %>
-              <%= image_tag(@collection.icon, skip_pipeline: true) %>
+              <%= collection_icon_display(collection_item.collection) %>
               <%= ts("This is the collection's icon.") %>
-            <% else %>
-              <%= image_tag('/images/skins/iconsets/default/icon_user.png', class: 'icon') %>
-            <% end %>
             </li>
           <% end %>
           <li><%= ts("Each collection can have one icon") %></li>
           <li><%= ts("Icons can be in png, jpeg or gif form") %></li>
           <li><%= ts("Icons should be sized 100x100 pixels for best results") %></li>
         </ul>
-        <% if @collection.icon %>
+        <% if @collection.icon.attached? %>
           <%= collection_form.check_box :delete_icon, {:checked => false} %>
           <%= collection_form.label :delete_icon, ts("Delete collection icon and revert to our default") %>
-        <% else %>
-          <% link_to image_tag('/images/skins/iconsets/default/icon_user.png', class: 'icon') %>
         <% end %>
       </dd>
 

@@ -2,11 +2,7 @@
 <div class="primary header module">
   <h2 class="heading"><%= link_to_unless_current(@collection.title, @collection) %></h2>
   <div class="icon">
-  <% if @collection.icon.attached? %>
-    <%= image_tag(@collection.icon.variant(resize_to_limit: [100, 100])) %>
-      <% else %>
-        <%= image_tag('/images/skins/iconsets/default/icon_user.png', class: 'icon') %>
-      <% end %>
+    <%= collection_icon_display(collection_item.collection) %>
   </div>
 <!--/descriptions-->
 

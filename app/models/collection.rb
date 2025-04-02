@@ -14,6 +14,10 @@ class Collection < ApplicationRecord
    # bucket: %w(staging unproduction).include?(Rails.env) ? YAML.load_file("#{Rails.root}/config/s3.yml")['bucket'] : "",
  # default_url: "/images/skins/iconsets/default/icon_collection.png"
 
+  has_one_attached :icon do |attachable|
+    attachable.variant(resize_to_limit: [100, 100], loader: { page: nil })
+  end
+
    validates :icon, file_content_type: {
      allow: ["image/jpeg", "image/png", "image/gif"],
        if: -> { icon.attached? },
@@ -180,6 +184,7 @@ class Collection < ApplicationRecord
   scope :prompt_meme, -> { where(challenge_type: 'PromptMeme') }
   scope :name_only, -> { select("collections.name") }
   scope :by_title, -> { order(:title) }
+  scope :for_blurb, -> { includes(:parent, :moderators, :children, :collection_preference, owners: [:user]).with_attached_icon }
 
   before_validation :cleanup_url
   def cleanup_url
@@ -417,17 +422,35 @@ class Collection < ApplicationRecord
     end
   end
 
-  # Delete current icon (thus reverting to archive default icon)
   def delete_icon=(value)
     @delete_icon = !value.to_i.zero?
   end
 
   def delete_icon
-  !!@delete_icon
+    !!@delete_icon
   end
-  alias_method :delete_icon?, :delete_icon
+  alias delete_icon? delete_icon
 
   def clear_icon
-    self.icon = nil if delete_icon?
+    return unless delete_icon?
+
+    self.icon.purge
+    self.icon_alt_text = nil
+    self.icon_comment_text = nil
   end
+
+
+  # Delete current icon (thus reverting to archive default icon)
+  # def delete_icon=(value)
+  #   @delete_icon = !value.to_i.zero?
+  # end
+
+#   def delete_icon
+#   !!@delete_icon
+#   end
+#   alias_method :delete_icon?, :delete_icon
+# 
+#   def clear_icon
+#     self.icon = nil if delete_icon?
+#   end
 end
