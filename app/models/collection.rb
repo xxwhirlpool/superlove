@@ -3,8 +3,6 @@ class Collection < ApplicationRecord
   include UrlHelpers
   include WorksOwner
   
-  has_one_attached :icon
-
 #  has_attached_file :icon,
  #   styles: { standard: "100x100>" },
   #  path: %w(staging unproduction).include?(Rails.env) ? ":rails_root/system/collections/icons/:id_partition/:style/:filename" : ":rails_root/public:url",
@@ -14,9 +12,7 @@ class Collection < ApplicationRecord
    # bucket: %w(staging unproduction).include?(Rails.env) ? YAML.load_file("#{Rails.root}/config/s3.yml")['bucket'] : "",
  # default_url: "/images/skins/iconsets/default/icon_collection.png"
 
-  has_one_attached :icon do |attachable|
-    attachable.variant(resize_to_limit: [100, 100], loader: { page: nil })
-  end
+  has_one_attached :icon
 
    validates :icon, file_content_type: {
      allow: ["image/jpeg", "image/png", "image/gif"],
