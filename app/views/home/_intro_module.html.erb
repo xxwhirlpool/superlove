@@ -2,8 +2,9 @@
   <h2 class="heading"><%= ts("for fanfiction, original fiction, multimedia fanworks, and anything i allow") %></h2>
   <p class="stats"><%= ts("more than %{fandom_count} fandoms | %{user_count} users | %{work_count} works", fandom_count: content_tag(:span, number_with_delimiter(@fandom_count), class: "count"), user_count: content_tag(:span, number_with_delimiter(@user_count), class: "count"), work_count: content_tag(:span, number_with_delimiter(@work_count), class: "count")).html_safe %></p>
   <p class="parent"><%= ts("superlove is a project by") %> <%= link_to ts("melo"), "http://eunoia.sayitditto.net" %>.</p>
-  <p class="parent">DAYS SINCE SUPERLOVE GOT CALLED ANTI-RUN: <%= Date.today.mjd - Date.parse("2025-03-23").mjd %></p>
-
+  <p class="parent">DAYS SINCE SUPERLOVE GOT CALLED ANTI-RUN: <%= Date.today.mjd - Date.parse("2025-03-27").mjd %></p>
+  <p class="parent">DAYS SINCE SUPERLOVE GOT CALLED PROSHIPPER-RUN: <%= Date.today.mjd - Date.parse("2025-03-28").mjd %></p>
+  
   <div class="account module">
 
     <% if !AdminSetting.current.invite_from_queue_enabled? && AdminSetting.current.creation_requires_invite? %>
