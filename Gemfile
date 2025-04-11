@@ -63,6 +63,7 @@ gem 'open-uri'
 gem 'pry'
 gem 'image_processing'
 gem 'active_storage_validations'
+gem 'meta-tags'
 
 # for looking up image dimensions quickly
 gem 'fastimage'
