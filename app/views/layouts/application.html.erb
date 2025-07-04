@@ -3,20 +3,20 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <meta name="keywords" content="fanfiction, archive, superlove" />
+    <meta name="keywords" content="fanfiction, fanworks, creative works" />
     <meta name="language" content="en-US" />
     <meta name="subject" content="fandom" />
     <meta name="description" content="superlove, what me and your mother make when you're not home" />
     <meta name="distribution" content="GLOBAL" />
     <meta name="classification" content="slay" />
-    <meta name="author" content="melo" />
+    <meta name="author" content="girl on the moon" />
     <% item = @user || @work || @series %>
     <% if disallow_robots?(item) %>
       <meta name="robots" content="noindex" />
       <meta name="googlebot" content="noindex" />
     <% end %>
   	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  	 <%= display_meta_tags(default_meta_tags) %>
+  	<%= display_meta_tags(default_meta_tags) %>
     <title>
       <% if defined?(@page_title) %>
         <%= @page_title %>
