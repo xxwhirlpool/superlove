@@ -1,7 +1,7 @@
-<h2 class="heading"><%= ts('About') %> <%= ts("superlove") %></h2>
+<h2 class="heading" id="about-superlove"><%= ts('About') %> <%= ts("superlove") %></h2>
 
 <div class="userstuff">
-  <h3 class="heading">introduction</h3>
+  <h3 class="heading" id="introduction">introduction</h3>
   <p>hi i'm <a href="https://eunoia.sayitditto.net/">melo</a>. i'm a random loser who decided to self host otw-archive on a macbook (it runs linux btw) because i thought it'd be funny. i do this for fun so be nice to me. you can do whatever but please read and follow my <%= link_to ts("rules"), tos_path %>.<br><br>
   
   this is invite only and i approve and deny invite requests based on if i know you or if the vibes are good or bad. good luck<br><br>
@@ -10,14 +10,48 @@
   
   <iframe width="400" height="225" src="https://www.youtube.com/embed/hv44srAsAo4" title="Tinashe - Superlove" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><br><br>
 
-  read my rules don't be a prick about them i'm one guy i don't have lawyers this is my pink fanfic site where we have fun and talk about yuri<br><br>
-
-  some archive tag icons created and provided by steff of <a href="https://www.adastrafanfic.com/">Ad Astra</a> and the <a href="https://www.cfaarchive.org">CFAA</a>! everyone say thank you steff she's the best!<br><br>
-
-  if you need to contact me (the admin), email me at <a href="mailto:melodicake@disroot.org">this address</a>. PGP encryption is an option.
+  read my rules don't be a prick about them i'm one guy i don't have lawyers this is my pink fanfic site where we have fun and talk about yuri
   </p>
 
-  <h3 class="heading">badges</h3>
+  <h3 class="heading" id="contact">contact me (the admin)</h3>
+
+  <style>
+  	.userstuff dt::after {
+  		content: ":"
+  	}
+  	
+  	.userstuff dd {
+  		margin-block-start: 1rem !important;
+  		margin-block-end: 2rem !important;
+  		margin-inline-start: 1rem !important;
+  	}
+  </style>
+
+  <p>
+  	email is the best and most reliable way to reach me. <a href="https://www.howtogeek.com/706402/how-to-use-openpgp-encryption-for-emails-in-thunderbird/">PGP encryption</a> is an option (key linked).
+
+  	<dl>
+		<dt>email</dt>
+			<dd><a href="mailto:melodicake@disroot.org?subject=superlove%20contact%20page">main address</a></dd>
+		<dt>PGP</dt>
+			<dd><a href="https://eunoia.sayitditto.net/elsewhere/pgp.txt">key</a> (<a href="https://keys.openpgp.org/vks/v1/by-fingerprint/2AEA7D1EF8744E6015C571915698A40B8AE7C8A8" download>download</a>)</dd>
+  	</dl>
+  	
+  </p>
+
+  <h3 class="heading" id="credits">credits</h3>
+
+  <p>
+  	everyone say thank you to the lovely folks below, they are the best!
+  	
+  	<ul>
+		<li><a href="https://sl-walker.tumblr.com/">SLWalker</a>, who runs <a href="https://adastrafanfic.com/">Ad Astra</a> &amp; <a href="https://www.cfaarchive.org/">CFAA</a>, for creating and providing certain archive category icons to superlove.</li>
+		<li>Walter of <a href="https://squidge.org/">Squidge.org</a> for assistance with superlove in its creation &amp; onward.</li>
+		<li><a href="https://archiveofourown.org/users/AO3_Systems/pseuds/james_">james_</a>, <a href="https://www.transformativeworks.org/">OTW</a> systems administrator, for assisting with superlove problems &amp; answering my dumb questions about OTW-archive</li>
+	</ul>
+  </p>
+
+  <h3 class="heading" id="badges">badges</h3>
   <p>
   
   <img src="https://pride-badges.pony.workers.dev/static/v1?label=lgbtq%2B%20friendly&amp;stripeWidth=6&amp;stripeColors=ef5350,f48fb1,7e57c2,2196f3,26c6da,43a047,eeff41,f9a825,ff5722" alt="LGBTQ+ friendly badge with pastel rainbow flag colors">
@@ -42,7 +76,7 @@
   <img src="https://img.shields.io/badge/ruby-rails-d30001?style=plastic&amp;logo=rubyonrails" alt="ruby on rails badge">
   </p>
 
-  <h3 class="heading">link back buttons</h3>
+  <h3 class="heading" id="buttons">link back buttons</h3>
   <p>these buttons are contributed by friends and superlove users! use them as you wish to link to superlove :)<br><br>
 
   by <a href="https://aroceu.com/">aroceu</a>:<br><br>
