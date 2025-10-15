@@ -35,6 +35,7 @@
     <li class="module group">
       <h4 class="heading"><%= ts('Development', key: 'footer') %></h4>
       <ul class="menu">
+      	<li><a href="https://uptime.4-walls.net/status/superlove">Site Status</a></li>
         <% unless ArchiveConfig.REVISION.blank? %>
           <li><%= link_to ts('otwarchive %{rev_number}', :rev_number => ArchiveConfig.REVISION), "https://github.com/otwcode/otwarchive/commits/#{ArchiveConfig.REVISION}" %></li>
         <% end %>
