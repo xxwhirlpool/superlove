@@ -788,7 +788,7 @@ en:
         restricted: Only show your work to registered users
         unrestricted: Show to all
     show:
-      unposted_deletion_notice_html: This work is a draft and has not been posted. The draft will be <strong>scheduled for deletion</strong> on %{deletion_date}.
+      unposted_deletion_notice_html: This work is a draft and has not been posted.
     work_approved_children:
       inspired_by:
         restricted_html: "[Restricted Work] by %{creator_link} (Log in to access.)"

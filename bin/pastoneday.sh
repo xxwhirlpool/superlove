@@ -106,11 +106,11 @@ MAILPERSON="melodicake@disroot.org"
 
 {
 	echo To: $MAILPERSON
-	echo From: dicakemelo@gmail.com
+	echo From: dontreply@mail.superlove.sayitditto.net
 	echo Subject: Last Day in the Archive
 	echo
 	cat last1.txt 
-} | ssmtp $MAILPERSON
+} | mail -s "Last Day in the Archive" $MAILPERSON
 
 #now remove temp files
 rm -f query.sql query.out multpseuds.sql multpseuds.out query2.sql numauthors.sql numauthors.out

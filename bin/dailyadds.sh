@@ -194,11 +194,11 @@ MAILPERSON="melodicake@disroot.org"
 
 {
         echo To: $MAILPERSON
-        echo From: dicakemelo@gmail.com
+        echo From: dontreply@mail.superlove.sayitditto.net
         echo Subject: Last 24 hours in superlove
         echo
         cat dailyreport.txt
-} | ssmtp $MAILPERSON
+} | mail -s "Last 24 hours in superlove" $MAILPERSON
 
 rm -fr dailyreport.txt newquery.sql
 
