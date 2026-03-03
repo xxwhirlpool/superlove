@@ -45,19 +45,19 @@ en:
         sources: links to any relevant sources or screenshots
         username: the username of the person you are reporting
       purview:
-        about_html: Please use this form for questions or reports about violations of the Archive's %{tos_link}.
+        about_html: Please use this form for questions or reports about violations of superlove's %{tos_link}.
         dmca: review our DMCA Policy and contact our Legal team
         dmca_takedown_html: If you would like to initiate a formal DMCA takedown request, please %{dmca_link}.
         support: contact our Support team
         technical_help_html: For technical help, or if you would like to manage your Fannish Next-of-Kin, please %{support_link}.
         tos: Terms of Service
       reportable:
-        content: You would like to know whether specific content is allowed on the Archive.
+        content: You would like to know whether specific content is allowed on superlove.
         hack: You believe that your account was hacked.
-        harassment: You have experienced or witnessed harassment on the Archive.
+        harassment: You have experienced or witnessed harassment on superlove.
         intro: 'Potential reasons to submit a report to the Policy & Abuse team:'
         suspended: You have been suspended or your work has been removed, and you have not received an email explaining why.
-        violation_html: You have encountered content on the Archive that violates the %{tos_link}.
+        violation_html: You have encountered content on superlove that violates the %{tos_link}.
   admin:
     activities:
       index:
@@ -246,7 +246,7 @@ en:
           request_invite_enabled: Users can request invitations
           suspend_filter_counts: Suspend some filter tracking due to high posting volume
           tag_wrangling_off: Turn off tag wrangling for non-admins
-        heading: Archive Settings
+        heading: superlove Settings
         last_updated_by_admin: Last updated on %{updated_at} by %{admin_name}.
         legend:
           account_and_invitations: Accounts and Invitations
@@ -257,7 +257,7 @@ en:
         queue_status_help: "(The automatic task that invites people from the queue only runs once a day. Don't be alarmed if the date you see is yesterday's. Do be alarmed if the date you see is more than one day in the past and the queue is supposed to be active.)"
         update: Update
       update:
-        success: Archive settings were successfully updated.
+        success: superlove settings were successfully updated.
   admin_posts:
     admin_post_form:
       comment_permissions:
@@ -370,13 +370,13 @@ en:
         comment: Comment
       add_to_collections_link: Add to Collections
       blocked: Sorry, you have been blocked by one or more of this work's creators.
-      guest_comments_disabled: Sorry, the Archive doesn't allow guests to comment right now.
+      guest_comments_disabled: Sorry, superlove doesn't allow guests to comment right now.
       invite_to_collections_link: Invite To Collections
       permissions:
         admin_post:
           alt_action: You can however %{support_link} with any feedback or questions.
           disable_all: Sorry, this news post doesn't allow comments.
-          disable_anon: Sorry, this news post doesn't allow non-Archive users to comment.
+          disable_anon: Sorry, this news post doesn't allow non-superlove users to comment.
           support_link: contact Support
         moderated_commenting:
           disable: Disable comment moderation
@@ -393,7 +393,7 @@ en:
         work:
           alt_action: You can however still leave Kudos!
           disable_all: Sorry, this work doesn't allow comments.
-          disable_anon: Sorry, this work doesn't allow non-Archive users to comment.
+          disable_anon: Sorry, this work doesn't allow non-superlove users to comment.
           hidden: Sorry, you can't add or edit comments on a hidden work.
           unrevealed: Sorry, you can't add or edit comments on an unrevealed work.
   downloads:
@@ -404,7 +404,7 @@ en:
         title: Works inspired by this one
         unrevealed: A work in an unrevealed collection
       please_comment_html: Please %{work_comment_link} to let the creator know if you enjoyed their work!
-      work_comment: drop by the Archive and comment
+      work_comment: drop by superlove and comment
     download_preface:
       inspired_by:
         restricted_html: Inspired by [Restricted Work] by %{creator_link}
@@ -447,7 +447,7 @@ en:
           error: Please enter a brief summary of your message
           label: Brief summary of your question or problem (required)
       heading:
-        instructions: Please use this form for questions about how to use the Archive and for reporting any technical problems.
+        instructions: Please use this form for questions about how to use superlove and for reporting any technical problems.
         landmark:
           reference: Reference Links
         page_title: Support and Feedback
@@ -471,7 +471,7 @@ en:
         tag_changes: Requests to canonize or change tags
         work_problems: Works labeled with the wrong language or duplicate works
       status:
-        current: For current updates on Archive performance or downtime, please check the %{twitter_link} or %{tumblr_link}.
+        current: For current updates on superlove performance or downtime, please check the status page ${status_link}.
         tumblr: ao3org Tumblr
         twitter: "@AO3_Status Twitter feed"
   home:
@@ -523,11 +523,11 @@ en:
     proxy_notice:
       button: Dismiss Notice
       faux_heading: 'Important message:'
-      point1: You are using a proxy site that is not part of the Archive of Our Own.
+      point1: You are using a proxy site that is not part of superlove.
       point2: The entity that set up the proxy site can see what you submit, including your IP address. If you log in through the proxy site, it can see your password.
   muted:
     mute: Mute
-    muted_items_notice_html: You have muted some users on the Archive. Some items may not be shown, and any counts may be inaccurate. You can mute or unmute users on %{muted_users_link}.
+    muted_items_notice_html: You have muted some users on superlove. Some items may not be shown, and any counts may be inaccurate. You can mute or unmute users on %{muted_users_link}.
     muted_users_link_text: your Muted Users page
     unmute: Unmute
     users:
@@ -538,7 +538,7 @@ en:
         cancel: Cancel
         mute: mute
         restore_site_skin_faq_link_text: instructions for reverting to the default site skin
-        site_skin_warning_html: Please note that if you are not using the default site skin, muting may not work properly. The Skins and Archive Interface FAQ has %{restore_site_skin_faq_link}.
+        site_skin_warning_html: Please note that if you are not using the default site skin, muting may not work properly. The Skins and superlove Interface FAQ has %{restore_site_skin_faq_link}.
         sure_html: Are you sure you want to %{mute} %{username}?
         title: Mute %{name}
         will:
@@ -569,7 +569,7 @@ en:
         muted_users: Muted Users
         none: You have not muted any users.
         restore_site_skin_faq_link_text: instructions for reverting to the default site skin
-        site_skin_warning_html: Please note that if you are not using the default site skin, muting may not work properly. The Skins and Archive Interface FAQ has %{restore_site_skin_faq_link}.
+        site_skin_warning_html: Please note that if you are not using the default site skin, muting may not work properly. The Skins and superlove Interface FAQ has %{restore_site_skin_faq_link}.
         title: Muted Users
         will:
           intro:
@@ -644,9 +644,9 @@ en:
   tags:
     index:
       about:
-        popular: These are some of the most popular tags used on the Archive. To find more tags, %{search_tags_link}.
+        popular: These are some of the most popular tags used on superlove. To find more tags, %{search_tags_link}.
         popular_in_collection: These are some of the most popular tags used in the collection.
-        random: These are some random tags used on the Archive. To find more tags, %{search_tags_link}.
+        random: These are some random tags used on superlove. To find more tags, %{search_tags_link}.
         random_in_collection: These are some random tags used in the collection.
       search_tags: try our tag search
   time:
@@ -693,7 +693,7 @@ en:
       more_info: For information on how changing your user name will affect your account, please check out the %{account_faq_link}. Note that changes to your user name may take several days or longer to appear. If you are still seeing your old user name on your works, bookmarks, series, or collections after a week, please %{contact_support_link}.
     confirmation:
       contact_support: contact Support
-      go_back: Return to Archive front page
+      go_back: Return to superlove front page
       important: Important!
       must_activate:
         one: You must activate your account within %{count} day, or your account will expire. If this happens, you can sign up again using the same invitation.
@@ -746,13 +746,13 @@ en:
           request_invite: Request an invitation to join
           reset_password: Reset password
         restricted:
-          account_exists: If you already have an Archive of Our Own account, log in now.
-          commenting_unavailable: Commenting on this work is only available to registered users of the Archive.
+          account_exists: If you already have a superlove account, log in now.
+          commenting_unavailable: Commenting on this work is only available to registered users of superlove.
           no_account: If you don't have an account, you can %{request_invite_link}.
           request_invite: request an invitation to join
           signup: Or join us for free - it's easy.
           sorry: Sorry!
-          work_unavailable: This work is only available to registered users of the Archive.
+          work_unavailable: This work is only available to registered users of superlove.
     show:
       login_banner:
         dismiss: Dismiss permanently
@@ -764,7 +764,7 @@ en:
         link_faq: check out our FAQ
         link_support: contact us through our Support and Feedback form
         link_tos: Terms of Service
-        welcome_text: Hi! It looks like you've just logged into the Archive for the first time. %{help_link} or dismiss this message permanently.
+        welcome_text: Hi! It looks like you've just logged into superlove for the first time. Welcome!
   works:
     adult:
       caution: This work could have adult content. If you continue, you have agreed that you are willing to see such content.
