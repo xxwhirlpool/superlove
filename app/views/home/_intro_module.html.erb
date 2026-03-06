@@ -18,12 +18,13 @@
       </p>
     <% end %>
 
-    <h4 class="heading"><%= ts("With a %{short_name} account, you can:", short_name: ArchiveConfig.APP_SHORT_NAME) %></h4>
+    <h4 class="heading"><%= ts("%{short_name} is:", short_name: ArchiveConfig.APP_SHORT_NAME) %></h4>
     <ul>
-      <li><%= ts("Share your own fanworks & original creations") %></li>
-      <li><%= ts("Get notified when your favorite works, series, or users update") %></li>
-      <li><%= ts("Participate in events") %></li>
-      <li><%= ts("Keep track of works you've visited and works you want to check out later") %></li>
+      <li><%= ts("a place for freaks") %></li>
+      <li><%= ts("a community before an archive") %></li>
+      <li><%= ts("not an AO3 alternative or backup") %></li>
+      <li><%= ts("better than AO3, actually") %></li>
+      <li><%= ts("the church of Dambara Ruru") %></li>
     </ul>
 
     <% if AdminSetting.current.invite_from_queue_enabled? && AdminSetting.current.creation_requires_invite? && AdminSetting.current.request_invite_enabled? %>

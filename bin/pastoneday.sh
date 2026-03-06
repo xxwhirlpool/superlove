@@ -114,4 +114,4 @@ MAILPERSON="melodicake@disroot.org"
 
 #now remove temp files
 rm -f query.sql query.out multpseuds.sql multpseuds.out query2.sql numauthors.sql numauthors.out
-rm -f pseud.sql pseud.out getchapnums.sql getchapnums.out expected.sql expected.out rating.sql rating.out last1.txt
+rm -f pseud.sql pseud.out getchapnums.sql getchapnums.out expected.sql expected.out rating.sql rating.out last1.txt last7.txt
