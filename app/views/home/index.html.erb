@@ -20,6 +20,16 @@
       <% if logged_in? %>
         <p class="note"><%= t(".browse_or_favorite", count: ArchiveConfig.MAX_FAVORITE_TAGS) %></p>
       <% end %>
+
+	<p class="note">
+		<% if @random_user %>
+		  Or if you're feeling silly, try
+		  <%= link_to ts("a new author!"), user_path(@random_user) %>
+		<% else %>
+		  no authors found <span aria-label="sad" role="img">:(</span>
+		<% end %>
+	</p>
+
       <%= render 'fandoms' %>
     </div>
   <% end %>

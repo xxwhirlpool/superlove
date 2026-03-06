@@ -61,6 +61,7 @@ class HomeController < ApplicationController
   # home page itself
   def index
     @homepage = Homepage.new(@current_user)
+    @random_user = User.unscoped.order(Arel.sql("RAND()")).first
     unless @homepage.logged_in?
       @user_count, @work_count, @fandom_count = @homepage.rounded_counts
     end
