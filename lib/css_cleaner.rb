@@ -16,6 +16,16 @@ module CssCleaner
       clean_css = "@scope (#{scope}) {\n#{clean_css}\n}"
     end
 
+    # Throwing spaghetti at the wall:
+    # Is the scope test just not firing at all?
+    if scope
+      clean_css += "\n.foo { --bar: baz; }"
+    end
+    # Is something stripping rules?
+    clean_css += "\n@font-face {font-family: heading; src: url('https://example.com');}"
+    # Am I doing something else weird?
+    clean_css += "\n.foo { --bar2: baz2; }"
+
     # The only way to escape a <style> block is for the substring `</style`,
     # literally and exactly (including no ws, but including all case permutations),
     # to show up anywhere in the stylesheet.
