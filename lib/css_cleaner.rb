@@ -7,13 +7,13 @@ module CssCleaner
   def clean_css_code(css_code, options = {})
     return "" if !css_code.match(/\w/) # only spaces of various kinds
     clean_css = css_code
-    scope = options[:scope] || ''
+    scope = options[:scope]
 
     # If scope is specified, wrap the whole stylesheet in a @scope block.
     # The CSS *can* escape this scope by including a top-level unmatched },
     # but absent a real CSS parser, this seems low-importance to care about.
-    if !scope.blank?
-      clean_css = "@scope (#{scope}) {\n" + clean_css + "\n}"
+    if scope
+      clean_css = "@scope (#{scope}) {\n#{clean_css}\n}"
     end
 
     # The only way to escape a <style> block is for the substring `</style`,
