@@ -4,18 +4,10 @@ class WorkSkin < Skin
   has_many :works
   after_save :skin_invalidate_cache
 
-  # override parent's clean_css to append a prefix
+  # override parent's clean_css to apply a scope
   def clean_css
     return if self.css.blank?
-    check = lambda {|ruleset, property, value|
-      if property == "position" && value == "fixed"
-        errors.add(:base, ts("The %{property} property in %{selectors} cannot have the value %{value} in Work skins, sorry!", property: property, selectors: ruleset.selectors.join(", "), value: value))
-        return false
-      end
-      return true
-    }
-    options = {prefix: "#workskin", caller_check: check}
-    self.css = clean_css_code(self.css, options)
+    self.css = clean_css_code(self.css, {scope: "#workskin"})
   end
 
   def self.model_name
