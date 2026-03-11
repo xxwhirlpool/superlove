@@ -4,6 +4,9 @@ module CssCleaner
   # The only important things to do are:
   # 1. Make sure the CSS doesn't escape its <style> element.
   # 2. Apply a scope when supplied via the "scope" option.
+  # NOTE: The cleaner code edits the css inline and saves the cleaned form,
+  #       so make sure that any cleanups are idempotent, or you'll accumulate changes.
+
   def clean_css_code(css_code, options = {})
     return "" if !css_code.match(/\w/) # only spaces of various kinds
     clean_css = css_code
@@ -13,7 +16,9 @@ module CssCleaner
     # The CSS *can* escape this scope by including a top-level unmatched },
     # but absent a real CSS parser, this seems low-importance to care about.
     if scope
-      clean_css = "@scope (#{scope}) {\n#{clean_css}\n}"
+      unless clean_css.strip.start_with?("@scope (#{scope})")
+        clean_css = "@scope (#{scope}) {\n#{clean_css}\n}"
+      end
     end
 
     # The only way to escape a <style> block is for the substring `</style`,
