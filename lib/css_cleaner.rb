@@ -8,6 +8,12 @@ module CssCleaner
     return "" if !css_code.match(/\w/) # only spaces of various kinds
     clean_css = css_code
 
+    # The old cleaner, and AO3 skins in general, prepend `#workskin` to all the selectors.
+    # This breaks the new @scope-based code, since the selectors are implicitly relative,
+    # and so they'd try to match a #workskin ID *inside of* #workskin.
+    # Clean that prefix off, instead.
+    clean_css.gsub!(/^#workskin (.*)$/, '\1')
+
     # The only way to escape a <style> block is for the substring `</style`,
     # literally and exactly (including no ws, but including all case permutations),
     # to show up anywhere in the stylesheet.
