@@ -67,6 +67,21 @@ class PseudsController < ApplicationController
     end
   end
 
+  def feed
+    begin
+      @pseud = @user.pseuds.find_by!(name: params[:id])
+    rescue ActiveRecord::RecordNotFound
+      raise ActiveRecord::RecordNotFound, "Couldn't find pseud with id '#{params[:id]}'"
+    end
+
+    @pseud = @user.pseuds.find_by!(name: params[:id])
+
+    respond_to do |format|
+      format.html
+      format.atom
+    end
+  end
+
   # GET /pseuds/new
   # GET /pseuds/new.xml
   def new
