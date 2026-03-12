@@ -7,7 +7,7 @@ class WorkSkin < Skin
   # override parent's clean_css to apply a scope
   def clean_css
     return if self.css.blank?
-    self.css = clean_css_code(self.css, {scope: "#workskin"})
+    self.css = clean_css_code(self.css)
   end
 
   def self.model_name
