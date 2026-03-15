@@ -53,8 +53,12 @@ h2 {
   font-weight: normal;
 }
 
-footer#footer, main, aside {
+footer#footer, main {
   padding: 1rem 3rem;
+}
+
+aside {
+  padding: 1rem;
 }
 
 .hidden {

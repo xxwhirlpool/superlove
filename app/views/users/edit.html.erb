@@ -1,5 +1,5 @@
 <!--Descriptive page name, messages and instructions-->
-<h2 class="heading"><%= ts("Edit My Profile") %></h2>
+<h2><%= ts("Edit My Profile") %></h2>
 <%= error_messages_for :user %>
 <%= error_messages_for @user.profile %>
 <!--/descriptions-->
@@ -9,7 +9,7 @@
 <!--/subnav-->
 
 <!--main content-->
-<p class="notice">
+<div class="notice">
   <%= ts("Any personal information you post on your public AO3 profile,
          including your religious or political views, health, racial background,
          country of origin, sexual identity and/or personal relationships,
@@ -19,9 +19,9 @@
          in the %{tos}.",
          tos: link_to(ts("Privacy section of the AO3 Terms of Service"), tos_path(anchor: "privacy"))
       ).html_safe %>
-</p>
+</div>
 
-<h3 class="landmark heading"><%= ts("Change Profile") %></h3>
+<h3 class="landmark"><%= ts("Change Profile") %></h3>
 <%= form_for(@user) do |f| %>  
   <dl>
     <%= fields_for :profile_attributes, @user.profile do |p| %>

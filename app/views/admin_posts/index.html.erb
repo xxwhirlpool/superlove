@@ -1,3 +1,9 @@
+<%= content_for :sidebar do %>
+  <% if @admin_posts && !@hide_dashboard %>
+    <%= render :partial => 'admin_posts/sidebar' %>
+  <% end %>
+<% end %>
+
 <div id="news">
   <% if policy(@admin_posts).can_post? %>
     <%= render "admin_index" %>

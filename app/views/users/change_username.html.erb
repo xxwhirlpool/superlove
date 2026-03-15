@@ -1,5 +1,5 @@
 <!--Descriptive page name, messages and instructions-->
-<h2 class="heading"><%= ts("Change My User Name") %></h2>
+<h2><%= ts("Change My User Name") %></h2>
 <%= error_messages_for :user %>
 <div class="caution">
   <p>
@@ -16,9 +16,9 @@
         ).html_safe %>
   </p>
 </div>
-<p class="note">
+<div class="note">
   <%= ts("If that is not what you want, you can <a href=\"#{new_user_pseud_path(@user)}\">create a new Pseud</a> instead.").html_safe %>
-</p>
+</div>
 <!--/descriptions-->
 
 <!--subnav-->
@@ -34,16 +34,16 @@
     <dt><%= label_tag :new_login, ts("New user name") %></dt>
     <dd>
       <%= text_field_tag :new_login, @new_login, autocomplete: "off", "aria-describedby" => "new-login-field-description" %>
-      <p class="footnote" id="new-login-field-description">
+      <div class="help" id="new-login-field-description">
         <%= ts("%{minimum} to %{maximum} characters (A-Z, a-z, _, 0-9 only), no spaces, cannot begin or end with underscore (_)",
                minimum: ArchiveConfig.LOGIN_LENGTH_MIN,
                maximum: ArchiveConfig.LOGIN_LENGTH_MAX) %>
-      </p>
+      </div>
     </dd>
     <dt><%= label_tag :password, ts("Password") %></dt>
     <dd><%= password_field_tag :password %></dd>
     <dt class="landmark"><%= ts("Submit") %></dt>
-    <dd class="submit actions">
+    <dd class="submit">
       <%= submit_tag ts("Change User Name"), data: { confirm: ts("Are you sure you want to change your user name?") } %>
     </dd>
   </dl>

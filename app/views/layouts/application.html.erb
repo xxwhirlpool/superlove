@@ -42,24 +42,16 @@
       <% # layouts/proxy_notice is rendered here by JavaScript found in layouts/javascripts. %>
       <%= render :partial => 'layouts/header' %>
       <div id="inner">
-        <!-- BEGIN sidebar -->
-        <% if @admin_posts && !@hide_dashboard %>
-          <%= render :partial => 'admin_posts/sidebar' %>
-        <% elsif @user && !@hide_dashboard %>
-          <%= render :partial => 'users/sidebar' %>
-        <% elsif @collection && !@hide_dashboard %>
-          <%= render :partial => 'collections/sidebar' %>
-        <% elsif show_wrangling_dashboard %>
-          <%= render :partial => 'tag_wranglings/wrangler_dashboard' %>
-        <% end %>
-        <!-- END sidebar -->
-
         <!-- BEGIN main -->
         <main id="main" class="<%= classes_for_main %> region" role="main">
           <%= flash_div :error, :caution, :notice, :alert %>
-          <div class="flash"></div>
+          <div id="flash-container">
+            <%= yield :flash %>
+          </div>
+          <!-- BEGIN sidebar -->
+          <%= yield :sidebar %>
+          <!-- END sidebar -->
           <%= yield %>
-          <div class="clear"><!--presentational--></div>
         </main>
         <!-- END main -->
       </div>

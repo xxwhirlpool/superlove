@@ -1,3 +1,9 @@
+<%= content_for :sidebar do %>
+  <% if @collection && !@hide_dashboard %>
+    <%= render :partial => 'collections/sidebar' %>
+  <% end %>
+<% end %>
+
 <div id="collection-page" class="collection home">
 
   <%= render "collections/header", :collection => @collection %>

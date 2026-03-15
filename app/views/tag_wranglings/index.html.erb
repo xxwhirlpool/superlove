@@ -1,3 +1,9 @@
+<%= content_for :sidebar %>
+  <% if show_wrangling_dashboard %>
+    <%= render :partial => 'tag_wranglings/wrangler_dashboard' %>
+  <% end %>
+<% end %>
+
 <div class="tag wrangling home">
   <!--Descriptive page name, messages and instructions-->
   <h2 class="heading"><%= ts('Tag Wrangling') %></h2>

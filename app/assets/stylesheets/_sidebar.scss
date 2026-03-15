@@ -1,0 +1,49 @@
+main:has(aside) {
+  display: grid;
+  grid-template-areas: "flash flash"
+    "sidebar content";
+  grid-template-columns: 11rem 1fr;
+  gap: 2rem;
+  
+  #content {
+    grid-area: content;
+  }
+}
+
+aside {
+  border-radius: 0 .25rem .25rem 0;
+  margin-left: -3rem;
+  background-color: #ededed;
+  grid-area: sidebar;
+  line-height: 2rem;
+  text-align: right;
+  
+  ul {
+    border-bottom: 2px solid #dddddd;
+    list-style: none;
+    margin: 0;
+    padding: 1rem 0;
+    
+    &:last-of-type {
+      border-bottom: none;
+    }
+    
+    li {
+      a, span.current {
+        padding: 0 0.5625em;
+        border-radius: .25rem;
+        display: block;
+        color: var(--text);
+      }
+      
+      a:hover {
+        background-color: #dddddd;
+      }
+      
+      span.current {
+        background-color: #cccccc;
+      }
+    }
+  }
+}
+
