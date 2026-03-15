@@ -3,13 +3,9 @@
   <%= ts("Invitation Requests") %>
 </h2>
 
-<p class="notice">
-  <%= ts("<strong>New invitation requests are currently closed.</strong> For     
-        more information, please check the %{news}.",
-      news: link_to("\"Invitations\" tag on AO3 News",
-                    admin_posts_path(tag: 143))
-      ).html_safe %>
-</p>
+<div class="notice">
+  <%= ts("<strong>new invitation requests are currently closed. sowwy.</strong>").html_safe %>
+</div>
 <p>
   <%= ts("If you have already requested an invitation, you can %{status}. There are %{count} people remaining on the waiting list.",
       status: link_to("check your position on the waiting list",
