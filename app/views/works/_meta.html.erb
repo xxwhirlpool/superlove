@@ -1,11 +1,11 @@
-<% cache_unless(@preview_mode, "/v4/#{work.cache_key}-#{Work.work_blurb_version(work.id)}-meta-#{hide_warnings?(work) ? 'nowarn' : 'showwarn'}-#{hide_freeform?(work)  ? 'nofreeform' : 'showfreeform'}", skip_digest: true) do %>
-  <h3 class="landmark"><%= ts("Work Header") %></h3>
-  <dl class="meta">
-    <% tag_group = work.tag_groups
-       Tag::VISIBLE.each do |type| %>
-      <% tags = tag_group[type] %>
-        <% unless tags.blank? %>
-          <dt class="<%= tag_type_css_class(type) %> tags">
+<h3 class="landmark"><%= ts("Work Header") %></h3>
+<ul id="work-meta" class="outset">
+  <% tag_group = work.tag_groups
+     Tag::VISIBLE.each do |type| %>
+    <% tags = tag_group[type] %>
+      <% unless tags.blank? %>
+        <li class="<%= tag_type_css_class(type) %> tags">
+          <b>
             <% if type == "ArchiveWarning" %>
               <%= link_to( tags.size == 1 ? type.constantize::NAME : type.constantize::NAME.pluralize, tos_faq_path(:anchor => "tags") ) %>:
             <% elsif type.constantize::NAME == ArchiveConfig.FREEFORM_CATEGORY_NAME %>
@@ -13,9 +13,8 @@
             <% else %>
               <%= tags.size == 1 ? type.constantize::NAME : type.constantize::NAME.pluralize %>:
             <% end %>
-          </dt>
-
-          <dd class="<%= tag_type_css_class(type) %> tags">
+          </b>
+          <div class="<%= tag_type_css_class(type) %> meta-value tags">
             <ul class="commas">
               <% if (type == "ArchiveWarning" && hide_warnings?(work)) || (type == "Freeform" && hide_freeform?(work)) %>
                 <%= show_hidden_tag_link_list_item(work, type, { suppress_toggle_class: true }) %>
@@ -23,90 +22,89 @@
                <%= tag_link_list(tags, link_to_works=true) %>
              <% end %>
             </ul>
-          </dd>
-      <% end %>
+          </div>
+        </li>
     <% end %>
+  <% end %>
 
-    <% unless @work.language.blank? %>
-      <dt class="language">
-        <%= ts("Language:") %>
-      </dt>
-      <dd class="language" lang="<%= @work.language.short %>">
+  <% unless @work.language.blank? %>
+    <li class="language">
+      <b><%= ts("Language:") %></b>
+      <div class="meta-value" lang="<%= @work.language.short %>">
         <%= @work.language.name %>
-      </dd>
-    <% end %>
+      </div>
+    </li>
+  <% end %>
 
-    <% unless @work.serial_works.blank? %>
-      <dt class="series">
-        <%= ts("Series:") %>
-      </dt>
-      <dd class="series">
+  <% unless @work.serial_works.blank? %>
+    <li class="series">
+      <b><%= ts("Series:") %></b>
+      <div class="meta-value">
         <%= show_series_data(@work) %>
-      </dd>
-    <% end %>
+      </div>
+    </li>
+  <% end %>
 
-    <% unless @work.approved_collections.empty? %>
-      <dt class="collections">
-        <%= ts('Collections:') %>
-      </dt>
-      <dd class="collections">
+  <% unless @work.approved_collections.empty? %>
+    <li class="collections">
+      <b><%= ts('Collections:') %></b>
+      <div class="meta-value">
         <%= show_collections_data(@work.approved_collections) %>
-      </dd>
-    <% end %>
+      </div>
+    </li>
+  <% end %>
 
-    <dt class="stats"><%= ts("Stats:") %></dt>
-    <dd class="stats">
-<% end %><!-- end of cache -->
-
+  <li class="stats">
+    <b><%= ts("Stats:") %></b>
     <%= work_meta_list(@work, @chapter) %>
-    </dd>
-    <% if policy(:user_creation).show_original_creators? %>
-      <% if @work.original_creators.any? %>
-        <% original_creators = @work.original_creators.map(&:display) %>
-        <dt class="original_creators">
-          <%= t('.original_creators', count: original_creators.count) %>
-        </dt>
-        <dd class="original_creators">
+  </li>
+  <% if policy(:user_creation).show_original_creators? %>
+    <% if @work.original_creators.any? %>
+      <% original_creators = @work.original_creators.map(&:display) %>
+      <li class="original_creators">
+        <b><%= t('.original_creators', count: original_creators.count) %></b>
+        <div class="meta-value">
           <%= original_creators.join(", ") %>
-        </dd>
-      <% end %>
+        </div>
+      </li>
     <% end %>
-    <% if policy(:user_creation).show_ip_address? %>
-      <dt class="ip">
-        <%= ts('IP Address:') %>
-      </dt>
-      <dd class="ip">
+  <% end %>
+  <% if policy(:user_creation).show_ip_address? %>
+    <li class="ip">
+      <b><%= ts('IP Address:') %></b>
+      <div class="meta-value">
         <% if @work.ip_address.nil? %>
-           <%= ts('No address recorded') %>
+          <%= ts('No address recorded') %>
         <% else %>
-           <%= @work.ip_address %>
+          <%= @work.ip_address %>
         <% end %>
-      </dd>
-    <% end %>
-    <% if logged_in_as_admin? %>
-      <dt class="akismet">
-        <%= ts('Akismet Reported As Spam:') %>
-      </dt>
-      <dd class="akismet">
+      </div>
+    </li>
+  <% end %>
+  <% if logged_in_as_admin? %>
+    <li class="akismet">
+      <b><%= ts('Akismet Reported As Spam:') %></b>
+      <div class="meta-value">
         <% if !@work.spam_checked? %>
-           <%= ts('No result recorded') %>
+          <%= ts('No result recorded') %>
         <% else %>
-           <%= @work.spam? %>
+          <%= @work.spam? %>
         <% end %>
-      </dd>
-      <dt class="limit">
-        <%= ts("Over Tag Limit:") %>
-      </dt>
-      <dd class="limit">
+      </div>
+    </li>
+    <li class="limit">
+      <b><%= ts("Over Tag Limit:") %></b>
+      <div class="meta-value">
         <%= @work.user_defined_tags_count > ArchiveConfig.USER_DEFINED_TAGS_MAX ? ts("Yes") : ts("No") %>
-      </dd>
-      <% if @work.gifts.are_rejected.exists? %>
-        <dt class="gift">
-          <%= ts('Refused As Gift:') %>
-        </dt>
-        <dd class="gift">
+      </div>
+    </li>
+    <% if @work.gifts.are_rejected.exists? %>
+      <li class="gift">
+        <b><%= ts('Refused As Gift:') %></b>
+        <div class="meta-value">
           <%= @work.gifts.are_rejected.map { |g| g.recipient }.join(", ") %>
-        </dd>
-      <% end %>
+        </div>
+      </li>
     <% end %>
-</dl>
+  <% end %>
+</ul>

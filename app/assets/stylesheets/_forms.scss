@@ -85,7 +85,8 @@ button,
 label.action,
 a.button,
 input[type="submit"],
-input[type="reset"] {
+input[type="reset"],
+details.actions summary {
   border: 1px var(--button-border) solid;
   border-bottom: 1px color-mix(in srgb-linear, var(--button-border), black 40%) solid;
   border-radius: 0.25rem;

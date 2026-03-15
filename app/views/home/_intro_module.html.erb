@@ -1,6 +1,6 @@
 <div id="intro" class="module">
   <h2><%= ts("for fanfiction, original fiction, multimedia fanworks, and more") %></h2>
-  <div class="stats"><%= ts("more than %{fandom_count} fandoms | %{user_count} users | %{work_count} works", fandom_count: content_tag(:span, number_with_delimiter(@fandom_count), class: "count"), user_count: content_tag(:span, number_with_delimiter(@user_count), class: "count"), work_count: content_tag(:span, number_with_delimiter(@work_count), class: "count")).html_safe %></div>
+  <div class="stats"><%= ts("more than <b>%{fandom_count}</b> fandoms | <b>%{user_count}</b> users | <b>%{work_count}</b> works", fandom_count: content_tag(:span, number_with_delimiter(@fandom_count), class: "count"), user_count: content_tag(:span, number_with_delimiter(@user_count), class: "count"), work_count: content_tag(:span, number_with_delimiter(@work_count), class: "count")).html_safe %></div>
   <p class="parent"><%= ts("superlove is a project by") %> <%= link_to ts("girl on the moon"), "http://girlonthemoon.xyz" %>.</p>
   <p class="parent">DAYS SINCE SUPERLOVE GOT CALLED ANTI-RUN: <%= Date.today.mjd - Date.parse("2026-01-16").mjd %></p>
   <p class="parent">DAYS SINCE SUPERLOVE GOT CALLED PROSHIPPER-RUN: <%= Date.today.mjd - Date.parse("2025-03-28").mjd %></p>
@@ -17,8 +17,10 @@
       </p>
     <% end %>
   </div>
+</div>
 
-  <h4><%= ts("%{short_name} is:", short_name: ArchiveConfig.APP_SHORT_NAME) %></h4>
+<div id="account" class="module inset">
+  <h3><%= ts("%{short_name} is:", short_name: ArchiveConfig.APP_SHORT_NAME) %></h3>
   <ul>
     <li><%= ts("a place for freaks") %></li>
     <li><%= ts("a community before an archive") %></li>

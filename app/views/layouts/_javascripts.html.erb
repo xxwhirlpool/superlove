@@ -18,13 +18,16 @@
       });
     });
     
-    document.querySelector('#primary .search input[type="search"]').addEventListener('focus', (e) => {
-      e.target.parentElement.querySelector('.tip').classList.remove('hidden');
-    });
+    const primarySearch = document.querySelector('#primary .search input[type="search"]');
+    if (primarySearch) {
+      primarySearch.addEventListener('focus', (e) => {
+        e.target.parentElement.querySelector('.tip').classList.remove('hidden');
+      });
     
-    document.querySelector('#primary .search input[type="search"]').addEventListener('blur', (e) => {
-      e.target.parentElement.querySelector('.tip').classList.add('hidden');
-    });
+      primarySearch.addEventListener('blur', (e) => {
+        e.target.parentElement.querySelector('.tip').classList.add('hidden');
+      });
+    }
     
   </script>
     

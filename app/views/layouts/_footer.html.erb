@@ -2,7 +2,7 @@
 <footer id="footer" role="contentinfo">
 	<h3 class="landmark"><%= ts('Footer', key: 'footer') %></h3>
   <nav>
-    <ul role="navigation">
+    <ul>
       <% cache(skin_chooser_key, skip_digest: true) do %>
         <% unless Skin.in_chooser.empty? %>
           <li>
@@ -18,7 +18,7 @@
       <% end %>
       <li>
         <span><%= ts('About the Archive', key: 'footer') %></span>
-        <img src="/images/buttons/aroceu/2.png" alt="superlove button by aroceu" width="88px">
+        <img src="/images/buttons/aroceu/2.png" alt="superlove button by aroceu" width="88px" style="display: block;" />
         <ul>
           <li><%= link_to ts('Site Map', key: 'footer'), site_map_path %></li>
           <li><%= link_to ts('Diversity Statement', key: 'footer'), diversity_path %></li>

@@ -1,7 +1,36 @@
-#user {
+.users {
   header {
+    display: grid;
+    grid-template-areas: "avatar name"
+      "actions actions";
+    grid-template-columns: 100px 1fr;
+    align-items: start;
+      
     ul.actions {
       justify-content: flex-end;
+      grid-area: actions;
+    }
+    
+    h2 {
+      border-bottom: 2px var(--text) solid;
+      grid-area: name;
+      text-align: right;
+    }
+    
+    .avatar {
+      grid-area: avatar;
+    }
+  }
+}
+
+#pseuds {
+  li {
+    a {
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      width: 100%;
+      display: block;
     }
   }
 }

@@ -1,10 +1,10 @@
-<h2 class="landmark heading"><%= t(".page_title") %></h2>
+<h2 class="landmark"><%= t(".page_title") %></h2>
 
-<p class="caution">
+<div class="caution">
   <%= t(".caution") %>
-</p>
+</div>
 
-<ul class="actions" role="navigation">
+<ul class="actions">
   <li>
     <%= link_to t(".navigation.continue"), current_path_with(view_adult: true) %>
   </li>
@@ -18,12 +18,8 @@
   <% end %> 
 </ul>
 
-<p class="message footnote">
+<div class="message">
   <%= t(".footnote") %>
-</p>
+</div>
 
-<div class="clear"></div>
-
-<ol class="work index group">
-  <%= render "works/work_blurb", work: @work %>
-</ol>
+<%= render "works/work_blurb", work: @work %>

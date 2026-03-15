@@ -1,16 +1,22 @@
 #splash {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   gap: 2rem;
-  grid-auto-flow: row dense;
+}
+
+.module {
+  break-inside: avoid;
+  max-width: calc(50% - 1rem);
+  flex-grow: 1;
 }
 
 #intro {
-  grid-column: 2;
+  order: 5;
 }
 
 #favorites {
   font-size: .875rem;
+  order: 1;
   
   ul {
     list-style: none;
@@ -34,4 +40,12 @@
       }
     }
   }
+}
+
+#news {
+  order: 3;
+}
+
+#account {
+  order: 99;
 }

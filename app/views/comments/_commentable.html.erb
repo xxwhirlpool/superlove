@@ -1,9 +1,8 @@
 <!-- Gets embedded anywhere we need to list comments on a top-level commentable. We need the local variable "commentable" here. -->
-<div id="feedback" class="feedback">
+<div id="feedback">
+  <h3 class="landmark"><%= ts("Actions") %></h3>
 
-  <h3 class="landmark heading"><%= ts("Actions") %></h3>
-
-  <ul class="actions" role="navigation">
+  <ul class="actions right" role="navigation">
     <% if @work || @admin_post %>
       <li><%= link_to '&#8593; '.html_safe + ts('Top'), "#main" %></li>
     <% end %>
@@ -80,39 +79,39 @@
 
   <% commentable_parent = find_parent(commentable) %>
   <% if AdminSetting.current.guest_comments_off? && guest? %>
-    <p class="notice">
+    <div class="notice">
       <%= t(".guest_comments_disabled") %>
-    </p>
+    </div>
   <% elsif commentable_parent.is_a?(AdminPost) && commentable_parent.disable_all_comments? %>
-    <p class="notice">
+    <div class="notice">
       <%= t(".permissions.admin_post.disable_all") %>
-    </p>
+    </div>
   <% elsif commentable_parent.is_a?(AdminPost) && commentable_parent.disable_anon_comments? && !logged_in? %>
-    <p class="notice">
+    <div class="notice">
       <%= t(".permissions.admin_post.disable_anon") %>
       <%= t(".permissions.admin_post.alt_action", support_link: link_to(t(".permissions.admin_post.support_link"), new_feedback_report_path)).html_safe %>
-    </p>
+    </div>
   <% elsif commentable_parent.is_a?(Work) && commentable_parent.disable_all_comments? %>
-    <p class="notice">
+    <div class="notice">
       <%= t(".permissions.work.disable_all") %>
-    </p>
+    </div>
   <% elsif commentable_parent.is_a?(Work) && commentable_parent.disable_anon_comments? && !logged_in? %>
-    <p class="notice">
+    <div class="notice">
       <%= t(".permissions.work.disable_anon") %>
       <%= t(".permissions.work.alt_action") %>
-    </p>
+    </div>
   <% elsif commentable_parent.is_a?(Work) && commentable_parent.hidden_by_admin? %>
-    <p class="notice">
+    <div class="notice">
       <%= t(".permissions.work.hidden") %>
-    </p>
+    </div>
   <% elsif commentable_parent.is_a?(Work) && commentable_parent.in_unrevealed_collection %>
-    <p class="notice">
+    <div class="notice">
       <%= t(".permissions.work.unrevealed") %>
-    </p>
+    </div>
   <% elsif commentable_parent.is_a?(Work) && blocked_by?(commentable_parent) %>
-    <p class="notice">
+    <div class="notice">
       <%= t(".blocked") %>
-    </p>
+    </div>
   <% else %>
     <div id="add_comment_placeholder" title="top level comment">
       <div id="add_comment">

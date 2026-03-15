@@ -1,6 +1,6 @@
 ﻿<!--main content-->
 <!-- expects @fandoms, @works, @series, @bookmarks -->
-  <% unless @fandoms.empty? %>
+<% unless @fandoms.empty? %>
   <div id="user-fandoms">
     <h3><%= ts("Fandoms") %></h3>
     <ol>
@@ -32,27 +32,27 @@
       </div>
     <% end %>
   </div>
-  <% end %> 
+<% end %> 
               
-  <% unless @works.blank? %>
-  <div id="user-works">
-    <h3><%= ts("Recent works") %></h3>
-    <ul>
-      <%= render partial: 'works/work_blurb', collection: @works, as: :work %>
-    </ul>
-    <% if @pseud %>
-      <% if @pseud.works.count > ArchiveConfig.NUMBER_OF_ITEMS_VISIBLE_IN_DASHBOARD %>
-        <%= pseud_works_link(@pseud) %>
-      <% end %>
-    <% else %>   
-      <% if @user.works.size > ArchiveConfig.NUMBER_OF_ITEMS_VISIBLE_IN_DASHBOARD %>
-        <%= works_link(@user) %>
-      <% end %>
+<% unless @works.blank? %>
+<div id="user-works">
+  <h3><%= ts("Recent works") %></h3>
+  <ul>
+    <%= render partial: 'works/work_blurb', collection: @works, as: :work %>
+  </ul>
+  <% if @pseud %>
+    <% if @pseud.works.count > ArchiveConfig.NUMBER_OF_ITEMS_VISIBLE_IN_DASHBOARD %>
+      <%= pseud_works_link(@pseud) %>
     <% end %>
-  </div>
+  <% else %>   
+    <% if @user.works.size > ArchiveConfig.NUMBER_OF_ITEMS_VISIBLE_IN_DASHBOARD %>
+      <%= works_link(@user) %>
+    <% end %>
   <% end %>
-  
-  <% unless @series.blank? %>
+</div>
+<% end %>
+
+<% unless @series.blank? %>
   <div id="user-series">
     <h3><%= ts("Recent series") %></h3>
     <ol>
@@ -67,10 +67,10 @@
         <%= series_link(@user) %>
       <% end %>
     <% end %> 
-   </div>
-  <% end %>
-  
-  <% unless @bookmarks.blank? %>
+  </div>
+<% end %>
+
+<% unless @bookmarks.blank? %>
   <div id="user-bookmarks">
     <h3><%= ts("Recent bookmarks") %></h3>
     <ol>
@@ -88,21 +88,30 @@
       <% end %> 
     <% end %>
   </div>
-  <% end %>
+<% end %>
 
 <% if @works.blank? && @series.blank? && @bookmarks.blank? %>
   <% if current_user == @user %>
-    <p class="alt message">
+    <div class="alt message">
       <%= ts("You don't have anything posted under this name yet. ") %>
       <%= ts("Would you like to ")%>
       <%= link_to ts("post a new work"), new_work_path %>
       <%= ts("or maybe")%>
       <%= link_to ts("a new bookmark"), new_external_work_path %>?
-    </p>
+    </div>
   <% else %>
     <div class="message"><%= ts("There are no works or bookmarks under this name yet.") %></div>
   <% end %>
 <% end %>
+<!--subnav-->
+<h3 class="landmark">Navigation</h3>
+<ul class="actions">
+  <% if @user == current_user %>
+    <li><%= link_to t('.edit_link', :default => 'Edit Pseud'), [:edit, @user, @pseud] %></li>
+  <% end %>
+  <li><%= link_to t('.index_link', :default => 'Back To Pseuds'), user_pseuds_path(@user) %></li>
+</ul>
+<!--/subnav-->
 <!--/content-->
 <%= content_for :footer_js do %>
   <%= javascript_tag do %>
@@ -111,20 +120,24 @@
       const collapseFandoms = document.getElementById('collapse-fandoms');
       const moreLink = document.getElementById('more-fandoms');
       
-      expandFandoms.classList.remove('hidden');
-      expandFandoms.addEventListener('click', (e) => {
-        e.preventDefault();
-        expandFandoms.classList.add('hidden');
-        collapseFandoms.classList.toggle('hidden');
-        moreLink.classList.toggle('hidden');
-      });
+      if (expandFandoms) {
+        expandFandoms.classList.remove('hidden');
+        expandFandoms.addEventListener('click', (e) => {
+          e.preventDefault();
+          expandFandoms.classList.add('hidden');
+          collapseFandoms.classList.toggle('hidden');
+          moreLink.classList.toggle('hidden');
+        });
+      }
       
-      collapseFandoms.addEventListener('click', (e) => {
-        e.preventDefault();
-        collapseFandoms.classList.add('hidden');
-        expandFandoms.classList.toggle('hidden');
-        moreLink.classList.toggle('hidden');
-      });    
+      if (collapseFandoms) {
+        collapseFandoms.addEventListener('click', (e) => {
+          e.preventDefault();
+          collapseFandoms.classList.add('hidden');
+          expandFandoms.classList.toggle('hidden');
+          moreLink.classList.toggle('hidden');
+        });
+      }
     });
   <% end %>
 <% end %>
