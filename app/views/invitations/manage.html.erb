@@ -1,12 +1,12 @@
 <!--Descriptive page name, messages and instructions-->
-<h2 class="heading"><%= logged_in_as_admin? ? (@user.login + "'s") : "Your" %> Invitations</h2>
+<h2><%= logged_in_as_admin? ? (@user.login + "'s") : "Your" %> Invitations</h2>
 <!--/descriptions-->
 
 <!--subnav -->
 <%= render "user_invitations_navigation" %>
 
-<ul class="navigation actions" role="navigation">
-  <li><h4 class="heading"><%= ts('Manage:') %></h4></li>
+<h3><%= ts('Manage:') %></h3>
+<ul class="actions">
   <li>
     <%= span_if_current(ts("Unsent (%{count})", :count=> @user.invitations.unsent.count.to_s), 
       manage_user_invitations_path(@user, :status => :unsent)) %>
@@ -19,7 +19,7 @@
     <%= span_if_current(ts("Used (%{count})", :count => @user.invitations.redeemed.count.to_s), 
       manage_user_invitations_path(@user, :status => :redeemed)) %>
   </li>
-  <li class="last">
+  <li>
     <%= link_to ts('All'), manage_user_invitations_path(@user) %>
   </li>
 </ul>

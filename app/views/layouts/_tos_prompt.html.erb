@@ -1,9 +1,7 @@
 <div id="tos_prompt" class="hidden">
-  <h2 class="heading">
-    <span><%= ts("%{site}", site: ArchiveConfig.APP_NAME) %></span>
-  </h2>
+  <h2><%= ts("%{site}", site: ArchiveConfig.APP_NAME) %></h2>
   <div class="agreement">
-    <p class="summary">
+    <div class="summary">
       <%= ts("%{site} is run by one person. If you see anything you don't like please
             don't fucking attack me I am just some guy who decided to self host ao3
             and none of this is really that serious. I strongly moderate the works
@@ -19,29 +17,29 @@
             tos: link_to(ts("Terms of Service"), tos_path),
             privacy: link_to(ts("Privacy Policy"), tos_path(anchor: "privacy"))
           ).html_safe %>
-    </p>
+    </div>
 
-    <p class="confirmation">
+    <div class="form-row confirmation">
       <input type="checkbox" id="tos_agree" />
       <label for="tos_agree"><%= ts("I have read & understood the new Terms of Service and Privacy Policy") %></label>
-    </p>
+    </div>
 
     <% if current_user.nil? %>
-      <p class="submit">
+      <div class="submit">
         <%= button_tag ts("I agree/consent to its terms"),
               disabled: true,
               type: "button",
               id: "accept_tos" %>
-      </p>
+      </div>
     <% else %>
       <%= form_tag end_tos_prompt_user_path(current_user),
             method: :post,
             remote: true do %>
-        <p class="submit">
+        <div class="submit">
           <%= submit_tag ts("I agree/consent to its terms"),
                 disabled: true,
                 id: "accept_tos" %>
-        </p>
+        </div>
       <% end %>
     <% end %>
 
@@ -50,30 +48,46 @@
 
 <% # content_for footer renders this when we don't want it %>
 <%= javascript_tag do %>
-  $j(document).ready(function() {
-    var container = $j("#tos_prompt");
-    var outer = $j("#outer");
-    var button = $j("#accept_tos");
-
+  document.addEventListener('ready', (_e) => {
+    const container = document.getElementById('tos_prompt');
+    const outer = document.getElementById('outer');
+    const button = document.getElementById('accept_tos');
+    const agree = document.getElementById('tos_agree');
+    
     setTimeout(showTOSPrompt, 1500);
-
-    function showTOSPrompt() {
-      $j.when(container.fadeIn(500)).done(function() {
-        outer.addClass("hidden").attr("aria-hidden", "true");
-      });
-
-      $j("#tos_agree").on("click", function() {
-        button.attr("disabled", !this.checked);
-        if (this.checked) {
-          button.on("click", function() {
-            acceptTOS();
-            outer.removeClass("hidden").removeAttr("aria-hidden");
-            $j.when(container.fadeOut(500)).done(function() {
-              container.remove();
-            });
+    
+    const showTOSPrompt = () => {
+      container.classList.remove('hidden');
+      outer.classList.add('hidden');
+      outer.setAttribute('aria-hidden', true);
+    }
+    
+    agree.addEventListener('click', (e) => {
+      button.setAttribute("disabled", !e.target.checked);
+      if (e.target.checked) {
+        button.addEventListener('click', (_e) => {
+          acceptTOS();
+          outer.classList.remove('hidden');
+          outer.removeAttribute('aria-hidden');
+          container.classList.add('hidden');
+          setTimeout(() => {
+            container.remove();
+          }, 500);
+        })
+      }
+    });
+    
+    $j("#tos_agree").on("click", function() {
+      button.attr("disabled", !this.checked);
+      if (this.checked) {
+        button.on("click", function() {
+          acceptTOS();
+          outer.removeClass("hidden").removeAttr("aria-hidden");
+          $j.when(container.fadeOut(500)).done(function() {
+            container.remove();
           });
-        };
-      }).change();
-    };
+        });
+      };
+    }).change();
   });
 <% end %>

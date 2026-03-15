@@ -1,12 +1,11 @@
-<div class="intro module">
-  <h2 class="heading"><%= ts("for fanfiction, original fiction, multimedia fanworks, and more") %></h2>
-  <p class="stats"><%= ts("more than %{fandom_count} fandoms | %{user_count} users | %{work_count} works", fandom_count: content_tag(:span, number_with_delimiter(@fandom_count), class: "count"), user_count: content_tag(:span, number_with_delimiter(@user_count), class: "count"), work_count: content_tag(:span, number_with_delimiter(@work_count), class: "count")).html_safe %></p>
+<div id="intro" class="module">
+  <h2><%= ts("for fanfiction, original fiction, multimedia fanworks, and more") %></h2>
+  <div class="stats"><%= ts("more than %{fandom_count} fandoms | %{user_count} users | %{work_count} works", fandom_count: content_tag(:span, number_with_delimiter(@fandom_count), class: "count"), user_count: content_tag(:span, number_with_delimiter(@user_count), class: "count"), work_count: content_tag(:span, number_with_delimiter(@work_count), class: "count")).html_safe %></div>
   <p class="parent"><%= ts("superlove is a project by") %> <%= link_to ts("girl on the moon"), "http://girlonthemoon.xyz" %>.</p>
   <p class="parent">DAYS SINCE SUPERLOVE GOT CALLED ANTI-RUN: <%= Date.today.mjd - Date.parse("2026-01-16").mjd %></p>
   <p class="parent">DAYS SINCE SUPERLOVE GOT CALLED PROSHIPPER-RUN: <%= Date.today.mjd - Date.parse("2025-03-28").mjd %></p>
   
-  <div class="account module">
-
+  <div id="invites">
     <% if !AdminSetting.current.invite_from_queue_enabled? && AdminSetting.current.creation_requires_invite? %>
       <p>
         <%= ts("Joining superlove currently requires an invitation; however, we 
@@ -17,27 +16,27 @@
             ).html_safe %>
       </p>
     <% end %>
-
-    <h4 class="heading"><%= ts("%{short_name} is:", short_name: ArchiveConfig.APP_SHORT_NAME) %></h4>
-    <ul>
-      <li><%= ts("a place for freaks") %></li>
-      <li><%= ts("a community before an archive") %></li>
-      <li><%= ts("not an AO3 alternative or backup") %></li>
-      <li><%= ts("better than AO3, actually") %></li>
-      <li><%= ts("the church of Dambara Ruru") %></li>
-      <li><%= ts("full of RPF lovers and defenders") %></li>
-      <li><%= ts("for people who know power rangers is better than super sentai") %></li>
-      <li><%= ts("always doing it for the bit") %></li>
-    </ul>
-
-    <% if AdminSetting.current.invite_from_queue_enabled? && AdminSetting.current.creation_requires_invite? && AdminSetting.current.request_invite_enabled? %>
-      <p><%= ts("You can join by getting an invitation from another user or by") %> <%= link_to ts("contacting the admin"), about_path %></p>
-      <p class="actions"><%= link_to ts("Get Invited!"), invite_requests_path %></p>
-    <% elsif AdminSetting.current.invite_from_queue_enabled? && AdminSetting.current.creation_requires_invite? %>
-      <p><%= ts("You can join by getting an invitation from our queue and waiting for admin approval.") %></p>
-      <p class="actions"><%= link_to ts("Get Invited!"), invite_requests_path %></p>
-    <% elsif AdminSetting.current.account_creation_enabled? && !AdminSetting.current.creation_requires_invite? %>
-      <p class="actions"><%= link_to ts("Create an Account!"), signup_path %></p>
-    <% end %>
   </div>
+
+  <h4><%= ts("%{short_name} is:", short_name: ArchiveConfig.APP_SHORT_NAME) %></h4>
+  <ul>
+    <li><%= ts("a place for freaks") %></li>
+    <li><%= ts("a community before an archive") %></li>
+    <li><%= ts("not an AO3 alternative or backup") %></li>
+    <li><%= ts("better than AO3, actually") %></li>
+    <li><%= ts("the church of Dambara Ruru") %></li>
+    <li><%= ts("full of RPF lovers and defenders") %></li>
+    <li><%= ts("for people who know power rangers is better than super sentai") %></li>
+    <li><%= ts("always doing it for the bit") %></li>
+  </ul>
+
+  <% if AdminSetting.current.invite_from_queue_enabled? && AdminSetting.current.creation_requires_invite? && AdminSetting.current.request_invite_enabled? %>
+    <div><%= ts("You can join by getting an invitation from another user or by") %> <%= link_to ts("contacting the admin"), about_path %></div>
+    <div class="actions"><%= link_to ts("Get Invited!"), invite_requests_path %></div>
+  <% elsif AdminSetting.current.invite_from_queue_enabled? && AdminSetting.current.creation_requires_invite? %>
+    <p><%= ts("You can join by getting an invitation from our queue and waiting for admin approval.") %></p>
+    <div class="actions"><%= link_to ts("Get Invited!"), invite_requests_path %></div>
+  <% elsif AdminSetting.current.account_creation_enabled? && !AdminSetting.current.creation_requires_invite? %>
+    <div class="actions"><%= link_to ts("Create an Account!"), signup_path %></div>
+  <% end %>
 </div>

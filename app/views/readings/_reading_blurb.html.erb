@@ -1,10 +1,10 @@
 <% # expects "work" and "reading" %>
 <% css_classes = if work.nil?
-                   "deleted reading work blurb group"
+                   "deleted reading blurb"
                  elsif is_author_of?(work)
-                   "own reading work #{css_classes_for_creation_blurb(work)}"
+                   "own reading blurb #{css_classes_for_creation_blurb(work)}"
                  else
-                   "reading work #{css_classes_for_creation_blurb(work)}"
+                   "reading blurb #{css_classes_for_creation_blurb(work)}"
                  end %>
 <li <% unless work.nil? %>id="work_<%= work.id %>"<% end %> class="<%= css_classes %>" role="article">
 
@@ -14,9 +14,8 @@
 
   <% end %>
 
-  <div class="user module group">
-    <h4 class="viewed heading">
-
+  <footer>
+    <div class="viewed">
       <% if work.nil? %>
 
         <%= ts('(Deleted work, last visited %{date})', date: set_format_for_date(reading.last_viewed)) %>
@@ -48,7 +47,7 @@
 
       <% end %>
 
-    </h4>
+    </div>
 
     <ul class="actions" role="menu">
       <li>
@@ -59,6 +58,6 @@
       </li>
     </ul>
 
-  </div>
+  </footer>
 
 </li>

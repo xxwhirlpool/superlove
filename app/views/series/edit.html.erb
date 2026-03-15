@@ -1,5 +1,5 @@
 <!--Descriptive page name, messages and instructions-->
-<h2 class="heading"><%= ts("Edit Series") %></h2>
+<h2><%= ts("Edit Series") %></h2>
 <!--/descriptions-->
 
 <!--subnav-->
@@ -8,7 +8,7 @@
 
 <!--main content-->
 
-<div id="work-form" class="simple post series">
+<div id="work-form">
 <%= form_for(@series) do |f| %>
   <%= error_messages_for @series %>
   <p class="required notice"><%= ts("* Required information") %></p>
@@ -60,10 +60,10 @@
   
   <fieldset class="create">
     <legend><%= ts('Post') %></legend>
-    <p class="submit cancel actions">
+    <div class="submit">
       <%= f.submit ts("Update") %>
       <%= link_to ts("Cancel"), series_path %>
-    </p>
+    </div>
   </fieldset>
 <% end %>
 </div>
@@ -71,12 +71,15 @@
 
 <%= content_for :footer_js do %>
   <%= javascript_tag do %>
-    $j(document).ready(function(){
-      $j(".toggle_formfield").click(function() {
-        var targetId = $j(this).attr("id").replace("-show", "");
-        toggleFormField(targetId);
+    document.addEventListener('ready', (_e) => {
+      document.querySelectorAll('.toggle_formfield').forEach((elt) => {
+        elt.addEventListener('click', (e) => {
+          e.preventDefault();
+          const targetId = e.target.id.replace('-show', '');
+          toggleFormField(targetId);
+        });
       });
-    })
+    });
   <% end %>
 <% end %>
 

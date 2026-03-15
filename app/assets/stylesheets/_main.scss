@@ -1,0 +1,30 @@
+main {
+  form fieldset {
+    display: block;
+    background: #ddd;
+    border: 2px solid #f3efec;
+    margin: 0.65rem;
+    padding: 0.65rem;
+    box-shadow: inset 1px 0 5px #999;
+  }
+  
+  &.about {
+    .content {
+      dt::after {
+        content: ":";
+      }
+      
+      dd {
+      	margin-block-start: 1rem;
+      	margin-block-end: 2rem;
+      	margin-inline-start: 1rem;
+      }
+      
+      address {
+      	font-family: monospace;
+      	font-size: initial;
+      	display: inline;
+      }
+    }
+  }
+}

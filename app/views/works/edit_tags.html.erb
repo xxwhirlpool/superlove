@@ -1,5 +1,5 @@
 <!--Descriptive page name, messages and instructions-->
-<h2 class="heading">
+<h2>
   <% if logged_in_as_admin? %>
     <%= ts('Edit Work Tags and Language for %{title}', title: @work.title).html_safe %>
   <% else %>
@@ -12,7 +12,7 @@
 
 <!--main content-->
 <%= form_for(@work, html: { id: "work-form", class: "verbose work post" }, url: { action: "update_tags" }) do |f| %>
-  <p class="required notice">* <%= ts('Required information') %></p>
+  <div class="required notice">* <%= ts('Required information') %></div>
 
   <%= render 'work_form_tags', include_blank: false %>
 

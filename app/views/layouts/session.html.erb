@@ -31,10 +31,10 @@
   </head>
 
   <body class="<%= logged_in? ? 'logged-in' : 'logged-out' %>" <%= PhraseApp::InContextEditor.enabled? ? "data-no-turbolink" : "" %>>
-    <div id="outer" class="wrapper">
+    <div id="outer">
       <ul id="skiplinks"><li><a href="#main"><%= ts("Main Content") %></a></li></ul>
       <%= render "layouts/header" %>
-      <div id="inner" class="wrapper">
+      <div id="inner">
         <!-- BEGIN main -->
         <div id="main" class="<%= controller.controller_name + '-' + controller.action_name %> system session region" role="main">
           <%= flash_div :error, :caution, :notice, :alert %>

@@ -1,8 +1,8 @@
 <% # load and cache site skin %>
+<% if current_user.nil? || !current_user.nil? && current_user.does_skin_override? %>
+  <%= stylesheet_link_tag "application", media: "all" %>
+<% end %>
 <%= skin_tag %>
-
-<!--sandbox for developers	-->
-<%= stylesheet_link_tag 'sandbox', skip_pipeline: true %>
 
 <%= mute_css %>
 

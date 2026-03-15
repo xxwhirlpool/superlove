@@ -1,28 +1,27 @@
-<div class="news admin home">
+<div id="news">
   <% if policy(@admin_posts).can_post? %>
     <%= render "admin_index" %>
   <% else %>
-    <div class="primary header module">
+    <div class="post">
       <!--Descriptive page name, messages and instructions-->
       <h2 class="heading"><%= link_to ts("superlove News"), admin_posts_path %></h2>
-      <div class="icon"></div>
+      <div class="avatar"></div>
       <!--/descriptions-->
 
       <!--subnav-->
-      <ul class="navigation actions" role="navigation">
-        <li><%= render 'filters' %></li>
-        <li><%= link_to_rss admin_posts_path(:rss, language_id: @language&.short) %></li>
-      </ul>
+      <div class="actions">
+        <%= render 'filters' %>
+        <%= link_to_rss admin_posts_path(:rss, language_id: @language&.short) %>
+      </div>
       <!--/subnav-->
     </div>
     <!--main content-->
     <% @admin_posts.each do |admin_post| %>
-
-      <div class="news module group" role="article">
+      <div id="content">
         <%= render "admin_post", admin_post: admin_post %>
         <!-- BEGIN comment section -->
-        <h3 class="landmark heading"><%= ts("Comment") %></h3>
-        <ul class="actions" role="navigation">
+        <h3 class="landmark"><%= ts("Comment") %></h3>
+        <ul class="actions">
           <% if admin_post.count_visible_comments > 0 %>
             <li><%= link_to (admin_post.count_visible_comments == 1 ? 
                             ts("Read %{comment_count} Comment", comment_count: admin_post.count_visible_comments.to_s) : 
@@ -34,8 +33,6 @@
       </div>
     <% end %>
     <!--/content-->
-    <hr class="clear" />
-
     <!--subnav-->
     <%= will_paginate @admin_posts %>
     <!--/subnav-->

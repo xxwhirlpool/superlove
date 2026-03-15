@@ -5,9 +5,8 @@
 <% else %>
 
   <!--title, author, fandom-->
-  <div class="header module">
-
-    <h4 class="heading">
+  <div class="header">
+    <h4>
       <% if (work.unrevealed? || work.anonymous?) && is_author_of?(work) %>
         <span class="status">
           <% if work.unrevealed? %>
@@ -35,12 +34,12 @@
       <% if work.hidden_by_admin %><%= image_tag("lockred.png", :size => "15x15", :alt => "(Hidden by Admin)", :title => "Hidden by Administrator", skip_pipeline: true) %><% end %>
     </h4>
 
-    <h5 class="fandoms heading">
+    <div class="fandoms">
       <span class="landmark"><%= ts("Fandoms") %>:</span>
       <% fandoms = tag_groups['Fandom'] %>
       <%= fandoms.collect{|tag| link_to_tag_works(tag) }.join(', ').html_safe if fandoms %>
       &nbsp;
-    </h5>
+    </div>
 
     <!--required tags-->
     <%= get_symbols_for(work, tag_groups) %>
@@ -51,21 +50,21 @@
    <p class="caution notice"><%= t('.draft_deletion_notice_html', deletion_date: date_in_zone(work.created_at + 29.days)) %></p>
   <% end %> -->
   <!--warnings again, cast, freeform tags-->
-  <h6 class="landmark heading"><%= ts("Tags") %></h6>
+  <div class="landmark"><%= ts("Tags") %></h6>
   <ul class="tags commas">
     <%= blurb_tag_block(work, tag_groups) %>
   </ul>
 
   <!--summary-->
   <% unless work.summary.blank? %>
-    <h6 class="landmark heading"><%= ts("Summary") %></h6>
-    <blockquote class="userstuff summary">
+    <div class="landmark"><%= ts("Summary") %></h6>
+    <blockquote class="summary">
       <%=raw strip_images(sanitize_field(work, :summary)) %>
     </blockquote>
   <% end %>
 
   <% unless work.series.empty? %>
-    <h6 class="landmark heading"><%= ts("Series") %></h6>
+    <div class="landmark heading"><%= ts("Series") %></div>
     <ul class="series">
       <% work.series.each do |series| %>
         <li>

@@ -1,0 +1,57 @@
+header#header {
+  display: grid;
+  grid-template-areas: "logo userinfo"
+    "navigation navigation";
+  grid-template-columns: 1fr auto;
+  gap: 5px;
+  
+  h1 {
+    font-weight: normal;
+    grid-area: logo;
+    margin: 0;
+    
+    a {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      
+      span {
+        order: 99;
+      }
+      
+      sup {
+        margin-top: -0.5rem;
+        font-style: italic;
+        order: 99;
+      }
+      
+      .logo {
+        order: 1;
+        max-height: 36px;
+      }
+    }
+  }
+  
+  #intro,
+  #greeting {
+    grid-area: userinfo;
+  }
+  
+  #login {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: .375rem;
+    z-index: 99;
+  }
+
+  #small-login {
+    background-color: var(--secondary-bg);
+    border: 2px var(--background) solid;
+    padding: 2.5rem .375rem .375rem;
+    top: -6px;
+    right: -6px;
+    z-index: -1;
+    min-width: 20rem;
+  }
+}

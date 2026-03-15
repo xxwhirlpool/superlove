@@ -1,0 +1,142 @@
+:root {
+  --background: #FFFFFF;
+  --text: #2a2a2a;
+  --font-body: 'Lucida Grande', 'Lucida Sans Unicode', 'GNU Unifont', Verdana, Helvetica, sans-serif;
+  --font-titles: Georgia, serif;
+  --accent: #900000;
+  --accent-text: #FFFFFF;
+  --lightborder: #dddddd;
+  
+  --button-gradient: linear-gradient(#ffffff 2%,#dddddd 95%, #bbbbbb 100%);
+  --button-border: #bbbbbb;
+  
+  --secondary-bg: #dddddd;
+  --shadow: #444444;
+  
+  --help-bg: #d1e1ef;
+  --help-border: #2a547c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--text);
+  font-size: 16px;
+  font-family: var(--font-body);
+  margin: 0;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-titles);
+}
+
+h1 a, h2 a, h3 a, h4 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1 {
+  font-size: 1.5rem;
+  font-weight: normal;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: normal;
+}
+
+footer#footer, main, aside {
+  padding: 1rem 3rem;
+}
+
+.hidden {
+  opacity: 0;
+  display: none;
+}
+
+.landmark {
+  font-size: 0;
+  opacity: 0;
+  position: absolute;
+}
+
+#skiplinks {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  text-indent: -999px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+:has(> .dropdown) {
+  position: relative;
+}
+
+.dropdown {
+  position: absolute;
+  top: 2rem;
+  right: 0;
+}
+
+.actions {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 10px;
+  font-size: .875rem;
+}
+
+.actions.right {
+  justify-content: flex-end;
+}
+
+.autocomplete {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.text-links {
+  list-style: none;
+  margin: .5rem 0 0;
+  padding: 0;
+  display: flex;
+  justify-content: flex-start;
+  gap: 5px;
+  font-size: .75rem;
+}
+
+.text-links a {
+  color: var(--text);
+  text-decoration: underline;
+}
+
+.icon {
+  background-color: var(--help-bg);
+  border: 1px var(--help-border) solid;
+  color: var(--help-border);
+  font-family: var(--font-titles);
+  border-radius: 100%;
+  width: 20px;
+  margin-left: 5px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 1 / 1;
+  box-shadow: -1px -1px 2px rgba(0,0,0,0.25);
+  line-height: 1;
+  font-weight: bold;
+}

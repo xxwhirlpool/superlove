@@ -1,14 +1,14 @@
-<div class="news admin home">
-  <div class="primary header module">
+<div id="news-single">
+  <div class="header module">
     <!--Descriptive page name, messages and instructions-->
     <h2 class="heading"><%= link_to ts("superlove News"), admin_posts_path %></h2>
-    <div class="icon"></div>
+    <div class="avatar"></div>
     <!--/descriptions-->
     <!--subnav-->
     <div class="navigation actions module">
       <% if policy(@admin_post).can_post? %>
       
-        <h4 class="landmark heading"><%= ts("Admin Actions") %></h4>
+        <h3 class="landmark heading"><%= ts("Admin Actions") %></h4>
         <ul class="management actions" role="navigation">
           <li><%= link_to ts("Edit Post"), edit_admin_post_path(@admin_post) %></li>
           <li>
@@ -19,7 +19,7 @@
           </li>
         </ul>
       <% end %>
-      <h4 class="landmark heading"><%= ts("News Post Navigation") %></h4>
+      <h3 class="landmark"><%= ts("News Post Navigation") %></h4>
       <ul class="actions" role="navigation">
         <% if @previous_admin_post %>
           <li><%= link_to("Previous Post", @previous_admin_post) %></li>
@@ -35,9 +35,9 @@
     <!--/subnav-->
   </div>
   <!--main content-->
-  <div role="article" class="news module group">
+  <article>
     <%= render "admin_post", admin_post: @admin_post %>
-  </div>
+  </article>
   <!--/content-->
 
   <!-- BEGIN comment section -->

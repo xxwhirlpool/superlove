@@ -1,10 +1,10 @@
 <!--Descriptive page name, messages and instructions-->
-<h2 class="heading"><%= ts('History') %></h2>
+<h2><%= ts('History') %></h2>
 <!--/descriptions-->
 
 <!--subnav-->
 <% if logged_in? && !current_user.readings.empty? %>
-<ul class="navigation actions" role="navigation">
+<ul class="actions" role="navigation">
   <li>
     <%= span_if_current ts('Full History'), user_readings_path(@user), params[:show].blank? %>
   </li>
@@ -19,9 +19,9 @@
 <!--/subnav-->
 
 <!--main content-->
-<h3 class="landmark heading"><%= ts('List of History Items') %></h3>
+<h3 class="landmark"><%= ts('List of History Items') %></h3>
 <% if logged_in? && @readings.present? %>
-  <ol class="reading work index group">
+  <ol class="index">
     <% @readings.each do |reading| %>
       <%= render 'reading_blurb', :work => reading.work, :reading => reading %>
     <% end %>

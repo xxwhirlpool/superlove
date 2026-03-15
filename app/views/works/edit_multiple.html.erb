@@ -1,5 +1,5 @@
 <!--Descriptive page name, messages and instructions-->
-<h2 class="heading"><%= ts("Edit Multiple Works") %></h2>
+<h2><%= ts("Edit Multiple Works") %></h2>
 <!--/descriptions-->
 
 <!--subnav-->
@@ -7,25 +7,25 @@
 <!--/subnav-->
 
 <!--main content-->
-<p class="caution notice">
+<div class="caution notice">
   <%= ts("Your edits will be applied to") %> <strong><%= ts("all") %></strong> <%= ts("of the following works:") %>
-</p>
+</div>
 
 <%= render "works/work_abbreviated_list", :works => @works %>
 
 <%= form_for :work, :url => update_multiple_user_works_path(@user), method: :patch, :html => { :class => "post" } do |form| %>
-  <p class="required notice">
+  <div class="required notice">
     <%= ts("* Required information") %>
     <% @works.each do |work| %>
       <%= hidden_field_tag "work_ids[]", work.id %>
     <% end %>
-  </p>
+  </div>
 
   <%= render 'work_form_tags', :include_blank => true %>
 
   <fieldset>
     <legend><%= ts("Associations") %></legend>
-    <h3 class="landmark heading"><%= ts("Associations") %></h3>
+    <h3 class="landmark"><%= ts("Associations") %></h3>
     <dl>
       <%= render "works/work_form_pseuds", :form => form, :works => @works %>
       <%= render "collectibles/collectible_form", :form => form, :collectibles => @works %>
@@ -34,7 +34,7 @@
 
   <fieldset>
     <legend><%= ts("Settings") %></legend>
-    <h3 class="landmark heading"><%= ts("Settings") %></h3>
+    <h3 class="landmark"><%= ts("Settings") %></h3>
     <dl>
       <dt><%= form.label :language_id, ts("Language") %> <%= link_to_help "languages-help" %></dt>
       <dd>
@@ -92,12 +92,14 @@
     </dl>
   </fieldset>
 
-  <p class="caution notice">
+  <div class="caution notice">
     <%= ts("Your edits will") %> <strong><%= ts("replace") %></strong> <%= ts("the existing values!
     (If you leave a field blank it will remain unchanged.)") %>
   </p>
 
-  <p class="submit actions"><%= submit_tag ts("Update All Works"), data: {confirm: ts("Are you sure? Remember this will replace all existing values!")} %></p>
+  <div class="submit">
+    <%= submit_tag ts("Update All Works"), data: {confirm: ts("Are you sure? Remember this will replace all existing values!")} %>
+  </div>
 
 <% end %>
 <!--/content-->

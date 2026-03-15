@@ -1,5 +1,5 @@
 <!--Descriptive page name, messages and instructions-->
-<h2 class="heading"><%= ts("superlove News (includes Release Notes)") %></h2>
+<h2><%= ts("superlove News (includes Release Notes)") %></h2>
 <!--/descriptions-->
 <!--subnav-->
 <%= render 'filters' %>
@@ -7,8 +7,8 @@
 <!--/subnav-->
 
 <!--main content-->
-<h3 class="heading"><%= ts("Manage News Postings") %></h3>
-<dl class="news index group">
+<h3><%= ts("Manage News Postings") %></h3>
+<ul class="index">
   <% @admin_posts.each do |admin_post| %>
   <dt><%= link_to admin_post.title.html_safe, admin_post %></dt>
     <dd>

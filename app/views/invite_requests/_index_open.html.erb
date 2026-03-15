@@ -1,5 +1,5 @@
 <!--Descriptive page name, messages and instructions-->
-<h2 class="heading">
+<h2>
   <%= ts("Invitation Requests") %>
 </h2>
 
@@ -21,20 +21,21 @@
 <!--main content-->
 <%= render "home/tos" %>
 
-<h3 class="heading"><%= ts("Request an invitation") %></h3>
+<h3><%= ts("Request an invitation") %></h3>
 
 <%= form_for(@invite_request, html: { class: "simple" }) do |f| %>
   <%= error_messages_for @invite_request %>
   <fieldset>
-    <p>
+    <div class="form-row">
       <%= f.label :email %>
       <%= f.text_field :email %>
-      <br>
-      <p>tell me who you are and why you want to join. <b>if the below is blank your request will be deleted</b></p>
+    </div>
+    <p>tell me who you are and why you want to join. <b>if the below is blank your request will be deleted</b></p>
+    <div class="form-row">
       <%= f.label :note %>
       <%= f.text_area :note, size: "60x10" %>
       <%= f.submit ts("Add me to the list") %>
-    </p>
+    </div>
   </fieldset>
 <% end %>
 

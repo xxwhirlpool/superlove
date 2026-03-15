@@ -1,0 +1,36 @@
+#splash {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  grid-auto-flow: row dense;
+}
+
+#intro {
+  grid-column: 2;
+}
+
+#favorites {
+  font-size: .875rem;
+  
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    
+    li {
+      &:before {
+        content: "»";
+        color: var(--accent);
+        display: inline-flex;
+        width: 20px;
+        aspect-ratio: 1 / 1;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      a {
+        color: var(--text);
+      }
+    }
+  }
+}

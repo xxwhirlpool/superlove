@@ -1,11 +1,11 @@
-<div class="splash">
+<div id="splash">
   <% if !logged_in? %>
     <%= render 'intro_module' %>
   <% end %>
 
-  <% if logged_in? && @homepage.favorite_tags.present? %>
-    <div class="favorite module">
-      <h3 class="heading"><%= t(".find_your_favorites") %></h3>
+  <div id="favorites" class="module">
+    <h3><%= t(".find_your_favorites") %></h3>
+    <% if logged_in? && @homepage.favorite_tags.present? %>
       <ul>
         <% @homepage.favorite_tags.each do |favorite_tag| %>
           <li>
@@ -13,40 +13,36 @@
           </li>
         <% end %>
       </ul>
-    </div>
-  <% else %>
-    <div role="navigation" aria-label="<%= t(".media_navigation_label") %>" class="browse module">
-      <h3 class="heading"><%= t(".find_your_favorites") %></h3>
+    <% else %>
       <% if logged_in? %>
-        <p class="note"><%= t(".browse_or_favorite", count: ArchiveConfig.MAX_FAVORITE_TAGS) %></p>
+        <div class="note"><%= t(".browse_or_favorite", count: ArchiveConfig.MAX_FAVORITE_TAGS) %></div>
       <% end %>
 
-	<p class="note">
-		<% if @random_user %>
-		  Or if you're feeling silly, try
-		  <%= link_to ts("a new author!"), user_path(@random_user) %>
-		<% else %>
-		  no authors found <span aria-label="sad" role="img">:(</span>
-		<% end %>
-	</p>
-
+    	<div class="note">
+    		<% if @random_user %>
+    		  Or if you're feeling silly, try
+    		  <%= link_to ts("a new author!"), user_path(@random_user) %>
+    		<% else %>
+    		  no authors found <span aria-label="sad" role="img">:(</span>
+    		<% end %>
+      </div>
       <%= render 'fandoms' %>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 
   <% if @homepage.admin_posts.present? %>
     <%= render 'news_module', admin_posts: @homepage.admin_posts %>
   <% end %>
 
   <% if logged_in? && @homepage.readings.present? %>
-    <div class="random readings module">
-      <h3 class="heading">
+    <div class="readings">
+      <h3>
         <span class="title"><%= ts('Is it later already?') %></span>
         <span class="link"><%= link_to ts('My History'), user_readings_path(current_user) %></span>
       </h3>
       <div class="flash"></div>
-      <p class="note"><%= ts('Some works you\'ve marked for later.') %></p>
-      <ul class="readings works index group">
+      <div class="note"><%= ts('Some works you\'ve marked for later.') %></div>
+      <ul>
         <% @homepage.readings.each do |reading| %>
           <%= render 'readings/reading_blurb', work: reading.work, reading: reading %>
         <% end %>

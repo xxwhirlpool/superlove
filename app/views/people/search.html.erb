@@ -7,8 +7,8 @@
 
 <% if @people %>
   <p><strong><%= search_results_found(@people) %></strong></p>
-  <h3 class="landmark heading">People List</h3>
-  <ol class="pseud index group">
+  <h3 class="landmark">People List</h3>
+  <ol class="results">
     <% for person in @people %>
       <% unless person.nil? %>
         <%= render :partial => 'people/author_blurb', :locals => {:author => person} %>

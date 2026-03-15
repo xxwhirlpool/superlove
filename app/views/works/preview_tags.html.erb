@@ -1,5 +1,5 @@
 <!--Descriptive page name, messages and instructions-->
-<h2 class="heading">
+<h2>
   <% if logged_in_as_admin? %>
     <%= ts("Preview Tags and Language") %>
   <% else %>
@@ -11,9 +11,7 @@
 
 <!--main content-->
 <div id="previewpane">
-  <div class="draft work">
-    <%= render 'works/meta', work: @work %>
-  </div>
+  <%= render 'works/meta', work: @work %>
 </div>
 <!--/content-->
 
@@ -31,7 +29,7 @@
 
   <fieldset>
     <legend><%= ts('Post Work') %></legend>
-    <p class="submit cancel edit actions">
+    <div class="actions">
       <% if @work.posted? %>
         <%= submit_tag ts('Update'), name: 'update_button' %>
       <% else %>
@@ -40,7 +38,7 @@
       <% end %>
       <%= submit_tag ts('Edit'), name: 'edit_button' %>
       <%= submit_tag ts('Cancel'), name: 'cancel_button' %>
-    </p>
+    </div>
   </fieldset>
 
 <% end %>

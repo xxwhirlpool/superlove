@@ -325,6 +325,12 @@ class User < ApplicationRecord
     self.profile = Profile.new
     self.preference = Preference.new(preferred_locale: Locale.default.id)
   end
+  
+  def does_skin_override?
+    @skin = Skin.find(self.preference[:skin_id])
+    return true if @skin.role == 'override'
+    return false
+  end
 
   def prevent_password_resets?
     is_protected_user? || no_resets?

@@ -37,11 +37,11 @@
   </head>
 
   <body class="<%= logged_in? ? 'logged-in' : 'logged-out' %>" <%= PhraseApp::InContextEditor.enabled? ? "data-no-turbolink" : "" %>>
-    <div id="outer" class="wrapper">
+    <div id="outer">
       <ul id="skiplinks"><li><a href="#main"><%= ts('Main Content') %></a></li></ul>
       <% # layouts/proxy_notice is rendered here by JavaScript found in layouts/javascripts. %>
       <%= render :partial => 'layouts/header' %>
-      <div id="inner" class="wrapper">
+      <div id="inner">
         <!-- BEGIN sidebar -->
         <% if @admin_posts && !@hide_dashboard %>
           <%= render :partial => 'admin_posts/sidebar' %>
@@ -55,12 +55,12 @@
         <!-- END sidebar -->
 
         <!-- BEGIN main -->
-        <div id="main" class="<%= classes_for_main %> region" role="main">
+        <main id="main" class="<%= classes_for_main %> region" role="main">
           <%= flash_div :error, :caution, :notice, :alert %>
           <div class="flash"></div>
           <%= yield %>
           <div class="clear"><!--presentational--></div>
-        </div>
+        </main>
         <!-- END main -->
       </div>
       <%= render :partial => 'layouts/footer' %>

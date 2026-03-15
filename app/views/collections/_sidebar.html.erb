@@ -1,6 +1,6 @@
-<div id="dashboard" class="region" role="navigation region">
-  <h3 class="landmark heading">Dashboard</h3>
-  <ul class="navigation actions">
+<aside id="collections-sidebar" role="navigation">
+  <h3 class="landmark">Dashboard</h3>
+  <ul>
     <li><%= span_if_current ts('Dashboard', key: 'dashboard'), @collection %></li>
     <li><%= span_if_current ts('Profile', key: 'dashboard'), collection_profile_path(@collection) %></li>
     <% if !@collection.collection_profile.faq.blank? %>
@@ -58,5 +58,5 @@
       <% end %>
     </ul>
   <% end %>
-</div>
+</aside>
 

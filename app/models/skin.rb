@@ -547,7 +547,7 @@ def clean_media
       skin.public = true
       skin.role = "site"
       skin.css = ""
-      skin.set_thumbnail_from_current_version
+      # skin.set_thumbnail_from_current_version
 
       skin.save!
       skin
@@ -558,7 +558,7 @@ def clean_media
     transaction do
       default_skin = default
 
-      default_skin.set_thumbnail_from_current_version
+      # default_skin.set_thumbnail_from_current_version
 
       parent_skin = get_current_site_skin
       if parent_skin && default_skin.parent_skins != [parent_skin]

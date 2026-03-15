@@ -1,0 +1,135 @@
+form {
+  font-size: .875rem;
+  
+  &.horizontal {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    
+    .form-row {
+      margin-bottom: 0;
+      
+      label {
+        display: inline;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+legend {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  text-indent: -999px;
+  overflow: hidden;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"] {
+  font-family: inherit;
+  border: 1px var(--button-border) solid;
+  box-shadow: inset 0 1px 2px #ccc;
+  width: 100%;
+  display: block;
+  border-radius: 1rem;
+}
+
+label {
+  display: flex;
+}
+
+.form-row {
+  margin-bottom: 0.5rem;
+}
+
+.form-row.side-label {
+  display: grid;
+  grid-template-columns: 25% 1fr;
+}
+
+.form-row.side-label label {
+  border-bottom: 1px solid #f3efec;
+}
+
+.form-row.side-label .help {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  text-align: right;
+  font-size: .6rem;
+  margin: .65rem 0;
+}
+
+.radio-group {
+  list-style: none;
+  margin: .65rem 0;
+  padding: .65rem;
+  background-color: var(--background);
+  border: 2px solid #f3efec;
+  box-shadow: inset 1px 0 5px #999;
+}
+
+.radio-group li {
+  display: flex;
+  gap: 10px;
+}
+
+.form-row:last-child {
+  margin-bottom: 0;
+}
+
+button,
+.actions a,
+label.action,
+a.button,
+input[type="submit"],
+input[type="reset"] {
+  border: 1px var(--button-border) solid;
+  border-bottom: 1px color-mix(in srgb-linear, var(--button-border), black 40%) solid;
+  border-radius: 0.25rem;
+  text-decoration: none;
+  color: var(--text);
+  padding: 0.25rem 0.75rem;
+  line-height: 1.2;
+  white-space: nowrap;
+  font-size: 1rem;
+  background-image: var(--button-gradient);
+  display: inline-block;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+span.current {
+  color: var(--text);
+  border: 1px var(--button-border) solid;
+  padding: 0.25rem 0.75rem;
+  line-height: 1.2;
+  white-space: nowrap;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+  box-shadow: inset 1px 1px 3px #333;
+  background-color: #cccccc;
+  display: inline-block;
+}
+
+input[type="search"] {
+  padding: calc(0.15rem * .875) calc(0.25rem * .875);
+  border-radius: .875em;
+  box-shadow: inset 2px 2px 2px #bbbbbb;
+  background-image: linear-gradient(#fff 2%,#ddd 95%, #bbb 100%);
+  border: none;
+}
+
+.tip {
+  background-color: var(--secondary-bg);
+  padding: 2px;
+  border: 1px var(--background) solid;
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  font-size: .65rem;
+  text-align: center;
+  color: var(--text);
+}

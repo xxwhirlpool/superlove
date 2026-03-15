@@ -1,18 +1,18 @@
 <div class="admin">
 <!--Descriptive page name, messages and instructions-->
-  <h2 class="heading"><%= ts("Manage the Invitation Queue") %></h2>
+  <h2><%= ts("Manage the Invitation Queue") %></h2>
 <!--/descriptions-->
 
 <!--subnav-->
-  <ul class="navigation actions" role="navigation">
+  <ul class="actions">
     <li class="search" role="search">
       <%= form_tag manage_invite_requests_path, method: :get,
           id: "invite-request-search", class: "simple search" do %>
-        <fieldset>
+        <div class="form-row">
           <%= text_field_tag :query, params[:query],
               title: ts("Find invitation requests from") %>
           <%= submit_tag ts("Search Queue") %>
-        </fieldset>
+        </div>
       <% end %>
     </li>
   </ul>

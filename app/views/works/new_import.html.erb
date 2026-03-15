@@ -1,35 +1,31 @@
 <!--Descriptive page name, messages and instructions-->
-<h2 class="heading"><%= ts("Import New Work") %> <%= link_to_help 'work-import'%></h2>
+<h2><%= ts("Import New Work") %> <%= link_to_help 'work-import'%></h2>
 <% import = true %>
 
 <%= error_messages_for :work %>
 <div class="notice">
-  <p class="important">
+  <div class="important">
     <%= ts("Please note! Fanfiction.net, Wattpad.com, and Quotev.com do not allow imports from their sites.") %>
-  </p>
-  <p><%= ts("You might find the #{ link_to(ts("Import FAQ"), archive_faqs_path + "/posting-and-editing#importwork") } useful.").html_safe %></p>
+  </div>
+  <div class="faqs"><%= ts("You might find the #{ link_to(ts("Import FAQ"), archive_faqs_path + "/posting-and-editing#importwork") } useful.").html_safe %></div>
 </div>
 
 <!--/descriptions-->
 
 <!--subnav-->
-<ul class="navigation actions" role="menu">
+<div class="actions" role="menu">
   <% if @unposted %>
-    <li id='restore-link'>
-      <%= link_to ts('Restore From Last Unposted Draft?'), url_for(action: :new, load_unposted: true) %>
-    </li>
+    <%= link_to ts('Restore From Last Unposted Draft?'), url_for(action: :new, load_unposted: true) %>
   <% end %>
-  <li id="form-link">
-     <%= link_to( ts("Post New Work Instead?"),
-       { url: { controller: :works, action: :new, import: false } },
-       :href => url_for(controller: :works, action: :new, import: nil)) %>
-  </li>
-</ul>
+  <%= link_to( ts("Post New Work Instead?"),
+    { url: { controller: :works, action: :new, import: false } },
+    :href => url_for(controller: :works, action: :new, import: nil)) %>
+</div>
 <!--/subnav-->
 
 <!-- This partial renders a form for importing a work from an existing URL -->
 
-<%= form_tag url_for(controller: :works, action: :import), :class => "import work verbose post" do %>
+<%= form_tag url_for(controller: :works, action: :import), :class => "import" do %>
   <fieldset>
     <legend><%= ts("Works URLs") %></legend>
     <dl>
@@ -191,11 +187,11 @@
 
 <%= content_for :footer_js do %>
   <%= javascript_tag do %>
-    $j(document).ready(function(){
-      $j(".toggle_formfield").click(function() {
-        var targetId = $j(this).attr("id").replace("-show", "");
+    document.addEventListener('ready', (_e) => {
+      document.querySelector('.toggle_formfield').addEventListener('click', (e) => {
+        const targetId = e.target.getAttribute('id').replace("-show", "");
         toggleFormField(targetId);
       });
-    })
+    });
   <% end %>
 <% end %>

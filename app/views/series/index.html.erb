@@ -1,7 +1,7 @@
 <!--descriptive page name and system messages, descriptions, and instructions.-->
 <%= render "muted/muted_items_notice" %>
 
-<h2 class="heading">
+<h2>
   <% if @user %>
     <%= search_header @series, nil, "Series", @pseud ? @pseud : @user %>
   <% else %>
@@ -15,8 +15,8 @@
 <!--subnav-->
 
 <!--Main content-->
-<h3 class="landmark heading">Listing Series</h3>
-<ul class="series index group">
+<h3 class="landmark">Listing Series</h3>
+<ul id="series">
   <% for series in @series %>
 	<%= render :partial => 'series/series_blurb', :locals => {:series => series} %>
   <% end %>

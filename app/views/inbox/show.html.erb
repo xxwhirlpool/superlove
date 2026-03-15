@@ -1,26 +1,23 @@
 <!--Descriptive page name, messages and instructions-->
-<h2 class="heading"><%= ts("My Inbox") %> (<%= ts("%{total} comments, %{unread} unread", total: @inbox_total, unread: @unread) %>)</h2>
+<h2><%= ts("My Inbox") %> (<%= ts("%{total} comments, %{unread} unread", total: @inbox_total, unread: @unread) %>)</h2>
 
 <%= flash_div :comment_error, :comment_notice %>
 <!--/descriptions-->
 
 <!--subnav-->
 <% # Filters button for narrow screens jumps to filters when JavaScript is disabled and opens filters when JavaScript is enabled %>
-<p class="narrow-shown hidden actions">
+<div class="narrow-shown hidden actions">
   <a href="#inbox-filters" id="go_to_filters"><%= ts("Filters") %></a>
-</p>
+</div>
 <!--/subnav-->
 
 <!--main content-->
 <% unless @inbox_comments.blank? %>
-
   <%= will_paginate @inbox_comments %>
-
   <%= form_tag user_inbox_path(@user, page: params[:page], filters: @filters), method: :put, id: "inbox-form", class: "inbox manage" do %>
-    <fieldset class="actions">
+    <fieldset>
       <legend><%= ts("Mass Edit Options") %></legend>
-
-      <ul>
+      <ul class="actions">
         <li><a class="check_all"><%= ts("Select All") %></a></li>
         <li><a class="check_none"><%= ts("Select None") %></a></li>
         <li><%= submit_tag ts("Mark Read"), name: "read" %></li>
@@ -31,20 +28,18 @@
 
     <fieldset class="comments">
       <legend><%= ts("List of Comments") %></legend>
-
-      <ol class="comment index group">
+      <ol class="index">
         <% @inbox_comments.each do |inbox_comment| %>
           <% feedback_comment = inbox_comment.feedback_comment %>
-
           <!-- START of single comment -->
           <li class="<%= inbox_comment.read? ? 'read' : 'unread' %> <%= css_classes_for_comment(feedback_comment) %>" role="article" id="feedback_comment_<%= feedback_comment.id %>">
             <% if !can_see_hidden_comment?(feedback_comment) %>
-              <p class="message"><%= ts("(This comment is under review by an admin and is currently unavailable.)") %></p>
+              <div class="message"><%= ts("(This comment is under review by an admin and is currently unavailable.)") %></div>
             <% else %>
               <%= render "inbox_comment_contents", feedback_comment: feedback_comment %>
             <% end %>
 
-            <h5 class="landmark heading"><%= ts("Comment Actions") %></h5>
+            <div class="landmark"><%= ts("Comment Actions") %></h5>
 
             <ul class="actions" role="menu">
               <% unless inbox_comment.read? %>

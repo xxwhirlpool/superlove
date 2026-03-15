@@ -1,39 +1,40 @@
 <!--Descriptive page name, messages and instructions-->
-<h2 class="heading"><%= ts("superlove FAQ") %></h2>
+<h2><%= ts("superlove FAQ") %></h2>
 <!--/descriptions-->
 
 <!--subnav-->
-<ul class="navigation actions" role="navigation">
-  <li><%= render 'filters' %></li>
-</ul>
+<div class="actions">
+  <%= render 'filters' %>
+</div>
 <!--/subnav-->
 
 <!--main content-->
-<p class="notes">
+<div class="notes">
   <%= ts("Some commonly asked questions about superlove are answered here.") %>
   <%= ts("If you need more help, please ") %> <%= link_to ts("contact the admin"), feedbacks_path %>.
-</p>
+</div>
 
 <% if @archive_faqs.blank? %>
-  <p class="notice"><%= ts("We're sorry, there are currently no entries in the FAQ System.") %></p>
+  <div class="notice"><%= ts("We're sorry, there are currently no entries in the FAQ System.") %></div>
 <% else %>
   <% if rtl? %>
     <div dir="rtl" class="categories">
   <% else %>
     <div class="categories">
   <% end %>
-    <h3 class="heading"><%= ts("Available Categories") %>
-      <ul class="showme hidden actions">
+    <h3>
+      <%= ts("Available Categories") %>
+      <ul class="actions">
         <li id="expand-categories"><%= link_to ts("Expand Categories"), "#" %></li>
         <li id="collapse-categories"><%= link_to ts("Collapse Categories"), "#" %></li>
       </ul>
     </h3>
 
-    <div class="userstuff">
-      <ul class="faq index group" role="navigation">
+    <div id="content">
+      <div class="faqs" role="navigation">
         <% for faq in @archive_faqs %>
-          <li class="category" aria-haspopup="true">
-            <%= link_to faq.title, archive_faq_path(faq) %>
+          <details>
+            <summary><%= faq.title %></summary>
             <ul class="questions">
               <% english? ? questions = faq.questions : questions = translated_questions(faq.questions) %>
               <% if questions.blank? %>
@@ -51,9 +52,9 @@
                 <% end %>
               <% end %>
             </ul>
-          </li>
+          </details>
         <% end %>
-      </ul>
+      </div>
     </div>
     
   </div>

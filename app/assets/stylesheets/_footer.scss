@@ -1,0 +1,36 @@
+footer#footer {
+  background-color: var(--accent);
+  background-image: url(/images/texoverlay.png);
+  background-blend-mode: overlay;
+  color: var(--accent-text);
+  font-size: .75rem;
+  
+  a {
+    color: var(--accent-text);
+    text-decoration: underline;
+  }
+  
+  nav {
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    & > ul {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      
+      li {
+        margin: .55rem 0;
+      }
+      
+      & > li {
+        & > span {
+          font-family: var(--font-titles);
+          font-size: .875rem;
+        }
+      }
+    }
+  }
+}
