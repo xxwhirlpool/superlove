@@ -27,7 +27,6 @@ class Sanitize
         "i" => %w[class],
         "img" => %w[align alt border height src style width],
         "object" => %w[type data class width height],
-        "img" => %w[align alt border height src width],
         "ol" => %w[start type],
         "q" => %w[cite],
         "table" => %w[border summary width],
