@@ -68,7 +68,7 @@ label {
   padding: .65rem;
   background-color: var(--background);
   border: 2px solid #f3efec;
-  box-shadow: inset 1px 0 5px #999;
+  box-shadow: inset 1px 0 5px var(--neutral700);
 }
 
 .radio-group li {
@@ -110,16 +110,16 @@ details.actions summary {
   white-space: nowrap;
   font-size: 1rem;
   border-radius: 0.25rem;
-  box-shadow: inset 1px 1px 3px #333;
-  background-color: #cccccc;
+  box-shadow: inset 1px 1px 3px var(--shadow);
+  background-color: var(--neutral400);
   display: inline-block;
 }
 
 input[type="search"] {
   padding: calc(0.15rem * .875) calc(0.25rem * .875);
   border-radius: .875em;
-  box-shadow: inset 2px 2px 2px #bbbbbb;
-  background-image: linear-gradient(#fff 2%,#ddd 95%, #bbb 100%);
+  box-shadow: inset 2px 2px 2px var(--neutral500);
+  background-image: linear-gradient(var(--neutral100) 2%, var(--neutral300) 95%, var(--neutral500) 100%);
   border: none;
 }
 

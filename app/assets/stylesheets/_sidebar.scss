@@ -19,7 +19,7 @@ aside {
   text-align: right;
   
   ul {
-    border-bottom: 2px solid #dddddd;
+    border-bottom: 2px solid var(--neutral300);
     list-style: none;
     margin: 0;
     padding: 1rem 0;
@@ -37,11 +37,11 @@ aside {
       }
       
       a:hover {
-        background-color: #dddddd;
+        background-color: var(--neutral300);
       }
       
       span.current {
-        background-color: #cccccc;
+        background-color: var(--neutral400);
       }
     }
   }

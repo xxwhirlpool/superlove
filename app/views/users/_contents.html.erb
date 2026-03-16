@@ -1,9 +1,9 @@
 ﻿<!--main content-->
 <!-- expects @fandoms, @works, @series, @bookmarks -->
 <% unless @fandoms.empty? %>
-  <div id="user-fandoms">
+  <div id="user-fandoms" class="index">
     <h3><%= ts("Fandoms") %></h3>
-    <ol>
+    <ul class="inset">
       <% @fandoms.each_with_index do |fandom, i| %>
         <% if i>= ArchiveConfig.NUMBER_OF_ITEMS_VISIBLE_IN_DASHBOARD && !params[:expand_fandoms] %>
           <li id="more-fandoms" class="hidden">
@@ -17,7 +17,7 @@
           <% end %>
         </li>
      <% end %>
-    </ol>
+    </ul>
     <% if @fandoms.length > ArchiveConfig.NUMBER_OF_ITEMS_VISIBLE_IN_DASHBOARD %>
       <div class="actions">
         <noscript>  
@@ -35,9 +35,9 @@
 <% end %> 
               
 <% unless @works.blank? %>
-<div id="user-works">
+<div id="user-works" class="index">
   <h3><%= ts("Recent works") %></h3>
-  <ul>
+  <ul class="inset">
     <%= render partial: 'works/work_blurb', collection: @works, as: :work %>
   </ul>
   <% if @pseud %>
@@ -53,11 +53,11 @@
 <% end %>
 
 <% unless @series.blank? %>
-  <div id="user-series">
+  <div id="user-series" class="index">
     <h3><%= ts("Recent series") %></h3>
-    <ol>
+    <ul class="inset">
       <%= render partial: 'series/series_blurb', collection: @series, as: :series %>
-    </ol>
+    </ul>
     <% if @pseud %>
       <% if @pseud.series.count > ArchiveConfig.NUMBER_OF_ITEMS_VISIBLE_IN_DASHBOARD %>
         <%= pseud_series_link(@pseud) %>
@@ -71,9 +71,9 @@
 <% end %>
 
 <% unless @bookmarks.blank? %>
-  <div id="user-bookmarks">
+  <div id="user-bookmarks" class="index">
     <h3><%= ts("Recent bookmarks") %></h3>
-    <ol>
+    <ol class="inset">
       <%= render partial: 'bookmarks/bookmark_blurb', collection: @bookmarks, as: :bookmark %>
     </ol>
     <% unless @user == User.orphan_account %>
@@ -105,7 +105,7 @@
 <% end %>
 <!--subnav-->
 <h3 class="landmark">Navigation</h3>
-<ul class="actions">
+<ul class="actions right">
   <% if @user == current_user %>
     <li><%= link_to t('.edit_link', :default => 'Edit Pseud'), [:edit, @user, @pseud] %></li>
   <% end %>

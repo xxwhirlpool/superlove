@@ -1,46 +1,72 @@
-<div class="user home profile">
+<%= content_for :sidebar do %>
+  <% if @user && !@hide_dashboard %>
+    <%= render :partial => 'users/sidebar' %>
+  <% end %>
+<% end %>
+
+<div id="content">
   <%= render 'users/header' %>
 
   <!--main content-->
   <% if @profile.title.present? %>
-    <h3 class="heading"><%=h @profile.title %></h3>
+    <h2 class="heading"><%=h @profile.title %></h2>
   <% end %>
 
-  <div class="wrapper">
-    <dl class="meta">
-      <dt class="pseuds"><%= ts("My pseuds:") %></dt>
-      <dd class="pseuds"><%= print_pseud_list(@user, @pseuds) %></dd>
-      <dt><%= ts("I joined on:") %></dt>
-      <dd><%= l(@profile.created_at) %></dd>
-      <dt><%= ts("My user ID is:") %></dt>
-      <dd><%= @user.id %></dd>
-      <% if @profile.location %>
-        <dt class="location"><%=h ts("I live in:") %></dt>
-        <dd><%=h @profile.location %></dd>
-      <% end %>
-      <% if @profile.date_of_birth %>
-        <dt class="birthday"><%=h ts("My birthday:") %></dt>
-        <dd class="birthday"><%=l(@profile.date_of_birth) %></dd>
-      <% end %>
-      <% if @profile.email %>
-        <dt class="email"><%=h ts("My email address:") %></dt>
-        <dd class="email"><%= mail_to @profile.email, nil, :encode => "hex" %></dd>
-      <% end %>
-    </dl>
-  </div>
+  <ul id="user-meta" class="outset meta">
+    <li id="pseuds">
+      <b><%= ts("My pseuds:") %></b>
+      <div class="meta-value">
+        <%= print_pseud_list(@user, @pseuds) %>
+      </div>
+    </li>
+    <li id="joindate">
+      <b><%= ts("I joined on:") %></b>
+      <div class="meta-value">
+        <%= l(@profile.created_at) %>
+      </div>
+    </li>
+    <li id="userid">
+      <b><%= ts("My user ID is:") %></b>
+      <div class="meta-value">
+        <%= @user.id %>
+      </div>
+    <% if @profile.location %>
+      <li id="location">
+        <b><%=h ts("I live in:") %></b>
+        <div class="meta-value"><%=h @profile.location %></div>
+      </li>
+    <% end %>
+    <% if @profile.date_of_birth %>
+      <li id="birthday">
+        <b><%=h ts("My birthday:") %></b>
+        <div class="meta-value">
+          <%=l(@profile.date_of_birth) %>
+        </div>
+    <% end %>
+    <% if @profile.email %>
+      <li id="email">
+        <b><%=h ts("My email address:") %></b>
+        <div class="meta-value">
+          <%= mail_to @profile.email, nil, :encode => "hex" %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
 
   <% if @profile.about_me.present? %>
-    <div class="bio module">
-      <h3 class="heading"><%=h ts("Bio") %></h3>
-      <blockquote class="userstuff"><%=raw sanitize_field(@profile, :about_me) %></blockquote>
+    <div id="bio">
+      <h3><%=h ts("Bio") %></h3>
+      <div id="bio-content">
+        <%=raw sanitize_field(@profile, :about_me) %>
+      </div>
     </div>
   <% end %>
   <!--/content-->
 
   <!--subnav-->
   <% if logged_in? && current_user == @user %>
-  <h3 class="landmark heading"><%= ts("Actions") %></h3>
-  <ul class="navigation actions" role="navigation">
+  <h3 class="landmark"><%= ts("Actions") %></h3>
+  <ul class="actions right">
     <li><%= link_to ts("Edit My Works"), show_multiple_user_works_path(@user) %></li>
     <li><%= link_to ts("Edit My Profile"), edit_user_path(@user) %></li>
     <li><%= link_to ts("Set My Preferences"), user_preferences_path(@user) %></li>
@@ -48,8 +74,8 @@
     <li><%= link_to ts("Delete My Account"), @user, data: {confirm: ts('This will permanently delete your account and cannot be undone. Are you sure?')}, :method => :delete %></li>
   </ul>
   <% elsif policy(@user.profile).can_edit_profile? %>
-    <h3 class="landmark heading"><%= t("admin.admin_options.landmark") %></h3>
-    <ul class="navigation actions" role="navigation">
+    <h3 class="landmark"><%= t("admin.admin_options.landmark") %></h3>
+    <ul class="actions right">
       <li><%= link_to ts("Edit Profile"), edit_user_path(@user) %></li>
     </ul>
   <% end %>
