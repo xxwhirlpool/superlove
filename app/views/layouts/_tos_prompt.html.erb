@@ -26,11 +26,6 @@
       <label for="tos_agree"><%= t(".read_and_understood") %></label>
     </p>
 
-    <p class="confirmation">
-      <input type="checkbox" id="data_processing_agree" />
-      <label for="data_processing_agree"><%= t(".data_processing_agreement") %></label>
-    </p>
-
     <% if current_user.nil? %>
       <p class="submit">
         <%= button_tag t(".agree_and_consent"), disabled: true, type: "button", id: "accept_tos" %>
