@@ -16,6 +16,7 @@
           </li>
         <% end %>
       <% end %>
+    <% end %>
     <li class="module group">
       <h4 class="heading"><%= t(".about.header") %></h4>
       <img src="/images/buttons/aroceu/2.png" alt="superlove button by aroceu" width="88px">
@@ -39,15 +40,23 @@
     <li class="module group">
       <h4 class="heading"><%= t(".development.header") %></h4>
       <ul class="menu">
-      	<li><a href="https://uptime.4-walls.net/status/superlove">Site Status</a></li>
+        <li><a href="https://uptime.4-walls.net/status/superlove">Site Status</a></li>
         <% unless ArchiveConfig.REVISION.blank? %>
           <li>
             <%= link_to t(".development.archive_version", version_number: ArchiveConfig.REVISION),
                   "https://github.com/otwcode/otwarchive/commits/#{ArchiveConfig.REVISION}" %>
           </li>
         <% end %>
-        <li><%= link_to ts('Known Issues', key: 'footer'), known_issues_path %></li>
-        <li><a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.html" title="<%= ts('View License', key: 'footer') %>">GPL</a> <%= ts('by the', key: 'footer') %> <a href="https://transformativeworks.org/" title="<%= ts('The Organization for Transformative Works', key: 'footer') %>"><%= ts('OTW', key: 'footer') %></a></li>
+        <li><%= link_to t(".development.known_issues"), known_issues_path %></li>
+        <li>
+          <%= t(".development.license_details_html",
+                license_link: link_to(t(".development.gpl_2_0_or_later"),
+                  "https://www.gnu.org/licenses/old-licenses/gpl-2.0.html",
+                  title: t(".development.view_license")),
+                otw_link: link_to(t(".otw.abbreviated"),
+                  "https://transformativeworks.org/",
+                  title: t(".otw.full"))) %>
+        </li>
         <li>superlove is unaffiliated with the Organization for Transformative Works and/or the Archive of Our Own.</li>
       </ul>
     </li>

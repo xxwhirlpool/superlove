@@ -688,4 +688,18 @@ module ApplicationHelper
     # we set @page_subtitle, so we're conscious of what we're doing.
     page + " | #{ArchiveConfig.APP_NAME}"
   end
+
+  def default_meta_tags
+    {
+      og: {
+        site_name: "superlove",
+        title: @page_title,
+        description: "superlove, what me and your mother make when you're not home", 
+        type: "website",
+        url: request.original_url,
+        image: image_url("/images/ao3_logos/logo_42.png")
+      }
+    }
+  end
+
 end
