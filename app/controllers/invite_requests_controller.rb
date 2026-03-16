@@ -23,8 +23,7 @@ class InviteRequestsController < ApplicationController
   # POST /invite_requests
   def create
     unless AdminSetting.current.invite_from_queue_enabled?
-      flash[:error] = ts("<strong>New invitation requests are currently closed.</strong> For more information, please check the %{news}.",
-                         news: view_context.link_to("\"Invitations\" tag on superlove News", admin_posts_path(tag: 143))).html_safe
+      flash[:error] = ts("<strong>new invitation requests are currently closed. sowwy</strong>").html_safe
       redirect_to invite_requests_path
       return
     end
