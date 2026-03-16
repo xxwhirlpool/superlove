@@ -17,6 +17,7 @@ if [ -f "config.ru" ]; then
   #ln -s "$LOC" "$HOME/app/current"
 
   #$HOME/bin/create_links_on_install
+  SUPERLOVE_HASH=#$(git rev-parse --short=8 HEAD)
   echo
   bundle exec unicorn -l /tmp/${me}.sock -c $CONF > /home/katmac3/superlove/otwarchive/log/"$RAILS_ENV"_new.log 2>&1 &
   #files=(/usr/local/etc/art/unicorn_*)

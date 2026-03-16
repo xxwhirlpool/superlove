@@ -291,3 +291,7 @@ form.filters dl {
   left: 0;
   right: auto;
 }
+
+#footer .module {
+	max-width: 100% !important;
+}

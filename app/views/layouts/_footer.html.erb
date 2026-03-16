@@ -19,7 +19,7 @@
     <% end %>
     <li class="module group">
       <h4 class="heading"><%= t(".about.header") %></h4>
-      <img src="/images/buttons/aroceu/2.png" alt="superlove button by aroceu" width="88px">
+      <img src="/images/buttons/aroceu/2.png" alt="superlove button by aroceu" width="88px" height="31px" style="display:block;">
       <ul class="menu">
         <li><%= link_to t(".about.site_map"), site_map_path %></li>
         <li><%= link_to t(".about.diversity_statement"), diversity_path %></li>
@@ -27,7 +27,7 @@
         <li><%= link_to t(".about.content_policy"), content_path %></li>
         <li><%= link_to t(".about.privacy_policy"), privacy_path %></li>
         <li><%= link_to t(".about.dmca_policy"), dmca_path %> </li>
-        <li><%= link_to t(".about.status_page"), "https://www.otwstatus.org" %></li>
+        <li><%= link_to t(".about.status_page"), "https://uptime.4-walls.net/status/superlove" %></li>
       </ul>
     </li>
     <li class="module group">
@@ -43,11 +43,10 @@
         <li><a href="https://uptime.4-walls.net/status/superlove">Site Status</a></li>
         <% unless ArchiveConfig.REVISION.blank? %>
           <li>
-            <%= link_to t(".development.archive_version", version_number: ArchiveConfig.REVISION),
-                  "https://github.com/otwcode/otwarchive/commits/#{ArchiveConfig.REVISION}" %>
+            <%= link_to t(".development.archive_version", version_number: ENV["SUPERLOVE_HASH"]),
+                  "https://github.com/xxwhirlpool/superlove/commit/#{ENV["SUPERLOVE_HASH"].gsub("#", "")}" %>
           </li>
         <% end %>
-        <li><%= link_to t(".development.known_issues"), known_issues_path %></li>
         <li>
           <%= t(".development.license_details_html",
                 license_link: link_to(t(".development.gpl_2_0_or_later"),
