@@ -603,6 +603,10 @@ SUPPORTED_CSS_KEYWORDS: ["!important", "url"]
 # if you include "url" in the SUPPORTED_CSS_KEYWORDS, only urls pointing to this
 # kind of resource will be allowed
 SUPPORTED_EXTERNAL_URLS: ["jpg", "jpeg", "png", "gif"]
+# Note for posterity: we dropped the silly notion that a CSS allowlist,
+# especially the insanely permissive one AO3 is using
+# (which still manages to miss out on tons of reasonable properties)
+# actually accomplishes anything at all for security or accessibility.
 
 # variables for Askimet http://akismet.com/
 AKISMET_KEY: '6833ee7298cf'

@@ -1,7 +1,7 @@
 <% content_for :message do %>
 <%= t("mailer.general.greeting.formal.addressed_html", name: @user.login) %>
 
-<%= t(".flagged_as_spam.text", work_title: @work.title, work_url: work_url(@work)) %>
+Your work "<%= @work.title.html_safe %>" (<%= work_url(@work) %>) has been flagged by our automated system as spam and hidden until it can be reviewed by our Abuse team. While the work is hidden it can only be accessed by you and superlove site admins.
 
 <%= t(".future") %>
 

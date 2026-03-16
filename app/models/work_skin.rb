@@ -4,7 +4,7 @@ class WorkSkin < Skin
   has_many :works
   after_save :skin_invalidate_cache
 
-  # override parent's clean_css to append a prefix
+  # override parent's clean_css to apply a scope
   def clean_css
     return if self.css.blank?
     self.css = clean_css_code(self.css)

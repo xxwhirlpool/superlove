@@ -53,6 +53,7 @@ class User < ApplicationRecord
 
   has_many :pseuds, dependent: :destroy
   validates_associated :pseuds
+  has_many :pseuds
 
   has_one :profile, dependent: :destroy
   validates_associated :profile
@@ -116,6 +117,7 @@ class User < ApplicationRecord
   has_many :participated_collections, -> { where("collection_participants.participant_role IN (?)", [CollectionParticipant::OWNER, CollectionParticipant::MODERATOR, CollectionParticipant::MEMBER]) }, through: :collection_participants, source: :collection
   has_many :maintained_collections, -> { where("collection_participants.participant_role IN (?)", [CollectionParticipant::OWNER, CollectionParticipant::MODERATOR]) }, through: :collection_participants, source: :collection
   has_many :owned_collections, -> { where("collection_participants.participant_role = ?", CollectionParticipant::OWNER) }, through: :collection_participants, source: :collection
+  has_many_attached :collections
 
   has_many :challenge_signups, through: :pseuds
   has_many :offer_assignments, through: :pseuds

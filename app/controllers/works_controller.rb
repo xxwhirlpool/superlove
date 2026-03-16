@@ -40,7 +40,7 @@ class WorksController < ApplicationController
       if @search.query.present?
         @page_subtitle = ts("Works Matching '%{query}'", query: @search.query)
       end
-
+      
       @works = @search.search_results.scope(:for_blurb)
       set_own_works
       flash_search_warnings(@works)
@@ -901,6 +901,7 @@ class WorksController < ApplicationController
       :rating_string, :fandom_string, :relationship_string, :character_string,
       :archive_warning_string, :category_string, :medium_string, :freeform_string, :language_id,
       category_strings: [],
+      medium_strings: [],
       archive_warning_strings: []
     )
   end

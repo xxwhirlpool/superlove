@@ -6,7 +6,6 @@
 <div class="notice">
   <%= ts("<strong>new invitation requests are currently closed. sowwy.</strong>").html_safe %>
 </div>
-
 <p>
   <%= t(".already_requested_html", check_waitlist_position_link: link_to(t(".check_waitlist_position"), status_invite_requests_path)) %>
   <%= t(".waiting_list_count", count: InviteRequest.count) %>

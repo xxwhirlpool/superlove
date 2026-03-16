@@ -4,35 +4,46 @@
 </h2>
 
 <p>
-  <%= t(".details_html",
-        tos_link: link_to(t(".tos"), tos_path),
-        content_policy_link: link_to(t(".content_policy"), content_path),
-        privacy_policy_link: link_to(t(".privacy_policy"), privacy_path)) %>
+  <%= ts("To get a free superlove account, you need an Invitation.
+         By submitting your email address to our invitation queue, you confirm
+         that you are at least 16 years old, and if you're in a country whose
+         residents/citizens have to be of an age older than 16 to consent,
+         you are old enough to consent to the processing of your personal data
+         without our obtaining written permission from a parent or legal guardian.
+         We will use the email address you submit only to send you an Invitation
+         and to process/manage your account activation. Please don't request an Invitation
+         unless you've read the %{tos} and agree to abide by those Terms.",
+         tos: link_to(ts("Terms of Service"), tos_path)
+      ).html_safe %>
 </p>
 <!--/descriptions-->
 
 <!--main content-->
-<h3 class="heading"><%= t(".request_invitation_header") %></h3>
+<%= render "home/tos" %>
+
+<h3 class="heading"><%= ts("Request an invitation") %></h3>
 
 <%= form_for(@invite_request, html: { class: "simple" }) do |f| %>
   <%= error_messages_for @invite_request %>
   <fieldset>
     <p>
       <%= f.label :email %>
-      <%= f.text_field :email %> <br>
+      <%= f.text_field :email %>
+      <br>
       <p>tell me who you are and why you want to join. <b>if the below is blank your request will be deleted</b></p>
       <%= f.label :note %>
       <%= f.text_area :note, size: "60x10" %>
-      <%= f.submit t(".add_to_list") %>
+      <%= f.submit ts("Add me to the list") %>
     </p>
   </fieldset>
 <% end %>
 
-<p>
-  <%= t(".already_requested_html", check_waitlist_position_link: link_to(t(".check_waitlist_position"), status_invite_requests_path)) %>
-  <%= t(".waiting_list_count", count: InviteRequest.count) %>
-  <%= t(".invitation_send_rate",
-        queue_invitation_number: t(".invitation_number", count: AdminSetting.current.invite_from_queue_number),
-        queue_frequency: t(".frequency", count: AdminSetting.current.invite_from_queue_frequency)) %>
+<p> 
+    <%= ts("If you have already requested an invitation, you can %{status}. There are currently %{count} people on the waiting list. We are sending 
+    out %{invites} invitations per fucking never lmao.",
+      status: link_to("check your position on the waiting list",
+                      status_invite_requests_path),
+      count: InviteRequest.count,
+      invites: AdminSetting.current.invite_from_queue_number).html_safe %>
 </p>
 <!--/content-->

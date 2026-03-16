@@ -28,4 +28,14 @@ class MenuController < ApplicationController
     render action: "community", layout: "application"
   end
   
+  # links menu
+  def links
+    render action: "links", layout: "application"
+  end
+  
+  # community menu
+  def community
+    render action: "community", layout: "application"
+  end
+  
 end

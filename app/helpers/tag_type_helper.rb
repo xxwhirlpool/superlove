@@ -13,6 +13,8 @@ module TagTypeHelper
       "freeform"
     when "ArchiveWarning"
       "warning"
+    when "Medium"
+      "medium"
     else
       tag_type.downcase
     end

@@ -59,6 +59,10 @@ module MailerHelper
     style_link(text, tos_url)
   end
 
+  def status_link(text)
+    style_link(text, "https://uptime.4-walls.net/status/superlove")
+  end
+
   def opendoors_link(text)
     style_link(text, "https://opendoors.transformativeworks.org/contact-open-doors/")
   end

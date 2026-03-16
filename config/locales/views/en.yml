@@ -61,19 +61,19 @@ en:
         fnok: Fannish Next-of-Kin
         legal: review our DMCA Policy and contact our Legal team
         support: contact our Support team
-        tos: AO3 Terms of Service
+        tos: superlove Terms of Service/Rules
         tos_faq: Terms of Service FAQ
       reportable:
-        allowed: You would like to know whether specific content is allowed on AO3.
+        allowed: You would like to know whether specific content is allowed on superlove.
         content_policy: Content Policy
         email: an email explaining why
-        hack: You believe that your AO3 account was hacked.
-        harassment: You have experienced or witnessed harassment taking place on AO3.
+        hack: You believe that your superlove account was hacked.
+        harassment: You have experienced or witnessed harassment taking place on superlove.
         intro_html: 'Potential reasons to submit a report to the %{pac_link} team:'
         pac: Policy & Abuse
         suspended_html: You have been suspended or your work has been removed, and you have not received %{email_link}.
         tos: Terms of Service
-        violation_html: You have encountered content on AO3 that violates the %{content_policy_link} or other parts of the %{tos_link}.
+        violation_html: You have encountered content on superlove that violates the %{content_policy_link} or other parts of the %{tos_link}.
   admin:
     activities:
       index:
@@ -409,7 +409,7 @@ en:
           request_invite_enabled: Users can request invitations
           suspend_filter_counts: Suspend some filter tracking due to high posting volume
           tag_wrangling_off: Turn off tag wrangling for non-admins
-        heading: Archive Settings
+        heading: superlove Settings
         last_updated_by_admin: Settings last updated on %{updated_at} by %{admin_name}.
         legend:
           account_and_invitations: Accounts and Invitations
@@ -423,7 +423,7 @@ en:
         queue_status_help: "(The automatic task that invites people from the queue runs at most every hour. Don't be alarmed if the time you see is within the last hour. Do be alarmed if the time you see is more than one hour in the past and the queue is supposed to be active.)"
         update: Update
       update:
-        success: Archive settings were successfully updated.
+        success: superlove settings were successfully updated.
     support_notices:
       confirm_delete:
         delete: Delete Support Notice
@@ -532,7 +532,7 @@ en:
         landmark: News Post Navigation
         next: Next Post
         previous: Previous Post
-      page_heading: AO3 News
+      page_heading: superlove News
   admins:
     index:
       account:
@@ -566,7 +566,7 @@ en:
       elasticsearch_news: news post announcing the search and filter updates
       elasticsearch_update_notice_html: Our search engine has recently been updated, and this FAQ is based on our old version. We're working on bringing you more up-to-date information, but in the meantime, you can find out more in our %{elasticsearch_news_link}!
       no_category_entries: We're sorry, there are currently no entries in this category.
-      page_heading: Archive FAQ
+      page_heading: superlove FAQ
       screencast: 'Screencast:'
   blocked:
     block: Block
@@ -863,14 +863,14 @@ en:
         comment: Comment
       add_to_collections_link: Add to Collections
       blocked: Sorry, you have been blocked by one or more of this work's creators.
-      guest_comments_disabled: Sorry, the Archive doesn't allow guests to comment right now.
+      guest_comments_disabled: Sorry, superlove doesn't allow guests to comment right now.
       invite_to_collections_link: Invite To Collections
       logged_as_admin: Please log out of your admin account to comment.
       permissions:
         admin_post:
           alt_action: You can however %{support_link} with any feedback or questions.
           disable_all: Sorry, this news post doesn't allow comments.
-          disable_anon: Sorry, this news post doesn't allow non-Archive users to comment.
+          disable_anon: Sorry, this news post doesn't allow non-superlove users to comment.
           support_link: contact Support
         moderated_commenting:
           disable: Disable comment moderation
@@ -890,7 +890,7 @@ en:
         work:
           alt_action: You can however still leave Kudos!
           disable_all: Sorry, this work doesn't allow comments.
-          disable_anon: Sorry, this work doesn't allow non-Archive users to comment.
+          disable_anon: Sorry, this work doesn't allow non-superlove users to comment.
           draft: Sorry, you can't comment on a draft.
           hidden: Sorry, you can't add or edit comments on a hidden work.
           unrevealed: Sorry, you can't add or edit comments on an unrevealed work.
@@ -1089,7 +1089,7 @@ en:
           error: Please enter a brief summary of your message
           label: Brief summary of your question or problem (required)
       heading:
-        instructions: Please use this form for questions about how to use the Archive and for reporting any technical problems.
+        instructions: Please use this form for questions about how to use superlove and for reporting any technical problems.
         landmark:
           reference: Reference Links
         page_title: Support and Feedback
@@ -1113,10 +1113,10 @@ en:
         tag_changes: Requests to canonize or change tags
         work_problems: Works labeled with the wrong language or duplicate works
       status:
-        bluesky: "@status.archiveofourown.org"
-        current_html: For current updates on AO3 performance or downtime, please check our %{status_page_link} and follow %{bluesky_link} on Bluesky or %{tumblr_link} on Tumblr.
+        bluesky: "@katproto.girlonthemoon.xyz"
+        current_html: For current updates on superlove performance or downtime, please check our %{status_page_link} and follow %{bluesky_link} on Bluesky or %{tumblr_link} on Tumblr.
         status_page: status page
-        tumblr: ao3org
+        tumblr: hypermediagirl
   help:
     first_login:
       additional_info:
@@ -2259,7 +2259,7 @@ en:
     proxy_notice:
       button: Dismiss Notice
       faux_heading: 'Important message:'
-      point1: You are using a proxy site that is not part of the Archive of Our Own.
+      point1: You are using a proxy site that is not part of superlove.
       point2: The entity that set up the proxy site can see what you submit, including your IP address. If you log in through the proxy site, it can see your password.
     tos_prompt:
       agree_and_consent: I agree/consent to these Terms
@@ -2297,7 +2297,7 @@ en:
       works: Works
   muted:
     mute: Mute
-    muted_items_notice_html: You have muted some users on the Archive. Some items may not be shown, and any counts may be inaccurate. You can mute or unmute users on %{muted_users_link}.
+    muted_items_notice_html: You have muted some users on superlove. Some items may not be shown, and any counts may be inaccurate. You can mute or unmute users on %{muted_users_link}.
     muted_users_link_text: your Muted Users page
     unmute: Unmute
     users:
@@ -2308,7 +2308,7 @@ en:
         cancel: Cancel
         mute: mute
         restore_site_skin_faq_link_text: instructions for reverting to the default site skin
-        site_skin_warning_html: Please note that if you are not using the default site skin, muting may not work properly. The Skins and Archive Interface FAQ has %{restore_site_skin_faq_link}.
+        site_skin_warning_html: Please note that if you are not using the default site skin, muting may not work properly. The Skins and superlove Interface FAQ has %{restore_site_skin_faq_link}.
         sure_html: Are you sure you want to %{mute} %{username}?
         title: Mute %{name}
         will:
@@ -2339,7 +2339,7 @@ en:
         muted_users: Muted Users
         none: You have not muted any users.
         restore_site_skin_faq_link_text: instructions for reverting to the default site skin
-        site_skin_warning_html: Please note that if you are not using the default site skin, muting may not work properly. The Skins and Archive Interface FAQ has %{restore_site_skin_faq_link}.
+        site_skin_warning_html: Please note that if you are not using the default site skin, muting may not work properly. The Skins and superlove Interface FAQ has %{restore_site_skin_faq_link}.
         title: Muted Users
         will:
           intro:
@@ -2666,9 +2666,9 @@ en:
       submit_legend: Submit
     index:
       about:
-        popular: These are some of the most popular tags used on the Archive. To find more tags, %{search_tags_link}.
+        popular: These are some of the most popular tags used on superlove. To find more tags, %{search_tags_link}.
         popular_in_collection: These are some of the most popular tags used in the collection.
-        random: These are some random tags used on the Archive. To find more tags, %{search_tags_link}.
+        random: These are some random tags used on superlove. To find more tags, %{search_tags_link}.
         random_in_collection: These are some random tags used in the collection.
       search_tags: try our tag search
     search_form:
@@ -2803,7 +2803,7 @@ en:
         other: If you don't confirm your request within %{count} days, the link will expire and your email address will not be changed.
     confirmation:
       contact_support: contact Support
-      go_back: Return to Archive front page
+      go_back: Return to superlove front page
       important: Important!
       must_activate:
         one: You must activate your account within %{count} day, or your account will expire. If this happens, you can sign up again using the same invitation.
@@ -2924,13 +2924,13 @@ en:
           request_invite: Request an invitation to join
           reset_password: Reset your password
         restricted:
-          account_exists: If you already have an Archive of Our Own account, log in now.
-          commenting_unavailable: Commenting on this work is only available to registered users of the Archive.
+          account_exists: If you already have a superlove account, log in now.
+          commenting_unavailable: Commenting on this work is only available to registered users of superlove.
           no_account: If you don't have an account, you can %{request_invite_link}.
           request_invite: request an invitation to join
           signup: Or join us for free - it's easy.
           sorry: Sorry!
-          work_unavailable: This work is only available to registered users of the Archive.
+          work_unavailable: This work is only available to registered users of superlove.
       passwd:
         landmark_submit: Submit
         log_in: Log in
@@ -2958,7 +2958,7 @@ en:
         our_faqs: our FAQs
         privacy_policy: Privacy Policy
         tos: Terms of Service
-        welcome_html: Hi! It looks like you've just logged in to AO3 for the first time. For help getting started on AO3, check out some %{new_user_tips_link} or browse through %{our_faqs_link}.
+        welcome_html: Hi! It looks like you've just logged in to superlove for the first time. For help getting started on superlove, check out some %{new_user_tips_link} or browse through %{our_faqs_link}.
     sidebar:
       catch:
         history: History
@@ -3066,7 +3066,7 @@ en:
     search_form:
       creator: Creator
     show:
-      unposted_deletion_notice_html: This work is a draft and has not been posted. The draft will be <strong>scheduled for deletion</strong> on %{deletion_date}.
+      unposted_deletion_notice_html: This work is a draft and has not been posted.
     show_multiple:
       draft: " (Draft)"
       no_works: You have no works or drafts to edit.

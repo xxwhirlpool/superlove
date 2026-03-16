@@ -47,6 +47,7 @@
       </li>
       <li><%= link_to t(".nav.log_out"), destroy_user_session_path(return_to: request.fullpath.start_with?(destroy_user_session_path) ? params[:return_to] : request.fullpath), method: :delete %></li>
     </ul>
+  <p class="icon"><%= icon_display(current_user) %></p>
 
     <% elsif logged_in_as_admin? %>
       <ul class="user navigation actions">
@@ -54,5 +55,5 @@
         <li><%= link_to t(".nav.log_out"), destroy_admin_session_path, method: :delete %></li>
       </ul>
     <% end %>
-  <p class="icon"><%= icon_display(current_user) %></p>
 </nav>
+</div>

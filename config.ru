@@ -1,5 +1,5 @@
 # This file is used by Rack-based servers to start the application.
-
+#\ -p 3333 -o 192.168.1.240
 require_relative "config/environment"
 require "resque/server"
 require "resque/scheduler/server"

@@ -338,6 +338,7 @@ class UsersController < ApplicationController
       # Orphans co-authored works.
 
       pseuds = @user.pseuds
+      
       works = @coauthored_works
 
       # We change the pseud to the default orphan pseud if use_default is true.

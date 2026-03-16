@@ -35,6 +35,7 @@ class PseudsController < ApplicationController
       format.atom
     end
   end
+  
 
   # GET /users/:user_id/pseuds/:id
   def show
@@ -70,6 +71,21 @@ class PseudsController < ApplicationController
     @subscription = current_user.subscriptions.where(subscribable_id: @user.id,
                                                      subscribable_type: "User").first ||
                     current_user.subscriptions.build(subscribable: @user)
+  end
+
+  def feed
+    begin
+      @pseud = @user.pseuds.find_by!(name: params[:id])
+    rescue ActiveRecord::RecordNotFound
+      raise ActiveRecord::RecordNotFound, "Couldn't find pseud with id '#{params[:id]}'"
+    end
+
+    @pseud = @user.pseuds.find_by!(name: params[:id])
+
+    respond_to do |format|
+      format.html
+      format.atom
+    end
   end
 
   # GET /pseuds/new
@@ -155,5 +171,8 @@ class PseudsController < ApplicationController
     end
 
     redirect_to(user_pseuds_path(@user))
+    
   end
+  
+  
 end

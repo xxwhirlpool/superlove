@@ -125,17 +125,6 @@ class SkinsController < ApplicationController
     end
   end
 
-  # Get /skins/1/preview
-  def preview
-    flash[:notice] = []
-    flash[:notice] << ts("You are previewing the skin %{title}. This is a randomly chosen page.", title: @skin.title)
-    flash[:notice] << ts("Go back or click any link to remove the skin.")
-    flash[:notice] << ts("Tip: You can preview any archive page you want by tacking on '?site_skin=[skin_id]' like you can see in the url above.")
-    flash[:notice] << "<a href='#{skin_path(@skin)}' class='action' role='button'>".html_safe + ts("Return To Skin To Use") + "</a>".html_safe
-    tag = FilterCount.where("public_works_count BETWEEN 10 AND 20").random_order.first.filter
-    redirect_to tag_works_path(tag, site_skin: @skin.id)
-  end
-
   def set
     if @skin.cached?
       flash[:notice] = ts("The skin %{title} has been set. This will last for your current session.", title: @skin.title)

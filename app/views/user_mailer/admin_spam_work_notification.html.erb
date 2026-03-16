@@ -1,7 +1,7 @@
 <% content_for :message do %>
   <p><%= t("mailer.general.greeting.formal.addressed_html", name: style_bold(@user.login)) %></p>
 
-  <p><%= t(".flagged_as_spam.html", work_link: style_creation_link(@work.title, @work)) %></p>
+  <p>Your work <%= style_creation_link(@work.title, @work) %> has been flagged by our automated system as spam and hidden until it can be reviewed by our Policy & Abuse team. While the work is hidden it can only be accessed by you and superlove site admins.</p>
 
   <p><%= t(".future") %></p>
 

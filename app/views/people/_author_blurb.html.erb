@@ -14,7 +14,11 @@
       <h5 class="heading"><%= creations %></h5>
     <% end %>
     <div class="icon">
+    <% if author.icon.attached? %>
       <%= icon_display(author.user, author) %>
+    <% else %>
+      <%= image_tag('/images/skins/iconsets/default/icon_user.png') %>
+    <% end %>
     </div>
   </div>
   <% unless author.description.blank? %>
