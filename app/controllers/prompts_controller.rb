@@ -1,11 +1,11 @@
 class PromptsController < ApplicationController
 
   before_action :users_only, except: [:show]
-  before_action :load_collection, except: [:index]
-  before_action :load_challenge, except: [:index]
+  before_action :load_collection
+  before_action :load_challenge
   before_action :load_prompt_from_id, only: [:show, :edit, :update, :destroy]
-  before_action :load_signup, except: [:index, :destroy, :show]
-  # before_action :promptmeme_only, except: [:index, :new]
+  before_action :load_signup, except: [:destroy, :show]
+  # before_action :promptmeme_only, except: [:new]
   before_action :allowed_to_destroy, only: [:destroy]
   before_action :allowed_to_view, only: [:show]
   before_action :signup_owner_only, only: [:edit, :update]
@@ -101,11 +101,6 @@ class PromptsController < ApplicationController
 
   #### ACTIONS
 
-  def index
-    # this currently doesn't get called anywhere
-    # should probably list all the prompts in a given collection (instead of using challenge signup for that)
-  end
-
   def show
   end
 
@@ -130,14 +125,12 @@ class PromptsController < ApplicationController
       @prompt = @challenge_signup.requests.build(prompt_params)
     end
 
-    if !@challenge_signup.valid?
-      flash[:error] = ts("That prompt would make your overall sign-up invalid, sorry.")
-      redirect_to edit_collection_signup_path(@collection, @challenge_signup)
-    elsif @prompt.save
+    if @challenge_signup.save
       flash[:notice] = ts("Prompt was successfully added.")
       redirect_to collection_signup_path(@collection, @challenge_signup)
     else
-      render action: :new
+      flash[:error] = ts("That prompt would make your overall sign-up invalid, sorry.")
+      redirect_to edit_collection_signup_path(@collection, @challenge_signup)
     end
   end
 

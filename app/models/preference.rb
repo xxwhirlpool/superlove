@@ -1,6 +1,10 @@
 class Preference < ApplicationRecord
+  # Ignore the email_visible and date_of_birth_visible fields until they can be deleted:
+  self.ignored_columns = [:email_visible, :date_of_birth_visible]
+
   belongs_to :user
   belongs_to :skin
+  belongs_to :locale, foreign_key: "preferred_locale"
 
   validates :work_title_format,
             format: {
@@ -28,5 +32,17 @@ class Preference < ApplicationRecord
               (skin.is_a?(Skin) && skin.approved_or_owned_by?(user))
 
     errors.add(:base, "You don't have permission to use that skin!")
+  end
+
+  def locale
+    $rollout.active?(:set_locale_preference, user) ? super : Locale.default
+  end
+
+  def locale_for_mails
+    # Use preferred_locale to bypass the second $rollout check
+    l = Locale.find(preferred_locale)
+    return I18n.default_locale.to_s unless $rollout.active?(:set_locale_preference, user) && l.email_enabled
+
+    l.iso
   end
 end

@@ -49,10 +49,6 @@ class Sanitize
         "script" => { "src" => ["http", "https"] }
       },
       
-      css: {
-        properties: %w[text-align width]
-      },
-      
       # TODO: This can be removed once we upgrade sanitizer gem, AO3-5801
       # I would leave the tests we added in AO3-5974 though.
       remove_contents: %w[iframe math noembed noframes noscript plaintext svg xmp]

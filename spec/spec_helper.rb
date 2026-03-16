@@ -24,7 +24,6 @@ RSpec.configure do |config|
     c.syntax = [:should, :expect]
   end
 
-  # TODO: Remove gems delorean and timecop now that Rails has time-travel helpers.
   config.include ActiveSupport::Testing::TimeHelpers
   config.include FactoryBot::Syntax::Methods
   config.include EmailSpec::Helpers
@@ -69,8 +68,11 @@ RSpec.configure do |config|
     # Assume all spam checks pass by default.
     allow(Akismetor).to receive(:spam?).and_return(false)
 
+    # Don't display TOS prompts.
+    allow_any_instance_of(ApplicationHelper).to receive(:tos_exempt_page?).and_return(true)
+
     # Stub all requests to example.org, the default external work URL:
-    WebMock.stub_request(:any, "www.example.org")
+    WebMock.stub_request(:any, /example/)
   end
 
   config.after :each do
@@ -95,12 +97,28 @@ RSpec.configure do |config|
     BookmarkIndexer.delete_index
   end
 
+  config.before :each, user_search: true do
+    UserIndexer.prepare_for_testing
+  end
+
+  config.after :each, user_search: true do
+    UserIndexer.delete_index
+  end
+
   config.before :each, pseud_search: true do
     PseudIndexer.prepare_for_testing
   end
 
   config.after :each, pseud_search: true do
     PseudIndexer.delete_index
+  end
+
+  config.before :each, collection_search: true do
+    CollectionIndexer.prepare_for_testing
+  end
+
+  config.after :each, collection_search: true do
+    CollectionIndexer.delete_index
   end
 
   config.before :each, tag_search: true do
@@ -140,8 +158,8 @@ RSpec.configure do |config|
   INVALID_URLS = %w[no_scheme.com ftp://ftp.address.com http://www.b@d!35.com https://www.b@d!35.com http://b@d!35.com https://www.b@d!35.com].freeze
   VALID_URLS = %w[http://rocksalt-recs.livejournal.com/196316.html https://rocksalt-recs.livejournal.com/196316.html].freeze
   INACTIVE_URLS = %w[https://www.iaminactive.com http://www.iaminactive.com https://iaminactive.com http://iaminactive.com].freeze
-  BYPASSED_URLS = %w[fanfiction.net ficbook.net].freeze
-  
+  BYPASSED_URLS = %w[fanfiction.net ficbook.net bsky.app].freeze
+
   # rspec-rails 3 will no longer automatically infer an example group's spec type
   # from the file location. You can explicitly opt-in to the feature using this
   # config option.
@@ -162,6 +180,7 @@ RSpec.configure do |config|
 end
 
 RSpec::Matchers.define_negated_matcher :avoid_changing, :change
+RSpec::Matchers.define_negated_matcher :not_enqueue_mail, :enqueue_mail
 
 def clean_the_database
   # Now clear memcached
@@ -174,13 +193,44 @@ def clean_the_database
   REDIS_KUDOS.flushall
   REDIS_RESQUE.flushall
   REDIS_ROLLOUT.flushall
+  REDIS_RATELIMITS.flushall
 end
 
 def run_all_indexing_jobs
-  %w[main background stats].each do |reindex_type|
-    ScheduledReindexJob.perform reindex_type
+  %w[main background stats users].each do |reindex_type|
+    ScheduledReindexJob.perform(reindex_type)
   end
+
   Indexer.all.map(&:refresh_index)
+end
+
+# Suspend resque workers for the duration of the block, then resume after the
+# contents of the block have run. Simulates what happens when there's a lot of
+# jobs already in the queue, so there's a long delay between jobs being
+# enqueued and jobs being run.
+def suspend_resque_workers
+  # Set up an array to keep track of delayed actions.
+  queue = []
+
+  # Override the default Resque.enqueue_to behavior.
+  #
+  # The first argument is which queue the job is supposed to be added to, but
+  # it doesn't matter for our purposes, so we ignore it.
+  allow(Resque).to receive(:enqueue_to) do |_, klass, *args|
+    queue << [klass, args]
+  end
+
+  # Run the code inside the block.
+  yield
+
+  # Empty out the queue and perform all of the operations.
+  while queue.any?
+    klass, args = queue.shift
+    klass.perform(*args)
+  end
+
+  # Resume the original Resque.enqueue_to behavior.
+  allow(Resque).to receive(:enqueue_to).and_call_original
 end
 
 def create_invalid(*args, **kwargs)
