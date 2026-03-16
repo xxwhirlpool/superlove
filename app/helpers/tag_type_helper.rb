@@ -34,6 +34,8 @@ module TagTypeHelper
               Freeform.label_name
             when "tag"
               "Bookmarker's Tag"
+            when "medium"
+              Medium.label_name
             else
               tag_type.humanize.titleize
             end

@@ -19,7 +19,10 @@
   <fieldset>
     <p>
       <%= f.label :email %>
-      <%= f.text_field :email %>
+      <%= f.text_field :email %> <br>
+      <p>tell me who you are and why you want to join. <b>if the below is blank your request will be deleted</b></p>
+      <%= f.label :note %>
+      <%= f.text_area :note, size: "60x10" %>
       <%= f.submit t(".add_to_list") %>
     </p>
   </fieldset>

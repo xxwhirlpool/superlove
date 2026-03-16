@@ -14,7 +14,9 @@ class ArchiveWarning < Tag
         ArchiveConfig.WARNING_VIOLENCE_TAG_NAME,
         ArchiveConfig.WARNING_DEATH_TAG_NAME,
         ArchiveConfig.WARNING_NONCON_TAG_NAME,
-        ArchiveConfig.WARNING_CHAN_TAG_NAME]
+        ArchiveConfig.WARNING_CHAN_TAG_NAME,
+        ArchiveConfig.WARNING_INCEST_TAG_NAME,
+        ArchiveConfig.WARNING_BIGOTRY_TAG_NAME]
   end
 
   def self.warning?(warning)

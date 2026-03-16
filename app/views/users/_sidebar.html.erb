@@ -36,6 +36,7 @@
 	<% end %>
 
   <li><%= collections_link(@user) %></li>
+  <li><%= span_if_current ts("Owned Tagsets (%{tagset_number})", :tagset_number => OwnedTagSet.owned_by(@user).size), user_tag_sets_path(@user) %></li>
 </ul>
 
 <% if @user == current_user || policy(:inbox_comment).show? %>

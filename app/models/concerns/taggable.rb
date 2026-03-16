@@ -58,6 +58,7 @@ module Taggable
     result["Fandom"] ||= []
     result["Rating"] ||= []
     result["ArchiveWarning"] ||= []
+    result["Medium"] ||= []
     result["Relationship"] ||= []
     result["Character"] ||= []
     result["Freeform"] ||= []

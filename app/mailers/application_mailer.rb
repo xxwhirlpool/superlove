@@ -3,5 +3,5 @@ class ApplicationMailer < ActionMailer::Base
 
   layout "mailer"
   helper :mailer
-  default from: "Archive of Our Own " + "<#{ArchiveConfig.RETURN_ADDRESS}>"
+  default from: "superlove " + "<#{ArchiveConfig.RETURN_ADDRESS}>"
 end

@@ -137,6 +137,19 @@
         </ul>
       </dd>
       <dt>
+        <%= ts("Mediums") %>
+      </dt>
+      <dd>
+        <ul>
+          <% for tag in Medium.canonical.by_name.sort %>
+            <li>
+              <%= check_box_tag "work_search[medium_ids][]", tag.id, @search.medium_ids.present? && @search.medium_ids.include?(tag.id.to_s), :id => "medium_#{tag.id}" %>
+              <%= label_tag "medium_#{tag.id}", tag.name %>
+            </li>
+          <% end %>
+        </ul>
+      </dd>
+      <dt>
         <%= f.label :character_names, ts("Characters") %>
       </dt>
       <dd>

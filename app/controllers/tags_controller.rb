@@ -98,7 +98,7 @@ class TagsController < ApplicationController
     end
     @tag = @tag.merger if !@tag.canonical? && @tag.merger
     # Temp for testing
-    if %w(Fandom Character Relationship).include?(@tag.type.to_s) || @tag.name == 'F/F'
+    if %w(Category Medium Fandom Character Relationship).include?(@tag.type.to_s) || @tag.name == 'F/F'
       if @tag.canonical?
         @works = @tag.filtered_works.visible_to_all.order('created_at DESC').limit(25)
       else
@@ -401,7 +401,7 @@ class TagsController < ApplicationController
     params.require(:tag).permit(
       :name, :type, :canonical, :unwrangleable, :adult, :sortable_name,
       :meta_tag_string, :sub_tag_string, :merger_string, :syn_string,
-      :media_string, :fandom_string, :character_string, :relationship_string,
+      :medium_string, :media_string, :fandom_string, :character_string, :relationship_string,
       :freeform_string,
       associations_to_remove: []
     )

@@ -10,7 +10,7 @@ class Tag < ApplicationRecord
   # Note: the order of this array is important.
   # It is the order that tags are shown in the header of a work
   # (banned tags are not shown)
-  TYPES = ['Rating', 'ArchiveWarning', 'Category', 'Media', 'Fandom', 'Relationship', 'Character', 'Freeform', 'Banned' ]
+  TYPES = ['Rating', 'ArchiveWarning', 'Category', 'Medium', 'Media', 'Fandom', 'Relationship', 'Character', 'Freeform', 'Banned' ]
 
   # these tags can be filtered on
   FILTERS = TYPES - ['Banned', 'Media']
@@ -979,7 +979,7 @@ class Tag < ApplicationRecord
   end
 
   # defines fandom_string=, media_string=, character_string=, relationship_string=, freeform_string=
-  %w(Fandom Media Character Relationship Freeform).each do |tag_type|
+  %w(Fandom Medium Media Character Relationship Freeform).each do |tag_type|
     attr_reader "#{tag_type.downcase}_string"
 
     define_method("#{tag_type.downcase}_string=") do |tag_string|

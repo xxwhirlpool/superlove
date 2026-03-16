@@ -103,6 +103,7 @@ class WorkIndexer < Indexer
       character_ids: object.general_character_ids,
       relationship_ids: object.general_relationship_ids,
       freeform_ids: object.general_freeform_ids,
+      medium_ids: object.general_medium_ids,
       filter_ids: object.general_filter_ids,
       language_id: object.language&.short,
       series: series_data(object),

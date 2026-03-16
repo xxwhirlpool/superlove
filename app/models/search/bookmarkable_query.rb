@@ -151,7 +151,7 @@ class BookmarkableQuery < Query
     aggs = {}
 
     if bookmark_query.facet_tags?
-      %w[rating archive_warning category fandom character relationship freeform].each do |facet_type|
+      %w[rating archive_warning category medium fandom character relationship freeform].each do |facet_type|
         aggs[facet_type] = {
           terms: {
             field: restrictable_field_name("#{facet_type}_ids").to_s

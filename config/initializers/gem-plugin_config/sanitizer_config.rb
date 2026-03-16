@@ -6,17 +6,27 @@ class Sanitize
       elements: %w[
         a abbr acronym address b big blockquote br caption center cite code col
         colgroup details figcaption figure dd del dfn div dl dt em h1 h2 h3 h4 h5 h6 hr
-        i img ins kbd li ol p pre q rp rt ruby s samp small span strike strong
-        sub summary sup table tbody td tfoot th thead tr tt u ul var
+        i img ins kbd li object ol p pre q rp rt ruby s samp script small span strike strong
+        style sub summary sup table tbody td textarea tfoot th thead tr tt u ul var
       ],
       attributes: {
         all: %w[align title dir],
-        "a" => %w[href name],
+        "a" => %w[href name data-bibi data-bibi-style class],
         "blockquote" => %w[cite],
         "col" => %w[span width],
         "colgroup" => %w[span width],
         "details" => %w[open],
+        "div" => %w[align id style],
+        "h1" => %w[id],
+        "h2" => %w[id],
+        "h3" => %w[id],
+        "h4" => %w[id],
+        "h5" => %w[id],
+        "h6" => %w[id],
         "hr" => %w[align width],
+        "i" => %w[class],
+        "img" => %w[align alt border height src style width],
+        "object" => %w[type data class width height],
         "img" => %w[align alt border height src width],
         "ol" => %w[start type],
         "q" => %w[cite],
@@ -34,12 +44,13 @@ class Sanitize
         "a" => { "href" => ["ftp", "http", "https", "mailto", :relative] },
         "blockquote" => { "cite" => ["http", "https", :relative] },
         "img" => { "src" => ["http", "https"] },
-        "q" => { "cite" => ["http", "https", :relative] }
+        "q" => { "cite" => ["http", "https", :relative] },
+        "script" => { "src" => ["http", "https"] }
       },
       
       # TODO: This can be removed once we upgrade sanitizer gem, AO3-5801
       # I would leave the tests we added in AO3-5974 though.
-      remove_contents: %w[iframe math noembed noframes noscript plaintext script style svg xmp]
+      remove_contents: %w[iframe math noembed noframes noscript plaintext svg xmp]
     )
 
     CLASS_ATTRIBUTE = freeze_config(
