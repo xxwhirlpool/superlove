@@ -316,6 +316,9 @@ Rails.application.routes.draw do
       end
     end
     resources :pseuds do
+      member do
+        get :feed
+      end
       resources :works
       resources :series
       resources :bookmarks

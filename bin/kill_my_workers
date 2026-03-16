@@ -1,0 +1,2 @@
+#!/bin/bash
+kill $(ps auxww |  grep "resque-2.2.0" | awk '{print $2}')

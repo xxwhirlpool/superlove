@@ -1,0 +1,4 @@
+#!/bin/bash
+cd /home/katmac3/superlove/otwarchive/
+
+QUEUE="*" bundle exec rake environment resque:work > /home/katmac3/superlove/otwarchive/log/"$RAILS_ENV"_worker.log 2>&1 & 
