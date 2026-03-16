@@ -35,11 +35,7 @@
     </p>
 
     <div class="icon">
-    <% if collection.icon.attached? %>
-<%= image_tag(claim.collection.icon.variant(resize_to_limit: [100, 100])) %>
-<% else %>
-<%= image_tag('/images/skins/iconsets/default/icon_user.png', class: 'icon') %>
-<% end %>
+      <%= collection_icon_display(claim.collection) %>
     </div>
   </div>
 

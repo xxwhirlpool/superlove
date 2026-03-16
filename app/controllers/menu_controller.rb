@@ -19,6 +19,14 @@ class MenuController < ApplicationController
   def search
     render action: "search", layout: "application"
   end
+
+  def links
+    render action: "links", layout: "application"
+  end
+
+  def community
+    render action: "community", layout: "application"
+  end
   
   # links menu
   def links

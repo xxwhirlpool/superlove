@@ -19,3 +19,4 @@ bundle exec rake environment  search:index_bookmarks
 bundle exec rake environment  search:index_pseuds
 bundle exec rake environment  search:index_tags
 bundle exec rake environment  search:index_works
+bundle exec rake environment  search:index_collections

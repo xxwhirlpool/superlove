@@ -29,7 +29,6 @@
 		  no authors found <span aria-label="sad" role="img">:(</span>
 		<% end %>
 	</p>
-
       <%= render 'fandoms' %>
     </div>
   <% end %>
@@ -41,16 +40,16 @@
   <% if logged_in? && @homepage.readings.present? %>
     <div class="random readings module">
       <h3 class="heading">
-        <span class="title"><%= ts('Is it later already?') %></span>
-        <span class="link"><%= link_to ts('My History'), user_readings_path(current_user) %></span>
+        <span class="title"><%= t(".readings.heading.title") %></span>
+        <span class="link"><%= link_to t(".readings.heading.history_link"), user_readings_path(current_user) %></span>
       </h3>
       <div class="flash"></div>
-      <p class="note"><%= ts('Some works you\'ve marked for later.') %></p>
-      <ul class="readings works index group">
+      <p class="note"><%= t(".readings.note") %></p>
+      <ol class="reading work index group">
         <% @homepage.readings.each do |reading| %>
-          <%= render 'readings/reading_blurb', work: reading.work, reading: reading %>
+          <%= render "readings/reading_blurb", work: reading.work, reading: reading %>
         <% end %>
-      </ul>
+      </ol>
     </div>
   <% end %>
 

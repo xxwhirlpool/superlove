@@ -21,42 +21,35 @@ module UsersHelper
   end
 
   # Determine which icon to show on user pages
-  def standard_icon(user = nil, pseud = nil)
-    if pseud && pseud.icon
-      pseud.icon.variant(resize_to_limit: [100, 100], loader: { page: nil })
-    elsif user && user.default_pseud && user.default_pseud.icon
-      user.default_pseud.icon.variant(resize_to_limit: [100, 100], loader: { page: nil })
-    else
-      '/images/skins/iconsets/default/icon_user.png'
-    end
+  def standard_icon(pseud = nil)
+    return "/images/skins/iconsets/default/icon_user.png" unless pseud&.icon&.attached?
+
+    rails_blob_url(pseud.icon.variant(:standard))
   end
-  
-   def icon_display(user = nil, pseud = nil)
+
+  # no alt text if there isn't specific alt text
+  def icon_display(user = nil, pseud = nil)
     path = user ? (pseud ? user_pseud_path(pseud.user, pseud) : user_path(user)) : nil
-    pseud ||= user.default_pseud if @user
-    icon = standard_icon(user, pseud)
+    pseud ||= user.default_pseud if user
+    icon = standard_icon(pseud)
     alt_text = pseud.try(:icon_alt_text) || nil
 
-    if path && user.default_pseud.icon.attached?
-      link_to image_tag(icon, class: 'icon'), path
-    elsif user.default_pseud.icon.attached?
-      image_tag(icon, class: 'icon')
+    if path
+      link_to image_tag(icon, alt: alt_text, class: 'icon', skip_pipeline: true), path
     else
-      link_to image_tag('/images/skins/iconsets/default/icon_user.png', class: 'icon')
+      image_tag(icon, class: 'icon', skip_pipeline: true)
     end
   end
-  
-#  def icon_display(user)
-#    if pseud && pseud.icon_file_name
- #     pseud.icon_file_name_
- #   elsif user && user.default_pseud && user.default_pseud.icon_file_name
- #   user.default_pseud.icon_file_name
- # end
-
 
   # Prints coauthors
   def print_coauthors(user)
     user.coauthors.collect(&:name).join(', ')
+  end
+
+  # Prints link to collections page with user-appropriate number of collections
+  def collections_link(user)
+    total = SearchCounts.collection_count_for_user(user)
+    span_if_current t("users_helper.collections_link", coll_number: total.to_s), user_collections_path(user)
   end
 
   # Prints link to bookmarks page with user-appropriate number of bookmarks
@@ -91,21 +84,21 @@ module UsersHelper
   def series_link(user, pseud = nil)
     return pseud_series_link(pseud) if pseud.present? && !pseud.new_record?
 
-    if current_user.nil?
-      total = Series.visible_to_all.exclude_anonymous.for_pseuds(user.pseuds).length
-    else
-      total = Series.visible_to_registered_user.exclude_anonymous.for_pseuds(user.pseuds).length
-    end
-    span_if_current ts('Series (%{series_number})', series_number: total.to_s), user_series_index_path(@user)
+    total = if User.current_user.nil?
+              Series.visible_to_all.exclude_anonymous.for_user(user).count.size
+            else
+              Series.visible_to_registered_user.exclude_anonymous.for_user(user).count.size
+            end
+    span_if_current ts("Series (%{series_number})", series_number: total.to_s), user_series_index_path(user)
   end
 
   def pseud_series_link(pseud)
-    if current_user.nil?
-      total = Series.visible_to_all.exclude_anonymous.for_pseuds([pseud]).length
-    else
-      total = Series.visible_to_registered_user.exclude_anonymous.for_pseuds([pseud]).length
-    end
-    span_if_current ts('Series (%{series_number})', series_number: total.to_s), user_pseud_series_index_path(@user, pseud)
+    total = if User.current_user.nil?
+              Series.visible_to_all.exclude_anonymous.for_pseud(pseud).count.size
+            else
+              Series.visible_to_registered_user.exclude_anonymous.for_pseud(pseud).count.size
+            end
+    span_if_current ts("Series (%{series_number})", series_number: total.to_s), user_pseud_series_index_path(pseud.user, pseud)
   end
 
   def gifts_link(user)
@@ -150,7 +143,7 @@ module UsersHelper
       t("users_helper.log.warn")
     when ArchiveConfig.ACTION_RENAME
       t("users_helper.log.rename")
-    when ArchiveConfig.ACTION_PASSWORD_RESET
+    when ArchiveConfig.ACTION_PASSWORD_CHANGE
       t("users_helper.log.password_change")
     when ArchiveConfig.ACTION_NEW_EMAIL
       t("users_helper.log.email_change")
@@ -158,6 +151,8 @@ module UsersHelper
       t("users_helper.log.troubleshot")
     when ArchiveConfig.ACTION_NOTE
       t("users_helper.log.note")
+    when ArchiveConfig.ACTION_PASSWORD_RESET
+      t("users_helper.log.password_reset")
     end
   end
 

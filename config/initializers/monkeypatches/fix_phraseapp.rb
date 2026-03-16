@@ -9,8 +9,8 @@ module FixPhraseapp
   end
 end
 
-if PhraseApp::VERSION == "1.6.0"
-  PhraseApp::InContextEditor::BackendService.prepend(FixPhraseapp)
-else
-  puts "WARNING: The monkeypatch #{__FILE__} was written for version 1.6.0 of the phraseapp-in-context-editor-ruby gem, but you are running #{PhraseApp::VERSION}. Please update or remove the monkeypatch."
-end
+# if PhraseApp::VERSION == "1.6.0"
+#   PhraseApp::InContextEditor::BackendService.prepend(FixPhraseapp)
+# else
+#   puts "WARNING: The monkeypatch #{__FILE__} was written for version 1.6.0 of the phraseapp-in-context-editor-ruby gem, but you are running #{PhraseApp::VERSION}. Please update or remove the monkeypatch."
+# end
