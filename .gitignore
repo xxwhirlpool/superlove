@@ -90,3 +90,5 @@ resque_schedule_backup.yml
 /config/storage.yml
 config/environments/production.rb
 config/storage.yml
+config/docker/database.yml
+/config/docker/database.yml
