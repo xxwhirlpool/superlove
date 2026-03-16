@@ -1,5 +1,3 @@
-require "unicode_utils/casefold"
-
 class Tag < ApplicationRecord
   include Searchable
   include StringCleaner
@@ -60,7 +58,7 @@ class Tag < ApplicationRecord
 
     # If we've reached here, then the value has changed, and we need to make
     # sure that the new value is written to the database.
-    REDIS_GENERAL.sadd("tag_update", id)
+    REDIS_GENERAL.sadd?("tag_update", id)
     value
   end
 
@@ -110,7 +108,7 @@ class Tag < ApplicationRecord
   end
 
   has_many :mergers, foreign_key: 'merger_id', class_name: 'Tag'
-  belongs_to :merger, class_name: 'Tag'
+  belongs_to :merger, class_name: "Tag"
   belongs_to :fandom
   belongs_to :media
   belongs_to :last_wrangler, polymorphic: true
@@ -161,17 +159,21 @@ class Tag < ApplicationRecord
   has_many :tag_set_associations, dependent: :destroy
   has_many :parent_tag_set_associations, class_name: 'TagSetAssociation', foreign_key: 'parent_tag_id', dependent: :destroy
 
-  validates_presence_of :name
+  validates :name, presence: true
   validates :name, uniqueness: true
-  validates_length_of :name, minimum: 1, message: "cannot be blank."
-  validates_length_of :name,
-    maximum: ArchiveConfig.TAG_MAX,
-    message: "^Tag name '%{value}' is too long -- try using less than %{count} characters or using commas to separate your tags."
-  validates_format_of :name,
-    with: /\A[^,*<>^{}=`\\%]+\z/,
-    message: "^Tag name '%{value}' cannot include the following restricted characters: , &#94; * < > { } = ` \\ %"
-
-  validates_presence_of :sortable_name
+  validates :name,
+            length: { minimum: 1,
+                      message: "cannot be blank." }
+  validates :name,
+            length: { maximum: ArchiveConfig.TAG_MAX,
+                      message: "^Tag name '%{value}' is too long -- try using less than %{count} characters or using commas to separate your tags." }
+  validates :name,
+            format: { with: /\A[^,，、*<>^{}=`\\%]+\z/,
+                      message: "^Tag name '%{value}' cannot include the following restricted characters: , &#94; * < > { } = ` ， 、 \\ %" }
+  validates :name,
+            format: { without: /\A\p{Cf}+\z/,
+                      message: "^Tag name cannot be blank." }
+  validates :sortable_name, presence: true
 
   validate :unwrangleable_status
   def unwrangleable_status
@@ -226,6 +228,21 @@ class Tag < ApplicationRecord
     end
   end
 
+  # queue_flush_work_cache will update the cached work (bookmarkable) info for
+  # bookmarks, but we still need to expire the portion of bookmark blurbs that
+  # contains the bookmarker's tags.
+  after_update :queue_flush_bookmark_cache
+  def queue_flush_bookmark_cache
+    async_after_commit(:flush_bookmark_cache) if saved_change_to_name?
+  end
+
+  def flush_bookmark_cache
+    self.bookmarks.each do |bookmark|
+      ActionController::Base.new.expire_fragment("bookmark-owner-blurb-#{bookmark.cache_key}-v3")
+      ActionController::Base.new.expire_fragment("bookmark-blurb-#{bookmark.cache_key}-v3")
+    end
+  end
+
   before_save :set_last_wrangler
   def set_last_wrangler
     unless User.current_user.nil?
@@ -271,9 +288,6 @@ class Tag < ApplicationRecord
   scope :unfilterable, -> { nonsynonymous.where(unwrangleable: false) }
   scope :unwrangleable, -> { where(unwrangleable: true) }
 
-  # we need to manually specify a LEFT JOIN instead of just joins(:common_taggings or :meta_taggings) here because
-  # what we actually need are the empty rows in the results
-  scope :unwrangled, -> { joins("LEFT JOIN `common_taggings` ON common_taggings.common_tag_id = tags.id").where("unwrangleable = 0 AND common_taggings.id IS NULL") }
   scope :in_use, -> { where("canonical = 1 OR taggings_count_cache > 0") }
   scope :first_class, -> { joins("LEFT JOIN `meta_taggings` ON meta_taggings.sub_tag_id = tags.id").where("meta_taggings.id IS NULL") }
 
@@ -566,7 +580,18 @@ class Tag < ApplicationRecord
   # Substitute characters that are particularly prone to cause trouble in urls
   def self.find_by_name(string)
     return unless string.is_a? String
-    string = string.gsub(
+
+    self.find_by(name: from_param(string))
+  end
+
+  def self.find_by_name!(string)
+    return unless string.is_a? String
+
+    self.find_by!(name: from_param(string))
+  end
+
+  def self.from_param(string)
+    string.gsub(
       /\*[sadqh]\*/,
       '*s*' => '/',
       '*a*' => '&',
@@ -574,7 +599,6 @@ class Tag < ApplicationRecord
       '*q*' => '?',
       '*h*' => '#'
     )
-    self.where('tags.name = ?', string).first
   end
 
   # If a tag by this name exists in another class, add a suffix to disambiguate them
@@ -617,9 +641,9 @@ class Tag < ApplicationRecord
     !(self.canonical? || self.unwrangleable? || self.merger_id.present? || self.mergers.any?)
   end
 
-  # Returns true if a tag has been used in posted works
-  def has_posted_works?
-    self.works.posted.any?
+  # Returns true if a tag has been used in posted works that are revealed and not hidden
+  def has_posted_works? # rubocop:disable Naming/PredicateName
+    self.works.posted.revealed.unhidden.any?
   end
 
   # sort tags by name
@@ -655,8 +679,10 @@ class Tag < ApplicationRecord
   def reindex_associated(reindex_pseuds = false)
     works.reindex_all
     external_works.reindex_all
+    collections.reindex_all
     bookmarks.reindex_all
 
+    filtered_collections.reindex_all
     filtered_works.reindex_all
     filtered_external_works.reindex_all
 
@@ -1033,19 +1059,34 @@ class Tag < ApplicationRecord
     end
   end
 
+  # unwrangleable:
+  #   - A boolean stored in the tags table
+  #   - Default false
+  #   - Set to true by wranglers on tags that should be excluded from the wrangling process altogether. Example: freeform tags like "idk how to explain it but trust me"
+  #
+  # unwrangled:
+  #   - A computed value
+  #   - True for "orphan" tags yet to be tied to something (fandom, character, etc.) by wranglers
+  #   - Exact meaning may change depending on the nature of the tag (search for definitions of unwrangled? overriding this one)
+  #
+  def unwrangled?
+    common_taggings.empty?
+  end
+
   #################################
   ## SEARCH #######################
   #################################
 
   def unwrangled_query(tag_type, options = {})
-    self_type = %w(Character Fandom Media).include?(self.type) ? self.type.downcase : "fandom"
+    self_type = %w[Character Fandom Media].include?(self.type) ? self.type.downcase : "fandom"
     TagQuery.new(options.merge(
-      type: tag_type,
-      unwrangleable: false,
-      wrangled: false,
-      "pre_#{self_type}_ids": [self.id],
-      per_page: Tag.per_page
-    ))
+                   type: tag_type,
+                   unwrangleable: false,
+                   wrangled: false,
+                   has_posted_works: true,
+                   "pre_#{self_type}_ids": [self.id],
+                   per_page: Tag.per_page
+                 ))
   end
 
   def unwrangled_tags(tag_type, options = {})
@@ -1129,7 +1170,7 @@ class Tag < ApplicationRecord
     # if type has changed, expire the tag's parents' children cache (it stores the children's type)
     if tag.saved_change_to_type?
       tag.parents.each do |parent_tag|
-        ActionController::Base.new.expire_fragment("views/tags/#{parent_tag.id}/children")
+        ActionController::Base.new.expire_fragment("v1/views/tags/#{parent_tag.id}/children")
       end
     end
 
@@ -1165,17 +1206,29 @@ class Tag < ApplicationRecord
       exists: true
     )
 
-    # Calculate the fandoms associated with this tag, because we'll set any
-    # TagNominations with a matching parent_tagname to have parented: true.
-    parent_names = parents.where(type: "Fandom").pluck(:name)
+    if canonical?
+      # Calculate the fandoms associated with this tag, because we'll set any
+      # TagNominations with a matching parent_tagname to have parented: true.
+      parent_names = parents.where(type: "Fandom").pluck(:name)
 
-    # If this tag has any fandoms at all, we also want to count it as parented
-    # for nominations with a blank parent_tagname. See the set_parented
-    # function in TagNominations for the calculation that we're trying to mimic
-    # here.
-    parent_names << "" if parent_names.present?
+      # If this tag has any fandoms at all, we also want to count it as parented
+      # for nominations with a blank parent_tagname. See the set_parented
+      # function in TagNominations for the calculation that we're trying to mimic
+      # here.
+      parent_names << "" if parent_names.present?
 
-    TagNomination.where(tagname: name, parent_tagname: parent_names).update_all(parented: true)
+      TagNomination.where(tagname: name, parent_tagname: parent_names).update_all(parented: true)
+    end
+
+    return unless saved_change_to_name? && name_before_last_save.present?
+
+    # Act as if the tag with the previous name was deleted and mirror clear_tag_nominations
+    TagNomination.where(tagname: name_before_last_save).update_all(
+      canonical: false,
+      exists: false,
+      parented: false,
+      synonym: nil
+    )
   end
 
   before_destroy :clear_tag_nominations
@@ -1196,6 +1249,6 @@ class Tag < ApplicationRecord
   end
 
   def normalize_for_tag_comparison(string)
-    UnicodeUtils.casefold(string).mb_chars.unicode_normalize(:nfkd).gsub(/[\u0300-\u036F]/u, "")
+    string.downcase(:fold).mb_chars.unicode_normalize(:nfkd).gsub(/[\u0300-\u036F]/u, "")
   end
 end

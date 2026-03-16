@@ -27,6 +27,6 @@
 </div>
 
 <% # This feedback_comment used to be inbox_comment... not sure why %>
-<div class="userstuff">
-  <%= raw sanitize_field(feedback_comment, :comment_content) %>
+<div class="message">
+  <%= raw feedback_comment.sanitized_content %>
 </div>

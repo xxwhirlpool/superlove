@@ -34,7 +34,7 @@ class Skin < ApplicationRecord
   belongs_to :author, class_name: 'User'
   has_many :preferences
 
-  serialize :media, Array
+  serialize :media, type: Array, coder: YAML, yaml: { permitted_classes: [String] }
 
   # a skin can be both parent and child
   has_many :skin_parents, foreign_key: 'child_skin_id',
@@ -48,13 +48,16 @@ class Skin < ApplicationRecord
 
   accepts_nested_attributes_for :skin_parents, allow_destroy: true, reject_if: proc { |attrs| attrs[:position].blank? || (attrs[:parent_skin_title].blank? && attrs[:parent_skin_id].blank?) }
 
+  has_one_attached :icon do |attachable|
+    attachable.variant(:standard, resize_to_limit: [100, 100], loader: { n: -1 })
+  end
 
- # has_attached_file :icon,
- #                   styles: { standard: "100x100>" },
- #                   url: ":rails_root/icons/:id_partition/:style/:filename",
- #                   path: %w(staging unproduction).include?(Rails.env) ? ":rails_root/icons/:id_partition/:style/:filename" : ":rails_root/public:url",
- #                   storage: %w(staging unproduction).include?(Rails.env) ? ":rails_root/icons/:id_partition/:style/:filename" : :filesystem,
- #                   default_url: ":rails_root/images/skins/iconsets/default/icon_skins.png"
+  # i18n-tasks-use t("errors.attributes.icon.invalid_format")
+  # i18n-tasks-use t("errors.attributes.icon.too_large")
+  validates :icon, attachment: {
+    allowed_formats: %r{image/\S+},
+    maximum_size: ArchiveConfig.ICON_SIZE_KB_MAX.kilobytes
+  }
 
   after_save :skin_invalidate_cache
   def skin_invalidate_cache
@@ -70,73 +73,87 @@ class Skin < ApplicationRecord
     end
   end
 
-#  validates_attachment_content_type :icon, content_type: /image\/\S+/, allow_nil: true
-#  validates_attachment_size :icon, less_than: 500.kilobytes, allow_nil: true
-#  validates_length_of :icon_alt_text, allow_blank: true, maximum: ArchiveConfig.ICON_ALT_MAX,
-#    too_long: ts("must be less than %{max} characters long.", max: ArchiveConfig.ICON_ALT_MAX)
+  validates :icon_alt_text, length: { maximum: ArchiveConfig.ICON_ALT_MAX }
 
-validates_length_of :description, allow_blank: true, maximum: ArchiveConfig.SUMMARY_MAX,
- too_long: ts("must be less than %{max} characters long.", max: ArchiveConfig.SUMMARY_MAX)
+  validates :description, length: { maximum: ArchiveConfig.SUMMARY_MAX }
 
-validates_length_of :css, allow_blank: true, maximum: ArchiveConfig.CONTENT_MAX,
-  too_long: ts("must be less than %{max} characters long.", max: ArchiveConfig.CONTENT_MAX)
+  validates :css, length: { maximum: ArchiveConfig.CONTENT_MAX }
 
-before_validation :clean_media
-def clean_media
-   # handle bizarro cucumber-only error that prevents media from deserializing correctly when attachments are made
-  if media && media.is_a?(Array) && !media.empty?
-     new_media = media.flatten.compact.collect {|m| m.gsub(/\["(\w+)"\]/, '\1')}
-     self.media = new_media
-   end
- end
+  before_validation :clean_media
+  def clean_media
+    # handle bizarro cucumber-only error that prevents media from deserializing correctly when attachments are made
+    if media && media.is_a?(Array) && !media.empty?
+      new_media = media.flatten.compact.collect {|m| m.gsub(/\["(\w+)"\]/, '\1')}
+      self.media = new_media
+    end
+  end
 
- validate :valid_media
- def valid_media
-   if media && media.is_a?(Array) && media.any? {|m| !MEDIA.include?(m)}
-     errors.add(:base, ts("We don't currently support the media type %{media}, sorry! If we should, please let Support know.", media: media.join(', ')))
-   end
- end
+  validate :valid_media
+  def valid_media
+    if media && media.is_a?(Array) && media.any? {|m| !MEDIA.include?(m)}
+      errors.add(
+        :base,
+        :invalid_media,
+        media: media.join(", ")
+      )
+    end
+  end
 
- validates :ie_condition, inclusion: {in: IE_CONDITIONS, allow_nil: true, allow_blank: true}
- validates :role, inclusion: {in: ALL_ROLES, allow_blank: true, allow_nil: true }
+  validates :ie_condition, inclusion: {in: IE_CONDITIONS, allow_nil: true, allow_blank: true}
+  validates :role, inclusion: {in: ALL_ROLES, allow_blank: true, allow_nil: true }
 
- # validate :valid_public_preview
- # def valid_public_preview
- #   return true if (self.official? || !self.public? || self.icon_file_name)
- #   errors.add(:base, ts("You need to upload a screencap if you want to share your skin."))
- # end
+  validate :valid_public_preview
+  def valid_public_preview
+    return true if self.official? || !self.public? || self.icon.attached?
+    errors.add(:base, :no_public_preview)
+  end
 
- validates_presence_of :title
- validates :title, uniqueness: { message: ts("must be unique"), case_sensitive: true }
+  validates :title, presence: true, uniqueness: { case_sensitive: false }, length: { 
+    maximum: ArchiveConfig.TITLE_MAX 
+  }
+  validate :allowed_title
+  def allowed_title
+    return true unless self.title.match(/archive/i)
 
- validates_numericality_of :margin, :base_em, allow_nil: true
- validate :valid_font
- def valid_font
-   return if self.font.blank?
-   self.font.split(',').each do |subfont|
-     if sanitize_css_font(subfont).blank?
-       errors.add(:font, "cannot use #{subfont}.")
-     end
-   end
- end
+    authorized_roles = if self.is_a?(WorkSkin)
+                         %w[superadmin support]
+                       else
+                         %w[superadmin]
+                       end
 
- validate :valid_colors
- def valid_colors
+    return true if (User.current_user.roles & authorized_roles).present?
 
-   if !self.background_color.blank? && sanitize_css_value(self.background_color).blank?
-     errors.add(:background_color, "uses a color that is not allowed.")
-   end
+    errors.add(:base, :archive_in_title)
+  end
 
-   if !self.foreground_color.blank? && sanitize_css_value(self.foreground_color).blank?
-     errors.add(:foreground_color, "uses a color that is not allowed.")
-   end
- end
+  validates_numericality_of :margin, :base_em, allow_nil: true
+  validate :valid_font
+  def valid_font
+    return if self.font.blank?
+    self.font.split(',').each do |subfont|
+      if sanitize_css_font(subfont).blank?
+        errors.add(:font, "cannot use #{subfont}.")
+      end
+    end
+  end
 
- validate :clean_css
- def clean_css
-   return if self.css.blank?
-   self.css = clean_css_code(self.css)
- end
+  validate :valid_colors
+  def valid_colors
+
+    if !self.background_color.blank? && sanitize_css_value(self.background_color).blank?
+      errors.add(:background_color, "uses a color that is not allowed.")
+    end
+
+    if !self.foreground_color.blank? && sanitize_css_value(self.foreground_color).blank?
+      errors.add(:foreground_color, "uses a color that is not allowed.")
+    end
+  end
+
+  validate :clean_css
+  def clean_css
+    return if self.css.blank?
+    self.css = clean_css_code(self.css)
+  end
 
   scope :public_skins, -> { where(public: true) }
   scope :approved_skins, -> { where(official: true, public: true) }
@@ -332,7 +349,7 @@ def clean_media
 
   # This is the main function that actually returns code to be embedded in a page
   def get_style(roles_to_include = DEFAULT_ROLES_TO_INCLUDE)
-    style = ""
+    style = +""
 
     if self.get_role != "override" && self.get_role != "site" &&
        self.id != AdminSetting.default_skin_id &&
@@ -359,7 +376,7 @@ def clean_media
 
   # This builds the stylesheet, so the order is important
   def get_wizard_settings
-    style = ""
+    style = +""
 
     style += font_size_styles(base_em) if base_em.present?
 
@@ -381,7 +398,7 @@ def clean_media
   end
 
   def get_style_block(roles_to_include)
-    block = ""
+    block = +""
     if self.cached?
       # cached skin in a directory
       block = get_cached_style(roles_to_include)
@@ -409,7 +426,7 @@ def clean_media
   end
 
   def get_cached_style(roles_to_include)
-    block = ""
+    block = +""
     self_skin_dir = Skin.skins_dir + self.skin_dirname
     Skin.skin_dir_entries(self_skin_dir, /^\d+_(.*)\.css$/).each do |sub_file|
       if sub_file.match(/^\d+_(.*)\.css$/)
@@ -476,8 +493,8 @@ def clean_media
           skin.ie_condition = skin_ie
           skin.unusable = true
           skin.official = true
-     #     File.open(version_dir + 'preview.png', 'rb') {|preview_file| skin.icon = preview_file}
-          skin.save!
+          skin.icon.attach(io: File.open("#{version_dir}preview.png", "rb"), content_type: "image/png", filename: "preview.png")
+          skin.save!(validate: false)
           skins << skin
         end
 
@@ -490,9 +507,9 @@ def clean_media
           top_skin = Skin.new(title: "Archive #{version}", css: "", description: "Version #{version} of the default Archive style.",
                               public: true, role: "site", media: ["screen"])
         end
-      #  File.open(version_dir + 'preview.png', 'rb') {|preview_file| top_skin.icon = preview_file}
+        top_skin.icon.attach(io: File.open("#{version_dir}preview.png", "rb"), content_type: "image/png", filename: "preview.png")
         top_skin.official = true
-        top_skin.save!
+        top_skin.save!(validate: false)
         skins.each_with_index do |skin, index|
           skin_parent = top_skin.skin_parents.build(child_skin: top_skin, parent_skin: skin, position: index+1)
           skin_parent.save!
@@ -536,7 +553,7 @@ def clean_media
   end
 
   def self.default
-    Skin.find_by(title: "Default", official: true) || Skin.create_default
+    Skin.find_by(title: "Default", official: true, public: true, role: "site") || Skin.create_default
   end
 
   def self.create_default
@@ -570,17 +587,15 @@ def clean_media
     end
   end
 
-#  def set_thumbnail_from_current_version
-#    current_version = self.class.get_current_version
-#
-#    icon_path = if current_version
-#                  self.class.site_skins_dir + current_version + "/preview.png"
-#                else
-#                  self.class.site_skins_dir + "preview.png"
-#                end
+  def set_thumbnail_from_current_version
+    current_version = self.class.get_current_version
 
-#    File.open(icon_path) do |icon_file|
-#      self.icon = icon_file
-#    end
-#  end
+    icon_path = if current_version
+                  self.class.site_skins_dir + current_version + "/preview.png"
+                else
+                  self.class.site_skins_dir + "preview.png"
+                end
+
+    self.icon.attach(io: File.open(icon_path), content_type: "image/png", filename: "preview.png")
+  end
 end

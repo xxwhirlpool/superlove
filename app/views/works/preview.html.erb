@@ -1,55 +1,55 @@
 <!--Descriptive page name, messages and instructions-->
-<h2><%= ts("Preview") %></h2>
+<h2><%= t(".page_heading") %></h2>
 <%= error_messages_for :work %>
 <!--/descriptions-->
 
 <!--main content-->
 <div id="previewpane">
-  <%= render "works/work_header" %>
-  <div id="work-content">
-    <% if @chapters %>
-      <% @chapters.each do |chapter| %>
-        <%= render "chapters/chapter", chapter: chapter %>
-      <% end %>
-    <% else %>
-      <div class="chapter-text"><%=raw sanitize_field(@chapter, :content) %></div>
-    <% end %>
-  </div>
+  <div class="draft-work">
+    <%= render "works/meta" %>
 
-  <% inspired_by = get_inspired_by(@work) %>
-  <% if !@work.endnotes.blank? || !@work.serial_works.blank? || !inspired_by.empty? %>
-    <!--afterword-->
-    <div class="afterword">
-      <% unless @work.endnotes.blank? %>
-        <%= render "works/work_endnotes" %>
+    <%= render "works/work_skin" %>
+
+    <div id="workskin">
+      <%= render "works/preface" %>
+
+      <div id="work-content">
+        <% if @chapters %>
+          <% @chapters.each do |chapter| %>
+            <%= render "chapters/chapter", chapter: chapter %>
+          <% end %>
+        <% else %>
+          <div class="chapter-text"><%=raw sanitize_field(@chapter, :content) %></div>
+        <% end %>
+      </div>
+
+      <% inspired_by = get_inspired_by(@work) %>
+      <% if !@work.endnotes.blank? || !@work.serial_works.blank? || !inspired_by.empty? %>
+        <!--afterword-->
+        <div class="afterword">
+          <% unless @work.endnotes.blank? %>
+            <%= render "works/work_endnotes" %>
+          <% end %>
+          <% unless @work.serial_works.blank? %>
+            <%= render "works/work_series_links" %>
+          <% end %>
+          <% unless inspired_by.empty? %>
+            <%= render "works/work_approved_children", inspired_by: inspired_by %>
+          <% end %>
+        </div>
+        <!--/afterword-->
       <% end %>
-      <% unless @work.serial_works.blank? %>
-        <%= render "works/work_series_links" %>
-      <% end %>
-      <% unless inspired_by.empty? %>
-        <%= render "works/work_approved_children", inspired_by: inspired_by %>
-      <% end %>
+
     </div>
-    <!--/afterword-->
+    <!-- END work skin -->
+  </div>
+  <!-- END draft -->
+
+  <%= form_for(@work) do |f| %>
+    <%= render "hidden_fields", form: f %>
+
+    <%= render "posting_fieldset" %>
   <% end %>
 </div>
-
-<%= form_for(@work) do |f| %>
-  <%= render "hidden_fields", form: f %>
-  <fieldset>
-    <legend><%= ts("Post Work") %></legend>
-    <div class="actions">
-      <% if @work.posted? %>
-        <%= submit_tag ts("Update"), name: "update_button" %>
-      <% else %>
-        <%= submit_tag ts("Post"),
-                         name: "post_button",
-                         data: { disable_with: ts("Please wait...") } %>
-        <%= submit_tag ts("Save As Draft"), name: "save_button" %>
-      <% end %>
-      <%= submit_tag ts("Edit"), name: "edit_button" %>
-      <%= submit_tag ts("Cancel"), name: "cancel_button" %>
-    </div>
-  </fieldset>
-<% end %>
+<!-- END previewpane -->
 <!--/content-->

@@ -21,4 +21,7 @@ redis_autocomplete:
 redis_hits:
   test: redis:6379
   development: redis:6379
+redis_ratelimits:
+  test: redis:6379
+  development: redis:6379
   production: redis:6379

@@ -1,14 +1,15 @@
 <!-- Gets embedded anywhere we need to list comments on a top-level commentable. We need the local variable "commentable" here. -->
 <div id="feedback">
   <h3 class="landmark"><%= ts("Actions") %></h3>
-
   <ul class="actions right" role="navigation">
     <% if @work || @admin_post %>
       <li><%= link_to '&#8593; '.html_safe + ts('Top'), "#main" %></li>
     <% end %>
 
     <% if @work && @previous_chapter %>
-      <li><%= link_to '&#8592;'.html_safe + ts('Previous Chapter'), [@work, @previous_chapter, :anchor => "workskin"] %></li>
+      <li>
+        <%= link_to t(".previous_chapter_html", back_arrow_html: "&#8592;".html_safe), [@work, @previous_chapter, { anchor: "workskin" }] %>
+      </li>
     <% end %>
 
     <% if @work && @next_chapter %>
@@ -27,7 +28,7 @@
       <li><%= link_to ts('Back to superlove News Index'), admin_posts_path %></li>
     <% end %>
 
-    <% if @work && !is_author_of?(@work) && !blocked_by?(@work) %>
+    <% if @work && !is_author_of?(@work) && !blocked_by?(@work) && !logged_in_as_admin? %>
       <li>
         <%= form_for(:kudo, url: kudos_path, html: { method: 'post', id: 'new_kudo' }) do |kudo_form| %>
           <%= kudo_form.hidden_field :commentable_id, :value => @work.id %>
@@ -56,7 +57,7 @@
 
     <% if logged_in? && @work && marked_for_later?(@work) %>
       <li>
-        <%= mark_as_read_link(@work) %>
+        <%= mark_as_read_button(@work) %>
       </li>
     <% end %>
 
@@ -107,10 +108,17 @@
   <% elsif commentable_parent.is_a?(Work) && commentable_parent.in_unrevealed_collection %>
     <div class="notice">
       <%= t(".permissions.work.unrevealed") %>
-    </div>
   <% elsif commentable_parent.is_a?(Work) && blocked_by?(commentable_parent) %>
     <div class="notice">
       <%= t(".blocked") %>
+    </div>
+  <% elsif (commentable.is_a?(Work) || commentable.is_a?(Chapter)) && !commentable.posted %>
+    <div class="notice">
+      <%= t(".permissions.work.draft") %>
+    </div>
+  <% elsif logged_in_as_admin? %>
+    <div class="notice">
+      <%= t(".logged_as_admin") %>
     </div>
   <% else %>
     <div id="add_comment_placeholder" title="top level comment">

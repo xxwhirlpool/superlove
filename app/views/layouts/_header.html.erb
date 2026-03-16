@@ -1,10 +1,4 @@
-<!-- BEGIN BETA CAVEATS! -->
-<noscript>
-  <p id="javascript-warning">
-    <%= ts('While we\'ve done our best to make the core functionality of this site accessible without javascript, it will work better with it enabled. Please consider turning it on!', key: 'header' ) %>
-  </p>
-</noscript>
-<!-- END BETA CAVEATS! --> 
+<noscript><p id="javascript-warning"><%= t(".javascript") %></p></noscript>
 
 <!-- BEGIN header -->
 <% if @collection %>
@@ -12,7 +6,7 @@
   <style type="text/css">
   #header h2 { 
     background: #616C90 <% if (header_url = @collection.header_image_url || (@collection_parent && @collection_parent.header_image_url)) %>
-      <% height = (size = FastImage.size(header_url, :timeout => 1)) ? size[1].to_s + 'px' : '100%' %>
+      <% height = (size = FastImage.size(header_url, timeout: 1)) ? "#{size[1]}px" : "100%" %>
       url(<%= header_url %>); height: <%= height %>
     <% end %>;
   }
@@ -27,57 +21,55 @@
   </h1>
 
   <% if logged_in? || logged_in_as_admin? %>
-    <%= render 'users/sessions/greeting' %>
+    <%= render "users/sessions/greeting" %>
   <% else %>
     <div id="login">
-      <%= link_to t(".login"), new_user_session_path, id: "login-dropdown", class: "button", role: "menuitem", "data-dropdown": "small-login" %>
+      <%= link_to t(".login"), new_user_session_path(return_to: request.fullpath.start_with?(new_user_session_path) ? params[:return_to] : request.fullpath), id: "login-dropdown" %>
       <%= render 'users/sessions/login' %>
     </div>
   <% end %>
 
-  <h3 class="landmark"><%= ts('Site Navigation', key: 'header') %></h3>
-  <nav id="primary">
+  <nav id="primary" aria-label="<%= t(".nav.label") %>">
     <ul role="navigation">
-      <li>
-        <%= link_to ts('Fandoms', key: 'header'), menu_fandoms_path %>
-        <%= render 'menu/menu_fandoms' %>
+      <li class="dropdown">
+        <%= link_to t(".nav.fandoms"), menu_fandoms_path %>
+        <%= render "menu/menu_fandoms" %>
       </li>
-      <li>
-        <%= link_to ts('Browse', key: 'header'), menu_browse_path %>
-        <%= render 'menu/menu_browse' %>
+      <li class="dropdown">
+        <%= link_to t(".nav.browse"), menu_browse_path %>
+        <%= render "menu/menu_browse" %>
       </li>
-      <li>
-        <%= link_to ts('Search', key: 'header'), menu_search_path %>
-        <%= render 'menu/menu_search' %>
+      <li class="dropdown">
+        <%= link_to t(".nav.search"), menu_search_path %>
+        <%= render "menu/menu_search" %>
       </li>
-      <li>
-        <%= link_to ts('About', key: 'header'), menu_about_path %>
-        <%= render 'menu/menu_about' %>
+      <li class="dropdown">
+        <%= link_to t(".nav.about"), menu_about_path %>
+        <%= render "menu/menu_about" %>
       </li>
-      <li>
+      <li class="dropdown">
         <%= link_to ts('Links', key: 'header'), menu_links_path %>
         <%= render 'menu/menu_links' %>
       </li>
-      <li>
+      <li class="dropdown">
         <%= link_to ts('Community', key: 'header'), menu_community_path %>
         <%= render 'menu/menu_community' %>
       </li>
-  	  <li class="search"><%= render 'works/search_box' %></li>
+      <li class="search"><%= render "works/search_box" %></li>
     </ul>
   </nav>
 
   <% if logged_in_as_admin? %>
-    <%= render 'admin/header' %>
+    <%= render "admin/header" %>
   <% end %>
 
   <% if @collection %>
     <h2 class="collections">
       <% unless @collection.header_image_url.present? %>
-        <%= @collection.title ? @collection.title : (@collection_parent ? @collection_parent.title : ts('New Collection', key: 'header')) %>
+        <%= @collection.title || @collection_parent&.title || t(".collections.new") %>
       <% end %>
     </h2>
   <% end %>
-
 </header>
 
 <%= render "layouts/banner" %>

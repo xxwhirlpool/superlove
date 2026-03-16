@@ -1,16 +1,18 @@
-<% unless current_user && current_user.try(:preference).try(:banner_seen) %>
-<% if @admin_banner && @admin_banner.active? %>
-<% unless current_user.nil? && session[:hide_banner] %>
-  <div class="<%= @admin_banner.banner_type %> announcement" id="admin-banner">
-      <%=raw sanitize_field(@admin_banner, :content) %>
-    <% if current_user.nil? %>
-      <%= link_to "&times;".html_safe, current_path_with(hide_banner: true), :class => 'showme action', :title => ts("hide banner") %>
-    <% else %>
-      <%= form_tag end_banner_user_path(current_user), :method => :post, :remote => true do %>
-        <%= submit_tag "&times;".html_safe, :title => ts("hide banner") %>
+<% if @admin_banner&.active? %>
+  <% unless session[:hide_banner] || current_user&.preference&.banner_seen %>
+    <div class="<%= @admin_banner.banner_type %> announcement" id="admin-banner">
+      <%= raw sanitize_field(@admin_banner, :content, image_safety_mode: true) %>
+      <% if current_user.nil? %>
+        <%= link_to current_path_with(hide_banner: true), "aria-label": t(".hide"), class: "showme action" do
+              content_tag(:span, "&times;".html_safe, "aria-hidden": true)
+            end %>
+      <% else %>
+        <%= form_tag end_banner_user_path(current_user), method: :post, remote: true do %>
+          <%= button_tag "aria-label": t(".hide"), class: "showme action" do
+              content_tag(:span, "&times;".html_safe, "aria-hidden": true)
+            end %>
+        <% end %>
       <% end %>
-    <% end %>
-  </div>
-<% end %>
-<% end %>
+    </div>
+  <% end %>
 <% end %>

@@ -2,20 +2,20 @@
   <fieldset>
     <div class="form-row side-label">
       <%= f.label(:name) do |field| %>
-        <%= ts("Tag name") %>
+        <%= f.label :name, t(".tag_name") %>
         <%= link_to_help "tag-search-text-help" %>
       <% end %>
       <%= f.text_field :name %>
     </div>
     <div class="form-row side-label">
-      <%= f.label :fandoms, ts("Fandoms") %>
+      <%= f.label :fandoms, t(".fandoms") %>
       <%= f.text_field :fandoms, autocomplete_options("fandom") %>
       <div id="fandom-field-description" class="help">
-        <%= ts("Find tags wrangled to specific canonical fandoms.") %>
+        <%= t(".fandoms_footnote") %>
       </div>
     </div>
     <div class="form-row side-label">
-      <%= f.label "", ts("Type") %>
+      <%= f.label "", t(".type") %>
       <ul class="radio-group">
         <% types = Tag::USER_DEFINED %>
         <% types.each do |type| %>
@@ -31,31 +31,43 @@
       </ul>
     </div>
     <div class="form-row side-label">
-      <%= f.label "", ts("Wrangling status") %>
+      <%= f.label "", t(".wrangling_status") %>
       <ul class="radio-group">
         <li>
-          <%= f.radio_button :canonical, "T" %>
-          <%= f.label :canonical, ts("Canonical"), value: "T" %>
+          <%= f.radio_button :wrangling_status, "canonical" %>
+          <%= f.label :wrangling_status, t(".status_option.canonical"), value: "canonical" %>
         </li>
         <li>
-          <%= f.radio_button :canonical, "F" %>
-          <%= f.label :canonical, ts("Non-canonical"), value: "F" %>
+          <%= f.radio_button :wrangling_status, "noncanonical" %>
+          <%= f.label :wrangling_status, t(".status_option.noncanonical"), value: "noncanonical" %>
         </li>
         <li>
-          <%= f.radio_button :canonical, "" %>
-          <%= f.label :canonical, ts("Any status"), value: "" %>
+          <%= f.radio_button :wrangling_status, "synonymous" %>
+          <%= f.label :wrangling_status, t(".status_option.synonymous"), value: "synonymous" %>
+        </li>
+        <li>
+          <%= f.radio_button :wrangling_status, "canonical_synonymous" %>
+          <%= f.label :wrangling_status, t(".status_option.canonical_or_synonymous"), value: "canonical_synonymous" %>
+        </li>
+        <li>
+          <%= f.radio_button :wrangling_status, "noncanonical_nonsynonymous" %>
+          <%= f.label :wrangling_status, t(".status_option.noncanonical_and_nonsynonymous"), value: "noncanonical_nonsynonymous" %>
+        </li>
+        <li>
+          <%= f.radio_button :wrangling_status, "" %>
+          <%= f.label :wrangling_status, t(".status_option.any_status"), value: "" %>
         </li>
       </ul>
     </div>
     <div class="form-row side-label">
-      <%= f.label :sort_column, ts("Sort by") %>
+      <%= f.label :sort_column, t(".sort_by") %>
       <%= f.select :sort_column, options_for_select(@search.sort_options, @search.sort_column) %>
     </div>
     <div class="form-row side-label">
-      <%= f.label :sort_direction, ts("Sort direction") %>
+      <%= f.label :sort_direction, t(".sort_direction") %>
       <%= f.select :sort_direction,
         options_for_select([["Ascending", "asc"], ["Descending", "desc"]], @search.sort_direction) %>
     </div>
-    <div class="actions right"><%= f.submit ts("Search Tags") %></p>
+    <div class="actions right"><%= f.submit t(".search_tags") %></p>
   </fieldset>
 <% end %>

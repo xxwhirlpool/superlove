@@ -13,41 +13,157 @@ describe BookmarkSearchForm, bookmark_search: true do
 
   describe "bookmarkable_search_results" do
     describe "sorting" do
+      context "by word count" do
+        let(:tag) { create(:canonical_fandom) }
+
+        let!(:work5) { create(:work, fandom_string: tag.name, chapter_attributes: { content: "one two three four five" }) }
+        let!(:work8r) { create(:work, fandom_string: tag.name, restricted: true, chapter_attributes: { content: "one two three four five six seven eight" }) }
+        let!(:work10) { create(:work, fandom_string: tag.name, title: "Ten", chapter_attributes: { content: "one two three four five six seven eight nine ten" }) }
+        # bookmark of public work "Ten" has word_count 10
+        let!(:work_bookmark) { create(:bookmark, bookmarkable: work10) }
+
+        let!(:series) { create(:series, title: "Series to be bookmarked", works: [work5, work8r]) }
+        # bookmark of series "Series to be bookmarked" has word_count 5 or 13
+        # depending on whether work8r (a restricted work) is visible
+        let!(:series_bookmark) { create(:bookmark, bookmarkable: series) }
+
+        before do
+          run_all_indexing_jobs
+        end
+
+        it "sorts bookmarkables correctly when logged in" do
+          User.current_user = create(:user)
+          results = BookmarkSearchForm.new(parent: tag, sort_column: "word_count").bookmarkable_search_results
+          # "Series to be bookmarked": 13, "Ten": 10
+          # Check word count of returned results
+          expect(results.map { |item| item.respond_to?(:general_word_count) ? item.general_word_count : item.word_count }).to eq [13, 10]
+          # Check titles of returned results
+          expect(results.map(&:title)).to eq ["Series to be bookmarked", "Ten"]
+        end
+
+        it "sorts bookmarkables correctly when not logged in" do
+          results = BookmarkSearchForm.new(parent: tag, sort_column: "word_count").bookmarkable_search_results
+          # "Ten": 10, "Series to be bookmarked": 5
+          # Check word count of returned results
+          expect(results.map { |item| item.respond_to?(:public_word_count) ? item.public_word_count : item.word_count }).to eq [10, 5]
+          # Check titles of returned results
+          expect(results.map(&:title)).to eq ["Ten", "Series to be bookmarked"]
+        end
+
+        it "reindexes when the work wordcount changes" do
+          # Update the one public work in the series to have 15 words instead of 5
+          work5.chapters.first.update!(content: "This is a work with a word count of fifteen which is more than ten.")
+          work5.save
+          run_all_indexing_jobs
+
+          # Search after the change
+          results = BookmarkSearchForm.new(parent: tag, sort_column: "word_count").bookmarkable_search_results
+          # "Series to be bookmarked": 15, "Ten": 10
+          # Check word count of returned results
+          expect(results.map { |item| item.respond_to?(:public_word_count) ? item.public_word_count : item.word_count }).to eq [15, 10]
+          # Check titles of returned results
+          expect(results.map(&:title)).to eq ["Series to be bookmarked", "Ten"]
+        end
+
+        it "reindexes when a work is unrestricted" do
+          # Update the restricted work in the series to be public
+          work8r.update!(restricted: false)
+          work8r.save
+          run_all_indexing_jobs
+
+          # Search after the change
+          results = BookmarkSearchForm.new(parent: tag, sort_column: "word_count").bookmarkable_search_results
+          # "Series to be bookmarked": 13, "Ten": 10
+          # Check word count of returned results
+          expect(results.map { |item| item.respond_to?(:public_word_count) ? item.public_word_count : item.word_count }).to eq [13, 10]
+          # Check titles of returned results
+          expect(results.map(&:title)).to eq ["Series to be bookmarked", "Ten"]
+        end
+
+        it "reindexes when a work is deleted" do
+          # Destroy one of the works in the series
+          work8r.destroy!
+          run_all_indexing_jobs
+
+          # Search after the change
+          User.current_user = create(:user)
+          results = BookmarkSearchForm.new(parent: tag, sort_column: "word_count").bookmarkable_search_results
+          # "Series to be bookmarked": 5, "Ten": 10
+          # Check word count of returned results
+          expect(results.map { |item| item.respond_to?(:public_word_count) ? item.public_word_count : item.word_count }).to eq [10, 5]
+          # Check titles of returned results
+          expect(results.map(&:title)).to eq ["Ten", "Series to be bookmarked"]
+        end
+
+        it "reindexes when a work is hidden by admin" do
+          # Hide one of the works in the series
+          work8r.update!(hidden_by_admin: true)
+          run_all_indexing_jobs
+
+          # Search after the change
+          User.current_user = create(:user)
+          results = BookmarkSearchForm.new(parent: tag, sort_column: "word_count").bookmarkable_search_results
+          # "Series to be bookmarked": 5, "Ten": 10
+          # Check word count of returned results
+          expect(results.map { |item| item.respond_to?(:public_word_count) ? item.public_word_count : item.word_count }).to eq [10, 5]
+          # Check titles of returned results
+          expect(results.map(&:title)).to eq ["Ten", "Series to be bookmarked"]
+        end
+
+        context "with external bookmark too" do
+          let(:external_work_bookmark) { create(:external_work_bookmark) }
+
+          before do
+            external_work_bookmark.bookmarkable.title = "External bookmark"
+            external_work_bookmark.bookmarkable.fandom_string = tag.name
+            external_work_bookmark.bookmarkable.save
+            run_all_indexing_jobs
+          end
+
+          it "places external bookmark last" do
+            results = BookmarkSearchForm.new(parent: tag, sort_column: "word_count").bookmarkable_search_results
+            # "Ten": 10, "Series to be bookmarked": 5, "External bookmark": N/A
+            # Check titles of returned results
+            expect(results.map(&:title)).to eq ["Ten", "Series to be bookmarked", "External bookmark"]
+          end
+        end
+      end
+
       context "when everything is created at a different time" do
         let(:tag) { create(:canonical_fandom) }
 
         let!(:work1) do
-          Delorean.time_travel_to 40.minutes.ago do
+          travel_to(40.minutes.ago) do
             create(:work, title: "One", fandom_string: tag.name)
           end
         end
 
         let!(:work2) do
-          Delorean.time_travel_to 60.minutes.ago do
+          travel_to(60.minutes.ago) do
             create(:work, title: "Two", fandom_string: tag.name)
           end
         end
 
         let!(:work3) do
-          Delorean.time_travel_to 50.minutes.ago do
+          travel_to(50.minutes.ago) do
             create(:work, title: "Three", fandom_string: tag.name)
           end
         end
 
         let!(:bookmark1) do
-          Delorean.time_travel_to 30.minutes.ago do
+          travel_to(30.minutes.ago) do
             create(:bookmark, bookmarkable: work1)
           end
         end
 
         let!(:bookmark2) do
-          Delorean.time_travel_to 10.minutes.ago do
+          travel_to(10.minutes.ago) do
             create(:bookmark, bookmarkable: work2)
           end
         end
 
         let!(:bookmark3) do
-          Delorean.time_travel_to 20.minutes.ago do
+          travel_to(20.minutes.ago) do
             create(:bookmark, bookmarkable: work3)
           end
         end
@@ -59,7 +175,7 @@ describe BookmarkSearchForm, bookmark_search: true do
             results = BookmarkSearchForm.new(
               parent: tag, sort_column: "bookmarkable_date"
             ).bookmarkable_search_results
-            expect(results.map(&:title)).to eq ["One", "Three", "Two"]
+            expect(results.map(&:title)).to eq %w[One Three Two]
           end
 
           it "changes when the work is updated" do
@@ -68,7 +184,7 @@ describe BookmarkSearchForm, bookmark_search: true do
             results = BookmarkSearchForm.new(
               parent: tag, sort_column: "bookmarkable_date"
             ).bookmarkable_search_results
-            expect(results.map(&:title)).to eq ["Two", "One", "Three"]
+            expect(results.map(&:title)).to eq %w[Two One Three]
           end
         end
 
@@ -77,7 +193,7 @@ describe BookmarkSearchForm, bookmark_search: true do
             results = BookmarkSearchForm.new(
               parent: tag, sort_column: "created_at"
             ).bookmarkable_search_results
-            expect(results.map(&:title)).to eq ["Two", "Three", "One"]
+            expect(results.map(&:title)).to eq %w[Two Three One]
           end
 
           it "changes when a new bookmark is created" do
@@ -86,7 +202,7 @@ describe BookmarkSearchForm, bookmark_search: true do
             results = BookmarkSearchForm.new(
               parent: tag, sort_column: "created_at"
             ).bookmarkable_search_results
-            expect(results.map(&:title)).to eq ["One", "Two", "Three"]
+            expect(results.map(&:title)).to eq %w[One Two Three]
           end
         end
       end
@@ -109,7 +225,7 @@ describe BookmarkSearchForm, bookmark_search: true do
             res = search.bookmarkable_search_results.map(&:id)
 
             [work1, work2].each do |work|
-              work.update(summary: "Updated")
+              work.update!(summary: "Updated")
               run_all_indexing_jobs
               expect(search.bookmarkable_search_results.map(&:id)).to eq(res)
             end
@@ -124,7 +240,7 @@ describe BookmarkSearchForm, bookmark_search: true do
             res = search.bookmarkable_search_results.map(&:id)
 
             [work1, work2].each do |work|
-              work.update(summary: "Updated")
+              work.update!(summary: "Updated")
               run_all_indexing_jobs
               expect(search.bookmarkable_search_results.map(&:id)).to eq(res)
             end
@@ -143,7 +259,7 @@ describe BookmarkSearchForm, bookmark_search: true do
         let!(:bookmark1) { create(:bookmark, bookmarkable: work1) }
         let!(:bookmark2) { create(:bookmark, bookmarkable: work2) }
 
-        let(:unused_language) { create(:language, short: "tlh") }
+        let(:unused_language) { create(:language, name: "unused", short: "tlh") }
 
         before { run_all_indexing_jobs }
 
@@ -259,7 +375,7 @@ describe BookmarkSearchForm, bookmark_search: true do
   end
 
   describe "search_results" do
-    describe "sorting" do
+    describe "sorting by date" do
       before { freeze_time }
 
       let!(:work1) { create(:work) }
@@ -278,17 +394,73 @@ describe BookmarkSearchForm, bookmark_search: true do
             res = search.search_results.map(&:id)
 
             [work1, work2].each do |work|
-              work.update(summary: "Updated")
+              work.update!(summary: "Updated")
               run_all_indexing_jobs
               expect(search.search_results.map(&:id)).to eq(res)
             end
 
             [bookmark1, bookmark2].each do |bookmark|
-              bookmark.update(bookmarker_notes: "Updated")
+              bookmark.update!(bookmarker_notes: "Updated")
               run_all_indexing_jobs
               expect(search.search_results.map(&:id)).to eq(res)
             end
           end
+        end
+      end
+    end
+
+    describe "sorting by word count" do
+      let(:tag) { create(:canonical_fandom) }
+
+      let!(:work5) { create(:work, fandom_string: tag.name, chapter_attributes: { content: "one two three four five" }) }
+      let!(:work8r) { create(:work, fandom_string: tag.name, restricted: true, chapter_attributes: { content: "one two three four five six seven eight" }) }
+      let!(:work10) { create(:work, fandom_string: tag.name, title: "Ten", chapter_attributes: { content: "one two three four five six seven eight nine ten" }) }
+      # bookmark of public work "Ten" has word_count 10
+      let!(:work_bookmark) { create(:bookmark, bookmarkable: work10) }
+
+      let!(:series) { create(:series, title: "Series to be bookmarked", works: [work5, work8r]) }
+      # bookmark of series "Series to be bookmarked" has word_count 5 or 13
+      # depending on whether work8r (a restricted work) is visible
+      let!(:series_bookmark) { create(:bookmark, bookmarkable: series) }
+
+      before do
+        run_all_indexing_jobs
+      end
+
+      it "sorts correctly when logged in" do
+        User.current_user = create(:user)
+        results = BookmarkSearchForm.new(parent: tag, sort_column: "word_count").search_results.map(&:bookmarkable)
+        # "Series to be bookmarked": 13, "Ten": 10
+        # Check word count of returned results
+        expect(results.map { |item| item.respond_to?(:general_word_count) ? item.general_word_count : item.word_count }).to eq [13, 10]
+        # Check titles of returned results
+        expect(results.map(&:title)).to eq ["Series to be bookmarked", "Ten"]
+      end
+
+      it "sorts correctly when not logged in" do
+        results = BookmarkSearchForm.new(parent: tag, sort_column: "word_count").search_results.map(&:bookmarkable)
+        # "Ten": 10, "Series to be bookmarked": 5
+        # Check word count of returned results
+        expect(results.map { |item| item.respond_to?(:public_word_count) ? item.public_word_count : item.word_count }).to eq [10, 5]
+        # Check titles of returned results
+        expect(results.map(&:title)).to eq ["Ten", "Series to be bookmarked"]
+      end
+
+      context "with external bookmark too" do
+        let(:external_work_bookmark) { create(:external_work_bookmark) }
+
+        before do
+          external_work_bookmark.bookmarkable.title = "External bookmark"
+          external_work_bookmark.bookmarkable.fandom_string = tag.name
+          external_work_bookmark.bookmarkable.save
+          run_all_indexing_jobs
+        end
+
+        it "places external bookmark last" do
+          results = BookmarkSearchForm.new(parent: tag, sort_column: "word_count").search_results.map(&:bookmarkable)
+          # "Ten": 10, "Series to be bookmarked": 5, "External bookmark": N/A
+          # Check titles of returned results
+          expect(results.map(&:title)).to eq ["Ten", "Series to be bookmarked", "External bookmark"]
         end
       end
     end
@@ -299,7 +471,7 @@ describe BookmarkSearchForm, bookmark_search: true do
 
     {
       Work: :work,
-      Series: :series_with_a_work,
+      Series: :series,
       ExternalWork: :external_work
     }.each_pair do |type, factory|
       it "returns the correct bookmarked #{type.to_s.pluralize} when bookmarker changes username" do
@@ -330,7 +502,7 @@ describe BookmarkSearchForm, bookmark_search: true do
 
     {
       Work: :work,
-      Series: :series_with_a_work
+      Series: :series
     }.each_pair do |type, factory|
       it "returns the correct bookmarked #{type.to_s.pluralize} when author changes username" do
         bookmarkable = create(factory, authors: [author.default_pseud])

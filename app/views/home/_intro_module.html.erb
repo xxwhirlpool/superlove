@@ -4,15 +4,15 @@
   <p class="parent"><%= ts("superlove is a project by") %> <%= link_to ts("girl on the moon"), "http://girlonthemoon.xyz" %>.</p>
   <p class="parent">DAYS SINCE SUPERLOVE GOT CALLED ANTI-RUN: <%= Date.today.mjd - Date.parse("2026-01-16").mjd %></p>
   <p class="parent">DAYS SINCE SUPERLOVE GOT CALLED PROSHIPPER-RUN: <%= Date.today.mjd - Date.parse("2025-03-28").mjd %></p>
-  
+
   <div id="invites">
     <% if !AdminSetting.current.invite_from_queue_enabled? && AdminSetting.current.creation_requires_invite? %>
       <p>
         <%= ts("Joining superlove currently requires an invitation; however, we 
-               are not accepting new invitation requests at this time. Please check
-               the %{news} for more information.",
-               news: link_to("\"update\" tag on superlove News",
-                     admin_posts_path(tag: 2))
+				are not accepting new invitation requests at this time. Please check
+				the %{news} for more information.",
+				news: link_to("\"update\" tag on superlove News",
+				      admin_posts_path(tag: 2))
             ).html_safe %>
       </p>
     <% end %>

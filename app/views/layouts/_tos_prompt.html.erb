@@ -1,5 +1,7 @@
 <div id="tos_prompt" class="hidden">
-  <h2><%= ts("%{site}", site: ArchiveConfig.APP_NAME) %></h2>
+  <h2>
+    <span><%= t(".page_heading") %></span>
+  </h2>
   <div class="agreement">
     <div class="summary">
       <%= ts("%{site} is run by one person. If you see anything you don't like please
@@ -21,24 +23,24 @@
 
     <div class="form-row confirmation">
       <input type="checkbox" id="tos_agree" />
-      <label for="tos_agree"><%= ts("I have read & understood the new Terms of Service and Privacy Policy") %></label>
+      <label for="tos_agree"><%= t(".read_and_understood") %></label>
+    </div>
+    
+    <div class="form-row confirmation">
+      <input type="checkbox" id="data_processing_agree" />
+      <label for="data_processing_agree"><%= t(".data_processing_agreement") %></label>
     </div>
 
     <% if current_user.nil? %>
       <div class="submit">
-        <%= button_tag ts("I agree/consent to its terms"),
-              disabled: true,
-              type: "button",
-              id: "accept_tos" %>
+        <%= button_tag t(".agree_and_consent"), disabled: true, type: "button", id: "accept_tos" %>
       </div>
     <% else %>
       <%= form_tag end_tos_prompt_user_path(current_user),
             method: :post,
             remote: true do %>
         <div class="submit">
-          <%= submit_tag ts("I agree/consent to its terms"),
-                disabled: true,
-                id: "accept_tos" %>
+          <%= submit_tag t(".agree_and_consent"), disabled: true, id: "accept_tos" %>
         </div>
       <% end %>
     <% end %>
@@ -46,15 +48,19 @@
   </div>
 </div>
 
-<% # content_for footer renders this when we don't want it %>
 <%= javascript_tag do %>
   document.addEventListener('ready', (_e) => {
     const container = document.getElementById('tos_prompt');
     const outer = document.getElementById('outer');
     const button = document.getElementById('accept_tos');
     const agree = document.getElementById('tos_agree');
+    const dataAgree = document.getElementById("data_processing_agree");
     
     setTimeout(showTOSPrompt, 1500);
+    
+    const checkboxClicked = () => {
+      button.disabled = !agree.checked || !dataAgree.checked;
+    }
     
     const showTOSPrompt = () => {
       container.classList.remove('hidden');
@@ -62,32 +68,35 @@
       outer.setAttribute('aria-hidden', true);
     }
     
-    agree.addEventListener('click', (e) => {
-      button.setAttribute("disabled", !e.target.checked);
-      if (e.target.checked) {
-        button.addEventListener('click', (_e) => {
-          acceptTOS();
-          outer.classList.remove('hidden');
-          outer.removeAttribute('aria-hidden');
-          container.classList.add('hidden');
-          setTimeout(() => {
-            container.remove();
-          }, 500);
-        })
-      }
-    });
+    const acceptTOSPrompt = () => {
+      acceptTOS();
+      body.style.overflow = "";
+      outer.removeAttribute("style");
+      outer.removeAttribute("aria-hidden");
+      container.classList.add('hidden');
+      setTimeout(() => {
+        container.remove();
+      }, 500)
+    }
     
-    $j("#tos_agree").on("click", function() {
-      button.attr("disabled", !this.checked);
-      if (this.checked) {
-        button.on("click", function() {
-          acceptTOS();
-          outer.removeClass("hidden").removeAttr("aria-hidden");
-          $j.when(container.fadeOut(500)).done(function() {
-            container.remove();
-          });
-        });
-      };
-    }).change();
+    if (agree) {
+      agree.addEventListener('click', (e) => {
+        checkboxClicked();
+        acceptTOSPrompt();
+      });
+    }
+    
+    if (dataAgree) {
+      dataAgree.addEventListener('click', (e) => {
+        checkboxClicked();
+        acceptTOSPrompt();
+      });
+    }
+    
+    if (button) {
+      button.addEventListener('click', () => {
+        acceptTOSPrompt();
+      });
+    }
   });
 <% end %>

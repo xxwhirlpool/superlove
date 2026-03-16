@@ -1,5 +1,15 @@
-<%= render "invite_request", invite_request: @invite_request %>
+<% if @invite_request %>
+  <%= render "invite_request", invite_request: @invite_request %>
+<% elsif @invitation %>
+  <%= render "invitation", invitation: @invitation %>
+<% else %>
+  <%= render "no_invitation" %>
+<% end %>
 
-<div>
-  <%= ts("To check on the status of your invitation, go to the %{status_page} and enter your email in the space provided!", status_page: link_to("Invitation Request Status page", status_invite_requests_path)).html_safe %>
+<div id="invite-instructions">
+  <%= t(".instructions_html", status_link: link_to("Invitation Request Status page", status_invite_requests_path)) %>
 </div>
+=======
+<p>
+  <%= t(".instructions_html", status_link: link_to("Invitation Request Status page", status_invite_requests_path)) %>
+</p>

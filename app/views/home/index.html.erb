@@ -37,16 +37,16 @@
   <% if logged_in? && @homepage.readings.present? %>
     <div class="readings">
       <h3>
-        <span class="title"><%= ts('Is it later already?') %></span>
-        <span class="link"><%= link_to ts('My History'), user_readings_path(current_user) %></span>
+        <span class="title"><%= t(".readings.heading.title") %></span>
+        <span class="link"><%= link_to t(".readings.heading.history_link"), user_readings_path(current_user) %></span>
       </h3>
       <div class="flash"></div>
-      <div class="note"><%= ts('Some works you\'ve marked for later.') %></div>
+      <div class="note"><%= t(".readings.note") %></div>
       <ul>
         <% @homepage.readings.each do |reading| %>
-          <%= render 'readings/reading_blurb', work: reading.work, reading: reading %>
+          <%= render "readings/reading_blurb", work: reading.work, reading: reading %>
         <% end %>
-      </ul>
+      </ol>
     </div>
   <% end %>
 

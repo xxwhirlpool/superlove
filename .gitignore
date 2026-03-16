@@ -85,3 +85,10 @@ slaybackup.sql
 /system/*
 /system/collections/icons/000/000/001
 "class search"
+resque_schedule_backup.yml
+/config/environments/production.rb
+/config/storage.yml
+config/environments/production.rb
+config/storage.yml
+config/docker/database.yml
+/config/docker/database.yml

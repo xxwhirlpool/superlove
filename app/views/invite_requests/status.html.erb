@@ -1,12 +1,13 @@
-<!--Descriptive page name, messages and instructions-->
 <h2>
-  <%= ts("Invitation Request Status") %>
+  <%= t(".heading") %>
 </h2>
 
 <p>
-  <%= ts("There are currently %{count} people on the waiting list.", count: InviteRequest.count) %>
+  <%= t(".waiting_list", count: InviteRequest.count) %>
   <% if AdminSetting.current.invite_from_queue_enabled? %>
-    <%= ts("We are sending out %{invites} invitations per day.", invites: AdminSetting.current.invite_from_queue_number) %>
+    <%= t(".invitation_send_rate",
+          queue_invitation_number: t(".invitation_number", count: AdminSetting.current.invite_from_queue_number),
+          queue_frequency: t(".frequency", count: AdminSetting.current.invite_from_queue_frequency)) %>
   <% end %>
 </p>
 <!--/descriptions-->
@@ -17,6 +18,8 @@
     <div class="form-row">
       <%= label_tag :email %>
       <%= text_field_tag :email %>
+    </div>
+    <div class="submit">
       <%= submit_tag ts("Look me up") %>
     </div>
   </fieldset>
