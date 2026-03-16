@@ -67,8 +67,7 @@ class Comment < ApplicationRecord
   validate :check_for_spam, on: :create
 
   def check_for_spam
-    self.spam = !skip_spamcheck? && spam?
-    self.approved = !self.spam
+    self.approved = skip_spamcheck? || !spam?
 
     errors.add(:base, :spam) unless approved
   end
@@ -140,9 +139,9 @@ class Comment < ApplicationRecord
       comment_post_modified_gmt: comment_post_modified_gmt
     }
 
-    attributes[:cloudflare_bot_score] = cloudflare_bot_score if cloudflare_bot_score
-    attributes[:cloudflare_ja3_hash] = cloudflare_ja3_hash if cloudflare_ja3_hash
-    attributes[:cloudflare_ja4] = cloudflare_ja4 if cloudflare_ja4
+    # attributes[:cloudflare_bot_score] = cloudflare_bot_score if cloudflare_bot_score
+    # attributes[:cloudflare_ja3_hash] = cloudflare_ja3_hash if cloudflare_ja3_hash
+    # attributes[:cloudflare_ja4] = cloudflare_ja4 if cloudflare_ja4
 
     attributes[:recheck_reason] = "edit" if will_save_change_to_edited_at? && will_save_change_to_comment_content?
 
@@ -508,9 +507,9 @@ class Comment < ApplicationRecord
   end
 
   def spam?
-    return false unless %w[staging production].include?(Rails.env)
+    return false
 
-    Akismetor.spam?(akismet_attributes)
+    # Akismetor.spam?(akismet_attributes)
   end
 
   def submit_spam
@@ -523,13 +522,11 @@ class Comment < ApplicationRecord
 
   def mark_as_spam!
     update_attribute(:approved, false)
-    update_attribute(:spam, true)
     submit_spam
   end
 
   def mark_as_ham!
     update_attribute(:approved, true)
-    update_attribute(:spam, false)
     submit_ham
   end
 
