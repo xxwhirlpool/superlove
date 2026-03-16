@@ -48,9 +48,7 @@ class InviteRequestsController < ApplicationController
   # POST /invite_requests
   def create
     unless AdminSetting.current.invite_from_queue_enabled?
-      flash[:error] = t(".queue_disabled.html",
-                        closed_bold: helpers.tag.strong(t("invite_requests.create.queue_disabled.closed")),
-                        news_link: helpers.link_to(t("invite_requests.create.queue_disabled.news"), admin_posts_path(tag: 143)))
+      flash[:error] = ts("<strong>New invitation requests are currently closed.</strong> For more information, please check the %{news}.").html_safe
       redirect_to invite_requests_path
       return
     end
@@ -58,9 +56,7 @@ class InviteRequestsController < ApplicationController
     @invite_request = InviteRequest.new(invite_request_params)
     @invite_request.ip_address = request.remote_ip
     if @invite_request.save
-      flash[:notice] = t(".success",
-                         date: l(@invite_request.proposed_fill_time.to_date, format: :long),
-                         return_address: ArchiveConfig.RETURN_ADDRESS)
+      flash[:notice] = "You've been added to our queue yayyyy! please monitor your inbox for an email from the site admin regarding your request. We strongly recommend that you add dontreply@mail.superlove.sayitditto.net to your address book to prevent the invitation email from getting blocked as spam by your email provider."
       redirect_to invite_requests_path
     else
       render action: :index
@@ -118,7 +114,7 @@ class InviteRequestsController < ApplicationController
 
   def invite_request_params
     params.require(:invite_request).permit(
-      :email, :query
+      :email, :note, :query
     )
   end
 end
