@@ -7,25 +7,7 @@ class WorkSkin < Skin
   # override parent's clean_css to append a prefix
   def clean_css
     return if self.css.blank?
-    check = lambda {|ruleset, property, value|
-      # If it starts with --, assume the user was trying to define a custom property.
-      if property.match(/\A--/)
-        errors.add(:base, :work_skin_custom_properties)
-        return false
-      end
-      if value.match(/\bvar\b/i)
-        errors.add(:base, :work_skin_var)
-        return false
-      end
-      if property == "position" && value == "fixed"
-        # Do not internationalize the , used as a join in this error -- it's reflective of the comma used in the list of selectors, which does not change based on locale.
-        errors.add(:base, :work_skin_banned_value_for_property, property: property, selectors: ruleset.selectors.join(", "), value: value)
-        return false
-      end
-      return true
-    }
-    options = {prefix: "#workskin", caller_check: check}
-    self.css = clean_css_code(self.css, options)
+    self.css = clean_css_code(self.css)
   end
 
   def self.model_name

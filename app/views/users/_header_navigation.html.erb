@@ -17,6 +17,11 @@
     <li><%= block_link(@user) %></li>
     <li><%= mute_link(@user) %></li>
   <% end %>
+  <li>
+      <% if @pseud.present? %>
+	      <%= link_to_rss feed_user_pseud_path({ id: @pseud.name, format: :atom }) %>
+	  <% end %>
+  </li>
   <% if policy(User).can_manage_users? %>
     <li><%= link_to t(".admin_user"), admin_user_path(@user) %></li>
   <% end %>
