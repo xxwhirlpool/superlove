@@ -1410,18 +1410,18 @@ en:
         otw:
           abbreviated: OTW
           full: Organization for Transformative Works
-        policy_applicability_html: The Harassment Policy is primarily focused on user conduct and non-fictional Content. However, %{applies_to_all_link}, including interactions with the Policy & Abuse committee, the Support committee, and other AO3 or %{otw_abbreviation} volunteers.
+        policy_applicability_html: The Harassment Policy is primarily focused on user conduct and non-fictional Content. However, %{applies_to_all_link}, including interactions with the Policy & Abuse committee, the Support committee, and other superlove volunteers.
         rpf:
           heading: Real-Person Fiction (RPF)
           text: Creating RPF never constitutes harassment in and of itself. Posting works where someone dies, is subjected to slurs, or is otherwise harmed as part of the plot is usually not a violation of the Harassment Policy. However, deliberately posting such Content in a manner designed to be seen by the subject of the work, such as by gifting them the work, may result in a judgment of harassment.
-        threatening_versus_annoying_html: In general, threatening Content will be considered harassment, while Content that is merely rude or annoying will be allowed. Not everyone agrees about what is offensive and unacceptable. Users are encouraged to use tools such as %{blocking_link}, %{muting_link}, and %{filtering_link} to control their own environment on AO3.
+        threatening_versus_annoying_html: In general, threatening Content will be considered harassment, while Content that is merely rude or annoying will be allowed. Not everyone agrees about what is offensive and unacceptable. Users are encouraged to use tools such as %{blocking_link}, %{muting_link}, and %{filtering_link} to control their own environment on superlove.
         tos_faq: FAQ for Section II.H
         tos_faq_in_parens_html: "(%{tos_faq_link})"
         tos_faq_link_label: Harassment FAQ
       illegal_inappropriate_content:
         automated_spam_check_html: We may use automated means to filter out spam. If you submit Content that is erroneously caught in a spam filter, please %{contact_ao3_administrators_link}.
-        conduct_threatening_technical_integrity_html: Conduct that threatens the %{technical_integrity_link} of AO3, for example attempting to hack AO3 or spread viruses through it, is prohibited. Uploading technically misnamed files or Content (such as non-image files with an image file extension used to disguise their actual format) constitutes a threat to the technical integrity of the site.
-        contact_ao3_administrators: contact AO3 administrators
+        conduct_threatening_technical_integrity_html: Conduct that threatens the %{technical_integrity_link} of superlove, for example attempting to hack superlove or spread viruses through it, is prohibited. Uploading technically misnamed files or Content (such as non-image files with an image file extension used to disguise their actual format) constitutes a threat to the technical integrity of the site.
+        contact_ao3_administrators: contact superlove administrators
         heading: II.K. Illegal and Inappropriate Content
         images_of_real_children: photographic or photorealistic images of real children
         no_illegal_content_html: You may not upload Content that appears or purports to contain, link to, or provide instructions for obtaining sexually explicit or suggestive %{images_of_real_children_link}; malware, warez, cracks, hacks, or other executable files and their associated utilities; or trade secrets, restricted technologies, or other classified information.
@@ -1440,8 +1440,8 @@ en:
         tos_faq_in_parens_html: "(%{tos_faq_link})"
         tos_faq_link_label: Fannish Identities and Impersonation FAQ
       intro:
-        all_content_must_comply_html: All %{content_link} on AO3 must comply with our Content Policy.
-        archive_description: The Archive of Our Own (AO3) exists to host transformative, non-commercial works created by fans from all over the world.
+        all_content_must_comply_html: All %{content_link} on superlove must comply with our Content Policy.
+        archive_description: superlove exists to host epic and awesome fanworks (and more!).
         content: content
         maximum_inclusiveness: maximum inclusiveness of fanwork content
         our_goal_html: Our goal is %{maximum_inclusiveness_link}. We want to provide a safe and permanent home for fanworks, including works that might be at risk on other sites due to being deemed immoral, explicit, or otherwise objectionable. Users should always observe and heed the ratings and warnings provided before accessing works on AO3.
