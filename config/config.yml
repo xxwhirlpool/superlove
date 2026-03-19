@@ -58,7 +58,7 @@ SMTP_ENABLE_STARTTLS: false
 #SMTP_AUTHENTICATION: # :plain, :login or :cram_md5
 
 # Branding
-APP_URL: 'http://www.example.org'
+APP_URL: 'http://localhost:3500'
 APP_NAME: 'Example Archive'
 APP_HOST: 'archiveofourown.org'
 APP_SHORT_NAME: 'AO3'
@@ -67,8 +67,8 @@ ALT_LOGO: 'Archive of Our Own'
 OTWLOGO: 'OTWLogo.png'
 OTWALT_LOGO: 'OTW Logo:closing the circle of the copyright symbol, it symbolizes our creative engagement with media: participating and not just consuming.'
 REVISION: ''
-ES_URL: 'http://127.0.0.1:9400'
-MEMCACHED_SERVERS: '127.0.0.1:11211'
+ES_URL: 'es:9400'
+MEMCACHED_SERVERS: ['mc:11211']
 ZOHO_URL: 'https://desk.zoho.com'
 
 # tag settings

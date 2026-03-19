@@ -29,7 +29,7 @@ services:
   db:
     image: mariadb:10.5.4-focal
     environment:
-      - MYSQL_ROOT_PASSWORD=change_me
+      - MYSQL_ROOT_PASSWORD=Glu3fl00dc4shs4il1012
     ports:
       - "3306:3306"
     command:
@@ -46,7 +46,7 @@ services:
     volumes:
       - redis-data:/var/lib/redis:rw
   es:
-    image: docker.elastic.co/elasticsearch/elasticsearch:9.3.0
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.19.10
     ports:
       - "9200:9200"
       - "9300:9300"
@@ -73,6 +73,7 @@ services:
       dockerfile: ./config/docker/Dockerfile
     environment: &environment
       RAILS_ENV: development
+      RUBY_VERSION: 3.4.6
       # Disable rack-timeout
       RACK_TIMEOUT_SERVICE_TIMEOUT: 0
       CODESPACES: ${CODESPACES:-}
@@ -81,11 +82,11 @@ services:
       ACTIVE_RECORD_ENCRYPTION_PRIMARY_KEY: bEZjYLY9tCYGh6WlcMtEJpIi7GO2plZC
       ACTIVE_RECORD_ENCRYPTION_DETERMINISTIC_KEY: PpLWizzsQHIWnIihtECw8nDHZQd0amzf
       ACTIVE_RECORD_ENCRYPTION_KEY_DERIVATION_SALT: 3S99KdpdEWLnCYudBgUfdCFDBWePWCud
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3500 -b '0.0.0.0' && bundle exec rails dartsass:watch"
     volumes:
       - .:/otwa
     ports:
-      - "3000:3000"
+      - "3500:3500"
     depends_on:
       - db
       - redis

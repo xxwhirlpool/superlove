@@ -81,6 +81,11 @@ nav#primary {
       position: relative;
     }
     
+    .form-row {
+      display: flex;
+      gap: 10px;
+    }
+    
     input[type="search"] {
       width: 11rem;
     }

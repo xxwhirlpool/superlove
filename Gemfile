@@ -38,6 +38,10 @@ gem 'will_paginate', '>=3.0.2'
 gem "pagy", "~> 9.3"
 gem 'acts_as_list', '~> 0.9.7'
 gem 'akismetor'
+gem 'propshaft'
+gem 'dartsass-rails'
+gem 'cssbundling-rails'
+gem 'jsbundling-rails'
 
 gem 'httparty'
 gem "csv", "~> 3.3.5"

@@ -24,34 +24,36 @@
     <%= render "users/sessions/greeting" %>
   <% else %>
     <div id="login">
-      <%= link_to t(".login"), new_user_session_path(return_to: request.fullpath.start_with?(new_user_session_path) ? params[:return_to] : request.fullpath), id: "login-dropdown" %>
-      <%= render 'users/sessions/login' %>
+      <details class="actions">
+        <summary><%= t(".login") %></summary>
+        <%= render 'users/sessions/login' %>
+      </details>
     </div>
   <% end %>
 
   <nav id="primary" aria-label="<%= t(".nav.label") %>">
     <ul role="navigation">
-      <li class="dropdown">
+      <li>
         <%= link_to t(".nav.fandoms"), menu_fandoms_path %>
         <%= render "menu/menu_fandoms" %>
       </li>
-      <li class="dropdown">
+      <li>
         <%= link_to t(".nav.browse"), menu_browse_path %>
         <%= render "menu/menu_browse" %>
       </li>
-      <li class="dropdown">
+      <li>
         <%= link_to t(".nav.search"), menu_search_path %>
         <%= render "menu/menu_search" %>
       </li>
-      <li class="dropdown">
+      <li>
         <%= link_to t(".nav.about"), menu_about_path %>
         <%= render "menu/menu_about" %>
       </li>
-      <li class="dropdown">
+      <li>
         <%= link_to ts('Links', key: 'header'), menu_links_path %>
         <%= render 'menu/menu_links' %>
       </li>
-      <li class="dropdown">
+      <li>
         <%= link_to ts('Community', key: 'header'), menu_community_path %>
         <%= render 'menu/menu_community' %>
       </li>

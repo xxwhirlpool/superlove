@@ -22,6 +22,7 @@
     <title><%= browser_page_title(@page_title, @page_subtitle) %></title>
     <%= render :partial => 'layouts/includes' %>
     <%= phraseapp_in_context_editor_js %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   </head>
 
   <body class="<%= logged_in? ? 'logged-in' : 'logged-out' %>" <%= PhraseApp::InContextEditor.enabled? ? "data-no-turbolink" : "" %>>
@@ -31,7 +32,7 @@
       <%= render :partial => 'layouts/header' %>
       <div id="inner">
         <!-- BEGIN main -->
-        <main id="main" class="<%= classes_for_main %> region" role="main">
+        <main id="main" class="<%= classes_for_main %>" role="main">
           <%= flash_div :error, :caution, :notice, :alert %>
           <div id="flash-container">
             <%= yield :flash %>

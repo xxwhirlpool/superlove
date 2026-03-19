@@ -1,0 +1,15 @@
+{
+  "name": "app",
+  "private": true,
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^16.0.3",
+    "rollup": "^4.59.0"
+  },
+  "scripts": {
+    "build": "rollup -c --bundleConfigAsCjs rollup.config.js",
+    "build:css": "sass ./app/assets/stylesheets/application.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules"
+  },
+  "dependencies": {
+    "sass": "^1.98.0"
+  }
+}

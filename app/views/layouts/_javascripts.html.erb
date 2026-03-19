@@ -1,37 +1,8 @@
+<%= javascript_include_tag :application, "data-turbo-track": "reload" %>
+
 <!-- check to see if this controller/action allow tinymce before we load the gigantor js; see application_helper -->
 <% if allow_tinymce?(controller) %>
   <%= yield :tinymce %>
-<% end %>
-<!-- if user has googleapis blocked for some reason we need a fallback -->
-  <script type="text/javascript">
-    document.querySelectorAll('[data-dropdown]').forEach((elt) => {
-      elt.addEventListener('click', (e) => {
-        e.preventDefault();
-        const dropdownTarget = document.getElementById(elt.getAttribute('data-dropdown'));
-        if (dropdownTarget.classList.contains("hidden")) {
-          dropdownTarget.classList.remove("hidden");
-          dropdownTarget.querySelector('input:first-of-type').focus();
-        } else {
-          dropdownTarget.classList.add("hidden");
-          elt.focus();
-        }
-      });
-    });
-    
-    const primarySearch = document.querySelector('#primary .search input[type="search"]');
-    if (primarySearch) {
-      primarySearch.addEventListener('focus', (e) => {
-        e.target.parentElement.querySelector('.tip').classList.remove('hidden');
-      });
-    
-      primarySearch.addEventListener('blur', (e) => {
-        e.target.parentElement.querySelector('.tip').classList.add('hidden');
-      });
-    }
-    
-  </script>
-    
-<% if allow_tinymce?(controller) %>
   <%= yield :tinymce_init %>
 <% end %>
 

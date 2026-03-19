@@ -7,7 +7,15 @@ RUN apt-get update             && \
         default-mysql-client      \
         libvips                   \
         shared-mime-info          \
-        zip
+        zip                       \
+        nodejs
+
+# CARLY SMALLBIRD ADDITIONS - i'm not married to any particular runtime ftr
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
+RUN source ~/.bashrc | bash
+RUN nvm install 25 | bash
+RUN wget -qO- https://get.pnpm.io/install.sh | ENV="$HOME/.bashrc" SHELL="$(which bash)" bash -
+RUN source ~/.bashrc | bash
 
 # Clean and mount repository at /otwa
 RUN rm -rf /otwa && mkdir -p /otwa

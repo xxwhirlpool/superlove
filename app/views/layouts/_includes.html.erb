@@ -1,8 +1,7 @@
 <% # load and cache site skin %>
 <% if current_user.nil? || !current_user.nil? && current_user.does_skin_override? %>
-  <%= stylesheet_link_tag "application", media: "all" %>
+  <%= stylesheet_link_tag :application, "data-turbo-track": "reload" %>
 <% end %>
-<%= skin_tag %>
 
 <%= mute_css %>
 

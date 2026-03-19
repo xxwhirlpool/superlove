@@ -1,7 +1,7 @@
 <%= form_for WorkSearchForm.new, as: :work_search, url: search_works_path, html: { class: "search", id: "search", role: "search", "aria-label": t(".a11y_label"), method: :get } do |f| %>
   <div class="form-row">
     <%= label_tag :site_search, t(".label"), class: "landmark" %>
-    <%= f.text_field :query, class: "text", id: "site_search", "aria-describedby": "site_search_tooltip" %>
+    <%= f.search_field :query, class: "text", id: "site_search", "aria-describedby": "site_search_tooltip" %>
     <span class="tip hidden" role="tooltip" id="site_search_tooltip"><%= t(".tooltip_label") %> <%= random_search_tip %></span>
     <span class="submit"><%= submit_tag t(".submit"), class: "button", name: nil %></span>
   </div>
