@@ -1,13 +1,24 @@
 import resolve from "@rollup/plugin-node-resolve"
 
 export default {
-  input: "app/assets/javascript/application.js",
-  output: {
-    file: "app/assets/builds/application.js",
-    format: "esm",
-    inlineDynamicImports: true,
-    sourcemap: true
-  },
+  input: [
+    "app/assets/javascript/application.js",
+    "app/assets/javascript/skineditor.js"
+  ],
+  output: [
+    {
+      dir: "app/assets/builds",
+      format: "esm",
+      inlineDynamicImports: false,
+      sourcemap: true
+    },
+    {
+      dir: "app/assets/builds",
+      format: "esm",
+      inlineDynamicImports: false,
+      sourcemap: true
+    }
+  ],
   plugins: [
     resolve()
   ]

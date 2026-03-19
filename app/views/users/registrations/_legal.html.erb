@@ -12,16 +12,12 @@
            privacy_policy_link: link_to(t(".privacy_policy"), privacy_path, target: "_blank", rel: "noopener")) %>
   </p>
   <fieldset name="<%= tos_field_name %>" id="tos-partial">
-    <div class="tos docs system module">
-      <div class="userstuff">
-        <h2 class="heading" id="tos"><%= t("home.tos.page_heading") %></h2>
-        <%= render "home/tos", suppress_footer: true %>
-        <h2 class="heading" id="content"><%= t("home.content.page_heading") %></h2>
-        <%= render "home/content", suppress_toc: true, suppress_footer: true %>
-        <h2 class="heading" id="privacy"><%= t("home.privacy.page_heading") %></h2>
-        <%= render "home/privacy", suppress_toc: true %>
-      </div>
-    </div>
+    <h2 class="heading" id="tos"><%= t("home.tos.page_heading") %></h2>
+    <%= render partial: "home/tos", suppress_footer: true %>
+    <h2 class="heading" id="content"><%= t("home.content.page_heading") %></h2>
+    <%= render partial: "home/content", suppress_toc: true, suppress_footer: true %>
+    <h2 class="heading" id="privacy"><%= t("home.privacy.page_heading") %></h2>
+    <%= render partial: "home/privacy", suppress_toc: true %>
   </fieldset>
   <p>
     <%= f.check_box :terms_of_service %>

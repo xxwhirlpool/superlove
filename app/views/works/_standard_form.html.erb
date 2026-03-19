@@ -1,12 +1,12 @@
 <!--REVIEW: trying out articles on these fieldsets to see if that's a better chunker, but may revert after testing. Have also tossed in landmark headings on top level groups-->
 <%= form_for(@work, html: { id: "work-form", class: "verbose post work" }) do |f| %>
-  <p class="required notice">* <%= ts("Required information") %></p>
+  <div class="required notice">* <%= ts("Required information") %></div>
 
   <%= render "work_form_tags", include_blank: false %>
 
-  <fieldset class="preface" role="article">
+  <fieldset class="preface">
     <legend><%= t("works.preface.title") %></legend>
-    <h3 class="landmark heading"><%= t("works.preface.title") %></h3>
+    <h3 class="landmark"><%= t("works.preface.title") %></h3>
     <dl>
       <dt class="title required">
         <%= f.label :title, ts("Work Title") + "*" %>
@@ -41,7 +41,7 @@
     </dl>
   </fieldset>
 
-  <fieldset id="associations" role="article">
+  <fieldset id="associations">
     <legend><%= t("works.associations.title") %></legend>
     <h3 class="landmark heading"><%= t("works.associations.title") %></h3>
     <dl>
@@ -257,7 +257,7 @@
   </fieldset>
 
   <!-- privacy settings -->
-  <fieldset class="privacy" role="article">
+  <fieldset class="privacy">
     <legend><%= t("works.permissions.privacy") %></legend>
     <h3 class="landmark heading"><%= t("works.permissions.privacy") %></h3>
     <dl>
@@ -299,7 +299,7 @@
   </fieldset>
   <% unless @chapters %>
     <!-- Work text field (chapter_attributes_content) -->
-    <fieldset class="work text" role="article">
+    <fieldset class="work text">
       <legend class="required"><%= ts("Work Text") %>*</legend>
       <ul class="hidden rtf-html-switch actions" role="menu">
         <li><a class="rtf-link" href="#"><%= ts("Rich Text") %></a></li>
@@ -317,7 +317,7 @@
 
       <% use_tinymce %>
         <div class="rtf-html-field">
-          <h4 class="landmark heading"><%= ts("Work Text") %>*</h4>
+          <h4 class="landmark"><%= ts("Work Text") %>*</h4>
           <%= c.text_area :content, value: @chapter.content,
                 class: "mce-editor observe_textlength large", id: "content" %>
           <%= live_validation_for_field("content",
@@ -343,12 +343,14 @@
 <% end %> <!-- end of form_for -->
 
 <%= content_for :footer_js do %>
+  <%= javascript_include_tag :workeditor, "data-turbo-track": "reload" %>
   <%= javascript_tag do %>
-    $j(document).ready(function(){
-      $j(".toggle_formfield").click(function() {
-        var targetId = $j(this).attr("id").replace("-show", "");
-        toggleFormField(targetId);
+    document.addEventListener('ready', (_e) => {
+      document.querySelectorAll('.toggle_formfield').addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = e.target.getAttribute('id').replace('-show', '');
+        targetId.classList.toggle('hidden');
       });
-    })
+    });
   <% end %>
 <% end %>

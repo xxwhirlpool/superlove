@@ -1,7 +1,7 @@
-<p class="required notice">* <%= ts('Required information') %></p>
+<div class="required notice">* <%= ts('Required information') %></div>
 <fieldset>
   <legend><%= ts('About') %></legend>
-  <h3 class="landmark heading"><%= ts('About') %></h3>
+  <h3 class="landmark"><%= ts('About') %></h3>
   <dl>      
     <dt class="required"><%= label_tag "skin_type", "#{t('.skin_type')}*" %> <%= link_to_help_modal(help_skins_basics_path, t(".skins_basics_help_title")) %></dt>
     <dd class="required">
@@ -101,3 +101,4 @@
 </fieldset>
 
 <%= submit_fieldset(f) %>
+<%= javascript_include_tag :skineditor, "data-turbo-track": "reload" %>
