@@ -138,15 +138,15 @@ en:
           invite_by_email_title: Invite by email
           invite_user: Invite user
     admin_nav:
-      ao3_news: AO3 News
-      archive_faq: Archive FAQ
+      ao3_news: superlove News
+      archive_faq: superlove FAQ
       faq:
         reorder_questions: Reorder Questions
       known_issues: Known Issues
       landmark: Admin Navigation
       news:
         delete_post: Delete Post
-      post_ao3_news: Post AO3 News
+      post_ao3_news: Post superlove News
       wrangling_guidelines: Wrangling Guidelines
     admin_options:
       delete:
@@ -341,8 +341,8 @@ en:
           admin_posts: Admin Posts
           faqs: Archive FAQ
           known_issues: Known Issues
-          news: AO3 News
-          post_news: Post AO3 News
+          news: superlove News
+          post_news: Post superlove News
           wrangling_guidelines: Wrangling Guidelines
         settings: Settings
         skins:
@@ -723,7 +723,7 @@ en:
         update: Update
       content_policy: Content Policy
       legend: Post Chapter
-      post_notice_html: All works you post on AO3 must comply with our %{content_policy_link}. For more information, please refer to our %{tos_faq_link}.
+      post_notice_html: All works you post on superlove must comply with our %{content_policy_link}. For more information, please refer to our %{tos_faq_link}.
       tos_faq: Terms of Service FAQ
     preview:
       page_heading: Preview
@@ -1444,13 +1444,13 @@ en:
         archive_description: superlove exists to host epic and awesome fanworks (and more!).
         content: content
         maximum_inclusiveness: maximum inclusiveness of fanwork content
-        our_goal_html: Our goal is %{maximum_inclusiveness_link}. We want to provide a safe and permanent home for fanworks, including works that might be at risk on other sites due to being deemed immoral, explicit, or otherwise objectionable. Users should always observe and heed the ratings and warnings provided before accessing works on AO3.
+        our_goal_html: Our goal is %{maximum_inclusiveness_link}. We want to provide a safe and permanent home for fanworks, including works that might be at risk on other sites due to being deemed immoral, explicit, or otherwise objectionable. Users should always observe and heed the ratings and warnings provided before accessing works on superlove.
         report_it_to_us: report it to us
         review_before_posting_html: "%{all_content_must_comply_bold} Please review this page carefully before you begin posting. Answers to common questions about the Content Policy can be found in the %{tos_faq_link}."
         tos_faq: TOS FAQ
-        we_do_not_prescreen: We do not prescreen content on AO3.
+        we_do_not_prescreen: We do not prescreen content on superlove.
         you_can_report_html: If you encounter content that you believe violates our Content Policy, you can %{report_it_to_us_link}. %{we_do_not_prescreen_bold}
-      license_html: The AO3 %{terms_of_service_link}, including the %{content_policy_link} and %{privacy_policy_link}, are licensed under the %{cc_attribution_4_0_international_link}.
+      license_html: The superlove %{terms_of_service_link}, including the %{content_policy_link} and %{privacy_policy_link}, are licensed under the %{cc_attribution_4_0_international_link}.
       mandatory_tags:
         any_archive_warning: any Archive Warning
         ao3_may_designate_html: AO3 software may designate some tag fields (e.g. Rating, Archive Warnings, Fandom, or Language) as mandatory in order to post, import, or edit a Work using the appropriate forms. Tags entered into mandatory fields must meet the %{minimum_criteria_link} described in the TOS FAQ.
@@ -2265,12 +2265,12 @@ en:
       agree_and_consent: I agree/consent to these Terms
       content: Content
       content_policy: Content Policy
-      data_processing_agreement: By checking this box, you consent to the processing of your personal data in the United States and other jurisdictions in connection with our provision of AO3 and its related services to you. You acknowledge that the data privacy laws of such jurisdictions may differ from those provided in your jurisdiction. For more information about how your personal data will be processed, please refer to our Privacy Policy.
+      data_processing_agreement: By checking this box, you consent to the processing of your personal data in the United States and other jurisdictions in connection with our provision of superlove and its related services to you. You acknowledge that the data privacy laws of such jurisdictions may differ from those provided in your jurisdiction. For more information about how your personal data will be processed, please refer to our Privacy Policy.
       learn_more_html: To learn more, check out our %{tos_link}, including the %{content_policy_link} and %{privacy_policy_link}.
-      page_heading: Archive of Our Own
+      page_heading: superlove
       privacy_policy: Privacy Policy
       read_and_understood: I have read & understood the 2024 Terms of Service, including the Content Policy and Privacy Policy.
-      summary_html: On the Archive of Our Own (AO3), users can create works, bookmarks, comments, tags, and other %{content_link}. Any information you publish on AO3 may be accessible by the public, AO3 users, and/or AO3 personnel. Be mindful when sharing personal information, including but not limited to your name, email, age, location, personal relationships, gender or sexual identity, racial or ethnic background, religious or political views, and/or account usernames for other sites.
+      summary_html: On superlove, users can create works, bookmarks, comments, tags, and other %{content_link}. Any information you publish on superlove may be accessible by the public, superlove users, and/or superlove admins. Be mindful when sharing personal information, including but not limited to your name, email, age, location, personal relationships, gender or sexual identity, racial or ethnic background, religious or political views, and/or account usernames for other sites.
       tos: Terms of Service
   media:
     index:
@@ -2421,7 +2421,7 @@ en:
       change_profile_landmark: Change Profile
       page_heading: Edit My Profile
       privacy_policy: Privacy Policy
-      public_information_notice_html: Any personal information you post on your public AO3 profile, including but not limited to your name, email, age, location, personal relationships, gender or sexual identity, racial or ethnic background, religious or political views, and/or account usernames for other sites, will be accessible by the general public. To learn more about what data AO3 collects when you're on the site and how we use it, check out our %{privacy_policy_link}.
+      public_information_notice_html: Any personal information you post on your public superlove profile, including but not limited to your name, email, age, location, personal relationships, gender or sexual identity, racial or ethnic background, religious or political views, and/or account usernames for other sites, will be accessible by the general public. To learn more about what data superlove collects when you're on the site and how we use it, check out our %{privacy_policy_link}.
       title: Title
       update: Update
     pseud_list:
@@ -2857,16 +2857,16 @@ en:
         submit: Submit
       new:
         email_html: Email address
-        instructions: Please enter the email address associated with your AO3 account. You may only request a password reset a limited number of times per day.
+        instructions: Please enter the email address associated with your superlove account. You may only request a password reset a limited number of times per day.
         introductions: If you've forgotten your password, we can send you an email with instructions to reset your password.
         page_heading: Reset Password
         reset_password: Reset Password
     registrations:
       legal:
         agreement_confirm: Yes, I have read the Terms of Service, including the Content Policy and Privacy Policy, and agree to them.
-        agreement_required_html: Before you begin using AO3, you must agree to our %{terms_of_service_link}, including the %{content_policy_link} and %{privacy_policy_link}.
+        agreement_required_html: Before you begin using superlove, you must agree to our %{terms_of_service_link}, including the %{content_policy_link} and %{privacy_policy_link}.
         content_policy: Content Policy (opens in new window)
-        data_processing_confirm: By checking this box, you consent to the processing of your personal data in the United States and other jurisdictions in connection with our provision of AO3 and its related services to you. You acknowledge that the data privacy laws of such jurisdictions may differ from those provided in your jurisdiction. For more information about how your personal data will be processed, please refer to our Privacy Policy.
+        data_processing_confirm: By checking this box, you consent to the processing of your personal data in the United States and other jurisdictions in connection with our provision of superlove and its related services to you. You acknowledge that the data privacy laws of such jurisdictions may differ from those provided in your jurisdiction. For more information about how your personal data will be processed, please refer to our Privacy Policy.
         over_thirteen_confirm: Yes, I am at least 13.
         over_thirteen_required: You need to be at least 13 years old to become a registered member of the Archive. (Sorry to anyone younger! You'll be more than welcome when the time comes.)
         privacy_policy: Privacy Policy (opens in new window)
@@ -3026,7 +3026,7 @@ en:
       page_heading_html: Chapter Index for %{work_link} by %{creators}
     new_import:
       content_policy: Content Policy
-      post_notice_html: All works you post on AO3 must comply with our %{content_policy_link}. For more information, please refer to our %{tos_faq_link}.
+      post_notice_html: All works you post on superlove must comply with our %{content_policy_link}. For more information, please refer to our %{tos_faq_link}.
       tos_faq: Terms of Service FAQ
     permissions:
       privacy: Privacy
@@ -3048,7 +3048,7 @@ en:
         update: Update
       content_policy: Content Policy
       legend: Post Work
-      post_notice_html: All works you post on AO3 must comply with our %{content_policy_link}. For more information, please refer to our %{tos_faq_link}.
+      post_notice_html: All works you post on superlove must comply with our %{content_policy_link}. For more information, please refer to our %{tos_faq_link}.
       tos_faq: Terms of Service FAQ
     preface:
       title: Preface
