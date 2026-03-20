@@ -1,17 +1,20 @@
   <!-- Age Check -->
-  <p class="note"><%= t(".over_thirteen_required") %></p>
-  <p>
-    <%= f.check_box :age_over_13 %>
-    <%= f.label :age_over_13, t(".over_thirteen_confirm") %>
-  </p>
-  <!-- Terms of Service -->
-  <p>
-     <%= t(".agreement_required_html",
-           terms_of_service_link: link_to(t(".terms_of_service"), tos_path, target: "_blank", rel: "noopener"),
-           content_policy_link: link_to(t(".content_policy"), content_path, target: "_blank", rel: "noopener"),
-           privacy_policy_link: link_to(t(".privacy_policy"), privacy_path, target: "_blank", rel: "noopener")) %>
-  </p>
-  <fieldset name="<%= tos_field_name %>" id="tos-partial">
+  <div class="note">
+    <%= t(".over_thirteen_required") %>
+  </div>
+  <div class="form-row checkbox">
+    <!-- Terms of Service -->
+    <%= f.label :age_over_13, t(".over_thirteen_confirm") do |l| %>
+      <%= f.check_box :age_over_13 %>
+      <span class="checkbox-text">
+        <%= t(".agreement_required_html",
+            terms_of_service_link: link_to(t(".terms_of_service"), tos_path, target: "_blank", rel: "noopener"),
+            content_policy_link: link_to(t(".content_policy"), content_path, target: "_blank", rel: "noopener"),
+            privacy_policy_link: link_to(t(".privacy_policy"), privacy_path, target: "_blank", rel: "noopener")) %>
+      </span>
+    <% end %>
+  </div>
+  <fieldset name="<%= tos_field_name %>" id="tos-partial" class="inset">
     <h2 class="heading" id="tos"><%= t("home.tos.page_heading") %></h2>
     <%= render partial: "home/tos", suppress_footer: true %>
     <h2 class="heading" id="content"><%= t("home.content.page_heading") %></h2>
@@ -19,11 +22,19 @@
     <h2 class="heading" id="privacy"><%= t("home.privacy.page_heading") %></h2>
     <%= render partial: "home/privacy", suppress_toc: true %>
   </fieldset>
-  <p>
-    <%= f.check_box :terms_of_service %>
-    <%= f.label :terms_of_service, t(".agreement_confirm"), class: "important" %>
-  </p>
-  <p>
-    <%= f.check_box :data_processing %>
-    <%= f.label :data_processing, t(".data_processing_confirm"), class: "important" %>
-  </p>
+  <div class="form-row checkbox">
+    <%= f.label :terms_of_service, "", class: "important" do |l| %>
+      <%= f.check_box :terms_of_service %>
+      <span class="checkbox-text">
+        <%= t(".agreement_confirm") %>
+      </span>
+    <% end %>
+  </div>
+  <div class="form-row checkbox">
+    <%= f.label :data_processing, "", class: "important" do |l| %>
+      <%= f.check_box :data_processing %>
+      <span class="checkbox-text">
+        <%= t(".data_processing_confirm") %>
+      </span>
+    <% end %>
+  </div>

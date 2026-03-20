@@ -67,6 +67,10 @@ h3 {
   font-weight: normal;
 }
 
+ul, ol {
+  margin-bottom: 1rem;
+}
+
 footer#footer, main {
   padding: 1rem 3rem;
 }
@@ -299,4 +303,54 @@ details.actions {
 
 .smaller {
   font-size: .75rem;
+}
+
+[popover] {
+  background: var(--neutral100);
+  border: 10px solid var(--neutral200);
+  max-width: 800px;
+  min-width: 200px;
+  max-height: calc(100vh - 40px);
+  text-align: left;
+  width: 80%;
+  z-index: 99;
+  box-shadow: 0 0 8px 0 rgba(black, 0.2);
+  height: 400px;
+  
+  :first-child {
+    margin-top: 0;
+  }
+  
+  h4 {
+    font-size: 1.5rem;
+  }
+  
+  .popover-inner {
+    position: relative;
+    max-height: calc(100% - 44px);
+    padding: 1.5rem 1.5rem 2.75rem;
+    overflow: auto;
+  }
+  
+  .footer-bar {
+    display: flex;
+    justify-content: space-between;
+    padding: .5rem;
+    border-top: 1px var(--neutral400) solid;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    right: 0;
+    background-color: var(--neutral100);
+    align-items: center;
+    min-height: 34px;
+    
+    .title {
+      font-size: 1rem;
+    }
+  }
+  
+  &::backdrop {
+    background-color: color-mix(in srgb-linear, var(--shadow), transparent 50%);
+  }
 }

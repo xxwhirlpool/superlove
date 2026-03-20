@@ -181,27 +181,24 @@ module ApplicationHelper
 
   def link_to_modal(content = "", options = {})
     options[:class] ||= ""
-    options[:for] ||= ""
-    options[:title] ||= options[:for]
+    options[:path] ||= ""
+    options[:id] ||= ""
+    options[:title] ||= options[:id]
 
-    html_options = { class: "#{options[:class]} modal", title: options[:title] }
-    link_to content, options[:for], html_options
+    html_options = { class: "modal", title: options[:title], popovertarget: options[:id], type: 'button' }
+    button_tag(content, html_options) + "<div popover id='#{options[:id]}'><div class='popover-inner'>#{File.read(options[:path])}</div><div class='footer-bar'><span class='title'>#{options[:title]}</span><button class='button' type='button' popovertarget='#{options[:id]}' popovertargetaction='hide'>Close</button></div></div>".html_safe
   end
 
   # TODO: AO3-7208 Make help modals dynamic and translatable and use link_to_help_modal instead of this method
-  def link_to_help(help_entry, link = '<span class="symbol question"><span>?</span></span>'.html_safe)
-    help_file = ""
+  def link_to_help(help_entry, link = '<span class="icon question">?</span>'.html_safe)
+    help_file = "#{Rails.root}/public#{ArchiveConfig.HELP_DIRECTORY}/#{help_entry}.html"
 
-    unless !help_file.blank? && File.exists?("#{Rails.root}/public/#{help_file}")
-      help_file = "#{ArchiveConfig.HELP_DIRECTORY}/#{help_entry}.html"
-    end
-
-    " ".html_safe + link_to_modal(link, for: help_file, title: help_entry.split('-').join(' ').capitalize, class: "help symbol question").html_safe
+    " ".html_safe + link_to_modal(link, path: help_file, id: help_entry, title: help_entry.split('-').join(' ').capitalize).html_safe
   end
 
   def link_to_help_modal(help_path, title)
-    link = tag.span(tag.span(t("application_helper.help_modal.help_symbol")), class: %w[symbol question])
-    " ".html_safe + link_to_modal(link, for: help_path, title: title, class: "help symbol question")
+    link = tag.span(tag.span(t("application_helper.help_modal.help_symbol")))
+    " ".html_safe + link_to_modal(link, for: help_path, title: title)
   end
 
   # Inserts the flash alert messages for flash[:key] wherever

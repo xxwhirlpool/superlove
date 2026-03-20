@@ -50,23 +50,39 @@ label {
 
 .form-row {
   margin-bottom: 0.5rem;
+  
+  &.checkbox {
+    label {
+      display: flex;
+      gap: 1rem;
+      align-items: start;
+    }
+  }
+  
+  &.side-label {
+    display: grid;
+    grid-template-columns: 25% 1fr;
+    
+    label {
+      border-bottom: 1px solid #f3efec;
+    }
+    
+    .help {
+      grid-column-start: 1;
+      grid-column-end: 3;
+      text-align: right;
+      font-size: .6rem;
+      margin: .65rem 0;
+    }
+  }
 }
 
-.form-row.side-label {
-  display: grid;
-  grid-template-columns: 25% 1fr;
-}
-
-.form-row.side-label label {
-  border-bottom: 1px solid #f3efec;
-}
-
-.form-row.side-label .help {
-  grid-column-start: 1;
-  grid-column-end: 3;
-  text-align: right;
-  font-size: .6rem;
-  margin: .65rem 0;
+.note {
+  margin: 1rem 0;
+  
+  &:first-child {
+    margin-top: 0;
+  }
 }
 
 .radio-group {
@@ -107,6 +123,13 @@ details.actions summary {
   display: inline-block;
   font-family: inherit;
   font-size: inherit;
+}
+
+button.modal {
+  border: none;
+  padding: 0;
+  background: none;
+  border-radius: 0;
 }
 
 .actions span.current {
