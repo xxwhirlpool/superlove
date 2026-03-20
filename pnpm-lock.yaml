@@ -26,6 +26,9 @@ importers:
       '@toast-ui/editor':
         specifier: ^3.2.2
         version: 3.2.2
+      autocompleter:
+        specifier: ^9.3.2
+        version: 9.3.2
       codemirror:
         specifier: ^6.0.2
         version: 6.0.2
@@ -333,6 +336,9 @@ packages:
 
   '@types/resolve@1.20.2':
     resolution: {integrity: sha512-60BCwRFOZCQhDncwQdxxeOEEkbc5dIMccYLwbxsS4TUNeVECQ/pBJ0j09mrHOl/JJvpRPGwO9SvE4nR2Nb/a4Q==}
+
+  autocompleter@9.3.2:
+    resolution: {integrity: sha512-rLbf2TLGOD7y+gOS36ksrZdIsvoHa2KXc2A7503w+NBRPrcF73zzFeYBxEcV/iMPjaBH3jFhNIYObZ7zt1fkCQ==}
 
   chokidar@4.0.3:
     resolution: {integrity: sha512-Qgzu8kfBvo+cA4962jnP1KkS6Dop5NS6g7R5LFYJr4b8Ub94PPQXUksCw9PvXoeXPRRddRNC5C1JQUR2SMGtnA==}
@@ -702,6 +708,8 @@ snapshots:
   '@types/estree@1.0.8': {}
 
   '@types/resolve@1.20.2': {}
+
+  autocompleter@9.3.2: {}
 
   chokidar@4.0.3:
     dependencies:
