@@ -17,3 +17,7 @@
   </ol>
   <%= will_paginate @people %>
 <% end %>
+
+<% content_for :footer_js do %>
+  <%= javascript_include_tag :search, "data-turbo-track": "reload" %>
+<% end %>

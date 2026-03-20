@@ -6,15 +6,15 @@
         <%= ts("Search all fields") %>
         <%= link_to_help "people-search-all-fields" %>
       <% end %>
-      <%= f.text_field :query %>
+      <%= f.text_field :query, "data-autocomplete-type": "pseud" %>
     </div>
     <div class="form-row side-label">
       <%= f.label :name, ts("Name") %>
-      <%= f.text_field :name, autocomplete_options("pseud") %>
+      <%= f.text_field :name, "data-autocomplete-type": "pseud" %>
     </div>
     <div class="form-row side-label">
       <%= f.label :fandom, ts("Fandom") %>
-      <%= f.text_field :fandom, autocomplete_options("fandom") %>
+      <%= f.text_field :fandom, "data-autocomplete-type": "fandom" %>
     </div>
     <div class="right actions">
       <%= f.submit ts("Search People") %>
