@@ -48,9 +48,6 @@
 
 <%= javascript_include_tag "filters.min", skip_pipeline: true %>
 
-<%= javascript_include_tag "highlightjs/highlight.min" %>
-<%= javascript_include_tag "highlightjs/css.min" %>
-<script type="text/javascript">hljs.highlightAll();</script>
 <% if allow_tinymce?(controller) %>
   <%= yield :tinymce_init %>
 <% end %>

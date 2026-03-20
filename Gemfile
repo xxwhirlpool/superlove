@@ -187,3 +187,5 @@ end
 gem "image_processing", "~> 1.12"
 gem "ostruct"
 gem "meta-tags"
+
+gem "sprockets-rails"

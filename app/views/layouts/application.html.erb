@@ -22,6 +22,10 @@
     <title><%= browser_page_title(@page_title, @page_subtitle) %></title>
     <%= render :partial => 'layouts/includes' %>
     <%= phraseapp_in_context_editor_js %>
+
+    <%= javascript_include_tag "highlightjs/highlight.min" %>
+    <%= javascript_include_tag "highlightjs/css.min" %>
+    <script type="text/javascript">hljs.highlightAll();</script>
   </head>
 
   <body class="<%= logged_in? ? 'logged-in' : 'logged-out' %>" <%= PhraseApp::InContextEditor.enabled? ? "data-no-turbolink" : "" %>>

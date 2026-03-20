@@ -74,7 +74,7 @@
   <% unless @skin.css.blank? && @skin.filename.blank? %>
     <div class="css module">
       <h3 class="heading"><abbr title="cascading style sheets">CSS</abbr></h3>
-      <blockquote><pre><%= @skin.get_css %></pre></blockquote>
+      <pre class="css"><code class="hljs language-css"><%= @skin.get_css %></code></pre>
     </div>
   <% end %>
   
