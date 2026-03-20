@@ -2,97 +2,90 @@
   <fieldset>
     <legend><%= ts("Work Info") %></legend>
     <h3 class="landmark heading"><%= ts("Work Info") %></h3>
-    <p class="submit"><%= f.submit ts("Search") %></p>
-    <dl>
-      <dt>
-        <%= f.label :query, ts("Any Field") %>
+    <div class="submit"><%= f.submit ts("Search") %></div>
+    <div class="form-row side-label">
+      <%= f.label :query, ts("Any Field") do |l| %>
         <%= link_to_help "work-search-text-help" %>
-      </dt>
-      <dd>
-        <%= f.text_field :query %>
-      </dd>
-      <dt>
-        <%= f.label :title, ts("Title") %>
-      </dt>
-      <dd>
-        <%= f.text_field :title %>
-      </dd>
-      <dt>
-        <%= f.label :creators, t(".creator") %>
-      </dt>
-      <dd>
-        <%= f.text_field :creators %>
-      </dd>
-      <dt>
-        <%= f.label :revised_at, ts("Date") %>
+      <% end %>
+      <%= f.text_field :query %>
+    </div>
+    <div class="form-row side-label">
+      <%= f.label :title, ts("Title") %>
+      <%= f.text_field :title %>
+    </div>
+    <div class="form-row side-label">
+      <%= f.label :creators, t(".creator") %>
+      <%= f.text_field :creators %>
+    </div>
+    <div class="form-row side-label">
+      <%= f.label :revised_at do |l| %>
+        <%= ts("Date") %>
         <%= link_to_help "work-search-date-help" %>
-      </dt>
-      <dd>
-        <%= f.text_field :revised_at %>
-      </dd>
-      <dt><%= ts("Completion status") %></dt>
-      <dd>
-        <ul>
-          <li>
-            <%= f.radio_button :complete, "" %>
-            <%= f.label :complete, ts("All works"), value: "" %>
-          </li>
-          <li>
-            <%= f.radio_button :complete, "T" %>
-            <%= f.label :complete, ts("Complete works only"), value: "T" %>
-          </li>
-          <li>
-            <%= f.radio_button :complete, "F" %>
-            <%= f.label :complete, ts("Works in progress only"), value: "F" %>
-          </li>
-        </ul>
-      </dd>
-      <dt>
+      <% end %>
+      <%= f.date_field :revised_at %>
+    </div>
+    <div class="form-row side-label">
+      <%= f.label :complete, ts("Completion status") %>
+      <ul class="radio-group">
+        <li>
+          <%= f.radio_button :complete, "" %>
+          <%= f.label :complete, ts("All works"), value: "" %>
+        </li>
+        <li>
+          <%= f.radio_button :complete, "T" %>
+          <%= f.label :complete, ts("Complete works only"), value: "T" %>
+        </li>
+        <li>
+          <%= f.radio_button :complete, "F" %>
+          <%= f.label :complete, ts("Works in progress only"), value: "F" %>
+        </li>
+      </ul>
+    </div>
+    <div class="form-row side-label">
+      <%= f.label :crossover do |l| %>
         <%= ts("Crossovers") %>
         <%= link_to_help "work-search-crossover-help" %>
-      </dt>
-      <dd>
-        <ul>
-          <li>
-            <%= f.radio_button :crossover, "" %>
-            <%= f.label :crossover, ts("Include crossovers"), value: "" %>
-          </li>
-          <li>
-            <%= f.radio_button :crossover, "F" %>
-            <%= f.label :crossover, ts("Exclude crossovers"), value: "F" %>
-          </li>
-          <li>
-            <%= f.radio_button :crossover, "T" %>
-            <%= f.label :crossover, ts("Only crossovers"), value: "T" %>
-          </li>
-        </ul>
-      </dd>
-      <dt>
-        <%= f.label :single_chapter, ts("Single Chapter") %>
-      </dt>
-      <dd>
+      <% end %>
+      <ul class="radio-group">
+        <li>
+          <%= f.radio_button :crossover, "" %>
+          <%= f.label :crossover, ts("Include crossovers"), value: "" %>
+        </li>
+        <li>
+          <%= f.radio_button :crossover, "F" %>
+          <%= f.label :crossover, ts("Exclude crossovers"), value: "F" %>
+        </li>
+        <li>
+          <%= f.radio_button :crossover, "T" %>
+          <%= f.label :crossover, ts("Only crossovers"), value: "T" %>
+        </li>
+      </ul>
+    </div>
+    <div class="form-row side-label">
+      <%= f.label :single_chapter, ts("Single Chapter") %>
+      <div class="field">
         <%= f.check_box :single_chapter %>
-      </dd>
-      <dt>
-        <%= f.label :word_count, ts("Word Count") %>
+      </div>
+    </div>
+    <div class="form-row side-label">
+      <%= f.label :word_count do |l| %>
+        <%= ts("Word Count") %>
         <%= link_to_help "work-search-numerical-help" %>
-      </dt>
-      <dd>
-        <%= f.text_field :word_count %>
-      </dd>
-      <dt>
-        <%= f.label :language_id, ts("Language") %>
+      <% end %>
+      <%= f.text_field :word_count %>
+    </div>
+    <div class="form-row side-label">
+      <%= f.label :language_id do |l| %>
+        <%= ts("Language") %>
         <%= link_to_help "work-search-language-help" %>
-      </dt>
-      <dd>
-        <%= f.select(:language_id, language_options_for_select(@languages, "short"), include_blank: true) %>
-      </dd>
-    </dl>
+      <% end %>
+      <%= f.select(:language_id, language_options_for_select(@languages, "short"), include_blank: true) %>
+    </div>
   </fieldset>
 
   <fieldset>
     <legend><%= ts("Work Tags") %> <%= link_to_help "work-search-tags-help" %></legend>
-    <h3 class="landmark heading"><%= ts("Work Tags") %></h3>
+    <h3 class="landmark"><%= ts("Work Tags") %></h3>
     <dl>
       <dt>
         <%= f.label :fandom_names, ts("Fandoms") %>

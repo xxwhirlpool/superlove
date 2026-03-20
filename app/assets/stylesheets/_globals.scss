@@ -316,6 +316,8 @@ details.actions {
   z-index: 99;
   box-shadow: 0 0 8px 0 rgba(black, 0.2);
   height: 400px;
+  font-family: var(--font-body);
+  font-size: 1rem;
   
   :first-child {
     margin-top: 0;
