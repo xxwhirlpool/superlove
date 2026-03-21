@@ -1,0 +1,81 @@
+.required-tags {
+  li {
+    background-repeat: no-repeat;
+    overflow: hidden;
+    
+    > button {
+      width: 100%;
+      height: 100%;
+    }
+    
+    span {
+      text-indent: -500px;
+      overflow: hidden;
+      display: inline-block;
+    }
+  }
+  
+  .rating-general-audience {
+    background: url("/images/imageset.png") -50px -25px;
+  }
+  
+  .rating-explicit {
+    background: url("/images/imageset.png") -25px -25px;
+  }
+  
+  .rating-mature {
+    background: url("/images/imageset.png") -75px -25px;
+  }
+  
+  .rating-notrated, .category-none, .warning-no {
+    background: url("/images/imageset.png") -150px 0px;
+  }
+  
+  .rating-teen {
+    background: url("/images/imageset.png") 0px -25px;
+  }
+  
+  .category-femslash {
+    background: url("/images/imageset.png") -25px 0px;
+  }
+  
+  .category-gen {
+    background: url("/images/imageset.png") -50px 0px;
+  }
+  
+  .category-slash {
+    background: url("/images/imageset.png") 0px 0px;
+  }
+  
+  .category-het {
+    background: url("/images/imageset.png") -75px 0px;
+  }
+  
+  .category-multi {
+    background: url("/images/imageset.png") -100px -0px;
+  }
+  
+  .category-other {
+    background: url("/images/imageset.png") -125px 0px;
+  }
+  
+  .complete-no {
+    background: url("/images/imageset.png") -100px -25px;
+  }
+  
+  .complete-yes {
+    background: url("/images/imageset.png") -175px -25px;
+  }
+  
+  .warning-yes {
+    background: url("/images/imageset.png") -150px -25px;
+  }
+  
+  .warning-choosenotto {
+    background: url("/images/imageset.png") -125px -25px;
+  }
+  
+  .external-work {
+    background: url("/images/imageset.png") -75px -50px;
+  }
+}

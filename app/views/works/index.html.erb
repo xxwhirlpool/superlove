@@ -8,14 +8,14 @@
 
 <!--Subnavigation, sorting and actions.-->
 <% if @collection || @tag || @user || @language %>
-  <div class="navigation actions module">
-    <h3 class="landmark heading"><%= ts("Navigation and Actions") %></h3>
+  <div class="navigation">
+    <h3 class="landmark"><%= ts("Navigation and Actions") %></h3>
     <!--gift search subnav-->
     <% if @collection && @collection.gift_exchange? %>
       <%= render "gifts/gift_search" %>
     <% end %>
     <!--user role subnav-->
-    <ul class="user navigation actions" role="navigation">
+    <ul class="actions right" role="navigation">
       <% if @user %>
         <% if @user == current_user %>
           <li id="edit_multiple"><%= link_to ts("Edit Works"), show_multiple_user_works_path(@user) %></li>
@@ -43,14 +43,14 @@
 <!---/subnav-->
 
 <% unless @owner.present? %>
-  <p><%= t(".recent_works_html", choose_fandom_link: link_to(t(".choose_fandom"), media_index_path), advanced_search_link: link_to(t(".advanced_search"), search_works_path)) %>
+  <%= t(".recent_works_html", choose_fandom_link: link_to(t(".choose_fandom"), media_index_path), advanced_search_link: link_to(t(".advanced_search"), search_works_path)) %>
 <% end %>
 
 <%== pagy_nav @pagy %>
 
 <!--main content-->
-<h3 class="landmark heading"><%= ts("Listing Works") %></h3>
-<ol class="work index group">
+<h3 class="landmark"><%= ts("Listing Works") %></h3>
+<ol id="works" class="blurb-list">
   <%= render partial: "work_blurb", collection: @works, as: :work %>
 </ol>
 
@@ -62,4 +62,8 @@
 <% end %>
 <!---/subnav-->
 
-<%== pagy_nav @pagy %>
+<%= pagy_nav @pagy %>
+
+<% content_for :footer_js do %>
+  <%= javascript_include_tag :search, "data-turbo-track": "reload" %>
+<% end %>

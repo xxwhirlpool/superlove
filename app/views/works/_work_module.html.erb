@@ -4,7 +4,7 @@
   <%= render "works/mystery_blurb", item: work %>
 <% else %>
   <!--title, author, fandom-->
-  <div class="header module">
+  <header>
     <!-- updated_at=<%= work.updated_at.to_i.to_s %> -->
     <h4>
       <% if (work.unrevealed? || work.anonymous?) && is_author_of?(work) %>
@@ -22,9 +22,6 @@
       <!-- do not cache -->
       <%= byline(work, visibility: "public") %>
 
-<% #### CACHE show/hide ####, if you update the key edit lib/tasks/memcached.rake %>
-<% cache("#{work.cache_key}-#{Work.work_blurb_version(work.id)}-#{hide_warnings?(work) ? 'nowarn' : 'showwarn'}-#{hide_freeform?(work)  ? 'nofreeform' : 'showfreeform'}-v11", skip_digest: true) do %>
-
       <% tag_groups = work.tag_groups %>
 
       <% if work.gifts.not_rejected.exists? %>
@@ -34,37 +31,37 @@
       <% if work.hidden_by_admin %><%= image_tag("lockred.png", :size => "15x15", :alt => "(Hidden by Admin)", :title => "Hidden by Administrator", skip_pipeline: true) %><% end %>
     </h4>
 
-    <h5 class="fandoms">
+    <div class="fandoms">
       <span class="landmark"><%= ts("Fandoms") %>:</span>
       <% fandoms = tag_groups['Fandom'] %>
       <%= fandoms.collect{|tag| link_to_tag_works(tag) }.join(', ').html_safe if fandoms %>
       &nbsp;
-    </h5>
+    </div>
 
     <!--required tags-->
     <%= get_symbols_for(work, tag_groups) %>
-    <p class="datetime"><%= set_format_for_date(work.revised_at) %></p>
-  </div>
+    <div class="datetime"><%= set_format_for_date(work.revised_at) %></div>
+  </header>
 
   <% if !work.posted? %>
-   <p class="caution notice"><%= t('.draft_deletion_notice_html', deletion_date: date_in_zone(work.created_at + 29.days)) %></p>
+   <div class="caution notice"><%= t('.draft_deletion_notice_html', deletion_date: date_in_zone(work.created_at + 29.days)) %></div>
   <% end %>
   <!--warnings again, cast, freeform tags-->
-  <h5 class="landmark"><%= ts("Tags") %></h5>
+  <div class="landmark"><%= ts("Tags") %></div>
   <ul class="tags commas">
     <%= blurb_tag_block(work, tag_groups) %>
   </ul>
 
   <!--summary-->
   <% unless work.summary.blank? %>
-    <h5 class="landmark"><%= ts("Summary") %></h5>
-    <blockquote class="userstuff summary">
+    <div class="landmark"><%= ts("Summary") %></div>
+    <div class="summary">
       <%=raw strip_images(sanitize_field(work, :summary)) %>
-    </blockquote>
+    </div>
   <% end %>
 
   <% unless work.series.empty? %>
-    <h6 class="landmark heading"><%= ts("Series") %></h6>
+    <div class="landmark"><%= ts("Series") %></div>
     <ul class="series">
       <% work.series.each do |series| %>
         <li>
@@ -85,9 +82,6 @@
     <% end %>
     <li id="words"><b>Words:</b> <span class="meta-value"><%= number_with_delimiter(work.word_count) %></span></li>
     <li id="chapters"><b>Chapters:</b> <span class="meta-value"><%= chapter_total_display_with_link(work) %></span></li>
-
-<% end %>
-<% #### END CACHE show/hide %>
 
 <% #### CACHE stats #### %>
 <% cache("#{work.cache_key}/stats-v4", expires_in: 1.hour, skip_digest: true) do %>

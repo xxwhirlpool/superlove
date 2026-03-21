@@ -82,7 +82,7 @@ aside {
 details {
   margin-bottom: 1rem;
   
-  summary {
+  summary:has(h3,h4,h5,h6) {
     &::marker {
       content: "";
     }
@@ -154,6 +154,104 @@ details {
 .blurb {
   padding: 0.45rem 0.75rem;
   border: 1px var(--neutral300) solid;
+  font-size: .875rem;
+  
+  header {
+    margin-bottom: 0.5rem;
+  }
+  
+  h4 {
+    font-weight: normal;
+    font-size: 1rem;
+    margin: 0;
+    line-height: 1.125rem;
+    
+    a {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+  }
+  
+  .fandoms {
+    font-family: var(--font-titles);
+    
+    a {
+      text-decoration: underline dotted;
+      color: var(--text);
+    }
+  }
+  
+  .tags {
+    a {
+      text-decoration: underline dotted;
+      color: var(--text);
+    }
+    
+    &.warnings {
+      font-weight: bold;
+    }
+  }
+  
+  .stats {
+    list-style: none;
+    margin: 1rem 0 0;
+    padding: 0;
+    display: flex;
+    justify-content: end;
+    gap: 1rem;
+    
+    b {
+      font-weight: normal;
+    }
+  }
+  
+  &.work {
+    header {
+      display: grid;
+      grid-template-areas: "required title date"
+        "required fandoms fandoms";
+      grid-template-columns: 53px 1fr auto;
+      gap: 0 1rem;
+    }
+    
+    h4 {
+      grid-area: title;
+    }
+    
+    .datetime {
+      grid-area: date;
+      text-align: right;
+      font-size: .75rem;
+      font-family: monospace;
+    }
+    
+    .fandoms {
+      grid-area: fandoms;
+    }
+    
+    .required-tags {
+      display: grid;
+      grid-area: required;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 25px);
+      gap: 3px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      
+      .medium {
+        display: none;
+      }
+    }
+  }
+}
+
+.blurb-list {
+  display: grid;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 10px;
 }
 
 :has(> .dropdown) {
