@@ -4,23 +4,17 @@
 <li id="bookmark_<%= bookmark.id %>" class="<%= css_classes_for_bookmark_blurb(bookmark) %>" role="article">
 
   <% if bookmarkable.blank? %>
-    <p class="message"><%= t(".deleted") %></p>
+    <div class="message"><%= t(".deleted") %></div>
     <% # Bookmarks of deleted items need a div because they can still be edited. %>
     <div class="new dynamic" id="bookmark_form_placement_for_<%= bookmark_form_id %>"></div>
   <% else %>
-    <!--bookmark icons-->
     <% bookmark_count = bookmarkable.public_bookmark_count %>
-    <p class="status" title="<%= bookmark_count %> Bookmarks">
-      <%= get_symbol_for_bookmark(bookmark) %>
-      <%= get_count_for_bookmark_blurb(bookmarkable) %>
-    </p>
-
     <!--bookmark item module-->
     <%= render "bookmarks/bookmark_item_module", bookmarkable: bookmarkable %>
 
     <!--actions-->
     <% if (bookmark_count > 1 && params[:tag_id]) || (bookmark_count > 1 && (@owner.blank? && @bookmarkable.blank?)) || (logged_in? && !is_author_of?(bookmark)) %>
-      <ul class="actions" role="navigation">
+      <ul class="actions">
         <% # If this bookmark does not belong to the current user, let them save a new copy or edit their existing copy %>
         <% if logged_in? && !is_author_of?(bookmark) %>
           <li>

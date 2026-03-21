@@ -185,6 +185,11 @@ details {
     a {
       text-decoration: underline dotted;
       color: var(--text);
+      
+      &:hover {
+        background-color: var(--accent);
+        color: var(--accent-text);
+      }
     }
     
     &.warnings {
@@ -200,9 +205,19 @@ details {
     justify-content: end;
     gap: 1rem;
     
+    a {
+      color: var(--text);
+      text-decoration: underline;
+    }
+    
     b {
       font-weight: normal;
     }
+  }
+  
+  .bookmark {
+    border: 1px var(--neutral400) solid;
+    padding: .45rem .75rem;
   }
   
   &.work {
@@ -242,6 +257,15 @@ details {
       .medium {
         display: none;
       }
+    }
+  }
+  
+  &.bookmark {
+    grid-template-areas: "required title bookmarks"
+        "required fandoms date";
+        
+    .status {
+      grid-area: bookmarks;
     }
   }
 }

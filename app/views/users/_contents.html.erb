@@ -37,7 +37,7 @@
 <% unless @works.blank? %>
 <div id="user-works" class="index">
   <h3><%= ts("Recent works") %></h3>
-  <ul class="inset">
+  <ul class="inset blurb-list">
     <%= render partial: 'works/work_blurb', collection: @works, as: :work %>
   </ul>
   <% if @pseud %>
@@ -55,7 +55,7 @@
 <% unless @series.blank? %>
   <div id="user-series" class="index">
     <h3><%= ts("Recent series") %></h3>
-    <ul class="inset">
+    <ul class="inset blurb-list">
       <%= render partial: 'series/series_blurb', collection: @series, as: :series %>
     </ul>
     <% if @pseud %>
@@ -73,7 +73,7 @@
 <% unless @bookmarks.blank? %>
   <div id="user-bookmarks" class="index">
     <h3><%= ts("Recent bookmarks") %></h3>
-    <ol class="inset">
+    <ol class="inset blurb-list">
       <%= render partial: 'bookmarks/bookmark_blurb', collection: @bookmarks, as: :bookmark %>
     </ol>
     <% unless @user == User.orphan_account %>
