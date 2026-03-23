@@ -34,7 +34,7 @@
 
 <fieldset>
   <legend><%= ts('CSS') %></legend>
-  <h3 class="heading"><%= f.label :css, t(".css") %> <%= link_to_help_modal(help_skins_creating_path, t(".skins_creating_help_title")) %></h3>
+  <h3><%= f.label :css, t(".css") %> <%= link_to_help_modal(help_skins_creating_path, t(".skins_creating_help_title")) %></h3>
   <p>
     <%= f.text_area :css, :cols => 70, :class => 'large observe_textlength' %>
     <%= live_validation_for_field("skin_css", maximum_length: ArchiveConfig.CONTENT_MAX_DISPLAYED) %>
@@ -68,7 +68,7 @@
 
         <dt><%= f.label :media, ts('Media: ')%></dt>
         <dd class="listbox group">
-          <h5 class="heading"><%= ts('Choose @media') %></h5>
+          <h5><%= ts('Choose @media') %></h5>
           <%= checkbox_section(f, :media, Skin::MEDIA, :checked_method => @skin.media || Skin::DEFAULT_MEDIA, :value_method => "to_s", :name_method => "to_s", :include_blank => false) %>
         </dd>        
       </dl>

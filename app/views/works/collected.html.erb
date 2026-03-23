@@ -1,11 +1,11 @@
 <!--Descriptive page name and system messages, descriptions, and instructions.-->
-<h2 class="heading">
+<h2>
   <%= ts("Works in Challenges/Collections") %>
 </h2>
 <!-- /end descriptions-->
 
 <!--subnav-->
-<ul class="navigation actions" role="navigation">
+<ul class="actions">
   <% if @user == current_user %>
     <li id="edit_multiple"><%= link_to ts('Edit Works'), show_multiple_user_works_path(@user) %></li>
   <% end %>
@@ -23,8 +23,8 @@
 <% end %>
 
 <!--main content-->
-<h3 class="landmark heading"><%= ts("Listing Works") %></h3>
-<ol class="work index group">
+<h3 class="landmark"><%= ts("Listing Works") %></h3>
+<ol id="works" class="index">
   <% for work in @works %>
     <% if work %><%= render 'work_blurb', :work => work %><% end %>
   <% end %>

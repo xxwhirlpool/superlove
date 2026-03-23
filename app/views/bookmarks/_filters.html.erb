@@ -19,7 +19,7 @@
 
       <% %w(include exclude).each do |filter_action| %>
         <dt class="<%= filter_action %> heading">
-          <h4 class="heading">
+          <h4>
             <%= ts("%{filter_action}", filter_action: filter_action.titleize) %>
           </h4>
           <%= link_to_help "bookmark-filters-#{filter_action}-tags" %>
@@ -81,7 +81,7 @@
       <% end %>
 
       <dt class="more heading">
-        <h4 class="heading"><%= ts("More Options") %></h4>
+        <h4><%= ts("More Options") %></h4>
       </dt>
       <dd class="more group">
         <dl>

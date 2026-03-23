@@ -1,6 +1,6 @@
 <div class="admin">
   <!--Descriptive page name, messages and instructions-->
-  <h2 class="heading"><%= t(".page_heading") %></h2>
+  <h2><%= t(".page_heading") %></h2>
 
   <ul class="notes">
     <li><%= t(".notes.guest_comments") %></li>
@@ -10,7 +10,7 @@
   <!--/descriptions-->
 
   <!--main content-->
-  <h3 class="heading"><%= t(".heading.new") %></h3>
+  <h3><%= t(".heading.new") %></h3>
 
   <%= form_for(@admin_blacklisted_email, html: { class: "simple post" }) do |f| %>
     <%= error_messages_for @admin_blacklisted_email %>
@@ -23,7 +23,7 @@
     </fieldset>
   <% end %>
 
-  <h3 class="heading"><%= t(".heading.search")%></h3>
+  <h3><%= t(".heading.search")%></h3>
 
   <!-- search form -->
   <%= form_tag url_for(controller: "admin/blacklisted_emails", action: "index"),
@@ -40,7 +40,7 @@
   <!-- list of search results -->
   <% if @admin_blacklisted_emails %>
     <div class="results module">
-      <h3 class="heading">
+      <h3>
         <%= t("admin.blacklist.emails_found", count: @admin_blacklisted_emails.count) %>
       </h3>
       <% if @admin_blacklisted_emails.count > 0 %>

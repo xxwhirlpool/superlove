@@ -1,0 +1,255 @@
+en:
+  users:
+    admin_change_username:
+      description: Change the name of this user to a generic name in the format user + their account ID.
+      navigation:
+        manage_user: Manage User
+      new_username_footnote: This username cannot be edited. If you need to change it to a different name, contact your chair.
+      page_heading: Change Username
+      ticket_id: Ticket ID
+    change_email:
+      caution:
+        check_spam_html: "%{must_confirm_bold} Please check your spam folder or %{contact_support_link} if you do not receive the confirmation email."
+        confirm_by: If you don't confirm your request by %{date}, your email address will not be changed.
+        contact_support: contact Support
+        must_confirm: You must use the link in the confirmation email in order to finish confirming your email change.
+        requested_change_html: You have requested to change your email address to %{unconfirmed_email}. A confirmation email has been sent to this address.
+      form:
+        confirm: Confirm New Email
+        current_email: Current email
+        email_again: Enter new email again
+        new_email: New email
+        password: Password
+        submit_landmark: Submit
+      heading: Change Email
+      invalidate: invalidate any pending email change requests
+      must_confirm:
+        one: You must use the link in the confirmation email in order to finish confirming your email change. If you don't confirm your request within %{count} day, the link will expire and your email address will not be changed.
+        other: You must use the link in the confirmation email in order to finish confirming your email change. If you don't confirm your request within %{count} days, the link will expire and your email address will not be changed.
+      request_for_confirmation: Changing your email will send a request for confirmation to your new email address and a notification to your current email address.
+      resubmission_html: Resubmitting this form with a new email address will %{invalidate_bold}.
+    change_password:
+      change_password: Change Password
+      confirm_new_password: Confirm new password
+      new_password: New password
+      old_password: Old password
+      page_heading: Change Password
+      password_length:
+        one: "%{minimum} to %{count} character"
+        other: "%{minimum} to %{count} characters"
+      submit: Submit
+    change_username:
+      account_faq: Account FAQ
+      caution: Please use this feature with caution.
+      change_window:
+        one: You can change your username once per day.
+        other: You can change your username once every %{count} days.
+      confirm: Are you sure you want to change your username?
+      contact_support: contact Support
+      create_a_new_pseud: create a new Pseud
+      current_username: Current username
+      heading: Change Username
+      last_renamed: You last changed your username on %{renamed_at}.
+      legend: Change Username
+      more_info_html: For information on how changing your username will affect your account, please check out the %{account_faq_link}. Note that changes to your username may take several days or longer to appear. If you are still seeing your old username on your works, bookmarks, series, or collections after a week, please %{contact_support_link}.
+      new_pseud_instead_html: If that is not what you want, you can %{create_a_new_pseud_link} instead.
+      new_username: New username
+      page_heading: Change Username
+      password: Password
+      submit: Change Username
+      submit_landmark: Submit
+      username_requirements: "%{minimum} to %{maximum} characters (A-Z, a-z, _, 0-9 only), no spaces, cannot begin or end with underscore (_)"
+    confirm_change_email:
+      are_you_sure_html: Are you sure you want to change your email address to %{unconfirmed_email}? A confirmation email will be sent to this address.
+      cancel: Cancel
+      confirm: Yes, Change Email
+      confirm_via_link_html: You must use the link in the confirmation email in order to finish confirming your email change. %{if_not_confirm_bold}
+      heading: Confirm New Email
+      if_not_confirm:
+        one: If you don't confirm your request within %{count} day, the link will expire and your email address will not be changed.
+        other: If you don't confirm your request within %{count} days, the link will expire and your email address will not be changed.
+    confirmation:
+      contact_support: contact Support
+      go_back: Return to superlove front page
+      important: Important!
+      must_activate:
+        one: You must activate your account within %{count} day, or your account will expire. If this happens, you can sign up again using the same invitation.
+        other: You must activate your account within %{count} days, or your account will expire. If this happens, you can sign up again using the same invitation.
+      no_email_html: If you haven't received this email within 24 hours, and you don't find our email in your spam filter or Social folder, please %{contact_support_link} for help.
+      page_heading: Almost Done!
+      receive_email_html: You should soon receive an activation email at the address you gave us. This will have the link you need to follow in order to activate your account and complete the account creation process. The activation email will come from %{return_address} -- you might want to add this to your address book to make sure you get the email.
+    delete_preview:
+      cancel: Cancel
+      co_creations:
+        legend: Works You Made With Others
+        orphan_info: You are not able to delete these as they are shared works, but you can %{orphan_link} them or remove yourself completely as a co-creator.
+        summary: 'You have %{work_count} work(s) co-created with the following users: %{co_creators}.'
+      confirm: Are you sure? This can't be undone!
+      heading: What do you want to do with your works?
+      options:
+        delete: Delete completely
+        keep_pseud: Leave my pseud but attach to the orphan account
+        orphan_pseud: Change my pseud to "orphan" and attach to the orphan account
+        remove: Remove me completely as co-creator
+      orphan: orphan
+      orphaning: orphaning
+      sole_creations:
+        collections_summary: 'You have %{collection_count} collection(s) under the following pseuds: %{pseuds}.'
+        legend: Works and Collections You Made By Yourself
+        options_info: You can delete them, but please consider %{orphaning_link} them instead!
+        works_summary: 'You have %{work_count} work(s) under the following pseuds: %{pseuds}.'
+      submit: Save
+    edit_header_navigation:
+      change_email: Change Email
+      change_password: Change Password
+      change_username: Change Username
+      edit_default_pseud_and_icon: Edit Default Pseud and Icon
+      edit_my_profile: Edit My Profile
+      edit_profile: Edit Profile
+    header_navigation:
+      admin_creations: Creations
+      admin_user: User Administration
+      edit_multiple: Edit Works
+      invitations: Invitations
+      new_work: Post New
+    passwords:
+      edit:
+        change_password: Change Password
+        confirm_new_password: Confirm new password
+        new_password: New password
+        page_heading: Change Password
+        password_length:
+          one: "%{minimum} to %{count} character"
+          other: "%{minimum} to %{count} characters"
+        submit: Submit
+      new:
+        email_html: Email address
+        instructions: Please enter the email address associated with your AO3 account. You may only request a password reset a limited number of times per day.
+        introductions: If you've forgotten your password, we can send you an email with instructions to reset your password.
+        page_heading: Reset Password
+        reset_password: Reset Password
+    registrations:
+      legal:
+        agreement_confirm: Yes, I have read the Terms of Service, including the Content Policy and Privacy Policy, and agree to them.
+        agreement_required_html: Before you begin using AO3, you must agree to our %{terms_of_service_link}, including the %{content_policy_link} and %{privacy_policy_link}.
+        content_policy: Content Policy (opens in new window)
+        data_processing_confirm: By checking this box, you consent to the processing of your personal data in the United States and other jurisdictions in connection with our provision of AO3 and its related services to you. You acknowledge that the data privacy laws of such jurisdictions may differ from those provided in your jurisdiction. For more information about how your personal data will be processed, please refer to our Privacy Policy.
+        over_thirteen_confirm: Yes, I am at least 13.
+        over_thirteen_required: You need to be at least 13 years old to become a registered member of the Archive. (Sorry to anyone younger! You'll be more than welcome when the time comes.)
+        privacy_policy: Privacy Policy (opens in new window)
+        terms_of_service: Terms of Service (opens in new window)
+      new:
+        cancel: Cancel
+        heading: Create Account
+        legend:
+          legal: Legal Agreements
+          user: User Details
+        submit: Create Account
+        wait: Please wait...
+      passwd:
+        confirm_password: Confirm password
+        confirm_password_validation: Please enter the same password in both fields.
+        password: Password
+        password_requirements: "%{minimum} to %{maximum} characters"
+        password_validation: Please enter a password! (At least %{minimum} characters long, please.)
+        username: Username
+        username_requirements: "%{minimum} to %{maximum} characters (A-Z, a-z, _, 0-9 only), no spaces, cannot begin or end with underscore (_)"
+        username_validation: You need a username! (At least %{minimum} letters long, please.)
+        valid_email: Valid email
+    sessions:
+      greeting:
+        nav:
+          assignments: My Assignments
+          bookmarks: My Bookmarks
+          collections: My Collections
+          dashboard: My Dashboard
+          greeting: Hi, %{current_user}!
+          history: My History
+          import: Import Work
+          label: User
+          log_out: Log Out
+          new_work: New Work
+          open_doors: Open Doors
+          post: Post
+          post_draft: From Draft
+          preferences: My Preferences
+          sign_ups: My Sign-ups
+          subscriptions: My Subscriptions
+          tag_wrangling: Tag Wrangling
+          works: My Works
+      new:
+        beta_reminder:
+          give_feedback: give us your feedback
+          reminder: 'Reminder:'
+          report_bugs: Please report any pesky bugs and %{give_feedback_link}!
+          warning: This site is in beta. Things may break or crash without notice.
+        login:
+          create_account: Create an account now
+          forgot: Forgot your password or username? %{reset_password_link}.
+          log_in: Log in
+          no_account: Don't have an account? %{join_link}.
+          request_invite: Request an invitation to join
+          reset_password: Reset your password
+        restricted:
+          account_exists: If you already have a superlove account, log in now.
+          commenting_unavailable: Commenting on this work is only available to registered users of superlove.
+          no_account: If you don't have an account, you can %{request_invite_link}.
+          request_invite: request an invitation to join
+          signup: Or join us for free - it's easy.
+          sorry: Sorry!
+          work_unavailable: This work is only available to registered users of superlove.
+      passwd:
+        landmark_submit: Submit
+        log_in: Log in
+        password: 'Password:'
+        remember_me: Remember me
+        username_or_email: 'Username or email:'
+      passwd_small:
+        create_an_account: Create an Account
+        forgot_password: Forgot password?
+        get_an_invitation: Get an Invitation
+        log_in: Log In
+        password: 'Password:'
+        remember_me: Remember Me
+        username_or_email: 'Username or email:'
+    show:
+      login_banner:
+        contact_abuse: contact our Policy & Abuse team
+        contact_support: contact our Support team
+        content_policy: Content Policy
+        dismiss: Dismiss permanently
+        help_html: If you need technical support, %{contact_support_link}. If you experience harassment or have questions about our %{tos_link} (including the %{content_policy_link} and %{privacy_policy_link}), %{contact_abuse_link}.
+        help_title: First login help
+        hide: Hide first login help banner
+        new_user_tips: useful tips for new users
+        our_faqs: our FAQs
+        privacy_policy: Privacy Policy
+        tos: Terms of Service
+        welcome_html: Hi! It looks like you've just logged in to superlove for the first time. For help getting started on superlove, check out some %{new_user_tips_link} or browse through %{our_faqs_link}.
+    sidebar:
+      catch:
+        history: History
+        inbox: Inbox (%{inbox_number})
+        statistics: Statistics
+        subscriptions: Subscriptions
+      choices:
+        all_pseuds: All Pseuds (%{pseud_number})
+        dashboard: Dashboard
+        preferences: Preferences
+        profile: Profile
+        pseud_switcher: Pseud Switcher
+        pseuds: Pseuds
+        skins: Skins
+      landmark:
+        catch: Catch
+        choices: Choices
+        pitch: Pitch
+        switch: Switch
+      pitch:
+        drafts: Drafts (%{drafts_number})
+      switch:
+        assignments: Assignments (%{assignment_number})
+        claims: Claims (%{claim_number})
+        co_creator_requests: Co-Creator Requests (%{count})
+        related_works: Related Works (%{related_works_number})
+        sign_ups: Sign-ups (%{signup_number})

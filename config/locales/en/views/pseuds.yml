@@ -1,0 +1,47 @@
+en:
+  pseuds:
+    delete_preview:
+      cancel: Cancel
+      confirm: Are you sure? This can't be undone!
+      delete:
+        one: Delete this bookmark
+        other: Delete these bookmarks
+      heading: Pseud deletion
+      notice: When you delete your pseud, any works, series, or comments you have created under it will be transferred to your default pseud.
+      saved_bookmarks:
+        one: You have saved %{count} bookmark using this pseud. You can choose whether to delete it or transfer it to your default pseud.
+        other: You have saved %{count} bookmarks using this pseud. You can choose whether to delete them or transfer them to your default pseud.
+      transfer:
+        one: Transfer this bookmark to the default pseud
+        other: Transfer these bookmarks to the default pseud
+    new:
+      back_to_pseuds: Back To Pseuds
+      create_pseud: Create Pseud
+      new_pseud: New Pseud
+    pseud_blurb:
+      confirm_delete: Are you sure?
+      default_pseud: Default Pseud
+      delete_html: Delete%{landmark_span}
+      delete_landmark_text: " %{pseud}"
+      edit_html: Edit%{landmark_span}
+      edit_landmark_text: " %{pseud}"
+      orphan_html: Orphan Works%{landmark_span}
+      orphan_landmark_text: " by %{pseud}"
+      user_actions: User Actions
+    pseuds_form:
+      cannot_change_matching_pseud_html: You cannot change the pseud that matches your username. However, you can %{change_username_link} instead.
+      change_username: change your username
+      description: Description
+      icon: Icon
+      icon_alt: Icon alt text
+      icon_comment: Icon comment text
+      icon_delete: Delete your icon and revert to our default. This will also remove your icon alt text and comment text.
+      icon_notes:
+        current: This is your icon.
+        format: Icons can be in png, jpeg or gif form.
+        limit: You can have one icon for each pseud.
+        size: Icons should be sized 100x100 pixels for best results.
+      icon_upload: Upload a new icon
+      make_default: Make this name default
+      name: Name (required)
+      submit: Submit

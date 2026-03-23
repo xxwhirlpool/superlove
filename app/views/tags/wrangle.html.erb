@@ -1,5 +1,5 @@
 <!--Descriptive page name, messages and instructions-->
-<h2 class="heading"><%= ts('Wrangle Tags for') %> <%= link_to_tag(@tag) %></h2>
+<h2><%= ts('Wrangle Tags for') %> <%= link_to_tag(@tag) %></h2>
 <!--/descriptions-->
 <!--subnav-->
 <ul class="navigation actions" role="navigation">
@@ -18,12 +18,12 @@
   end
 %>
 <% unless showing_header.blank? %>
-  <h3 class="heading"><%= showing_header %></h3>
+  <h3><%= showing_header %></h3>
 <% end %>
 
 <% if params[:show] %>
   <ul class="actions" role="navigation">
-    <li><h4 class="heading"><%= ts('Show:') %></h4></li>
+    <li><h4><%= ts('Show:') %></h4></li>
     <li><%= span_if_current ts('All'), url_for(show: params[:show], status: nil) %></li>
     <li><%= span_if_current ts('Canonical'), url_for(show: params[:show], status: 'canonical') %></li>
     <li><%= span_if_current ts('Synonymous'), url_for(show: params[:show], status: 'synonymous'), nil, ts('non-canonical tags that are synonyms') %></li>

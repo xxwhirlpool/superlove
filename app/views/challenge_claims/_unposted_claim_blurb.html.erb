@@ -5,12 +5,12 @@
 <% challenge = claim.collection.challenge %>
 <li class="collection claim picture blurb group">
   <div class="header module">
-    <h4 class="heading">
+    <h4>
       <%= prompt.title || ts("Request") %>
     </h4>
 
     <!--collection title and recipient forline-->
-    <h5 class="heading">
+    <h5>
       <%= ts("by") %>
       <span class="byline">
         <% if claim.request_signup && !prompt.anonymous? %>

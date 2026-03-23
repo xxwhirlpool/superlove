@@ -53,7 +53,7 @@
           <%= link_to_help "add-work-to-assignment" %>
         </dt>
         <dd class="collection listbox group">
-          <h4 class="heading"><%= ts("Open Assignments") %></h4>
+          <h4><%= ts("Open Assignments") %></h4>
           <%= checkbox_section f, :challenge_assignment_ids, (@work.challenge_assignments + @assignments).uniq,
                 :checked_method => "challenge_assignments", :name_method => "title" %>
         </dd>
@@ -66,7 +66,7 @@
           <%= link_to_help "add-work-to-assignment" %>
         </dt>
         <dd class="collection listbox group">
-          <h4 class="heading"><%= ts("Open Claims") %></h4>
+          <h4><%= ts("Open Claims") %></h4>
           <%= checkbox_section f, :challenge_claim_ids, (@work.challenge_claims + @claims).uniq,
               :checked_method => "challenge_claims", :name_helper_method => "claim_title" %>
         </dd>

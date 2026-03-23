@@ -1,0 +1,5 @@
+en:
+  media:
+    index:
+      all: All %{media_type}...
+      page_heading: Fandoms

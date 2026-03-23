@@ -1,5 +1,5 @@
 <!--Descriptive page name, messages and instructions-->
-<h2 class="heading">
+<h2>
   <% if @user && @user == current_user && params[:refused] %>
     <%= ts("Refused Gifts for %{recipient}", recipient: @user ? @user.login : h(@recipient_name)) %>
   <% else %>

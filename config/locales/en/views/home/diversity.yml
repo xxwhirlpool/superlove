@@ -1,0 +1,23 @@
+en:
+  home:
+    diversity_statement:
+      archive_description_html: This archive is a permanent, panfandom place for fanworks, built by fans for fans. Whichever way you use the Archive, you're part of this, powering it, shaping it through your use and %{your_feedback_link}.
+      archive_for_you: 'No matter your appearance, circumstances, configuration or take on the world: if you enjoy consuming, creating or commenting on fanworks, the Archive is for you.'
+      archive_team: the Archive team
+      diversity_statement: Diversity Statement
+      dreamwidth: Dreamwidth's
+      dreamwidth_remix_html: This is a remix of %{dreamwidth_link} %{diversity_statement_link}.
+      few_restrictions: few restrictions
+      license:
+        creative_commons_by_sa: Creative Commons Attribution-Share Alike 3.0 Unported License
+        html: This work is licensed under a %{creative_commons_by_sa_link}.
+        image_alt: Creative Commons License
+      some_essential_parts: some essential parts
+      still_missing_html: 'We know that there are %{some_essential_parts_link} that are still missing to make the Archive truly panfandom: the ability to host fanworks other than text, an interface in languages other than English, and more ways for you to connect with each other, to name just a few. But with your support, we''ll get there.'
+      terms_of_service: Terms of Service
+      we_build_for: We are building this archive for you. Come be a part of it.
+      welcome_header: You are welcome at the Archive of Our Own.
+      what_we_do_html: We, %{archive_team_link}, know that we won't get everything right on the first try, and we won't be able to make everyone equally happy. But we strive to find a good balance, and we promise to respectfully consider your feedback and to take it seriously.
+      why_we_build: We are building this archive because we believe it's possible for people of all opinions and persuasions to come together and share with each other.
+      you_can_html: You are free to express your creativity within the %{few_restrictions_link} needed to keep the service viable for other users. The Archive strives to protect your rights to free expression and privacy; you can read about the details in our %{terms_of_service_link}.
+      your_feedback: your feedback

@@ -5,6 +5,55 @@
   }
 }
 
+.filtered {
+  display: grid;
+  grid-template-areas: "flash flash"
+    "title title"
+    "actions actions"
+    "list filters";
+  grid-template-columns: 1fr 300px;
+  gap: 0 1rem;
+  
+  #flash-container {
+    grid-area: flash;
+  }
+  
+  h2 {
+    grid-area: title;
+  }
+  
+  .navigation {
+    grid-area: actions;
+  }
+  
+  #works {
+    grid-area: list;
+  }
+  
+  .filters {
+    grid-area: filters;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .filtered {
+    display: block;
+  }
+  
+  .filters {
+    position: absolute;
+    width: 200px;
+    left: 100%;
+    top: 0;
+  }
+}
+
+.filters {
+  fieldset {
+    margin: 0;
+  }
+}
+
 #work-content {
   margin: 1rem auto;
 }

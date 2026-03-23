@@ -1,0 +1,4 @@
+en:
+  time:
+    formats:
+      date_short_html: <abbr class="day" title="%A">%a</abbr> <span class="date">%d</span> <abbr class="month" title="%B">%b</abbr> <span class="year">%Y</span>

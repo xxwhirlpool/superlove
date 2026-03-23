@@ -37,7 +37,7 @@
 
 <!--subnav-->
 <ul class="navigation actions" role="navigation">
-  <li><h4 class="heading"><%= ts("Assignments:") %></h4></li> 
+  <li><h4><%= ts("Assignments:") %></h4></li> 
   <% if @assignments_with_no_potential_recipients.present? %>
     <li><%= span_if_current ts("No Potential Recipients"), collection_potential_matches_path(@collection, no_potential_recipients: true) %></li>
   <% end %>

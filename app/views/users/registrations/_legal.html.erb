@@ -15,11 +15,11 @@
     <% end %>
   </div>
   <fieldset name="<%= tos_field_name %>" id="tos-partial" class="inset">
-    <h2 class="heading" id="tos"><%= t("home.tos.page_heading") %></h2>
+    <h2 id="tos"><%= t("home.tos.page_heading") %></h2>
     <%= render partial: "home/tos", suppress_footer: true %>
-    <h2 class="heading" id="content"><%= t("home.content.page_heading") %></h2>
+    <h2 id="content"><%= t("home.content.page_heading") %></h2>
     <%= render partial: "home/content", suppress_toc: true, suppress_footer: true %>
-    <h2 class="heading" id="privacy"><%= t("home.privacy.page_heading") %></h2>
+    <h2 id="privacy"><%= t("home.privacy.page_heading") %></h2>
     <%= render partial: "home/privacy", suppress_toc: true %>
   </fieldset>
   <div class="form-row checkbox">

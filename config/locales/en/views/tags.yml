@@ -1,0 +1,41 @@
+en:
+  tags:
+    edit:
+      save_changes: Save changes
+      submit_legend: Submit
+    index:
+      about:
+        popular: These are some of the most popular tags used on superlove. To find more tags, %{search_tags_link}.
+        popular_in_collection: These are some of the most popular tags used in the collection.
+        random: These are some random tags used on superlove. To find more tags, %{search_tags_link}.
+        random_in_collection: These are some random tags used in the collection.
+      search_tags: try our tag search
+    search_form:
+      fandoms: Fandoms
+      fandoms_footnote: Find tags wrangled to specific canonical fandoms.
+      search_tags: Search Tags
+      sort_by: Sort by
+      sort_direction: Sort direction
+      status_option:
+        any_status: Any status
+        canonical: Canonical
+        canonical_or_synonymous: Canonical or synonymous
+        noncanonical: Non-canonical
+        noncanonical_and_nonsynonymous: Non-canonical and non-synonymous
+        synonymous: Synonymous
+      tag_name: Tag name
+      type: Type
+      wrangling_status: Wrangling status
+    show:
+      canonical_html: It's a %{canonical_tag_link}. You can use it to %{filter_works_link} and to %{filter_bookmarks_link}.
+      canonical_tag: canonical tag
+      fandom_relationship_tags: Relationship tags in this fandom
+      filter_bookmarks: filter bookmarks
+      filter_works: filter works
+      list_fandom_tags_html: You can also access a list of %{fandom_relationship_tags_link}.
+    wrangle:
+      manage:
+        comments: Comments (%{count})
+        edit: Edit
+        works: Works
+        wrangle: Wrangle

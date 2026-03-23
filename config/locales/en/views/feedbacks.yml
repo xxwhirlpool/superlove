@@ -1,0 +1,56 @@
+  feedbacks:
+    new:
+      abuse:
+        contact: contact our Policy and Abuse team
+        reports_html: For reports of violations of the Terms of Service such as harassment, spam, or plagiarism, or if you believe your account has been hacked, please %{contact_link} instead. We cannot act on these reports or provide information about Policy and Abuse cases.
+      do_not_spam_html: "<strong>We respond to every report we receive, but we are a small volunteer team.</strong> For this reason, we ask you to not submit multiple reports regarding any one issue, or encourage other people to report the same issue, unless there is additional information to offer."
+      form:
+        comment:
+          description: Please be as specific as possible, including error messages and/or links
+          error: Please enter your feedback
+          label: Your question or problem (required)
+        email:
+          label: Your email (required)
+        language:
+          label: Select language (required)
+        legend:
+          contact_info: Contact Information
+          feedback: Describe Your Feedback
+          send: Send Your Feedback
+        name:
+          label: Your name (optional)
+        submit:
+          active: Send
+          disabled: Please wait...
+        summary:
+          error: Please enter a brief summary of your message
+          label: Brief summary of your question or problem (required)
+      heading:
+        instructions: Please use this form for questions about how to use superlove and for reporting any technical problems.
+        landmark:
+          reference: Reference Links
+        page_title: Support and Feedback
+      languages_html: "<strong>We can answer Support inquiries in %{list_html}.</strong> Please allow for additional delay for responses in any language other than English."
+      navigation:
+        faqs: FAQs & Tutorials
+        known_issues: Known Issues
+        release_notes: Release Notes
+      reportable:
+        account_creation: Problems setting up your account
+        bugs: Bugs, errors, or unexpected site behavior
+        fnok:
+          concerning_html: Setting up, changing, or activating your %{fnok_link}
+          fnok: Fannish Next of Kin
+        intro: 'Some issues you can contact Support about include:'
+        lost_access: Lost password or email preventing access to your account
+        new_features: Feature requests for future development
+        orphaned_works: Questions about orphaned works
+        policy_questions: General site policy questions
+        site_questions: Questions about how to use the site
+        tag_changes: Requests to canonize or change tags
+        work_problems: Works labeled with the wrong language or duplicate works
+      status:
+        bluesky: "@katproto.girlonthemoon.xyz"
+        current_html: For current updates on superlove performance or downtime, please check our %{status_page_link} and follow %{bluesky_link} on Bluesky or %{tumblr_link} on Tumblr.
+        status_page: status page
+        tumblr: hypermediagirl

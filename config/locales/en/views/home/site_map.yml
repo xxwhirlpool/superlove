@@ -1,0 +1,52 @@
+en:
+  home:
+    site_map:
+      about:
+        ao3_news: AO3 News
+        archive_faq: Archive FAQ
+        content_policy: Content Policy
+        header: About the Archive of Our Own
+        known_issues: Known Issues
+        privacy_policy: Privacy Policy
+        project_of_otw_html: The Archive of Our Own is a project of the %{otw_link}
+        terms_of_service: Terms of Service
+        tos_faq: Terms of Service FAQ
+      access_your_account:
+        drafts: Drafts
+        header: Access your account
+        my_bookmarks: My Bookmarks
+        my_collections_and_challenges: My Collections and Challenges
+        my_history: My History
+        my_home: My Home
+        my_inbox: My Inbox
+        my_series: My Series
+        my_subscriptions: My Subscriptions
+        my_works: My Works
+        post_new: Post New
+        set_my_preferences: Set My Preferences
+      change_your_account_settings:
+        delete_account_confirmation: This will permanently delete your account and cannot be undone. Are you sure?
+        delete_my_account: Delete My Account
+        edit_my_profile: Edit My Profile
+        header: Change your account settings
+        manage_my_pseuds: Manage My Pseuds
+        my_profile: My Profile
+      contact_us:
+        donations: Donations
+        header: Contact Us
+        policy_questions_and_abuse_reports: Policy Questions & Abuse Reports
+        technical_support_and_feedback: Technical Support & Feedback
+      explore:
+        additional_tags_cloud: Additional Tags Cloud
+        bookmarks: Bookmarks
+        collections_and_challenges: Collections and Challenges
+        fandoms: Fandoms
+        header: Explore
+        homepage: Homepage
+        languages: Languages
+        people: People
+        recent_works: Recent Works
+      otw:
+        abbreviated: OTW
+        full: Organization for Transformative Works
+      page_heading: Site Map

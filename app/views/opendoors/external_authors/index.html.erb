@@ -1,6 +1,6 @@
 <div class="opendoors">
 <!--Descriptive page name and system messages, descriptions, and instructions.-->
-<h2 class="heading">
+<h2>
   <%= @query ? ts("External Author Identities") : ts("Unclaimed External Author Identities") %>
 </h2>
 <!--/descriptions-->
@@ -11,13 +11,13 @@
 
 <!--main content-->
 <% if @external_authors.empty? %>
-  <h3 class="heading"><%= ts("No matching external authors found.") %></h3>
+  <h3><%= ts("No matching external authors found.") %></h3>
   <p class="note"><%= ts("Please try a different search.") %></p>
 <% else %>
   <%= will_paginate @external_authors %>
 
   <h3 class="landmark heading"><%= ts("Listing External Authors") %></h3>
-  <% if params[:query] %><h3 class="heading"><%= ts("Matching: %{query}", :query => params[:query]) %></h3><% end %>
+  <% if params[:query] %><h3><%= ts("Matching: %{query}", :query => params[:query]) %></h3><% end %>
 	<dl class="index group">
     <% @external_authors.each do |external_author| %>
       <dt>

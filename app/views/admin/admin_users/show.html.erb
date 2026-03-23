@@ -1,6 +1,6 @@
 <div class="admin">
   <!--Descriptive page name, messages and instructions-->
-  <h2 class="heading"><%= t(".page_heading", login: @user.login, id: @user.id) %></h2>
+  <h2><%= t(".page_heading", login: @user.login, id: @user.id) %></h2>
   <!--/descriptions-->
 
   <!--subnav-->
@@ -31,7 +31,7 @@
 
   <!--main content-->
   <p class="notes"><%= t(".note") %></p>
-  <h3 class="heading"><%= t(".info.heading") %></h3>
+  <h3><%= t(".info.heading") %></h3>
   <div class="wrapper">
     <dl class="user meta group">
       <dt><%= t(".info.email") %></dt>
@@ -59,7 +59,7 @@
     </dl>
   </div>
 
-  <h3 class="heading"><%= t(".fnok.heading") %></h3>
+  <h3><%= t(".fnok.heading") %></h3>
   <%= form_tag action: "update_next_of_kin", controller: "admin/admin_users" do %>
     <%= error_messages_for @user.fannish_next_of_kin %>
     <%= hidden_field_tag "user_login", @user.login %>
@@ -82,13 +82,13 @@
     <% end %>
   <% end %>
 
-  <h3 class="heading"><%= t(".status.heading") %></h3>
+  <h3><%= t(".status.heading") %></h3>
   <%= form_tag action: "update_status", controller: "admin/admin_users" do %>
     <%= hidden_field_tag "user_login", @user.login %>
     <%= field_set_tag t(".status.heading"), disabled: !policy(UserManager).can_manage_users? do %>
       <fieldset>
         <legend><%= t(".status.form.admin_action.legend") %></legend>
-        <h4 class="heading"><%= t(".status.form.admin_action.legend") %></h4>
+        <h4><%= t(".status.form.admin_action.legend") %></h4>
         <ul>
           <li>
             <%= radio_button_tag "admin_action", "note" %>
@@ -126,7 +126,7 @@
       </fieldset>
       <fieldset>
         <legend><%= t(".status.form.notes.legend") %></legend>
-        <h4 class="heading"><%= label_tag "admin_note", t(".status.form.notes.legend") %></h4>
+        <h4><%= label_tag "admin_note", t(".status.form.notes.legend") %></h4>
         <p class="note">
           <%= t(".status.form.notes.required") %>
         </p>

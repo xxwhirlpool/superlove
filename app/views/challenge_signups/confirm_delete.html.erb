@@ -1,5 +1,5 @@
 <!--Descriptive page name, messages and instructions-->
-<h2 class="heading"><%= ts("Delete Sign-up") %></h2>
+<h2><%= ts("Delete Sign-up") %></h2>
 
 <!--main content-->
 <%= form_for(@challenge_signup, :url => collection_signup_path(@collection, @challenge_signup), :html => {:method => :delete, :class => "simple destroy"}) do |f| %>

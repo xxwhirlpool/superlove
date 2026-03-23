@@ -9,7 +9,7 @@
 
   <!--main content-->
   <% if @profile.title.present? %>
-    <h2 class="heading"><%=h @profile.title %></h2>
+    <h2><%=h @profile.title %></h2>
   <% end %>
 
   <ul id="user-meta" class="outset meta">
@@ -30,7 +30,6 @@
       <div class="meta-value">
         <%= @user.id %>
       </div>
-    <% end %>
   </ul>
 
   <% if @profile.about_me.present? %>
@@ -45,14 +44,14 @@
 
   <!--subnav-->
   <% if logged_in? && current_user == @user %>
-  <h3 class="landmark"><%= ts("Actions") %></h3>
-  <ul class="actions right">
-    <li><%= link_to t(".edit_my_works"), show_multiple_user_works_path(@user) %></li>
-    <li><%= link_to t(".edit_my_profile"), edit_user_profile_path(@user) %></li>
-    <li><%= link_to t(".edit_my_preferences"), user_preferences_path(@user) %></li>
-    <li><%= link_to t(".edit_my_pseuds"), user_pseuds_path(@user) %></li>
-    <li><%= link_to t(".delete_my_account"), @user, data: { confirm: t(".delete_account_confirmation") }, method: :delete %></li>
-  </ul>
+    <h3 class="landmark"><%= ts("Actions") %></h3>
+    <ul class="actions right">
+      <li><%= link_to t(".edit_my_works"), show_multiple_user_works_path(@user) %></li>
+      <li><%= link_to t(".edit_my_profile"), edit_user_profile_path(@user) %></li>
+      <li><%= link_to t(".edit_my_preferences"), user_preferences_path(@user) %></li>
+      <li><%= link_to t(".edit_my_pseuds"), user_pseuds_path(@user) %></li>
+      <li><%= link_to t(".delete_my_account"), @user, data: { confirm: t(".delete_account_confirmation") }, method: :delete %></li>
+    </ul>
   <% elsif policy(@user.profile).full_access? %>
     <h3 class="landmark"><%= t("admin.admin_options.landmark") %></h3>
     <ul class="actions right">

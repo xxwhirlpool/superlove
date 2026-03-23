@@ -1,0 +1,17 @@
+en:
+  chapters:
+    posting_fieldset:
+      actions:
+        cancel: Cancel
+        edit: Edit
+        please_wait: Please wait...
+        post: Post
+        preview: Preview
+        save_draft: Save Draft
+        update: Update
+      content_policy: Content Policy
+      legend: Post Chapter
+      post_notice_html: All works you post on AO3 must comply with our %{content_policy_link}. For more information, please refer to our %{tos_faq_link}.
+      tos_faq: Terms of Service FAQ
+    preview:
+      page_heading: Preview

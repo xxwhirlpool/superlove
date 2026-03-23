@@ -1,5 +1,5 @@
 <!--Descriptive page names, messages and instructions-->
-<h2 class="heading"><%= ts("Tag Nominations for %{title}", :title => @tag_set_nomination.owned_tag_set.title) %></h2>
+<h2><%= ts("Tag Nominations for %{title}", :title => @tag_set_nomination.owned_tag_set.title) %></h2>
 <!--/descriptions-->
 
 <!--subnav-->
@@ -32,7 +32,7 @@
     </dl>
   </fieldset>
 <fieldset>
-  <h4 class="heading"><%= ts("Tag Nominations") %></h4>
+  <h4><%= ts("Tag Nominations") %></h4>
   <p class="notes"><%= nomination_notes(@limit) %></p>
   <% if @limit[:relationship] > 0 && @limit[:fandom] > 1 %>
     <p class="notes"><%= ts("If crossover relationships are allowed, you can enter them under either fandom.") %></p>

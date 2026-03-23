@@ -1,7 +1,7 @@
 <!--TAG ZONE: tagsets-->
 <div class="tag tagset">
   <!--Descriptive page name and system messages, descriptions, and instructions.-->
-  <h2 class="heading">
+  <h2>
     <% if @user %>
       <%= ts('%{user_name}\'s Tag Sets', :user_name => @user.login) %> <%= link_to_help 'tagset-about' %>
     <% elsif @restriction %>

@@ -16,29 +16,29 @@ is verbose-->
       <!-- skip the notes -->
       <legend><%= ts("Offer Settings") %></legend>
       <h3 class="landmark"><%= ts("Offer Settings") %></h3>
-      <p class="note">
+      <div class="note">
         <%= ts("These settings determine what each separate offer can contain. Note these can be entirely different from the request settings!") %>
-      </p>
+      </div>
     <% else %>
       <legend><%= ts("Request Settings") %></legend>
       <h3 class="landmark"><%= ts("Request Settings") %></h3>
-      <p class="note">
+      <div class="note">
         <%= ts("These settings determine what each separate request can contain, and in particular how many different tags of each kind.") %>
         <% unless type == "prompt_meme" %><%= ts("If you plan to use automated matching, keep in mind it will be slower the more tags you allow people to request.") %><% end %>
       </p>
       <% unless type == "prompt_meme" %><p class="note">
         <%= ts('Checking "Allow Any?" allows users to select "Any" for that field; this means they will match') %> <em><%= ts("anything") %></em> <%= ts("put in that field. This option is safer for offers than requests!") %>
-      </p><% end %>
-      <p class="note">
+      </div><% end %>
+      <div class="note">
         <%= ts('If you allow three prompts and specify that fandom "must be unique", the user will have to choose completely different fandoms
         for all three prompts -- no overlap allowed. Please explain this in your signup instructions!') %>
-      </p>
+      </div>
     <% end %>
     <dl>
       <% if @challenge.new_record? || !@challenge.collection.prompts.exists? %>
-        <p class="notice"><%= ts("These settings can only be changed until prompts are added.") %></p>
+        <div class="notice"><%= ts("These settings can only be changed until prompts are added.") %></div>
       <% elsif %>
-        <p class="notice"><%= ts("Prompts have been added so these settings can no longer be changed.") %></p>
+        <div class="notice"><%= ts("Prompts have been added so these settings can no longer be changed.") %></div>
       <% end %>
       <% if type == "gift_exchange" %>
         <%= prompt_restriction_settings(prompt_restriction_form, (is_offer ? false : true), true,  (@challenge.new_record? || !@challenge.collection.prompts.exists?)) %>
@@ -60,7 +60,7 @@ is verbose-->
         <% unless restriction.owned_tag_sets.empty? %>
           <dt><%= prompt_restriction_form.label :tag_sets_to_remove, ts("Current Tag Sets:") %></dt>
           <dd class="tagset listbox group">
-            <h4 class="heading"><%= ts("Check to remove") %></h4>
+            <h4><%= ts("Check to remove") %></h4>
             <%= checkbox_section(prompt_restriction_form, :tag_sets_to_remove, restriction.owned_tag_sets, :name_method => "title") %>
           </dd>
         <% end %>

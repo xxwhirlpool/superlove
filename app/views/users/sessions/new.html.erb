@@ -1,5 +1,5 @@
 <% if params[:restricted] %>
-  <h3 class="heading"><%= t(".restricted.sorry") %></h3>
+  <h3><%= t(".restricted.sorry") %></h3>
   <p>
     <%= t(".restricted.work_unavailable") %>
     <%= t(".restricted.account_exists") %>
@@ -10,7 +10,7 @@
     <% end %>
   </p>
 <% elsif params[:restricted_commenting] %>
-  <h3 class="heading"><%= t(".restricted.sorry") %></h3>
+  <h3><%= t(".restricted.sorry") %></h3>
   <p>
     <%= t(".restricted.commenting_unavailable") %>
     <%= t(".restricted.account_exists") %>
@@ -21,7 +21,7 @@
     <% end %>
   </p>
 <% else %>
-  <h3 class="heading"><%= t(".login.log_in") %></h3>
+  <h3><%= t(".login.log_in") %></h3>
   <p>
     <strong><%= t(".beta_reminder.reminder") %></strong>
     <%= t(".beta_reminder.warning") %>

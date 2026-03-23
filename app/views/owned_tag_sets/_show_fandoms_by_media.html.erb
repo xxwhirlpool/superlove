@@ -1,6 +1,6 @@
 <% @tag_hash[:fandom].keys.each do |media| %>
   <li class="media listbox group">
-    <h3 class="heading">
+    <h3>
       <%= ts("%{media}", :media => media) %>
       <% list_id = "list_for_media_#{media.gsub(/[^\w]/, '_')}" %>
       (<%= @tag_hash[:fandom][media].size %>)
@@ -22,7 +22,7 @@
           %>
           <li class="fandom listbox group">
             <% if (has_relationships + has_characters) > 0 %>
-              <h4 class="heading">
+              <h4>
                 <%= ts("%{fandom}", :fandom => fandom) %>
                 <% list_id = "list_for_fandom_#{fandom.gsub(/[^\w]/, '_')}_in_#{media.gsub(/[^\w]/, '_')}" %>
                 (<%= has_relationships + has_characters %>)
@@ -37,7 +37,7 @@
                 <% end %>                
               </ol>
             <% else %>
-              <h4 class="heading"><%= ts("%{fandom}", :fandom => fandom) %> (0)</h4>
+              <h4><%= ts("%{fandom}", :fandom => fandom) %> (0)</h4>
             <% end %>
           </li>
         <% end %>

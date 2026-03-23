@@ -1,0 +1,22 @@
+en:
+  languages:
+    form:
+      abuse_support_available: Abuse support available
+      name: Name
+      required_notice: Required information
+      short: Abbreviation
+      sortable_name: Name for alphabetical sorting
+      submit:
+        create: Create Language
+        update: Update Language
+      support_available: Support available
+    index:
+      language_code_format_html: "(%{code})"
+      navigation:
+        add: Add a Language
+        edit: Edit
+        suggest: Suggest a Language
+      page_heading: Work Languages
+      works_count:
+        one: "%{formatted_count} work"
+        other: "%{formatted_count} works"

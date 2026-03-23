@@ -1,5 +1,5 @@
 <!--Descriptive page name, messages and instructions-->
-<h2 class="heading"><%= link_to t(".page_heading"), archive_faqs_path %> > <%= @archive_faq.title %></h2>
+<h2><%= link_to t(".page_heading"), archive_faqs_path %> > <%= @archive_faq.title %></h2>
 <!--/descriptions-->
 
 <!--subnav-->
@@ -15,7 +15,7 @@
 <div class="admin" role="article">
   <% if policy(ArchiveFaq).translation_access? %>
     <div class="header">
-      <h3 class="heading">
+      <h3>
         <% if Globalize.locale.to_s != "en" || policy(ArchiveFaq).full_access? -%>
           <%= link_to t(".edit"), edit_archive_faq_path(@archive_faq) %>
         <% end %>
@@ -28,7 +28,7 @@
   <% else %>
     <div <% if rtl? %>dir="rtl"<% end %> class="userstuff">
       <nav id="toc" aria-labelledby="toc-nav-heading" class="toc">
-        <h3 class="heading" id="toc-nav-heading">
+        <h3 id="toc-nav-heading">
           <%# TODO: The heading should be "Questions in the NAME Category" once interface translation is in place. If we do it now, everything except NAME will be in English/the interface default. %>
           <%= @archive_faq.title %>
         </h3>

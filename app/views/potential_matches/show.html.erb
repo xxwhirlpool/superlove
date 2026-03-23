@@ -1,12 +1,12 @@
 <!--Descriptive page name, messages and instructions-->
-<h2 class="heading"><%= ts("Potential Matches") %></h2>
+<h2><%= ts("Potential Matches") %></h2>
 <!--/description-->
 
 <!--subnavigation, sorting and actions-->
 <!--/subnav-->
   
   <!--main content-->
-  <h3 class="heading">
+  <h3>
     <%= ts("Potential Match for %{requester}: %{offerer}", 
       :requester => @potential_match.request_signup.pseud.byline, :offerer => @potential_match.offer_signup.pseud.byline) %>
   </h3>

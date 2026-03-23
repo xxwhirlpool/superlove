@@ -1,18 +1,19 @@
-<h2 class="heading">Lookup Original Stories</h2>
+<h2><%= t('.page_heading') %></h2>
 
 <p>
-  If you are looking for a story that might have been imported into the archive from another URL, you can enter it here and
-  we will try and look it up.
+  <%= t('.instructions') %>
 </p>
 
 <%= form_tag redirect_path, method: :get do %>
 <fieldset>
-	<legend>Find story by URL</legend>
-  <p>
-    <%= label_tag "original_url", ts('Original URL of work:') %> <br />
+	<legend><%= t('.form_legend') %></legend>
+  <div class="form-row">
+    <%= label_tag "original_url", t('.url_label') %>
     <%= text_field_tag "original_url", "", :size => 70 %>
-    <%= submit_tag "Go" %>
-  </p>
+  </div>
+  <div class="submit">
+    <%= submit_tag t('.submit_label') %>
+  </div>
 </fieldset>
 
 <% end %>

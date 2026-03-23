@@ -1,5 +1,5 @@
 <!--Descriptive page name, messages and instructions-->
-<h2 class="heading"><%= t(".page_heading") %></h2>
+<h2><%= t(".page_heading") %></h2>
 <%= error_messages_for @invitation %>
 <!--/descriptions-->
 <!--subnav-->
@@ -18,7 +18,7 @@
 <% if policy(Invitation).find? %>
   <%= form_tag url_for(controller: "admin/admin_invitations", action: :find), class: "invitation simple search", autocomplete: "off", method: :get do %>
     <fieldset>
-      <h3 class="heading"><%= t(".find.heading") %></h3>
+      <h3><%= t(".find.heading") %></h3>
       <dl>
         <dt><%= label_tag "invitation[user_name]", t(".find.username") %></dt>
         <dd><%= text_field_tag "invitation[user_name]" %></dd>
@@ -35,7 +35,7 @@
 
 <%= form_tag url_for(controller: "admin/admin_invitations", action: :create), class: "invitation simple post", autocomplete: "off" do %>
   <fieldset class="simple">
-    <h3 class="heading"><%= t(".send_to_email.heading") %></h3>
+    <h3><%= t(".send_to_email.heading") %></h3>
     <p>
       <%= t(".send_to_email.description") %>
       <%= text_field_tag "invitation[invitee_email]",
@@ -49,7 +49,7 @@
 <% if policy(Invitation).invite_from_queue? %>
   <%= form_tag url_for(controller: "admin/admin_invitations", action: :invite_from_queue), class: "queue invitation simple post", autocomplete: "off" do %>
     <fieldset class="simple">
-      <h3 class="heading">
+      <h3>
         <%= t(".invite_from_queue.heading_html",
               invitations_queue_link: link_to(t(".invite_from_queue.invitations_queue"), invite_requests_path)) %>
       </h3>
@@ -66,7 +66,7 @@
 <% if policy(Invitation).grant_invites_to_users? %>
   <%= form_tag url_for(controller: "admin/admin_invitations", action: :grant_invites_to_users), class: "bulk invitation simple post", autocomplete: "off" do %>
     <fieldset>
-      <h3 class="heading"><%= t(".grant_invites.heading") %></h3>
+      <h3><%= t(".grant_invites.heading") %></h3>
       <dl>
         <dt><%= label_tag "invitation[number_of_invites]", t(".grant_invites.number_of_invitations") %></dt>
         <dd><%= text_field_tag "invitation[number_of_invites]" %></dd>

@@ -22,7 +22,7 @@
 <% unless local_assigns[:suppress_toc] %>
   <nav aria-labelledby="nav-toc-heading" class="toc">
     <details open>
-      <summary><h3 class="heading" id="nav-toc-heading"><%= t(".toc.header") %></h3></summary>
+      <summary><h3 id="nav-toc-heading"><%= t(".toc.header") %></h3></summary>
       <p><%= t(".toc.intro") %></p>
       <ol class="toc" style="list-style-type:upper-roman;">
         <li><%= tos_table_of_contents_section("tos") %></li>
@@ -33,8 +33,8 @@
   </nav>
 <% end %>
 
-<h3 class="heading"><%= t(".content_policy_heading") %></h3>
-<h4 class="heading" id="II.A"><span id="offensive"><%= t(".offensive_content.heading") %></span></h4>
+<h3><%= t(".content_policy_heading") %></h3>
+<h4 id="II.A"><span id="offensive"><%= t(".offensive_content.heading") %></span></h4>
 <p><%= t(".offensive_content.removal_not_just_offensiveness") %></p>
 <p>
   <small>
@@ -49,7 +49,7 @@
   </small>
 </p>
 
-<h4 class="heading" id="II.B"><span id="fanwork"><%= t(".fanworks.heading") %></span></h4>
+<h4 id="II.B"><span id="fanwork"><%= t(".fanworks.heading") %></span></h4>
 <p>
   <%= t(".fanworks.must_be_fanworks_html",
         non_fanwork_content_link: link_to(t(".fanworks.non_fanwork_content"), tos_faq_path(anchor: "non_fanwork_examples"))) %>
@@ -72,7 +72,7 @@
   </small>
 </p>
 
-<h4 class="heading" id="II.C"><span id="commercial"><%= t(".commercial_promotion.heading") %></span></h4>
+<h4 id="II.C"><span id="commercial"><%= t(".commercial_promotion.heading") %></span></h4>
 <p><%= t(".commercial_promotion.not_allowed") %></p>
 <p>
   <small>
@@ -87,7 +87,7 @@
   </small>
 </p>
 
-<h4 class="heading" id="II.D"><span id="copyright"><%= t(".copyright_infringement.heading") %></span></h4>
+<h4 id="II.D"><span id="copyright"><%= t(".copyright_infringement.heading") %></span></h4>
 <p><%= t(".copyright_infringement.not_allowed") %></p>
 <p><%= t(".copyright_infringement.epigraphs_small_quotations_allowed") %></p>
 <p>
@@ -107,7 +107,7 @@
   </small>
 </p>
 
-<h4 class="heading" id="II.E"><span id="plagiarism"><%= t(".plagiarism.heading") %></span></h4>
+<h4 id="II.E"><span id="plagiarism"><%= t(".plagiarism.heading") %></span></h4>
 <p>
   <%= t(".plagiarism.html",
         their_expressions_of_their_ideas_link: link_to(t(".plagiarism.their_expressions_of_their_ideas"), tos_faq_path(anchor: "define_transformative"))) %>
@@ -125,7 +125,7 @@
   </small>
 </p>
 
-<h4 class="heading" id="II.F"><span id="identities"><%= t(".personal_information.heading") %></span></h4>
+<h4 id="II.F"><span id="identities"><%= t(".personal_information.heading") %></span></h4>
 <p><%= t(".personal_information.not_allowed") %></p>
 <ol style="list-style-type:decimal;">
   <li>
@@ -156,7 +156,7 @@
   </small>
 </p>
 
-<h4 class="heading" id="II.G"><span id="impersonation"><%= t(".impersonation.heading") %></span></h4>
+<h4 id="II.G"><span id="impersonation"><%= t(".impersonation.heading") %></span></h4>
 <p>
   <%= t(".impersonation.html",
         function_link: link_to(t(".impersonation.function"), tos_faq_path(anchor: "impersonate_function"))) %>
@@ -174,7 +174,7 @@
   </small>
 </p>
 
-<h4 class="heading" id="II.H"><span id="harassment"><%= t(".harassment.heading") %></span></h4>
+<h4 id="II.H"><span id="harassment"><%= t(".harassment.heading") %></span></h4>
 <p><%= t(".harassment.definition") %></p>
 <p><%= t(".harassment.not_allowed_and_context") %></p>
 <p>
@@ -188,9 +188,9 @@
         applies_to_all_link: link_to(t(".harassment.applies_to_all"), tos_faq_path(anchor: "harassment_scope")),
         otw_abbreviation: tag.abbr(t(".harassment.otw.abbreviated"), title: t(".harassment.otw.full"))) %>
 </p>
-<h5 class="heading" id="rpf"><%= t(".harassment.rpf.heading") %></h5>
+<h5 id="rpf"><%= t(".harassment.rpf.heading") %></h5>
 <p><%= t(".harassment.rpf.text") %>
-<h5 class="heading" id="advocating_harm"><%= t(".harassment.advocating_harm.heading") %></h5>
+<h5 id="advocating_harm"><%= t(".harassment.advocating_harm.heading") %></h5>
 <p><%= t(".harassment.advocating_harm.text") %>
 <p>
   <small>
@@ -205,7 +205,7 @@
   </small>
 </p>
 
-<h4 class="heading" id="II.I"><span id="icons"><%= t(".user_icons.heading") %></span></h4>
+<h4 id="II.I"><span id="icons"><%= t(".user_icons.heading") %></span></h4>
 <p><%= t(".user_icons.text") %>
 <p>
   <small>
@@ -220,7 +220,7 @@
   </small>
 </p>
 
-<h4 class="heading" id="II.J"><span id="tags"><%= t(".mandatory_tags.heading") %></span></h4>
+<h4 id="II.J"><span id="tags"><%= t(".mandatory_tags.heading") %></span></h4>
 <ol style="list-style-type:decimal;">
   <li id="II.J.1">
     <p>
@@ -263,7 +263,7 @@
   </small>
 </p>
 
-<h4 class="heading" id="II.K"><span id="inappropriate"><%= t(".illegal_inappropriate_content.heading") %></span></h4>
+<h4 id="II.K"><span id="inappropriate"><%= t(".illegal_inappropriate_content.heading") %></span></h4>
 <ol style="list-style-type:decimal;">
   <li id="II.K.1">
     <p id="illegal">

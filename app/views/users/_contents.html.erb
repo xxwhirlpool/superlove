@@ -76,17 +76,19 @@
     <ol class="inset blurb-list">
       <%= render partial: 'bookmarks/bookmark_blurb', collection: @bookmarks, as: :bookmark %>
     </ol>
-    <% unless @user == User.orphan_account %>
-      <% if @pseud %>
-        <% if @pseud.bookmarks.visible.size > ArchiveConfig.NUMBER_OF_ITEMS_VISIBLE_IN_DASHBOARD %>
-          <%= pseud_bookmarks_link(@pseud) %>
-        <% end %>
-      <% else %>
-        <% if @user.bookmarks.visible.size > ArchiveConfig.NUMBER_OF_ITEMS_VISIBLE_IN_DASHBOARD %>
-          <%= bookmarks_link(@user) %>
-        <% end %>
-      <% end %> 
-    <% end %>
+    <div class="actions right">
+      <% unless @user == User.orphan_account %>
+        <% if @pseud %>
+          <% if @pseud.bookmarks.visible.size > ArchiveConfig.NUMBER_OF_ITEMS_VISIBLE_IN_DASHBOARD %>
+            <%= pseud_bookmarks_link(@pseud) %>
+          <% end %>
+        <% else %>
+          <% if @user.bookmarks.visible.size > ArchiveConfig.NUMBER_OF_ITEMS_VISIBLE_IN_DASHBOARD %>
+            <%= bookmarks_link(@user) %>
+          <% end %>
+        <% end %> 
+      <% end %>
+    </div>
   </div>
 <% end %>
 

@@ -1,5 +1,5 @@
 <!--Descriptive page name, messages and instructions-->
-<h2 class="heading">
+<h2>
   <%= ts("Assignments for %{collection_title}", collection_title: @collection.title) %>
   <%= link_to_help "challenge-assignments" %>
 </h2>
@@ -63,11 +63,11 @@
           <%= render "maintainer_index_defaulted" %>
         <% elsif params[:pinch_hit] %>
           <legend><%= ts("Pinch Hit Assignments") %></legend>
-          <h3 class="heading"><%=ts("Pinch Hit Assignments") %></h3>
+          <h3><%=ts("Pinch Hit Assignments") %></h3>
           <%= render "maintainer_index_unfulfilled" %>
         <% elsif params[:unfulfilled] %>
           <legend><%= ts("Open Assignments") %></legend>
-          <h3 class="heading"><%=ts("Open Assignments") %></h3>
+          <h3><%=ts("Open Assignments") %></h3>
           <%= render "maintainer_index_unfulfilled" %>
         <% end %>
 

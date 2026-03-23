@@ -1,5 +1,5 @@
 <!--Descriptive page name and system messages, descriptions, and instructions.-->
-<h2 class="heading">
+<h2>
   <% if @user %>
     <%= t(".page_heading.users_collections", user: @user.login) %>
   <% elsif @collection %>
@@ -11,7 +11,7 @@
   <% end %>
 </h2>
 
-<h3 class="heading">
+<h3>
   <% if @collections.empty? %>
     <%= ts("Sorry, there were no collections found.") %>
   <% else %>

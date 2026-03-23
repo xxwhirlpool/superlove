@@ -1,0 +1,73 @@
+en:
+  abuse_reports:
+    new:
+      do_not_spam:
+        delay: it may take several months for us to get to your report
+        paragraph_html: "%{split_bold} Our volunteer team is small, so %{delay_link}."
+        split: Please only report one user at a time, and do not submit multiple reports about the same user.
+      form:
+        comment:
+          content_policy: Content Policy
+          description_html: Explain how the content you are reporting violates the %{content_policy_link} or other parts of the %{tos_link}. Please be as specific as possible and %{include_link}. All information provided will remain confidential.
+          error: Please describe what you are reporting and why you are reporting it.
+          include: include all relevant links and other information in your report
+          label: Description of the content you are reporting (required)
+          tos: Terms of Service
+        email:
+          description: We cannot contact you if the email address you provide is invalid.
+          label: Your email (required)
+        landmark:
+          send: Send to Abuse Team
+        language:
+          label: Select language (required)
+        legend:
+          abuse: Link and Describe Abuse
+        link:
+          description: Please ensure this link leads to the page you intend to report. Enter only one URL here and include any other links in the description field below.
+          error: Please enter the link to the page you are reporting.
+          label: Link to the page you are reporting (required)
+        name:
+          label: Your name or username (optional)
+        submit:
+          active: Submit
+        summary:
+          description: Please specify why you are contacting us and/or what part of the Terms of Service is relevant to your complaint. (For example, "harassment", "not a fanwork", "commercial activities", etc.)
+          error: Please enter a subject line for your report.
+          label: Brief summary of Terms of Service violation (required)
+      heading:
+        page_title: Policy Questions & Abuse Reports
+      include:
+        evidence_html: links to any relevant %{sources_link} or screenshots
+        intro: 'What to include in your report description:'
+        other_content: links to any of their other content that you would like to report
+        quote: a quote from or summary of the content that violates the Terms of Service
+        reported_username: username of the person you are reporting
+        sources: sources
+        username_html: the %{reported_username_link}
+      languages:
+        delay: There will be an additional delay for responses in any language other than English.
+        intro_html: We can answer Abuse reports in %{list_html}.
+      page_content_landmark: Main Text
+      purview:
+        about_html: Please use this form for questions or reports about violations of the %{tos_link}. For more information, please refer to the %{tos_faq_link}.
+        contact_support_html: If you need technical support, want to report a work tagged with an incorrect language, or would like to manage your %{fnok_link}, please %{support_link}.
+        dmca:
+          abbreviated: DMCA
+          full: Digital Millennium Copyright Act
+        dmca_takedown_html: If you would like to file a %{dmca_abbreviation} takedown request, please %{legal_link}.
+        fnok: Fannish Next-of-Kin
+        legal: review our DMCA Policy and contact our Legal team
+        support: contact our Support team
+        tos: superlove Terms of Service/Rules
+        tos_faq: Terms of Service FAQ
+      reportable:
+        allowed: You would like to know whether specific content is allowed on superlove.
+        content_policy: Content Policy
+        email: an email explaining why
+        hack: You believe that your superlove account was hacked.
+        harassment: You have experienced or witnessed harassment taking place on superlove.
+        intro_html: 'Potential reasons to submit a report to the %{pac_link} team:'
+        pac: Policy & Abuse
+        suspended_html: You have been suspended or your work has been removed, and you have not received %{email_link}.
+        tos: Terms of Service
+        violation_html: You have encountered content on superlove that violates the %{content_policy_link} or other parts of the %{tos_link}.

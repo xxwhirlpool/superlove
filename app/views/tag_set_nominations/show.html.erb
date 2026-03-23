@@ -1,7 +1,7 @@
 <!--ZONE TAG: TAGSETS (but not home?)-->
 <div class="tagset nominations home">
   <!--Descriptive page names, messages and instructions-->
-  <h2 class="heading"><%= @tag_set.title %></h2>
+  <h2><%= @tag_set.title %></h2>
   <!--/descriptions-->
 
   <!--subnav-->
@@ -19,7 +19,7 @@
   </ul>
   <!--/subnav-->
 
-  <h3 class="heading"><%= ts("My Nominations for %{title}", :title => @tag_set.title) %></h3>
+  <h3><%= ts("My Nominations for %{title}", :title => @tag_set.title) %></h3>
   <div class="wrapper">
     <dl class="meta group">
       <dt><%= ts("Created at: ") %></dt>
@@ -44,18 +44,18 @@
   </div>
 
 
-  <h3 class="heading"><%= ts("Nominated Tags") %> <%= link_to_help "tagset-nominated-tags" %></h3>
+  <h3><%= ts("Nominated Tags") %> <%= link_to_help "tagset-nominated-tags" %></h3>
 
   <ol class="index group">
     <% if @limit[:fandom] > 0 && (@limit[:character] > 0 || @limit[:relationship] > 0) %>
       <% # group fandom, char, rel together %>
       <% @tag_set_nomination.fandom_nominations.each do |fandom_nom| %>
         <li class="fandom listbox group">
-          <h4 class="heading"><%= render "show_tag_status", :tag => fandom_nom %></h4>
+          <h4><%= render "show_tag_status", :tag => fandom_nom %></h4>
           <% TagSet::TAG_TYPES_RESTRICTED_TO_FANDOM.each do |tag_type| %>
             <% if @limit[tag_type] > 0 %>
               <div class="<%= tag_type.to_s.pluralize.downcase %> listbox group">
-                <h5 class="heading"><%= ts("%{tag_type}", tag_type: tag_type_label_name(tag_type).pluralize) %></h5>
+                <h5><%= ts("%{tag_type}", tag_type: tag_type_label_name(tag_type).pluralize) %></h5>
                 <ul class="index group">
                   <% if fandom_nom.send("#{tag_type}_nominations").count == 0 %>
                     <li><%= ts("None nominated in this fandom.") %></li>

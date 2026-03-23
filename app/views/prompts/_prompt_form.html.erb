@@ -25,7 +25,7 @@
     <% end %>
 
     <legend><%= prompt_label %></legend>
-    <h3 class="heading"><%= form.object.new_record? ? prompt_label : link_to(prompt_label, collection_prompt_path(@collection, form.object)) %></h3>  
+    <h3><%= form.object.new_record? ? prompt_label : link_to(prompt_label, collection_prompt_path(@collection, form.object)) %></h3>  
 
     <dl>
       <% if restriction.title_allowed %>

@@ -4,7 +4,7 @@
     <%= form_tag({}, {:method => :get}) do %>
       <fieldset>
         <legend><%= ts("Add Prompts") %></legend>
-        <h3 class="heading"><%= ts("Add Prompts") %></h3>
+        <h3><%= ts("Add Prompts") %></h3>
         <p class="notes">
           <%= ts("Since you don't have JavaScript turned on, please tell us how many #{types.to_sentence} you want to submit: ") %>
         </p>
@@ -40,7 +40,7 @@
   <p class="required notice"><%= ts("* Required information") %></p>
   <% unless @challenge_signup.errors.empty? %>
     <div class="error">
-      <h4 class="heading"><%= ts("There were some problems with this submission. Please correct the mistakes below.") %></h4>
+      <h4><%= ts("There were some problems with this submission. Please correct the mistakes below.") %></h4>
     </div>
   <% end %>
 
@@ -52,7 +52,7 @@
   <% @challenge.class::PROMPT_TYPES.each do |prompt_type| %>
   <fieldset>
     <legend><%= prompt_type.capitalize %></legend>
-    <h3 class="heading">
+    <h3>
       <%= prompt_type.capitalize %> (<%= @challenge.allowed_range_string(prompt_type) %>)
     </h3>
     <% unless sanitize_field(@challenge, "signup_instructions_#{prompt_type}".to_sym).blank? %>

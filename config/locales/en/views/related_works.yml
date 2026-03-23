@@ -1,0 +1,14 @@
+en:
+  related_works:
+    index:
+      page_heading: "%{login}'s Related Works"
+  approval:
+    page_heading_approve: Approve Link
+    page_heading_remove: Remove Link
+    approve_prompt: "Would you like to create a link from your work %{your_work} to %{their_work} by %{their_profile}?"
+    remove_prompt: "Would you like to remove the link from your work %{your_work} to %{their_work} by %{their_profile}?"
+    assurance: Nothing will be linked directly from your works without your express approval.
+    change_mind: (You can come back to this page if you change your mind.)
+    approve_submit: Yes, link me!
+    remove_submit: Remove link
+    

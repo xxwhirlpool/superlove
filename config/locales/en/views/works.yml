@@ -1,0 +1,128 @@
+en:
+  works:
+    adult:
+      caution: This work could have adult content. If you continue, you have agreed that you are willing to see such content.
+      footnote: If you accept cookies from our site and you choose "Yes, Continue", you will not be asked again during this session (that is, until you close your browser). If you log in you can store your preference and never be asked again.
+      navigation:
+        back: No, Go Back
+        continue: Yes, Continue
+        preferences: Set your preferences now
+      page_title: Adult Content Warning
+    associations:
+      language:
+        choose: Choose a language
+      title: Associations
+    byline:
+      add_co-creators: Add co-creators
+      show_co-creator_options: Add co-creators?
+    drafts:
+      page_heading: Unposted Draft
+      please_note: 'Please note:'
+      unposted_drafts_get_deleted: Unposted drafts are only saved for 30 days from the day they are first created, and then deleted from %{app_name}.
+    edit_tags:
+      page_heading:
+        edit_tags_and_language_html: Edit Work Tags and Language for %{title}
+        edit_tags_html: Edit Work Tags for %{title}
+    import:
+      draft_work_title_html: "%{work_link} (Draft)"
+      page_heading: Imported Works
+      success: We were able to successfully upload the following works.
+    index:
+      advanced_search: try our advanced search
+      choose_fandom: choose a fandom
+      recent_works_html: These are some of the latest works posted to the Archive. To find more works, %{choose_fandom_link} or %{advanced_search_link}.
+    meta:
+      original_creators:
+        one: 'Original Creator ID:'
+        other: 'Original Creator IDs:'
+    navigate:
+      page_heading_html: Chapter Index for %{work_link} by %{creators}
+    new_import:
+      content_policy: Content Policy
+      post_notice_html: All works you post on AO3 must comply with our %{content_policy_link}. For more information, please refer to our %{tos_faq_link}.
+      tos_faq: Terms of Service FAQ
+    permissions:
+      privacy: Privacy
+      visibility:
+        import_works_restricted: Only show imported works to registered users
+        keep_current: Keep current visibility settings
+        label: Visibility
+        multiple_works_restricted: Only show to registered users
+        restricted: Only show your work to registered users
+        unrestricted: Show to all
+    posting_fieldset:
+      actions:
+        cancel: Cancel
+        edit: Edit
+        please_wait: Please wait...
+        post: Post
+        preview: Preview
+        save_draft: Save Draft
+        update: Update
+      content_policy: Content Policy
+      legend: Post Work
+      post_notice_html: All works you post on AO3 must comply with our %{content_policy_link}. For more information, please refer to our %{tos_faq_link}.
+      tos_faq: Terms of Service FAQ
+    preface:
+      title: Preface
+    preview:
+      page_heading: Preview
+    preview_tags:
+      page_heading:
+        preview_tags: Preview Tags
+        preview_tags_and_language: Preview Tags and Language
+    search_box:
+      a11y_label: Work
+      label: Work Search
+      submit: Search
+      tooltip_label: 'tip:'
+    search_form:
+      creator: Creator
+    show:
+      unposted_deletion_notice_html: This work is a draft and has not been posted.
+    show_multiple:
+      draft: " (Draft)"
+      no_works: You have no works or drafts to edit.
+    skin:
+      select: Select work skin
+    work_approved_children:
+      inspired_by:
+        restricted_html: "[Restricted Work] by %{creator_link} (Log in to access.)"
+        revealed_html: "%{work_link} by %{creator_link}"
+        title: Works inspired by this one
+        unrevealed: A work in an unrevealed collection
+    work_form_tags:
+      fandoms_help_title: Fandom help
+      ratings_help_title: Rating help
+      warnings_help_title: Warning help
+    work_header_navigation:
+      chapter_index:
+        button: Chapter Index
+        full_page: Full-Page Index
+        link: Chapter Index
+        submit: Go
+      download:
+        button: Download
+        heading: Download
+    work_header_notes:
+      inspired_by:
+        other_works_inspired_by_this_one: other works inspired by this one
+        restricted_html: Inspired by [Restricted Work] by %{creator_link} (Log in to access.)
+        revealed_html: Inspired by %{work_link} by %{creator_link}
+        unrevealed: Inspired by a work in an unrevealed collection
+      jump:
+        endnotes_and_related_works_html: "(See the end of the work for %{endnotes_link} and %{related_works_link}.)"
+        endnotes_html: "(See the end of the work for %{endnotes_link}.)"
+        more_notes: more notes
+        notes: notes
+        related_works_html: "(See the end of the work for %{related_works_link}.)"
+      translated_to:
+        restricted_html: 'Translation into %{language} available: [Restricted Work] by %{creator_link} (Log in to access.)'
+        revealed_html: 'Translation into %{language} available: %{work_link} by %{creator_link}'
+        unrevealed_html: 'Translation into %{language} available: A work in an unrevealed collection'
+      translation_of:
+        restricted_html: A translation of [Restricted Work] by %{creator_link} (Log in to access.)
+        revealed_html: A translation of %{work_link} by %{creator_link}
+        unrevealed: A translation of a work in an unrevealed collection
+    work_module:
+      draft_deletion_notice_html: This draft will be <strong>scheduled for deletion</strong> on %{deletion_date}.

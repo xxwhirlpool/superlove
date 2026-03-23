@@ -1,5 +1,5 @@
 <!--SEARCHBROWSE Descriptive page name, messages and instructions-->
-<h2 class="heading">
+<h2>
   <% if @collection %>
     <%= link_to(@collection.title, @collection) %> > <%= t(".page_heading") %>
   <% elsif @medium %>
@@ -10,13 +10,13 @@
 </h2>
 <p>You can search this page by pressing <kbd>ctrl F</kbd> / <kbd>cmd F</kbd> and typing in what you are looking for.</p>
 <% if @collection %>
-  <h3 class="landmark heading"><%= ts("Filters") %></h3>
+  <h3 class="landmark"><%= ts("Filters") %></h3>
   <%= form_tag "", method: :get, class: "filter", id: "media-filter" do %>
     <fieldset>
-      <p title="<%=ts("Choose media type") %>">
+      <div title="<%=ts("Choose media type") %>">
         <%= select_tag :media_id, options_for_select(["All Media Types"] + @media.map(&:name), params[:media_id]) %>
         <%= submit_tag ts("Show") %>
-      </p>
+      </div>
     </fieldset>
   <% end %>
 <% end %>
@@ -24,23 +24,23 @@
 
 <!--main content-->
 <% if @fandoms_by_letter && !@fandoms_by_letter.empty? %>
-  <h3 class="landmark heading"><%= ts("Alphabet Navigation") %></h3>
-  <ul class="alphabet actions" id="alphabet" role="navigation">
+  <h3 class="landmark"><%= ts("Alphabet Navigation") %></h3>
+  <ul class="actions" id="alphabet" role="navigation">
     <% for letter in @fandoms_by_letter.keys %>
       <li><%= link_to letter, "#letter-#{letter}" %></li>
     <% end %>
   </ul>
-  <h3 class="landmark heading"><%= ts("Alphabetised List of Fandoms") %></h3>
-  <ol class="alphabet fandom index group <%= "collection" if @collection %>">
+  <h3 class="landmark"><%= ts("Alphabetised List of Fandoms") %></h3>
+  <ol class="fandom <%= "collection" if @collection %>">
     <% @fandoms_by_letter.each_pair do |letter, fandoms| %>
       <li id="letter-<%= letter %>" class="letter listbox group">
-        <h3 class="heading">
+        <h3>
           <%= letter %>
           <span class="action top" title="top">
             <%= link_to "&#8593;".html_safe, "#alphabet" %>
           </span>
         </h3>
-        <ul class="tags index group">
+        <ul class="tags index">
           <% for fandom in fandoms %>
             <li>
               <%= link_to_tag_works(fandom, collection: @collection) %>
@@ -56,6 +56,6 @@
     <% end %>
   </ol>
 <% else %>
-  <h3 class="heading"><%= ts("No fandoms found") %></h3>
+  <h3><%= ts("No fandoms found") %></h3>
 <% end %>
 <!--/content-->

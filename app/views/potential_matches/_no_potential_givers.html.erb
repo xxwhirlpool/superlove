@@ -1,6 +1,6 @@
 <% if @assignments_with_no_potential_givers.present? %>
   <div class="matching listbox group">
-    <h3 class="heading"><%= ts("Participants with No Potential Givers") %></h3>
+    <h3><%= ts("Participants with No Potential Givers") %></h3>
     <dl class="index group">
       <% @assignments_with_no_potential_givers.each do |assignment| %>
         <dt class="byline" title="<%= ts("pseud") %>"><%= link_to assignment.request_byline, collection_signup_path(@collection, assignment.request_signup) %></dd>

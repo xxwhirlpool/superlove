@@ -20,7 +20,7 @@
         </ol>
 
         <% unless @fandom_listing[medium].size < 5 %>
-          <p class="actions" role="navigation"><%= link_to t(".all", media_type: medium.name), media_fandoms_path(medium) %></p>
+          <div class="actions right"><%= link_to t(".all", media_type: medium.name), media_fandoms_path(medium) %></div>
         <% end %>
       </div>
     </li>

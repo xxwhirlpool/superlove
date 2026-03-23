@@ -1,0 +1,56 @@
+en:
+  preferences:
+    index:
+      browser_page_title_format: Browser page title format
+      collections_challenges_gifts:
+        allow_collection_invitation: Allow others to invite my works to collections.
+        allow_gifts: Allow anyone to gift me works.
+        heading: Collections, Challenges and Gifts
+        legend: Collections, Challenges and Gifts
+        turn_off_collection_emails: Turn off emails from collections.
+        turn_off_collection_inbox: Turn off inbox messages from collections.
+        turn_off_gift_emails: Turn off emails about gift works.
+      comments:
+        guest_replies_off: Do not allow guests to reply to my comments on news posts or other users' works (you can still control the comment settings for your works separately).
+        heading: Comments
+        legend: Comments
+        turn_off_copies_own_comments: Turn off copies of your own comments.
+        turn_off_emails: Turn off emails about comments.
+        turn_off_inbox: Turn off messages to your inbox about comments.
+        turn_off_kudos_emails: Turn off emails about kudos.
+      display:
+        heading: Display
+        hide_additional_tags: Hide additional tags (you can still choose to show them).
+        hide_warnings: Hide warnings (you can still choose to show them).
+        hide_work_skins: Hide work skins (you can still choose to show them).
+        legend: Display
+        show_adult_content: Show me adult content without checking.
+        show_whole_work_default: Show the whole work by default.
+      locale_help_title: Locale preferences
+      misc:
+        heading: Misc
+        legend: Misc
+        turn_off_banner_every_page: Turn off the banner showing on every page.
+        turn_on_history: Turn on History.
+        turn_on_new_user_help: Turn the new user help banner back on.
+      navigation:
+        blocked_users: Blocked Users
+        change_email: Change Email
+        change_password: Change Password
+        change_username: Change Username
+        edit_my_profile: Edit My Profile
+        landmark: Navigation
+        manage_my_pseuds: Manage My Pseuds
+        muted_users: Muted Users
+      page_heading: Set My Preferences
+      privacy:
+        allow_co_creator_invite: Allow others to invite me to be a co-creator.
+        heading: Privacy
+        hide_share_buttons: Hide the share buttons on my work.
+        hide_work_from_search_engines: Hide my work from search engines when possible.
+        legend: Privacy
+      public_site_skins: Public Site Skins
+      skins_basics_help_title: Skins basics
+      your_locale: Your locale
+      your_site_skin: Your site skin
+      your_time_zone: Your time zone

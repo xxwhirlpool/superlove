@@ -6,7 +6,7 @@
 
 <div class="tag wrangling home">
   <!--Descriptive page name, messages and instructions-->
-  <h2 class="heading"><%= t(".page_heading") %></h2>
+  <h2><%= t(".page_heading") %></h2>
   <% unless params[:show] %>
     <h4 class="landmark heading"><%= t(".notes.landmark") %></h4>
 	<p>
@@ -22,7 +22,7 @@
   <!--main content-->
   <!--Eventually, something less redundant will go here-->
   <% unless params[:show].blank? %>
-    <h3 class="heading"><%= ts('Mass Wrangle New/Unwrangled Tags') %></h3>
+    <h3><%= ts('Mass Wrangle New/Unwrangled Tags') %></h3>
   <% end %>
 
   <% if @tags && @tags.empty? %>

@@ -1,6 +1,6 @@
 <div class="admin">
   <!--Descriptive page name, messages and instructions-->
-  <h2 class="heading"><%= ts("Find Users") %></h2>
+  <h2><%= ts("Find Users") %></h2>
   <!--/descriptions-->
 
   <!--main content-->
@@ -41,7 +41,7 @@
   <% end %>
 
   <% if @users %>
-    <h3 class="heading"><%= ts("#{pluralize(@users.total_entries, 'user')} found") %></h3>
+    <h3><%= ts("#{pluralize(@users.total_entries, 'user')} found") %></h3>
     <% if @users.size > 0 %>
       <div class="wrapper">
         <table id="admin_users_table" summary="<%= ts("Users matching your search criteria, as well as options for updating the user's roles and viewing more information.") %>">

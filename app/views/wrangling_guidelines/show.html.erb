@@ -1,5 +1,5 @@
 <!--Descriptive page name, messages and instructions-->
-<h2 class="heading"><%= link_to t(".heading"), wrangling_guidelines_path %> > <%= @wrangling_guideline.title %></h2>
+<h2><%= link_to t(".heading"), wrangling_guidelines_path %> > <%= @wrangling_guideline.title %></h2>
 <!--/descriptions-->
 
 <!--subnav-->
@@ -10,7 +10,7 @@
 <div class="admin" role="article">
   <% if policy(:wrangling).edit? %>
     <div class="header">
-      <h3 class="heading">
+      <h3>
         Updated: <%= h @wrangling_guideline.updated_at %> | <%= link_to t(".edit"), edit_wrangling_guideline_path(@wrangling_guideline) %>
       </h3>
     </div>

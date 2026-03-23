@@ -2,7 +2,7 @@
 
 <!--title etc-->
 <div class="header module">
-  <h4 class="heading">
+  <h4>
     <%= t(".series_by_html", series_title_link: link_to(series.title, series), byline: byline(series)) %>
     <% if series.restricted %>
       <%= image_tag("lockblue.png", size: "15x15", alt: t(".restricted_alt"),

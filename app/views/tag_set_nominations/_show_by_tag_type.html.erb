@@ -1,6 +1,6 @@
 <% if @limit[tag_type] > 0 %>
   <li class="<%= tag_type.to_s.pluralize.downcase %> listbox group">
-    <h4 class="heading">
+    <h4>
       <%= ts("%{tag_type}", tag_type: tag_type_label_name(tag_type).pluralize) %>
     </h4>
     <ol class="index group">

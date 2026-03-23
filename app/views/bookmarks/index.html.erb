@@ -1,7 +1,7 @@
 <!--SEARCHBROWSE descriptive page name and system messages, descriptions, and instructions.-->
 <%= render "muted/muted_items_notice" %>
 
-<h2 class="heading">
+<h2>
   <% if @bookmarkable_items %>
     <%= search_header @bookmarkable_items, @search, "Bookmarked Item", @owner %>
   <% else %>
@@ -12,7 +12,7 @@
 
 <!--subnav-->
 <% if current_user.is_a?(User) || @tag || @facets.present? %>
-  <ul class="navigation actions" role="navigation">
+  <ul class="actions right">
     <% if logged_in? && (@user == current_user || (@owner.blank? && @bookmarkable.blank?) || @collection) %>
       <li><%= link_to t(".navigation.new_external_work"), new_external_work_path %></li>
     <% elsif params[:work_id] || params[:series_id] || params[:external_work_id] %>
@@ -42,7 +42,7 @@
 
 <% if params[:work_id] || params[:series_id] || params[:external_work_id] %>
   <% # bookmark form loaded here if requested %>
-  <div class="new dynamic" id="bookmark_form_placement_for_<%= bookmark_form_id %>"></div>
+  <div id="bookmark_form_placement_for_<%= bookmark_form_id %>"></div>
 <% end %>
 
 <% unless @owner.present? || @bookmarkable.present? %>
@@ -52,8 +52,8 @@
 <%== pagy_nav @pagy %>
 
 <!--main content-->
-<h3 class="landmark heading"><%= ts("List of Bookmarks") %></h3>
-<ol class="bookmark index group">
+<h3 class="landmark"><%= ts("List of Bookmarks") %></h3>
+<ol id="bookmarks" class="blurb-list">
   <%= render "bookmarks/bookmarks" %>
 </ol>
 <!-- /content-->

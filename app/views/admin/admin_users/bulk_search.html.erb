@@ -1,6 +1,6 @@
 <div class="admin">
   <!--Descriptive page name, messages and instructions-->
-  <h2 class="heading"><%= ts("Bulk Email Search") %></h2>
+  <h2><%= ts("Bulk Email Search") %></h2>
   <!--/descriptions-->
 
   <!--main content-->
@@ -35,7 +35,7 @@
               "#{@results[:found_users].size} found. #{@results[:not_found_emails].size} not found. #{pluralize(@results[:duplicates], "duplicate")}.") %></p>
 
     <% if @results[:not_found_emails]&.any? %>
-      <h3 class="heading"><%= ts("Not found") %></h3>
+      <h3><%= ts("Not found") %></h3>
       <p><%= @results[:not_found_emails].join(", ") %></p>
     <% end %>
 

@@ -1,5 +1,5 @@
 <!--Descriptive page name, messages and instructions-->
-<h2 class="heading">
+<h2>
   <% if @bookmarkable %>
     <%= (ts("Editing bookmark for ") + link_to(@bookmarkable.title, @bookmarkable)).html_safe %>
   <% else %>

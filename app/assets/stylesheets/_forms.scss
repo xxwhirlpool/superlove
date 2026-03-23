@@ -51,6 +51,7 @@ label {
 
 .form-row {
   margin-bottom: 0.5rem;
+  position: relative;
   
   &.checkbox {
     label {
@@ -75,6 +76,17 @@ label {
       font-size: .6rem;
       margin: .65rem 0;
     }
+  }
+  
+  .hint {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 9;
+    background-color: var(--help-bg);
+    padding: .125rem .45rem;
+    border-radius: .125rem;
+    border: 1px var(--help-border) solid;
   }
 }
 

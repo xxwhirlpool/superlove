@@ -3,7 +3,7 @@
   <%# remember to update collection_sweeper if you change this key %>
   <% cache("collection-blurb-#{logged_in}-#{collection.id}-v5", expires_in: ArchiveConfig.MINUTES_UNTIL_COLLECTION_BLURBS_EXPIRE.minutes, skip_digest: true) do %>
     <div class="header module group">
-      <h4 class="heading">
+      <h4>
         <%= link_to collection.title, collection_path(collection) %>
         <span class="name">(<%= collection.name %>)</span>
         <%= ts('by') %>

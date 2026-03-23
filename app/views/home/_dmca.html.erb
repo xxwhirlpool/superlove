@@ -11,7 +11,7 @@
 </p>
 
 <nav class="toc-nav-heading" id="toc">
-  <h3 class="heading" id="nav-toc-heading"><%= t(".toc.heading") %></h3>
+  <h3 id="nav-toc-heading"><%= t(".toc.heading") %></h3>
     <ol>
       <li><%= link_to(t(".toc.removal"), "#removal_options") %>
         <ul>
@@ -31,7 +31,7 @@
     </ol>
 </nav>
 
-<h3 class="heading" id="removal_options"><%= t(".removal.heading") %></h3>
+<h3 id="removal_options"><%= t(".removal.heading") %></h3>
  <p><%= t(".removal.intro") %></p>
   <ul>
     <li>
@@ -55,7 +55,7 @@
         do_not_bold: tag.strong(t(".removal.do_not"))) %>
 </p>
 
-<h4 class="heading" id="takedown_instructions"><%= t(".takedown_instructions.heading") %></h4>
+<h4 id="takedown_instructions"><%= t(".takedown_instructions.heading") %></h4>
 <p>
   <%= t(".takedown_instructions.initiate_html",
         contact_legal_link: link_to(t(".takedown_instructions.contact_legal"), "https://www.transformativeworks.org/contact_us/?who=Legal%20Advocacy")) %>
@@ -70,7 +70,7 @@
 </blockquote>
 <p><%= t(".takedown_instructions.prefer") %></p>
 
-<h4 class="heading" id="takedown_requirements"><%= t(".takedown_requirements.heading") %></h4>
+<h4 id="takedown_requirements"><%= t(".takedown_requirements.heading") %></h4>
 <p><%= t(".takedown_requirements.intro") %></p>
 <ol>
   <li><%= t(".takedown_requirements.signature") %></li>
@@ -88,7 +88,7 @@
 </ol>
 <p><%= t(".takedown_requirements.liability") %></p>
 
-<h4 class="heading" id="takedown_process"><%= t(".takedown_process.heading") %></h4>
+<h4 id="takedown_process"><%= t(".takedown_process.heading") %></h4>
 <p>
   <%= t(".takedown_process.valid_html",
         requirements_link: link_to(t(".takedown_process.requirements"), "#takedown_requirements")) %>
@@ -100,7 +100,7 @@
 <p><%= t(".takedown_process.dispute") %></p>
 <p><%= t(".takedown_process.counternotify") %></p>
 
-<h3 class="heading" id="appeal_options"><%= t(".appeal.heading") %></h3>
+<h3 id="appeal_options"><%= t(".appeal.heading") %></h3>
 <p>
   <%= t(".appeal.violations_html",
         copyright_link: link_to(t(".appeal.copyright"), content_path(anchor: "II.D")),
@@ -119,7 +119,7 @@
         suspend_link: link_to(t(".appeal.suspend"), "#repeat_offenses")) %>
 </p>
 
-<h4 class="heading" id="counternotice_instructions"><%= t(".counternotice_instructions.heading") %></h4>
+<h4 id="counternotice_instructions"><%= t(".counternotice_instructions.heading") %></h4>
 <p>
   <%= t(".counternotice_instructions.dispute_html",
         defend_bold: tag.strong(t(".counternotice_instructions.defend"))) %>
@@ -143,7 +143,7 @@
 <p><%= t(".counternotice_instructions.prefer") %></p>
 <p><%= t(".counternotice_instructions.time_limit") %></p>
 
-<h4 class="heading" id="counternotice_requirements"><%= t(".counternotice_requirements.heading") %></h4>
+<h4 id="counternotice_requirements"><%= t(".counternotice_requirements.heading") %></h4>
 <p><%= t(".counternotice_requirements.intro") %></p>
 <ol>
   <li><%= t(".counternotice_requirements.signature") %></li>
@@ -165,7 +165,7 @@
 </ol>
 <p><%= t(".counternotice_requirements.liability") %></p>
 
-<h4 class="heading" id="counternotice_process"><%= t(".counternotice_process.heading") %></h4>
+<h4 id="counternotice_process"><%= t(".counternotice_process.heading") %></h4>
 <p>
   <%= t(".counternotice_process.valid") %>
 </p>
@@ -174,7 +174,7 @@
         lumen_link: link_to(t(".counternotice_process.lumen"), "https://lumendatabase.org/")) %>
 </p>
 
-<h3 class="heading" id="repeat_offenses"><%= t(".repeat.heading") %></h3>
+<h3 id="repeat_offenses"><%= t(".repeat.heading") %></h3>
 <p>
   <%= t(".repeat.required_html",
         suspend_link: link_to(t(".repeat.suspend"), tos_faq_path(anchor: "penalty"))) %>

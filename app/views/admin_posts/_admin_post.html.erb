@@ -1,6 +1,6 @@
 <% # expects "admin_post" %>
 <div <% if rtl_language?(admin_post.language) %>dir="rtl"<% end %> class="header">
-  <h3 class="heading">
+  <h3>
     <%= link_to admin_post.title.html_safe, admin_post %>
   </h3>
 </div>

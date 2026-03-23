@@ -1,5 +1,5 @@
 <!--Descriptive page name, messages and instructions-->
-<h2 class="heading"><%= ts("Known Issues") %></h2>
+<h2><%= ts("Known Issues") %></h2>
 <% if @known_issues.empty? %>
 <p>There are no known issues posted, but you can <%= link_to 'make a new known issues post', new_known_issue_path %></p>
 <% end %>
@@ -19,8 +19,8 @@
       <li role="button"><%= link_to ts("Delete"), known_issue, data: {confirm: 'Are you sure?'}, :method => :delete %></li>
     </ul>
     <div class="admin userstuff" role="article">
-      <h3 class="heading"><%=raw sanitize_field(known_issue, :title) %></h3>
-      <h6 class="heading"><%= ts("Updated at:") %> <%= known_issue.updated_at %></h6>
+      <h3><%=raw sanitize_field(known_issue, :title) %></h3>
+      <h6><%= ts("Updated at:") %> <%= known_issue.updated_at %></h6>
       <%=raw sanitize_field(known_issue, :content) %>
     </div>
   </li>

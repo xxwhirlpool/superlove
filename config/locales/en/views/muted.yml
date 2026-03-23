@@ -1,0 +1,56 @@
+en:
+  muted:
+    mute: Mute
+    muted_items_notice_html: You have muted some users on superlove. Some items may not be shown, and any counts may be inaccurate. You can mute or unmute users on %{muted_users_link}.
+    muted_users_link_text: your Muted Users page
+    unmute: Unmute
+    users:
+      confirm_mute:
+        block_users_instead_html: To prevent a user from commenting on your works or replying to your comments elsewhere on the site, visit %{blocked_users_link}.
+        blocked_users_link_text: your Blocked Users page
+        button: Yes, Mute User
+        cancel: Cancel
+        mute: mute
+        restore_site_skin_faq_link_text: instructions for reverting to the default site skin
+        site_skin_warning_html: Please note that if you are not using the default site skin, muting may not work properly. The Skins and superlove Interface FAQ has %{restore_site_skin_faq_link}.
+        sure_html: Are you sure you want to %{mute} %{username}?
+        title: Mute %{name}
+        will:
+          intro: 'Muting a user:'
+          seeing_content: completely hides their works, series, bookmarks, and comments from you; there will be no empty space, placeholder text, or other indication something has been removed
+        will_not:
+          hide_content_for_others: hide their works, series, bookmarks, and comments from anyone else
+          intro: 'Muting a user will not:'
+          prevent_emails: prevent you from receiving comment or subscription emails from this user
+      confirm_unmute:
+        button: Yes, Unmute User
+        cancel: Cancel
+        resume:
+          intro: 'Unmuting a user allows you to:'
+          see_content: see their works, series, bookmarks, and comments on the site
+        sure_html: Are you sure you want to %{unmute} %{username}?
+        title: Unmute %{name}
+        unmute: unmute
+      index:
+        block_users_instead_html: To prevent a user from commenting on your works or replying to your comments elsewhere on the site, visit %{blocked_users_link}.
+        blocked_users_link_text: your Blocked Users page
+        button: Mute
+        heading:
+          landmark:
+            muted_users: Listing Muted Users
+        label: User
+        legend: Mute a user
+        muted_users: Muted Users
+        none: You have not muted any users.
+        restore_site_skin_faq_link_text: instructions for reverting to the default site skin
+        site_skin_warning_html: Please note that if you are not using the default site skin, muting may not work properly. The Skins and superlove Interface FAQ has %{restore_site_skin_faq_link}.
+        title: Muted Users
+        will:
+          intro:
+            one: 'You can mute up to %{mute_limit} user. Muting a user:'
+            other: 'You can mute up to %{mute_limit} users. Muting a user:'
+          seeing_content: completely hides their works, series, bookmarks, and comments from you; there will be no empty space, placeholder text, or other indication something has been removed
+        will_not:
+          hide_content_for_others: hide their works, series, bookmarks, and comments from anyone else
+          intro: 'Muting a user will not:'
+          prevent_emails: prevent you from receiving comment or subscription emails from this user

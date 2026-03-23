@@ -1,7 +1,7 @@
 <% # expects "prompt", if index is passed will use that in title if none exists, if suppress_claims is true will ignore %>
 <li class="<% if is_author_of?(prompt) %>own <% end %> blurb group" role="article">
   <div class="header module">
-    <h4 class="heading">
+    <h4>
       <% if !prompt.title.blank? %>
         <%= prompt.title %>
       <% else %>
@@ -68,7 +68,7 @@
     <% # if prompt has been claimed list by whom %>
     <% unless prompt.unfulfilled_claims.empty? %>
       <div class="claims listbox group">
-        <h5 class="heading"><%= ts("Claimed By")%></h5>
+        <h5><%= ts("Claimed By")%></h5>
         <ul class="commas index group">
           <% if prompt.collection.anonymous? %>
             <%= ts("%{count} anonymous claimants", :count => prompt.unfulfilled_claims.count) %>
@@ -82,7 +82,7 @@
     <% # if prompt has been fulfilled list works %>
     <% unless prompt.unfulfilled? %>
       <div class="work listbox group">
-        <h5 class="heading"><%= ts("Fulfilled By")%></h5>
+        <h5><%= ts("Fulfilled By")%></h5>
         <ul class="index group">
           <% prompt.fulfilled_claims.map(&:creation).each do |creation| %>
             <% if creation.is_a?(Work) %>

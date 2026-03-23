@@ -200,7 +200,7 @@
       <%= ts("Tip: if this is a subcollection or challenge, you don't need to repeat yourself: fields left blank will copy from your parent collection.") %>
     </p>
 
-    <h3 class="heading">
+    <h3>
       <%= profile_form.label :intro, ts("Introduction") %>
     </h3>
     <p>
@@ -210,7 +210,7 @@
       <%= generate_countdown_html("collection_collection_profile_attributes_intro", ArchiveConfig.INFO_MAX) %>
     </p>
 
-    <h3 class="heading">
+    <h3>
       <%= profile_form.label :faq, ts("FAQ"), title: ts("frequently asked questions") %>
     </h3>
     <p>
@@ -220,7 +220,7 @@
       <%= generate_countdown_html("collection_collection_profile_attributes_faq", ArchiveConfig.INFO_MAX) %>
     </p>
 
-    <h3 class="heading">
+    <h3>
       <%= profile_form.label :rules, ts("Rules") %>
     </h3>
       <p><%= profile_form.text_area :rules, rows: 10, cols: 80, class: "observe_textlength" %>
@@ -229,7 +229,7 @@
       <%= generate_countdown_html("collection_collection_profile_attributes_rules", ArchiveConfig.INFO_MAX) %>
     </p>
 
-    <h3 class="heading">
+    <h3>
       <%= profile_form.label :assignment_notification, ts("Assignment notification message") %>
     </h3>
     <p class="note" id="assignment-notification-field-description">
@@ -244,7 +244,7 @@
       <%= generate_countdown_html("collection_collection_profile_attributes_assignment_notification", ArchiveConfig.SUMMARY_MAX) %>
     </p>
 
-    <h3 class="heading">
+    <h3>
       <%= profile_form.label :gift_notification, ts("Gift notification message") %>
     </h3>
     <p class="note" id="gift-notification-field-description">

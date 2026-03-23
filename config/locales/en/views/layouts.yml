@@ -1,0 +1,59 @@
+en:
+  layouts:
+    banner:
+      hide: hide banner
+    footer:
+      about:
+        content_policy: Content Policy
+        diversity_statement: Diversity Statement
+        dmca_policy: DMCA Policy
+        header: About the Archive
+        privacy_policy: Privacy Policy
+        site_map: Site Map
+        status_page: Site Status
+        tos: Terms of Service
+      contact_us:
+        header: Contact Us
+        pac: Policy Questions & Abuse Reports
+        support: Technical Support & Feedback
+      customize:
+        default: Default
+        header: Customize
+      development:
+        archive_version: otwarchive %{version_number}
+        gpl_2_0_or_later: GPL-2.0-or-later
+        header: Development
+        known_issues: Known Issues
+        license_details_html: "%{license_link} by the %{otw_link}"
+        view_license: View License
+      landmark: Footer
+      otw:
+        abbreviated: OTW
+        full: Organization for Transformative Works
+    header:
+      collections:
+        new: New Collection
+      javascript: While we've done our best to make the core functionality of this site accessible without JavaScript, it will work better with it enabled. Please consider turning it on!
+      login: Log In
+      nav:
+        about: About
+        browse: Browse
+        fandoms: Fandoms
+        label: Site
+        search: Search
+    proxy_notice:
+      button: Dismiss Notice
+      faux_heading: 'Important message:'
+      point1: You are using a proxy site that is not part of superlove.
+      point2: The entity that set up the proxy site can see what you submit, including your IP address. If you log in through the proxy site, it can see your password.
+    tos_prompt:
+      agree_and_consent: I agree/consent to these Terms
+      content: Content
+      content_policy: Content Policy
+      data_processing_agreement: By checking this box, you consent to the processing of your personal data in the United States and other jurisdictions in connection with our provision of AO3 and its related services to you. You acknowledge that the data privacy laws of such jurisdictions may differ from those provided in your jurisdiction. For more information about how your personal data will be processed, please refer to our Privacy Policy.
+      learn_more_html: To learn more, check out our %{tos_link}, including the %{content_policy_link} and %{privacy_policy_link}.
+      page_heading: Archive of Our Own
+      privacy_policy: Privacy Policy
+      read_and_understood: I have read & understood the 2024 Terms of Service, including the Content Policy and Privacy Policy.
+      summary_html: On the Archive of Our Own (AO3), users can create works, bookmarks, comments, tags, and other %{content_link}. Any information you publish on AO3 may be accessible by the public, AO3 users, and/or AO3 personnel. Be mindful when sharing personal information, including but not limited to your name, email, age, location, personal relationships, gender or sexual identity, racial or ethnic background, religious or political views, and/or account usernames for other sites.
+      tos: Terms of Service
