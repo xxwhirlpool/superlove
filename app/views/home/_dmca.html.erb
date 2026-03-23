@@ -1,7 +1,8 @@
 <p>
   <%= t(".intro.purpose_html",
         reproduce_unauthorized_link: link_to(t(".intro.reproduce_unauthorized"), tos_faq_path(anchor: "copyright_plagiarism_faq")),
-        uscode_link: link_to(t(".intro.uscode"), "https://www.law.cornell.edu/uscode/text/17/512")) %>
+        uscode_link: link_to(t(".intro.uscode"), "https://www.law.cornell.edu/uscode/text/17/512"),
+        appname: ArchiveConfig.APP_NAME) %>
 </p>
 <p>
   <%= t(".intro.legality_html",
@@ -13,14 +14,14 @@
 <nav class="toc-nav-heading" id="toc">
   <h3 id="nav-toc-heading"><%= t(".toc.heading") %></h3>
     <ol>
-      <li><%= link_to(t(".toc.removal"), "#removal_options") %>
+      <li><%= link_to(t(".toc.removal", appshortname: ArchiveConfig.APP_SHORT_NAME), "#removal_options") %>
         <ul>
           <li><%= link_to(t(".toc.takedown_instructions"), "#takedown_instructions") %></li>
           <li><%= link_to(t(".toc.takedown_requirements"), "#takedown_requirements") %></li>
           <li><%= link_to(t(".toc.takedown_process"), "#takedown_process") %></li>
         </ul>
       </li>
-      <li><%= link_to(t(".toc.appeal"), "#appeal_options") %>
+      <li><%= link_to(t(".toc.appeal", appshortname: ArchiveConfig.APP_SHORT_NAME), "#appeal_options") %>
         <ul>
           <li><%= link_to(t(".toc.counternotice_instructions"), "#counternotice_instructions") %></li>
           <li><%= link_to(t(".toc.counternotice_requirements"), "#counternotice_requirements") %></li>
@@ -31,7 +32,7 @@
     </ol>
 </nav>
 
-<h3 id="removal_options"><%= t(".removal.heading") %></h3>
+<h3 id="removal_options"><%= t(".removal.heading", appshortname: ArchiveConfig.APP_SHORT_NAME) %></h3>
  <p><%= t(".removal.intro") %></p>
   <ul>
     <li>
@@ -40,7 +41,8 @@
               submit_abuse_link: link_to(t(".removal.submit_abuse"), new_abuse_report_path))),
             tos_link: link_to(t(".removal.tos"), tos_path),
             confidentiality_link: link_to(t(".removal.confidentiality"), tos_faq_path(anchor: "report_anonymity")),
-            tos_faq_link: link_to(t(".removal.tos_faq"), tos_faq_path(anchor: "report_infringement"))) %>
+            tos_faq_link: link_to(t(".removal.tos_faq"), tos_faq_path(anchor: "report_infringement")),
+            appshortname: ArchiveConfig.APP_SHORT_NAME) %>
     </li>
     <li>
       <%= t(".removal.dmca_html",
@@ -95,12 +97,13 @@
 </p>
 <p>
   <%= t(".takedown_process.notification_html",
-        lumen_link: link_to(t(".takedown_process.lumen"), "https://lumendatabase.org/")) %>
+        lumen_link: link_to(t(".takedown_process.lumen"), "https://lumendatabase.org/"),
+        appshortname: ArchiveConfig.APP_SHORT_NAME) %>
 </p>
 <p><%= t(".takedown_process.dispute") %></p>
 <p><%= t(".takedown_process.counternotify") %></p>
 
-<h3 id="appeal_options"><%= t(".appeal.heading") %></h3>
+<h3 id="appeal_options"><%= t(".appeal.heading", appshortname: ArchiveConfig.APP_SHORT_NAME) %></h3>
 <p>
   <%= t(".appeal.violations_html",
         copyright_link: link_to(t(".appeal.copyright"), content_path(anchor: "II.D")),
@@ -111,7 +114,7 @@
 <p>
   <%= t(".appeal.removal_html",
         notify_link: link_to(t(".appeal.notify"), tos_faq_path(anchor: "complaint_notification")),
-        lumen_link: link_to(t(".appeal.lumen"), "https://lumendatabase.org/")) %>
+        lumen_link: link_to(t(".appeal.lumen"), "https://lumendatabase.org/"), appname: ArchiveConfig.APP_NAME) %>
 </p>
 <p>
   <%= t(".appeal.reupload_html",
@@ -183,6 +186,6 @@
 <p>
   <small>
       <%= t(".license.credit_html",
-            cc_license_link: link_to(t(".license.cc_license"), "https://creativecommons.org/licenses/by-sa/4.0/")) %>
+            cc_license_link: link_to(t(".license.cc_license"), "https://creativecommons.org/licenses/by-sa/4.0/"), appshortname: ArchiveConfig.APP_SHORT_NAME) %>
   </small>
 </p>
