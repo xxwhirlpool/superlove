@@ -703,7 +703,7 @@ module ApplicationHelper
   end
 
   def tagline
-	@tagline_items = [ "test", "epic", "fuck", "cunt" ] # placeholders
+	@tagline_items = File.readlines(Rails.root.join("config/taglines.txt")).map(&:chomp)
   end
 
 end
