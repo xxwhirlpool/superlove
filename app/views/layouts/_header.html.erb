@@ -10,12 +10,14 @@
       url(<%= header_url %>); height: <%= height %>
     <% end %>;
   }
-
-  #header .heading sup {
-	margin-left: .3rem !important;
-  }
   </style>
 <% end %>
+
+<style type="text/css">
+	#header .heading sup {
+		margin-left: .3rem !important;
+	}
+</style>
 
 <header id="header" class="region<% if @collection %> collection<% end %>">
 
