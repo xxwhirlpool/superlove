@@ -702,4 +702,8 @@ module ApplicationHelper
     }
   end
 
+  def tagline
+	@tagline_items = [ "test", "epic", "fuck", "cunt" ] # placeholders
+  end
+
 end
