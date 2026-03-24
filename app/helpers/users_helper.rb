@@ -35,9 +35,9 @@ module UsersHelper
     alt_text = pseud.try(:icon_alt_text) || nil
 
     if path
-      link_to image_tag(icon, alt: alt_text, class: 'icon', skip_pipeline: true), path
+      link_to image_tag(icon, alt: alt_text, skip_pipeline: true), path
     else
-      image_tag(icon, class: 'icon', skip_pipeline: true)
+      image_tag(icon, skip_pipeline: true)
     end
   end
 

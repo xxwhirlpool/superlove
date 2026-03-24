@@ -1,6 +1,7 @@
 class CollectionsController < ApplicationController
   before_action :users_only, only: [:new, :edit, :create, :update]
   before_action :load_collection_from_id, only: [:show, :edit, :update, :destroy, :confirm_delete]
+  before_action :load_collection, only: [:profile]
   before_action :collection_owners_only, only: [:edit, :update, :destroy, :confirm_delete]
   before_action :check_user_status, only: [:new, :create, :edit, :update, :destroy]
   before_action :validate_challenge_type
@@ -189,6 +190,14 @@ class CollectionsController < ApplicationController
       flash[:error] = ts("We couldn't delete that right now, sorry! Please try again later.")
     end
     redirect_to(collections_path)
+  end
+  
+  def profile
+    unless @collection
+      flash[:error] = "What collection did you want to look at?"
+      redirect_to collections_path and return
+    end
+    @page_subtitle = t(".page_title", collection_title: @collection.title)
   end
 
   private

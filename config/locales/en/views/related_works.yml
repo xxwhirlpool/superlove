@@ -2,6 +2,15 @@ en:
   related_works:
     index:
       page_heading: "%{login}'s Related Works"
+      translations:
+        heading: "Translations of %{login}'s works"
+        summary: "Translations of %{login}'s works, including links to the translation and the original. The languages of both works are listed."
+        usermsg: Also includes management options.
+        columns:
+          translation: Translation
+          original: Original
+          language: Language
+          modify_link: Modify Link
   approval:
     page_heading_approve: Approve Link
     page_heading_remove: Remove Link

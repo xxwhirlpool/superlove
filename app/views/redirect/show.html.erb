@@ -5,15 +5,14 @@
 </p>
 
 <%= form_tag redirect_path, method: :get do %>
-<fieldset>
-	<legend><%= t('.form_legend') %></legend>
-  <div class="form-row">
-    <%= label_tag "original_url", t('.url_label') %>
-    <%= text_field_tag "original_url", "", :size => 70 %>
-  </div>
-  <div class="submit">
-    <%= submit_tag t('.submit_label') %>
-  </div>
-</fieldset>
-
+  <fieldset>
+  	<legend><%= t('.form_legend') %></legend>
+    <div class="form-row">
+      <%= label_tag "original_url", t('.url_label') %>
+      <%= text_field_tag "original_url", "", :size => 70 %>
+    </div>
+    <div class="submit">
+      <%= submit_tag t('.submit_label') %>
+    </div>
+  </fieldset>
 <% end %>

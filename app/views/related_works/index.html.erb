@@ -9,7 +9,7 @@
 
 <!--main content-->
 <% unless @translations_of_user.blank? %>
-  <h3><%= ts("Translations of %{user_login}'s works", :user_login => @user.login) %></h3>
+  <h3><%= t(".translations.heading", :login => @user.login) %></h3>
   <% # FRONT END!!!
     # This page is:
     # Foo's Related Works
@@ -19,15 +19,15 @@
     # works by others that inspired foo
     # this should be four listboxes
   %>
-  <table summary="<%= ts("Translations of %{user_login}'s works, including links to the translation and the original. The languages of both works are listed.", :user_login => @user.login) %><% if current_user == @user %><%= ' ' + ts("Also includes management options.") %><% end %>" id="translationsofme">
-    <caption><%= ts("Translations of %{user_login}'s Works", :user_login => @user.login) %></caption>
+  <table summary="<%= t(".translations.summary", :login => @user.login) %><% if current_user == @user %><%= ' ' + t(".translations.usermsg") %><% end %>" id="translationsofme">
+    <caption><%= t(".translations.heading", :login => @user.login) %></caption>
     <thead>
       <tr>
-        <th scope="col"><%= ts("Translation") %></th>
-        <th scope="col"><%= ts("Original") %></th>
-        <th scope="col"><%= ts("Language") %></th>
+        <th scope="col"><%= t(".translations.columns.translation") %></th>
+        <th scope="col"><%= t(".translations.columns.original") %></th>
+        <th scope="col"><%= t(".translations.columns.language") %></th>
         <% if current_user == @user %>
-          <th scope="col"><%= ts("Modify Link") %></th>
+          <th scope="col"><%= t(".translations.columns.modify_link") %></th>
         <% end %>
       </tr>
     </thead>
