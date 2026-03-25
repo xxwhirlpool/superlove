@@ -3,7 +3,7 @@
   <p class="required notice"><%= "* #{t('.required_information')}" %></p>
   <fieldset>
     <legend><%= t(".legend.content") %></legend>
-    <h3 class="landmark heading"><%= t(".landmark.content") %></h3>
+    <h3 class="landmark"><%= t(".landmark.content") %></h3>
     <dl>
       <dt class="required"><%= f.label :notice_content, "#{t('.text')}*" %></dt>
       <dd class="required">
@@ -34,7 +34,7 @@
 
   <fieldset>
     <legend><%= t(".legend.actions") %></legend>
-    <h3 class="landmark heading"><%= t(".landmark.actions") %></h3>
+    <h3 class="landmark"><%= t(".landmark.actions") %></h3>
     <p class="submit actions">
       <%= f.submit @support_notice.new_record? ? t(".actions.create") : t(".actions.update") %>
     </p>

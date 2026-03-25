@@ -9,7 +9,7 @@
   <!--/subnav-->
 
   <!--main content-->
-  <h3 class="landmark heading"><%= ts("Metadata") %></h3>
+  <h3 class="landmark"><%= ts("Metadata") %></h3>
   <div class="wrapper">
     <dl class="meta">
       <dt><%= ts("Created on: ") %></dt>
@@ -49,7 +49,7 @@
 
   <% if @tag_set.visible || @tag_set.user_is_moderator?(current_user) %>
 
-    <h3 class="landmark heading"><%= ts("Listing Tags") %></h3>
+    <h3 class="landmark"><%= ts("Listing Tags") %></h3>
 
     <% tagset_cache_key = @tag_type ? "tag_set_show_#{@tag_set.tag_set_id}_#{@tag_type}" : "tag_set_show_#{@tag_set.tag_set_id}" %>
     <%= cache(tagset_cache_key, skip_digest: true) do %>

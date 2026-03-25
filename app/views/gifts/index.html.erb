@@ -11,7 +11,7 @@
 
 <!--subnavigation, sorting and actions-->
 <% if @user && @user == current_user %>
-  <h3 class="landmark heading"><%= ts("Navigation") %></h3>
+  <h3 class="landmark"><%= ts("Navigation") %></h3>
   <ul class="navigation actions" role="navigation">
     <li>
       <%= span_if_current ts("Accepted Gifts"), user_gifts_path(@user), !(params[:refused]) %>

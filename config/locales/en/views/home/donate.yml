@@ -1,21 +1,11 @@
 en:
   home:
     donate:
-      general:
-        text: There are two main ways to support the AO3 - donating your time or money.
-        title: Donations
-      money:
-        details_html: The AO3 has ongoing running costs - electricity for the servers and bandwidth so you can reach them - and one-off costs such as buying new servers as the number of users and works increases. Any %{donation_link} is a big help. (Don't worry, we'll never connect your AO3 username and your financial information.)
-        donation: donation to the OTW
-        title: Donating Financially
-      page_title: Donate or Volunteer
-      time:
-        contribute_html: We also welcome community contributions to %{github_repository_link} for open tasks in our %{jira_project_link}. We also encourage you to browse through our %{volunteer_listings_link}, sign up to receive all our %{news_by_email_link} which includes our calls for volunteers, and apply for any volunteer roles that match your qualifications and interests.
-        github_repository: our GitHub repository
-        info_html: The %{otw_link} is the parent organization of the Archive of Our Own (AO3). We are often looking for volunteers to contribute to %{projects_link}. If you are interested in volunteering specifically to help the Archive of Our Own, the committees to look out for include Accessibility, Design, and Technology (AD&T); AO3 Documentation; Policy & Abuse; Support; Tag Wrangling; and Translation.
-        jira_project: Jira project
-        news_by_email: news by email
-        otw: Organization for Transformative Works
-        projects: our projects
-        title: Donating Your Time
-        volunteer_listings: volunteer position listings
+      page_title: Donations
+      financial_subtitle: Donating Financially
+      financial_content: >-
+        <p>superlove can be supported through the following options:</p>
+        <ul>
+          <li><a href="https://ko-fi.com/girlonthemoon">ko-fi</a> - best for tips or similar one-off payments</a></li>
+          <li><a href="https://www.patreon.com/c/girlonthemoon">patreon</a> - recurring membership that can support all of the admin's websites, as well as offer insight into deployments by directly asking the admin.</li>
+        </ul>

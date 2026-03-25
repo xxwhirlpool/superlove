@@ -49,6 +49,7 @@ class Indexer
   end
 
   def self.delete_index
+    puts $elasticsearch.indices.inspect
     if $elasticsearch.indices.exists(index: index_name)
       $elasticsearch.indices.delete(index: index_name)
     end

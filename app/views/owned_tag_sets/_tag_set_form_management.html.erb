@@ -26,7 +26,7 @@
 
 <fieldset>
   <legend><%= ts("Description") %></legend>
-  <h3 class="landmark heading"><%= ts("Description") %></h3>
+  <h3 class="landmark"><%= ts("Description") %></h3>
   <dl>
     <dt class="required"><%= form.label :title, ts("Title* (text only)") %></dt>
     <dd><%= form.text_field :title %></dd>
@@ -47,7 +47,7 @@
 
 <fieldset id="nomination_limits" class="<%= form.object.nominated ? '' : ' hideme' %>">
   <legend><%= ts("Nomination Limits") %></legend>
-  <h3 class="landmark heading"><%= ts("Nomination Limits") %></h3>
+  <h3 class="landmark"><%= ts("Nomination Limits") %></h3>
   <ul class="notes">
     <li><%= ts("If you allow <em>both</em> fandoms and characters/relationships in the same tag set,
   the number of characters/relationships is <strong>per fandom</strong>.").html_safe %></li>

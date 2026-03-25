@@ -3,7 +3,7 @@
     <p class="required notice"><%= ts("* Required information") %></p>
     <fieldset id="chapter-ordering">
       <legend><%= ts("Name, Order and Date") %></legend>
-      <h4 class="landmark heading"><%= ts("Name, Order and Date") %></h4>
+      <h4 class="landmark"><%= ts("Name, Order and Date") %></h4>
       <dl>
         <dt><%= f.label :title, ts("Chapter Title") %> <%= link_to_help "chapter-title" %></dt>
         <dd>
@@ -27,7 +27,7 @@
 
     <fieldset>
       <legend><%= ts("Chapter Preface") %></legend>
-      <h4 class="landmark heading"><%= ts("Chapter Preface") %></h4>
+      <h4 class="landmark"><%= ts("Chapter Preface") %></h4>
       <dl>
         <%= render "pseuds/byline", form: f, object: @chapter %>
 
@@ -45,7 +45,7 @@
 
 <fieldset class="text">
   <legend class="required"><%= ts("Chapter Text") + "*" %></legend>
-  <h4 class="landmark heading"><%= ts("Chapter Text") %></h4>
+  <h4 class="landmark"><%= ts("Chapter Text") %></h4>
   <ul class="hidden rtf-html-switch actions" role="menu">
     <li><a class="rtf-link" href="#"><%= ts("Rich Text") %></a></li>
     <li><a class="html-link" href="#"><%= ts("HTML") %></a></li>

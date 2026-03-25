@@ -2,7 +2,7 @@
   <%= render "pseud_module", pseud: pseud %>
 
   <% if current_user == pseud.user || policy(pseud).edit? %>
-    <h6 class="landmark heading"><%= t(".user_actions") %></h6>
+    <h6 class="landmark"><%= t(".user_actions") %></h6>
     <ul class="actions" role="navigation">
       <%# These links use landmarks so they are distinct for screen readers,
 # e.g., Edit Pseud1, Edit Pseud2. The landmark text " Pseud2" is inside the

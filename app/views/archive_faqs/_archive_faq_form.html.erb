@@ -3,7 +3,7 @@
     <%= form_tag({}, {:method => :get}) do %>
       <fieldset>
         <legend><%= ts("Add Questions") %></legend>
-        <h3 class="landmark heading"><%= ts("Add Questions") %></h3>
+        <h3 class="landmark"><%= ts("Add Questions") %></h3>
         <p class="notes">
           <%= ts("Since you don't have JavaScript turned on, please tell us how many questions you want this category to have. (This must be greater than the current number of questions, which is %{num}.) ", num: @archive_faq.questions.count) %>
         </p>
@@ -22,7 +22,7 @@
   <p class="required notice"><%= ts("* Required information") %></p>
   <fieldset>
     <legend><%= ts("Set Preferences") %></legend>
-    <h3 class="landmark heading"><%= ts("Set Preferences") %></h3>
+    <h3 class="landmark"><%= ts("Set Preferences") %></h3>
     <dl>
       <dt class="required">
         <%= form.label :title, ts("Category name") + "*" %>
@@ -37,7 +37,7 @@
   <% # TODO: If you have the form set up to create 3 questions and you only fill in 2, you get an error instead of the totally empty section being ignored. This is the same with requests/offers in challenge signups. %>
   <fieldset>
     <legend><%= ts("Questions") %></legend>
-    <h3 class="landmark heading"><%= ts("Questions") %></h3>
+    <h3 class="landmark"><%= ts("Questions") %></h3>
 
     <% form.object.questions.each_with_index do |question, index| %>
       <%= form.fields_for :questions, question do |question_form| %>
@@ -53,7 +53,7 @@
 
   <fieldset>
     <legend><%= ts("Submit") %></legend>
-    <h3 class="landmark heading"><%= ts("Submit") %></h3>
+    <h3 class="landmark"><%= ts("Submit") %></h3>
     <p class="submit actions">
       <%= submit_tag ts("Post"), name: "post_button" %>
     </p>

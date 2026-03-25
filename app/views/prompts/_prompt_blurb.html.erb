@@ -31,7 +31,7 @@
     <p class="datetime"><%= set_format_for_date(prompt.created_at) %></p>
   </div>
 
-  <h6 class="landmark heading"><%= ts("Tags") %></h6>
+  <h6 class="landmark"><%= ts("Tags") %></h6>
   <ul class="tags commas">
     <%= blurb_tag_block(prompt, tag_groups) %>
     <% any_types = TagSet::TAG_TYPES.select {|type| prompt.send("any_#{type}")} %>
@@ -47,7 +47,7 @@
   <% end %>
 
   <% unless prompt.description.blank? %>
-    <h6 class="landmark heading"><%= ts("Summary") %></h6>
+    <h6 class="landmark"><%= ts("Summary") %></h6>
     <blockquote class="userstuff summary">
       <%=raw sanitize_field(prompt, :description) %>
     </blockquote>

@@ -1,7 +1,7 @@
 # encoding: UTF-8
 # Almost entirely taken from http://thewebfellas.com/blog/2010/8/22/revisited-roll-your-own-pagination-links-with-will_paginate-and-rails-3
 #
-# <h4 class="landmark heading">Pages Navigation</h4>
+# <h4 class="landmark">Pages Navigation</h4>
 # <ol class="navigation pagination actions" title="pagination" role="navigation">
 # <li title="previous">&#8592;</li>
 # <li><a href="">1</a></li>
@@ -55,7 +55,7 @@ class PaginationListLinkRenderer < WillPaginate::ActionView::LinkRenderer
     end
 
     def html_container(html)
-      tag(:h4, "Pages Navigation", class: "landmark heading") +
+      tag(:h4, "Pages Navigation", class: "landmark") +
         tag(:ol, html, container_attributes.merge(class: "pagination actions", role: "navigation", title: "pagination"))
     end
 

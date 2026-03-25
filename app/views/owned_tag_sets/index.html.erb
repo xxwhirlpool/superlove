@@ -39,7 +39,7 @@
       <%= will_paginate @tag_sets %>
     <% end %>
 
-    <h3 class="landmark heading"><%= ts('Listing Tag Sets') %></h3>
+    <h3 class="landmark"><%= ts('Listing Tag Sets') %></h3>
 	  <ul class="index group">
       <% @tag_sets.each do |tag_set| %>
         <%= render 'tag_set_blurb', :tag_set => tag_set %>

@@ -29,7 +29,7 @@
   <% end %>
   <!--notes-->
   <% if bookmark.bookmarker_notes.present? %>
-    <h6 class="landmark heading"><%= ts("Bookmark Notes:") %></h6>
+    <h6 class="landmark"><%= ts("Bookmark Notes:") %></h6>
     <blockquote class="userstuff summary">
       <%= raw sanitize_field(bookmark, :bookmarker_notes, image_safety_mode: true) %>
     </blockquote>

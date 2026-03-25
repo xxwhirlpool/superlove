@@ -1,11 +1,13 @@
 en:
   menu:
-    menu_about:
-      about_us: About Us
+    menu_about: 
+      item_name: About Us
+      page_heading: About
       donate: Donate or Volunteer
       faq: FAQ
       news: News
       wrangling_guidelines: Wrangling Guidelines
+      site_status: Site Status
     menu_browse:
       bookmarks: Bookmarks
       collections: Collections

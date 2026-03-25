@@ -1,4 +1,4 @@
-<!--REVIEW: trying out articles on these fieldsets to see if that's a better chunker, but may revert after testing. Have also tossed in landmark headings on top level groups-->
+<!--REVIEW: trying out articles on these fieldsets to see if that's a better chunker, but may revert after testing. Have also tossed in landmarks on top level groups-->
 <%= form_for(@work, html: { id: "work-form", class: "verbose post work" }) do |f| %>
   <div class="required notice">* <%= ts("Required information") %></div>
 
@@ -43,7 +43,7 @@
 
   <fieldset id="associations">
     <legend><%= t("works.associations.title") %></legend>
-    <h3 class="landmark heading"><%= t("works.associations.title") %></h3>
+    <h3 class="landmark"><%= t("works.associations.title") %></h3>
     <dl>
       <% @assignments = get_open_assignments(current_user) %>
       <% if @assignments.any? || @work.challenge_assignments.any? %>
@@ -259,7 +259,7 @@
   <!-- privacy settings -->
   <fieldset class="privacy">
     <legend><%= t("works.permissions.privacy") %></legend>
-    <h3 class="landmark heading"><%= t("works.permissions.privacy") %></h3>
+    <h3 class="landmark"><%= t("works.permissions.privacy") %></h3>
     <dl>
       <!-- Privacy dropdown (storyprivacy) -->
       <dt class="restrict">

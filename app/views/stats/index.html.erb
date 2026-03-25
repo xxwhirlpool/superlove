@@ -3,7 +3,7 @@
 <!--/descriptions-->
 
 <!--subnav-->
-<h3 class="landmark heading"><%= ts('Navigation and Sorting') %></h3>
+<h3 class="landmark"><%= ts('Navigation and Sorting') %></h3>
 <%= render "stats/navigation" %>
 <!--subnav-->
 
@@ -44,7 +44,7 @@
 <%= render_chart(@chart, 'stat_chart') %>
 
 <div class="actions module">
-  <h3 class="landmark heading"><%= ts('View Sorting and Actions') %></h3>
+  <h3 class="landmark"><%= ts('View Sorting and Actions') %></h3>
   <ul class="sorting actions" role="menu">
     <li><h4><%= ts('Sort By') %></h4></li>
     <li><%= sort_link ts("Date"), "date" %></li>
@@ -62,7 +62,7 @@
   </ul>
 </div>
 
-<h3 class="landmark heading"><%= ts('Listing Statistics') %></h3>
+<h3 class="landmark"><%= ts('Listing Statistics') %></h3>
 <ul class="statistics index group">
   <% @works.keys.sort.each do |fandom| %>
     <li class="fandom listbox group">

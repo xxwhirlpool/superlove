@@ -18,7 +18,7 @@
 </div>
 
 <!--summary/descriptions-->
-<h6 class="landmark heading"><%= ts('Description') %></h6>
+<h6 class="landmark"><%= ts('Description') %></h6>
 <blockquote class="userstuff summary">
   <%=raw skin.description.blank? ? ts('(No Description Provided)') : strip_images(sanitize_field(skin, :description)) %>
 </blockquote>

@@ -26,11 +26,11 @@ module ApplicationHelper
 
     case controller.controller_name
     when "abuse_reports", "feedbacks", "known_issues"
-      class_names = "docs #{controller.controller_name} #{controller.action_name}"
+      class_names = "docs #{controller.controller_name}-#{controller.action_name}"
     when "archive_faqs"
-      class_names = "docs faq #{controller.action_name}"
+      class_names = "docs #{controller.controller_name}-#{controller.action_name}"
     when "wrangling_guidelines"
-      class_names = "docs #{controller.action_name}"
+      class_names = "docs #{controller.controller_name}-#{controller.action_name}"
     when "home"
       class_names = if %w(content privacy about).include?(controller.action_name)
                       "docs"

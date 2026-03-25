@@ -16,7 +16,7 @@
 <% else %>
   <%= will_paginate @external_authors %>
 
-  <h3 class="landmark heading"><%= ts("Listing External Authors") %></h3>
+  <h3 class="landmark"><%= ts("Listing External Authors") %></h3>
   <% if params[:query] %><h3><%= ts("Matching: %{query}", :query => params[:query]) %></h3><% end %>
 	<dl class="index group">
     <% @external_authors.each do |external_author| %>

@@ -7,7 +7,7 @@
 
   <fieldset>
     <legend><%= ts("API Token") %></legend>
-    <h3 class="landmark heading"><%= ts("API Token") %></h3>
+    <h3 class="landmark"><%= ts("API Token") %></h3>
     <dl>
       <dt class="required"><%= f.label :name, ts("Name") + "*" %></dt>
       <dd class="required">
@@ -30,7 +30,7 @@
   </fieldset>
   <fieldset>
     <legend><%= ts("Actions") %></legend>
-    <h3 class="landmark heading"><%= ts("Actions") %></h3>
+    <h3 class="landmark"><%= ts("Actions") %></h3>
 
     <p class="actions">
       <%= f.submit @api_key.new_record? ? ts("Create API Token") : ts("Update API Token") %>

@@ -1,13 +1,3 @@
-<!--Descriptive page name, messages and instructions-->
-<h2><%= ts("superlove FAQ") %></h2>
-<!--/descriptions-->
-
-<!--subnav-->
-<div class="actions">
-  <%= render 'filters' %>
-</div>
-<!--/subnav-->
-
 <!--main content-->
 <div class="notes">
   <%= ts("Some commonly asked questions about superlove are answered here.") %>
@@ -17,11 +7,7 @@
 <% if @archive_faqs.blank? %>
   <div class="notice"><%= ts("We're sorry, there are currently no entries in the FAQ System.") %></div>
 <% else %>
-  <% if rtl? %>
-    <div dir="rtl" class="categories">
-  <% else %>
-    <div class="categories">
-  <% end %>
+  <div #{rtl? ? 'dir="rtl"' : ''} class="categories">
     <h3>
       <%= ts("Available Categories") %>
       <ul class="actions">
@@ -29,54 +15,45 @@
         <li id="collapse-categories"><%= link_to ts("Collapse Categories"), "#" %></li>
       </ul>
     </h3>
-
-    <div id="content">
-      <div class="faqs" role="navigation">
-        <% for faq in @archive_faqs %>
-          <details>
-            <summary><%= faq.title %></summary>
-            <ul class="questions">
-              <% english? ? questions = faq.questions : questions = translated_questions(faq.questions) %>
-              <% if questions.blank? %>
-                <li><%= ts("There are no questions in this category yet.") %></li>
-              <% else %>
-                <% for q in questions %>
-                  <li>
-                    <%= link_to q.question, archive_faq_path(faq, :anchor => q.anchor) %>
-                    <% unless q.screencast.to_s.empty? %>
-                      <span class="screencast">
-                        <%= ts("(Screencast available)") %>
-                      </span>
-                    <% end %>
-                  </li>
+    <% for faq in @archive_faqs %>
+      <details>
+        <summary><%= faq.title %></summary>
+        <ul class="questions">
+          <% english? ? questions = faq.questions : questions = translated_questions(faq.questions) %>
+          <% if questions.blank? %>
+            <li><%= ts("There are no questions in this category yet.") %></li>
+          <% else %>
+            <% for q in questions %>
+              <li>
+                <%= link_to q.question, archive_faq_path(faq, :anchor => q.anchor) %>
+                <% unless q.screencast.to_s.empty? %>
+                  <span class="screencast">
+                    <%= ts("(Screencast available)") %>
+                  </span>
                 <% end %>
-              <% end %>
-            </ul>
-          </details>
-        <% end %>
-      </div>
-    </div>
-    
-  </div>
-  
-  <%= content_for :footer_js do %>
-    <%= javascript_tag do %>
-      $j(document).ready(function() {
-        $j(".category").children("a").click(function(e) {
-          $j(this).next().toggle();
-          e.preventDefault();
-        }).next().hide();
- 
-        $j("#expand-categories").find("a").click(function(e) {
-          $j(".category").children("ul").show();
-          e.preventDefault();
-        });
-
-        $j("#collapse-categories").find("a").click(function(e) {
-          $j(".category").children("ul").hide();
-          e.preventDefault();
-        });
-      });
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+      </details>
     <% end %>
-  <% end %>
+  </div>
+  <script type="text/javascript">
+    const expand = document.getElementById('expand-categories');
+    const collapse = document.getElementById('collapse-categories');
+  
+    expand.addEventListener('click', (e) => {
+      e.preventDefault();
+      document.querySelectorAll('#content details').forEach((elt) => {
+        elt.setAttribute('open', '');
+      });
+    });
+  
+    collapse.addEventListener('click', (e) => {
+      e.preventDefault();
+      document.querySelectorAll('#content details').forEach((elt) => {
+        elt.removeAttribute('open');
+      });
+    });
+  </script>
 <% end %>

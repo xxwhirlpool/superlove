@@ -24,7 +24,7 @@
   </fieldset>
   <fieldset>
     <legend><%= ts("Tag Info") %></legend>
-    <h3 class="landmark heading"><%= ts("Tag Info") %></h3>
+    <h3 class="landmark"><%= ts("Tag Info") %></h3>
 
     <dl>
       <dt><%= f.label :name, ts("Name") %></dt>
@@ -125,7 +125,7 @@
   <% if (Tag::USER_DEFINED + ["Media"]).include?(@tag[:type]) %>
     <fieldset>
       <legend><%= ts("Parent Tags") %></legend>
-      <h3 class="landmark heading"><%= ts("Parent Tags") %></h3>
+      <h3 class="landmark"><%= ts("Parent Tags") %></h3>
       <dl>
         <% @tag.parent_types.each do |tag_type| %>
           <% if tag_type == "Fandom" && !@suggested_fandoms.blank? %>
@@ -170,7 +170,7 @@
     <% if @tag.canonical? %>
       <fieldset>
         <legend><%= ts("Child Tags") %></legend>
-        <h3 class="landmark heading"><%= ts("Child Tags") %></h3>
+        <h3 class="landmark"><%= ts("Child Tags") %></h3>
         <p class="actions" role="navigation">
           <%= link_to ts("wrangle all child tags"),
                 { controller: :tags, action: :wrangle, id: @tag } %>

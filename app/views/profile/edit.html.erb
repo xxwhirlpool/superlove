@@ -13,7 +13,7 @@
   <%= t(".public_information_notice_html", privacy_policy_link: link_to(t(".privacy_policy"), privacy_path)) %>
 </p>
 
-<h3 class="landmark heading"><%= t(".change_profile_landmark") %></h3>
+<h3 class="landmark"><%= t(".change_profile_landmark") %></h3>
 <%= form_with(model: @user.profile, url: user_profile_path(@user)) do |f| %>
   <dl>
       <dt><%= f.label :title, t(".title") %></dt>

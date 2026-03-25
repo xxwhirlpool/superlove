@@ -16,7 +16,7 @@
 <%= will_paginate(@fandoms) %>
 
 <!--main content-->
-<h3 class="landmark heading"><%= ts("Listing Fandoms") %></h3>
+<h3 class="landmark"><%= ts("Listing Fandoms") %></h3>
 
 <% unless @fandoms.blank? %>
   <ul class="fandoms index group">
@@ -34,7 +34,7 @@
     class: 'narrow-hidden filters',
     id: 'fandom-filters' do %>
   <%= field_set_tag ts('Filter results:') do %>
-    <h3 class="landmark heading"><%= ts('Filters') %></h3>
+    <h3 class="landmark"><%= ts('Filters') %></h3>
     <dl class="filters">
       <dt class="landmark"><%= ts("Submit") %></dt>
       <dd class="submit actions"><%= submit_tag ts('Sort and Filter') %></dd>

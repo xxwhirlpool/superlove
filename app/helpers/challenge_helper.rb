@@ -1,6 +1,6 @@
 module ChallengeHelper
   def prompt_tags(prompt)
-    details = content_tag(:h6, ts("Tags"), class: "landmark heading")
+    details = content_tag(:h6, ts("Tags"), class: "landmark")
     TagSet::TAG_TYPES.each do |type|
       if prompt && prompt.tag_set && !prompt.tag_set.with_type(type).empty?
         details += content_tag(:ul, tag_link_list(prompt.tag_set.with_type(type), link_to_works=true), class: "#{type} type tags commas")

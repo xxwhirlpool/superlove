@@ -100,7 +100,7 @@
 
 <!--subnav-->
 <%= form_tag(user_inbox_path(@user), method: :get, class: "narrow-hidden filters", id: "inbox-filters") do %>
-  <h3 class="landmark heading"><%= ts("Filter") %></h3>
+  <h3 class="landmark"><%= ts("Filter") %></h3>
   <%= field_set_tag do %>
     <dl>
       <dt><%= ts("Filter by read") %></dt>

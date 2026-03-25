@@ -14,7 +14,7 @@
   <%= link_to_help_modal(help_skins_basics_path, t(".skins_basics_help_title")) %>
 </p>
 
-<h3 class="landmark heading"><%= ts('Site Skin Wizard') %></h3>
+<h3 class="landmark"><%= ts('Site Skin Wizard') %></h3>
 
 <%= form_for @skin, html: { class: "wizard skin verbose post" } do |f| %>
   <%= render 'wizard_form', f: f %>

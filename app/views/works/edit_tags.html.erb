@@ -19,7 +19,7 @@
   <% if logged_in_as_admin? %>
     <fieldset role="article">
       <legend><%= t("works.associations.title") %></legend>
-      <h3 class="landmark heading"><%= t("works.associations.title") %></h3>
+      <h3 class="landmark"><%= t("works.associations.title") %></h3>
       <dl>
         <%= render 'work_form_associations_language', f: f %>
       </dl>

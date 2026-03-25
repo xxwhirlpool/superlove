@@ -10,7 +10,7 @@
     
 <% if @challenge.signup_instructions_general.present? %>
   <fieldset>
-    <h3 class="landmark heading"><%= ts("General Sign Up Instructions") %></h3>
+    <h3 class="landmark"><%= ts("General Sign Up Instructions") %></h3>
     <% if @challenge.signup_instructions_general %>
       <blockquote class="userstuff">
         <%=raw sanitize_field(@challenge, :signup_instructions_general) %>

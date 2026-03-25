@@ -1,5 +1,5 @@
 <%= form_for @search, as: :collection_search, url: collections_path, html: { method: :get, class: "narrow-hidden filters", id: "collection-filters" } do |f| %>
-  <h3 class="landmark heading"><%= t(".landmark") %></h3>
+  <h3 class="landmark"><%= t(".landmark") %></h3>
   <%= field_set_tag t(".legend") do %>
     <dl>
       <dt class="landmark"><%= t(".submit.landmark") %></dt>

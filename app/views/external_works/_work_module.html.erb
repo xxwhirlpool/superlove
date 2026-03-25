@@ -25,14 +25,14 @@
 <p class="notice"><%= t("external_works.notice") %></p>
 
 <!--warnings again, cast, freeform tags-->
-<h6 class="landmark heading"><%= ts("Tags") %></h6>
+<h6 class="landmark"><%= ts("Tags") %></h6>
 <ul class="tags commas">
   <%= blurb_tag_block(external_work) %>
 </ul>
 
 <!--summary-->
 <% unless external_work.summary.blank? %>
-  <h6 class="landmark heading"><%= ts("Summary") %></h6>
+  <h6 class="landmark"><%= ts("Summary") %></h6>
   <blockquote class="userstuff summary">
     <%=raw strip_images(sanitize_field(external_work, :summary)) %>
   </blockquote>

@@ -1,7 +1,7 @@
 <%= form_for @search, as: :work_search, url: search_works_path, html: { method: :get, class: "verbose search" } do |f| %>
   <fieldset>
     <legend><%= ts("Work Info") %></legend>
-    <h3 class="landmark heading"><%= ts("Work Info") %></h3>
+    <h3 class="landmark"><%= ts("Work Info") %></h3>
     <div class="submit"><%= f.submit ts("Search") %></div>
     <div class="form-row side-label">
       <%= f.label :query, ts("Any Field") do |l| %>
@@ -166,7 +166,7 @@
 
   <fieldset>
     <legend><%= ts("Work Stats") %> <%= link_to_help "work-search-numerical-help" %></legend>
-    <h3 class="landmark heading"><%= ts("Work Stats") %></h3>
+    <h3 class="landmark"><%= ts("Work Stats") %></h3>
     <dl>
       <dt>
         <%= f.label :hits, ts("Hits") %>
@@ -197,7 +197,7 @@
 
   <fieldset>
     <legend><%= ts("Search") %></legend>
-    <h3 class="landmark heading"><%= ts("Search") %></h3>
+    <h3 class="landmark"><%= ts("Search") %></h3>
     <dl>
       <dt>
         <%= f.label :sort_column, ts("Sort by") %>

@@ -6,7 +6,7 @@
 <%= render 'skin_navigation' %>
 <!--/subnav-->
 
-<h3 class="landmark heading"><%= ts('Edit Skin Form') %></h3>
+<h3 class="landmark"><%= ts('Edit Skin Form') %></h3>
 <%= form_for(@skin, html: { multipart: true, class: "skin verbose post" }) do |f| %>
 
   <% if params[:wizard] %>

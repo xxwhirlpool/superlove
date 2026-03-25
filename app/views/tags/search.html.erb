@@ -6,7 +6,7 @@
 
 <% if @tags %>
   <h3><%= search_results_found(@tags) %> <%= link_to_help "tag-search-results-help" %></h3>
-  <h4 class="landmark heading">Listing Tags</h4>
+  <h4 class="landmark">Listing Tags</h4>
   <ol class="tag index group">
     <% for tag in @tags %>
       <% unless tag.nil? %>

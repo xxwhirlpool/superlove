@@ -1,7 +1,7 @@
 <h2><%= t(".title") %></h2>
 
 <!--subnav-->
-<h3 class="landmark heading"><%= t("a11y.navigation") %></h3>
+<h3 class="landmark"><%= t("a11y.navigation") %></h3>
 <ul class="navigation actions">
   <li><%= span_if_current t(".blocked_users"), user_blocked_users_path %></li>
   <li><%= span_if_current t("muted.users.index.muted_users"), user_muted_users_path %></li>
@@ -40,7 +40,7 @@
   </fieldset>
 <% end %>
 
-<h3 class="landmark heading"><%= t(".heading.landmark.blocked_users") %></h3>
+<h3 class="landmark"><%= t(".heading.landmark.blocked_users") %></h3>
 <% if @blocks.present? %>
   <ul class="pseud index group">
     <%= render partial: "blocked_user_blurb", collection: @blocks, as: :block %>

@@ -30,7 +30,7 @@
 
 <!--summary-->
 <% unless series.summary.blank? %>
-  <h6 class="landmark heading"><%= t(".landmark.summary") %></h6>
+  <h6 class="landmark"><%= t(".landmark.summary") %></h6>
   <blockquote class="userstuff summary">
     <%= raw strip_images(sanitize_field(series, :summary)) %>
   </blockquote>

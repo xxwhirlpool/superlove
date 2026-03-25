@@ -21,7 +21,7 @@
 <% else %>
   <h3><%= search_results_found(@bookmarks) %> <%= link_to_help "bookmark-search-results-help" %></h3>
 
-  <h3 class="landmark heading">Bookmarks List</h3>
+  <h3 class="landmark">Bookmarks List</h3>
   <ol class="bookmark index group">
     <% @bookmarks.each do |bookmark| %>
       <% unless bookmark.nil? %>
