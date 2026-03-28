@@ -33,4 +33,26 @@ en:
         works: Works
       recent_bookmarks_html: These are some of the latest bookmarks created on the Archive. To find more bookmarks, %{choose_fandom_link} or %{advanced_search_link}.
     search_form:
+      bookmarked_item: Bookmarked Item
+      any_field_work: Any field on work
+      work_tags: Work tags
+      type: Type
+      bookmarkable_types:
+        work: Work
+        series: Series
+        external_work: External Work
       word_count: Word count
+      work_language: Work language
+      date_updated: Date updated
+      bookmark: Bookmark
+      any_field_bookmark: Any field on bookmark
+      bookmarkers_tags: Bookmarker's tags
+      bookmarker: Bookmarker
+      notes: Notes
+      bookmark_type: Bookmark type
+      bookmark_types:
+        rec: Rec
+        with_notes: With notes
+      date_bookmarked: Date bookmarked
+      best_match: Best Match
+      submit_label: Search Bookmarks

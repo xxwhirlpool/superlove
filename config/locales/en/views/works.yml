@@ -77,7 +77,43 @@ en:
       submit: Search
       tooltip_label: 'tip:'
     search_form:
+      work_info: Work Info
+      any_field: Any Field
+      title: Title
       creator: Creator
+      date: Date
+      submit_label: Search
+      completion_status:
+        label: Completion Status
+        all_works: All works
+        complete_only: Complete works only
+        wips_only: Works in progress only
+      crossovers:
+        label: Crossovers
+        include: Include Crossovers
+        exclude: Exclude Crossovers
+        only: Only Crossovers
+      single_chapter: Single Chapter
+      word_count: Word Count
+      language: Language
+      work_tags: Work Tags
+      fandoms: Fandoms
+      rating: Rating
+      warnings: Warnings
+      categories: Categories
+      mediums: Mediums
+      characters: Characters
+      relationships: Relationships
+      additional_tags: Additional Tags
+      work_stats: Work Stats
+      hits: Hits
+      kudos: Kudos
+      comments: Comments
+      bookmarks: Bookmarks
+      sort_by: Sort by
+      sort_direction: Sort direction
+      ascending: Ascending
+      descending: Descending
     show:
       unposted_deletion_notice_html: This work is a draft and has not been posted.
     show_multiple:

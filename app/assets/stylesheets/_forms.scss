@@ -100,16 +100,16 @@ label {
 
 .radio-group {
   list-style: none;
-  margin: .65rem 0;
+  margin: 0;
   padding: .65rem;
   background-color: var(--background);
   border: 2px solid #f3efec;
   box-shadow: inset 1px 0 5px var(--neutral700);
-}
-
-.radio-group li {
-  display: flex;
-  gap: 10px;
+  
+  li {
+    display: flex;
+    gap: 10px;
+  }
 }
 
 .form-row:last-child {

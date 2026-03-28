@@ -20,10 +20,6 @@
   <% else %>
     <div <% if rtl? %> dir="rtl"<% end %> class="userstuff">
       <nav id="toc" aria-labelledby="toc-nav-heading" class="toc">
-        <h3 id="toc-nav-heading">
-          <%# TODO: The heading should be "Questions in the NAME Category" once interface translation is in place. If we do it now, everything except NAME will be in English/the interface default. %>
-          <%= @archive_faq.title %>
-        </h3>
         <ul class="toc">
           <% for q in @archive_faq.questions %>
             <li><%= link_to q.question, archive_faq_path(@archive_faq, anchor: q.anchor) %></li>
