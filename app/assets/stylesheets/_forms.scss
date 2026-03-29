@@ -76,6 +76,10 @@ label {
       font-size: .6rem;
       margin: .65rem 0;
     }
+    
+    &.checkbox {
+      grid-template-columns: 25% auto 1fr;
+    }
   }
   
   .hint {

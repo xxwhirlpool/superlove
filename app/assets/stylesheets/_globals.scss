@@ -309,16 +309,6 @@ details {
   gap: 10px;
 }
 
-:has(> .dropdown) {
-  position: relative;
-}
-
-.dropdown {
-  position: absolute;
-  top: 2rem;
-  right: 0;
-}
-
 .actions {
   list-style: none;
   margin: 1rem 0;

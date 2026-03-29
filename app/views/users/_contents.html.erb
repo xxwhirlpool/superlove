@@ -109,7 +109,7 @@
 <h3 class="landmark">Navigation</h3>
 <ul class="actions right">
   <% if @user == current_user %>
-    <li><%= link_to t('.edit_link', :default => 'Edit Pseud'), [:edit, @user, @pseud] %></li>
+    <li><%= link_to t('.edit_link', :default => 'Edit Pseud'), edit_user_profile_path(@user) %></li>
   <% end %>
   <li><%= link_to t('.index_link', :default => 'Back To Pseuds'), user_pseuds_path(@user) %></li>
 </ul>

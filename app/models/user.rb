@@ -15,7 +15,7 @@ class User < ApplicationRecord
          :lockable,
          :recoverable,
          reset_password_keys: [:email]
-  devise :pwned_password unless Rails.env.test?
+  devise :pwned_password if Rails.env.production?
 
   # Must come after Devise modules in order to alias devise_valid_password?
   # properly
@@ -306,9 +306,11 @@ class User < ApplicationRecord
   end
   
   def does_skin_override?
-    @skin = Skin.find(self.preference[:skin_id])
-    return true if @skin.role == 'override'
-    return false
+    unless self.preference[:skin_id] == 1
+      @skin = Skin.find(self.preference[:skin_id])
+      return true if @skin.role == 'override'
+    end
+    false
   end
 
   def prevent_password_resets?

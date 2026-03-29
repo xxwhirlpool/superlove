@@ -186,7 +186,7 @@ module ApplicationHelper
     options[:title] ||= options[:id]
 
     html_options = { class: "modal", title: options[:title], popovertarget: options[:id], type: 'button' }
-    button_tag(content, html_options) + "<div popover id='#{options[:id]}'><div class='popover-inner'>#{File.read(options[:path])}</div><div class='footer-bar'><span class='title'>#{options[:title]}</span><button class='button' type='button' popovertarget='#{options[:id]}' popovertargetaction='hide'>Close</button></div></div>".html_safe
+    button_tag(content, html_options) + "<div popover id='#{options[:id]}'><div class='popover-inner'>#{content ? content : File.read(options[:path])}</div><div class='footer-bar'><span class='title'>#{options[:title]}</span><button class='button' type='button' popovertarget='#{options[:id]}' popovertargetaction='hide'>Close</button></div></div>".html_safe
   end
 
   # TODO: AO3-7208 Make help modals dynamic and translatable and use link_to_help_modal instead of this method

@@ -14,20 +14,21 @@ def multi_gets(all_text = +"")
   end
   all_text.chomp
 end
-
+puts "======== This is the #{Rails.env} environment. ========"
 puts <<~PROMPT
   Paste or enter admins, one per line, in the format
 
-    USERNAME, EMAIL, ROLE
+    USERNAME, EMAIL, PASSWORD, ROLE
 
   or
 
-    USERNAME, EMAIL, ROLE, ROLE, ROLE
+    USERNAME, EMAIL, PASSWORD, ROLE, ROLE, ROLE
 
   where
 
   - USERNAME is their OTW name without the admin- prefix (spaces will be removed)
   - EMAIL is the trusted address provided by VolCom
+  - PASSWORD is a password of at least ten characters
   - EMAIL/ROLE can be left blank to skip updating email/roles of existing admins
   - ROLE is one of:
 
@@ -43,7 +44,8 @@ admins = []
 list.each do |user|
   login = user[0].gsub(/\s+/, "")
   email = user[1]&.strip
-  roles = user.drop(2).compact.map(&:strip).map(&:downcase)
+  password = user[2]&.strip
+  roles = user.drop(3).compact.map(&:strip).map(&:downcase)
 
   a = Admin.find_or_initialize_by(login: "admin-#{login}")
   success_message = a.new_record? ? "Created and notified" : "Updated"
@@ -52,7 +54,6 @@ list.each do |user|
 
   # If this is a new admin, we need to set a temporary password.
   if a.new_record?
-    password = SecureRandom.alphanumeric(10)
     a.password = password
     a.password_confirmation = password
   end

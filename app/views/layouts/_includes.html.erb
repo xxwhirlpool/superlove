@@ -1,10 +1,8 @@
 <% # load and cache site skin %>
-<% if current_user.nil? || !current_user.nil? && current_user.does_skin_override? %>
+<% if current_user.nil? || !current_user.nil? && !current_user.does_skin_override? %>
   <%= stylesheet_link_tag :application, "data-turbo-track": "reload" %>
 <% end %>
 
 <%= mute_css %>
-
-<%= javascript_include_tag 'livevalidation_standalone', skip_pipeline: true %>
 
 <%= csrf_meta_tag %>

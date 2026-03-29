@@ -1,7 +1,7 @@
 <div id="greeting">
   <% if logged_in? %>
     <h3 class="landmark"><%= ts('User Navigation', key: 'header') %></h3>
-    <ul>
+    <ul id="user-menu" class="dropdown right">
       <li>
         <%= link_to ts("Hi, %{current_user}!", :current_user => current_user.login, key: 'header'), user_path(current_user) %>
         <ul class="menu" role="menu">
@@ -48,12 +48,11 @@
       </li>
       <li><%= link_to ts('Log Out', key: 'header'), destroy_user_session_path, method: :delete %></li>
     </ul>
-  <div class="icon"><%= icon_display(current_user) %></div>
-
-    <% elsif logged_in_as_admin? %>
-      <ul id="admin-actions" role="navigation">
-        <li><%= link_to ts("Hi, %{name}!", name: current_admin.login, key: 'header'), admins_path %></li>
-        <li><%= link_to ts('Log Out', key: 'header'), destroy_admin_session_path, method: :delete %></li>
-      </ul>
-    <% end %>
+    <div class="avatar"><%= icon_display(current_user) %></div>
+  <% elsif logged_in_as_admin? %>
+    <ul id="admin-actions" class="dropdown right">
+      <li><%= link_to ts("Hi, %{name}!", name: current_admin.login, key: 'header'), admins_path %></li>
+      <li><%= link_to ts('Log Out', key: 'header'), destroy_admin_session_path, method: :delete %></li>
+    </ul>
+  <% end %>
 </div>

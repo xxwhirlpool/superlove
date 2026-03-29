@@ -251,6 +251,10 @@ en:
           unwanted_email:
             html: If you've received this message in error, please %{support_link}.
             text: If you've received this message in error, please contact Support at %{support_url}.
+        about:
+          your_donations: your donations
+          html: superlove is an independently run website, supported by the admin out of pocket in addition to your donations %{donate_link}.
+          text: 'superlove is an independently run website, supported by the admin out of pocket in addition to your donations: %{donate_url}.'
         sent_at: Sent at %{sent_at}.
         why_policy_abuse:
           contact_policy_abuse: contact Policy & Abuse
