@@ -90,11 +90,17 @@ nav#primary {
   > ul {
     display: grid;
     grid-template-columns: repeat(6, auto) 1fr;
+    
+    > li {
+      > a {
+        color: var(--accent-text);
+      }
+    }
   }
   
-  li {
+  li:hover {
     a {
-      color: var(--accent-text);
+      color: var(--text);
     }
   }
   
