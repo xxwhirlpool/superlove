@@ -92,3 +92,4 @@ config/environments/production.rb
 config/storage.yml
 config/docker/database.yml
 /config/docker/database.yml
+public/assets/*
