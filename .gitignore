@@ -17,6 +17,8 @@ REVISION
 
 nohup.out
 
+app/builds
+
 # /config/
 /config/brakeman.ignore
 /config/database.yml
