@@ -17,6 +17,14 @@
   overflow: hidden;
 }
 
+#toggle-neko:hover {
+  transform: scale(1.1);
+}
+
+#toggle-neko.off {
+  opacity: .75;
+}
+
 #toggle-neko span {
   display: inline-block;
   text-indent: -200px;
