@@ -13,3 +13,4 @@ Rails.application.config.assets.precompile += %w( highlightjs/atelier-cave-light
 Rails.application.config.assets.precompile += %w( highlightjs/highlight.min.js )
 Rails.application.config.assets.precompile += %w( highlightjs/css.min.js )
 Rails.application.config.assets.precompile += %w( oneko.js )
+Rails.application.config.assets.precompile += %w( nekobutton.css )
