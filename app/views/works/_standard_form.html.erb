@@ -1,5 +1,5 @@
 <!--REVIEW: trying out articles on these fieldsets to see if that's a better chunker, but may revert after testing. Have also tossed in landmarks on top level groups-->
-<%= form_for(@work, html: { id: "work-form", class: "verbose post work" }) do |f| %>
+<%= form_for(@work, html: { id: "work-form" }) do |f| %>
   <div class="required notice">* <%= ts("Required information") %></div>
 
   <%= render "work_form_tags", include_blank: false %>
@@ -7,11 +7,9 @@
   <fieldset class="preface">
     <legend><%= t("works.preface.title") %></legend>
     <h3 class="landmark"><%= t("works.preface.title") %></h3>
-    <dl>
-      <dt class="title required">
-        <%= f.label :title, ts("Work Title") + "*" %>
-      </dt>
-      <dd class="title required">
+    <div class="form-row side-label required">
+      <%= f.label :title, ts("Work Title") + "*" %>
+      <div class="field-wrapper">
         <%= f.text_field :title, class: "observe_textlength text" %>
         <%= live_validation_for_field("work_title",
               maximum_length: ArchiveConfig.TITLE_MAX,
@@ -20,25 +18,23 @@
                 min_length: ArchiveConfig.TITLE_MIN.to_s))
         %>
         <%= generate_countdown_html("work_title", ArchiveConfig.TITLE_MAX) %>
-      </dd>
+      </div>
+    </div>
 
-      <!-- Add coauthors-->
-      <%= render "pseuds/byline", form: f, object: @work %>
+    <!-- Add coauthors-->
+    <%= render "pseuds/byline", form: f, object: @work %>
 
-      <dt class="summary">
-        <%= f.label :summary, ts("Summary", max: ArchiveConfig.SUMMARY_MAX.to_s) %>
-      </dt>
-      <dd class="summary">
+    <div class="form-row side-label">
+      <%= f.label :summary, ts("Summary", max: ArchiveConfig.SUMMARY_MAX.to_s) %>
+      <div class="field-wrapper">
         <%= f.text_area :summary, class: "observe_textlength" %>
         <%= live_validation_for_field("work_summary", presence: false,
               maximum_length: ArchiveConfig.SUMMARY_MAX) %>
         <%= generate_countdown_html("work_summary", ArchiveConfig.SUMMARY_MAX) %>
-      </dd>
-
-      <!-- notes -->
-      <%= render "notes_form", f: f, type: "work" %>
-
-    </dl>
+      </div>
+    </div>
+    <!-- notes -->
+    <%= render "notes_form", f: f, type: "work" %>
   </fieldset>
 
   <fieldset id="associations">

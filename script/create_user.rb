@@ -42,8 +42,7 @@ list.each do |user|
   success_message = u.new_record? ? "Created and notified" : "Updated"
   u.email = email if email.present?
 
-  # If this is a new admin, we need to set a temporary password.
-  if u.new_record?
+  if u.password?
     u.password = password
     u.password_confirmation = password
   end

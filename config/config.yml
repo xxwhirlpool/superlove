@@ -281,6 +281,9 @@ FREEFORM_CATEGORY_NAME: 'Additional Tags'
 COMMON_CATEGORY_NAME: 'Common'
 BANNED_CATEGORY_NAME: 'Banned'
 
+MEDIUM_CATEGORY_NAME: 'MEDIUM'
+MEDIUM_NO_TAG_NAME: 'No Medium'
+
 # DATE TIME FORMAT see http://ruby-doc.org/core/classes/Time.html#M000392
 DEFAULT_DATETIME_FORMAT: '%Y-%m-%d %I:%M%p'
 

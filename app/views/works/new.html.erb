@@ -5,7 +5,7 @@
 <!--/descriptions-->
 
 <!--subnav-->
-<div class="actions" role="menu">
+<div class="actions">
   <% if @unposted %>
     <%= link_to ts('Restore From Last Unposted Draft?'), url_for(:action => :new, :load_unposted => true) %>
   <% end %>
