@@ -13,6 +13,7 @@ stdout
 /.dropbox
 /.dropbox.attr
 /.rspec
+/.pnpm-store
 REVISION
 
 nohup.out
@@ -44,6 +45,9 @@ app/builds
 
 # /log/
 /log/*
+
+/app/assets/builds/*
+/node_modules
 
 # /public/
 /public/downloads

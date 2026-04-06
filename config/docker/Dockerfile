@@ -1,4 +1,4 @@
-FROM ruby:3.4.6
+FROM debian:latest
 
 # Install additional packages
 RUN apt-get update             && \
@@ -7,18 +7,33 @@ RUN apt-get update             && \
         default-mysql-client      \
         libvips                   \
         shared-mime-info          \
-        zip
+        zip                       \
+        curl                      \
+        tar                       \
+        gzip                      \
+        wget                      \
+        xz-utils                  \
+        git                       \
+        make                      \
+        gcc                       \
+        libmariadb-dev            \
+        libyaml-dev
+
+# Install ruby packages
+COPY Gemfile .
+COPY Gemfile.lock .
+
+SHELL ["/bin/bash", "-c"]
+RUN cd /home && wget https://github.com/spinel-coop/rv/releases/download/v0.5.3/rv-aarch64-unknown-linux-gnu.tar.xz && tar xf /home/rv-aarch64-unknown-linux-gnu.tar.xz && ls -la /home/rv-aarch64-unknown-linux-gnu && cp /home/rv-aarch64-unknown-linux-gnu/rv /usr/local/bin && cp /home/rv-aarch64-unknown-linux-gnu/rvx /usr/local/bin
+# RUN curl -LsSf https://rv.dev/install | sh && which rv
+RUN rv ruby install 3.4.6
+RUN cd / && rv tool install bundler && rvx bundle install && rv clean-install
 
 # Clean and mount repository at /otwa
 RUN rm -rf /otwa && mkdir -p /otwa
 WORKDIR /otwa
 VOLUME /otwa
 
-# Install ruby packages
-COPY Gemfile .
-COPY Gemfile.lock .
-RUN gem install bundler -v 2.6.9 && bundle install
-
 # Default command to run in a new container
 EXPOSE 3500
-CMD bundle exec rails s -p 3500
+RUN rvx rails s -p 3500
