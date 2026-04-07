@@ -87,9 +87,11 @@ module Otwarchive
     ]
 
     # Set admin two-factor authentication keys
-    config.active_record.encryption.primary_key = ENV["ACTIVE_RECORD_ENCRYPTION_PRIMARY_KEY"]
-    config.active_record.encryption.deterministic_key = ENV["ACTIVE_RECORD_ENCRYPTION_DETERMINISTIC_KEY"]
-    config.active_record.encryption.key_derivation_salt = ENV["ACTIVE_RECORD_ENCRYPTION_KEY_DERIVATION_SALT"]
+    config.active_record.encryption.primary_key = File.read(Rails.root.join("config/keys/primarykey"))
+    config.active_record.encryption.deterministic_key = File.read(Rails.root.join("config/keys/deterministickey"))
+    config.active_record.encryption.key_derivation_salt = File.read(Rails.root.join("config/keys/derivationsalt"))
+
+	config.credentials.content_path = "config/credentials.yml.enc"
 
     # handle errors with custom error pages:
     config.exceptions_app = self.routes
