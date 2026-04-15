@@ -73,12 +73,12 @@ en:
         logged_in: Sorry, you don't have permission to access the page you were trying to reach.
   archive_faqs:
     create:
-      success: Archive FAQ was successfully created.
+      success: superlove FAQ was successfully created.
     default_locale_only: Sorry, this action is only available for English FAQs.
     update:
-      success: Archive FAQ was successfully updated.
+      success: superlove FAQ was successfully updated.
     update_positions:
-      success: Archive FAQs order was successfully updated.
+      success: superlove FAQs order was successfully updated.
   blocked:
     users:
       create:
@@ -103,7 +103,7 @@ en:
       only_chapter: You can't delete the only chapter in your work. If you want to delete the work, choose "Delete Work".
     draft_flash:
       posted_work: This is a draft chapter in a posted work. It will be kept unless the work is deleted.
-      unposted_work_html: This is a draft chapter in an unposted work. The work will be <strong>scheduled for deletion</strong> on %{deletion_date}.
+      unposted_work_html: This is a draft chapter in an unposted work.
     show:
       chapter_position: " - Chapter %{position}"
       unrevealed: Mystery Work
@@ -129,7 +129,7 @@ en:
     check_frozen:
       error: Sorry, you cannot reply to a frozen comment.
     check_guest_replies_preference:
-      error: Sorry, this user doesn't allow non-Archive users to reply to their comments.
+      error: Sorry, this user doesn't allow non-superlove users to reply to their comments.
     check_hidden_by_admin:
       error: Sorry, you cannot reply to a hidden comment.
     check_modify_parent:
@@ -206,7 +206,7 @@ en:
       queue_disabled:
         closed: New invitation requests are currently closed.
         html: "%{closed_bold} For more information, please check the %{news_link}."
-        news: '"Invitations" tag on AO3 News'
+        news: '"Invitations" tag on superlove News'
       success: You've been added to our queue! Yay! We estimate that you'll receive an invitation around %{date}. We strongly recommend that you add %{return_address} to your address book to prevent the invitation email from getting blocked as spam by your email provider.
     index:
       page_title: Invitation Requests
@@ -337,11 +337,11 @@ en:
       new:
         page_title: Create Account
     status:
-      ban_notice_html: Your account has been banned. You are not permitted to post or edit content on AO3. Please check your email or %{contact_abuse_link} for more information.
+      ban_notice_html: Your account has been banned. You are not permitted to post or edit content on superlove. Please check your email or %{contact_abuse_link} for more information.
       suspension_notice_html: Your account has been suspended until %{suspended_until}. You cannot post, edit, or delete content until your suspension has ended. Please check your email or %{contact_abuse_link} for more information.
   works:
     create:
-      draft_notice_html: Draft was successfully created. It will be %{scheduled_for_deletion_bold} on %{deletion_date}.
+      draft_notice_html: Draft was successfully created.
       posted_notice: Work was successfully posted. It should appear in work listings within the next few minutes.
       scheduled_for_deletion: scheduled for deletion
     drafts:

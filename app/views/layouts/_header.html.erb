@@ -13,11 +13,11 @@
   </style>
 <% end %>
 
+<<<<<<< HEAD
 <header id="header" class="header <% if @collection %> collection<% end %>">
 
   <h1>
-    <%= link_to(content_tag(:span, "#{ArchiveConfig.APP_NAME}") + content_tag(:sup, " slay") +
-    image_tag('/images/ao3_logos/logo_42.png', :alt => "", :class => "logo", skip_pipeline: true), root_path) %>
+    <%= link_to(content_tag(:span, ArchiveConfig.APP_NAME) + content_tag(:sup, tagline.sample) + image_tag("/images/ao3_logos/logo_42.png", alt: "", class: "logo", skip_pipeline: true), root_path) %>
   </h1>
 
   <% if logged_in? || logged_in_as_admin? %>

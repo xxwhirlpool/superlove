@@ -3,6 +3,12 @@
   <%= stylesheet_link_tag :application, "data-turbo-track": "reload" %>
 <% end %>
 
+<%= skin_tag %>
+
+<!--sandbox for developers	-->
+<%= stylesheet_link_tag 'sandbox', skip_pipeline: true %>
+<%= stylesheet_link_tag 'highlightjs/atelier-cave-light.min' %>
+
 <%= mute_css %>
 
 <%= csrf_meta_tag %>

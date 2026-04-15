@@ -1,6 +1,7 @@
 #!/bin/bash
 me="vagrant"
-CONF=/home/katmac3/superlove/otwarchive/config/unicorn.rb
+CONF="/home/katmac3/superlove/otwarchive/config/unicorn.rb"
+WORKDIR="/home/katmac3/superlove/otwarchive"
 export UNICORN_PORT=9292
 export UNICORNS=8
 unicorn_master_pid=`ps ax | grep $me.sock | grep master | awk '{print $1}'`
@@ -18,8 +19,11 @@ if [ -f "config.ru" ]; then
 
   #$HOME/bin/create_links_on_install
   SUPERLOVE_HASH=#$(git rev-parse --short=8 HEAD)
-  echo
+
+  source "$WORKDIR/.env"
+
   bundle exec unicorn -l /tmp/${me}.sock -c $CONF > /home/katmac3/superlove/otwarchive/log/"$RAILS_ENV"_new.log 2>&1 &
+
   #files=(/usr/local/etc/art/unicorn_*)
   #WHICH="${files[RANDOM % ${#files[@]}]}"
   #cat $WHICH
