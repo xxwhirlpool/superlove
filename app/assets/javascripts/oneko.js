@@ -87,10 +87,11 @@
 
   function init() {
     let nekoFile = "/oneko.gif"
-    const curScript = document.currentScript
+    const curScript = document.currentScript;
     if (curScript && curScript.dataset.cat) {
       nekoFile = curScript.dataset.cat
     }
+
     if (curScript && curScript.dataset.persistPosition) {
       if (curScript.dataset.persistPosition === "") {
         persistPosition = true;
@@ -98,7 +99,6 @@
         persistPosition = JSON.parse(curScript.dataset.persistPosition.toLowerCase());
       }
     }
-  
     if (persistPosition) {
       let storedNeko = JSON.parse(window.localStorage.getItem("oneko"));
       if (storedNeko !== null) {
@@ -112,6 +112,24 @@
         idleAnimationFrame = storedNeko.idleAnimationFrame;
         nekoEl.style.backgroundPosition = storedNeko.bgPos;
       }
+    }
+
+    let initialHide;
+    switch (window.localStorage.getItem("oneko-hide")) {
+      case "hide":
+        initialHide = true;
+        break;
+      case null:
+        if (curScript && curScript.dataset.hide) {
+          initialHide = true;
+        }
+        break;
+      default:
+        initialHide = false;
+        break;
+    }
+    if (initialHide) {
+      nekoEl.setAttribute("hidden", "");
     }
   
     nekoEl.id = "oneko";
@@ -160,6 +178,7 @@
     if (!nekoEl.isConnected) {
       return;
     }
+    if (nekoEl.hasAttribute("hidden")) return;
     if (!lastFrameTimestamp) {
       lastFrameTimestamp = timestamp;
     }
@@ -273,6 +292,17 @@
 
     nekoEl.style.left = `${nekoPosX - 16}px`;
     nekoEl.style.top = `${nekoPosY - 16}px`;
+  }
+
+  window.hideNeko = function() {
+    window.localStorage.setItem("oneko-hide", "hide");
+    nekoEl.setAttribute("hidden", "");
+  }
+
+  window.showNeko = function() {
+    window.localStorage.setItem("oneko-hide", "show");
+    nekoEl.removeAttribute("hidden")
+    window.requestAnimationFrame(onAnimationFrame)
   }
 
   init();
