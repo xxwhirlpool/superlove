@@ -9,6 +9,7 @@
 
   const nekoEl = document.createElement("div");
   let persistPosition = true;
+  nekoEl.dataset.hide = window.localStorage.getItem("oneko-hide") || "show";
 
   let nekoPosX = 32;
   let nekoPosY = 32;
@@ -160,6 +161,7 @@
     if (!nekoEl.isConnected) {
       return;
     }
+    if (nekoEl.dataset.hide == "hide") return;
     if (!lastFrameTimestamp) {
       lastFrameTimestamp = timestamp;
     }
@@ -273,6 +275,17 @@
 
     nekoEl.style.left = `${nekoPosX - 16}px`;
     nekoEl.style.top = `${nekoPosY - 16}px`;
+  }
+
+  window.hideNeko = function() {
+    window.localStorage.setItem("oneko-hide", "hide");
+    nekoEl.dataset.hide = "hide";
+  }
+
+  window.showNeko = function() {
+    window.localStorage.setItem("oneko-hide", "show");
+    nekoEl.dataset.hide = "show";
+    window.requestAnimationFrame(onAnimationFrame)
   }
 
   init();
