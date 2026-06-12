@@ -7,7 +7,11 @@
 
 <!--sandbox for developers	-->
 <%= stylesheet_link_tag 'sandbox', skip_pipeline: true %>
+<%= javascript_include_tag "highlightjs/highlight.min" %>
+<%= javascript_include_tag "highlightjs/css.min" %>
 <%= stylesheet_link_tag 'highlightjs/atelier-cave-light.min' %>
+<%= javascript_include_tag "oneko.js", defer: true %>
+<script type="text/javascript">hljs.highlightAll();</script>
 
 <%= mute_css %>
 
