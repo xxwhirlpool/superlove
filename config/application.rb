@@ -87,9 +87,9 @@ module Otwarchive
     ]
 
     # Set admin two-factor authentication keys
-    config.active_record.encryption.primary_key = File.read(Rails.root.join("config/keys/primarykey"))
-    config.active_record.encryption.deterministic_key = File.read(Rails.root.join("config/keys/deterministickey"))
-    config.active_record.encryption.key_derivation_salt = File.read(Rails.root.join("config/keys/derivationsalt"))
+    #config.active_record.encryption.primary_key = File.read(Rails.root.join("config/keys/primarykey"))
+    #config.active_record.encryption.deterministic_key = File.read(Rails.root.join("config/keys/deterministickey"))
+    #config.active_record.encryption.key_derivation_salt = File.read(Rails.root.join("config/keys/derivationsalt"))
 
 	config.credentials.content_path = "config/credentials.yml.enc"
 

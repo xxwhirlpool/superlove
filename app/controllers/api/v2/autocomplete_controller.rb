@@ -1,6 +1,5 @@
-class AutocompleteController < ApplicationController
+class Api::V2::Autocomplete < Api::V2::BaseController
   respond_to :json
-
   skip_around_action :set_current_user, except: [:collection_parent_name, :owned_tag_sets, :site_skins]
   skip_before_action :sanitize_ac_params # can we dare!
 
@@ -34,10 +33,7 @@ class AutocompleteController < ApplicationController
   public
   # these are all basically duplicates but make our calls to autocomplete more readable
   def tag; tag_output(params[:term], params[:type] || "all"); end
-  def fandom
-    puts params[:term]
-    tag_output(params[:term], "fandom")
-  end
+  def fandom; tag_output(params[:term], "fandom"); end
   def character; tag_output(params[:term], "character"); end
   def relationship; tag_output(params[:term], "relationship"); end
   def freeform; tag_output(params[:term], "freeform"); end
@@ -213,7 +209,7 @@ class AutocompleteController < ApplicationController
     end
   end
 
-private
+  private
 
   # Because of the respond_to :json at the top of the controller, this will return a JSON-encoded
   # response which the autocomplete javascript on the other end should be able to handle :)
@@ -224,5 +220,4 @@ private
       respond_with(result_strings)
     end
   end
-
 end

@@ -181,3 +181,18 @@ input[type="search"] {
   text-align: center;
   color: var(--text);
 }
+
+.autocomplete-container {
+  position: relative;
+  
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    
+    &.results {
+      position: absolute;
+      z-index: 19;
+    }
+  }
+}
