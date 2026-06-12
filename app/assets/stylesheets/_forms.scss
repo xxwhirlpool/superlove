@@ -91,6 +91,7 @@ label {
     padding: .125rem .45rem;
     border-radius: .125rem;
     border: 1px var(--help-border) solid;
+    white-space: nowrap;
   }
 }
 
@@ -170,7 +171,7 @@ input[type="search"] {
   border: none;
 }
 
-.tip {
+.tip, .progress, .noresults {
   background-color: var(--secondary-bg);
   padding: 2px;
   border: 1px var(--background) solid;
@@ -180,6 +181,7 @@ input[type="search"] {
   font-size: .65rem;
   text-align: center;
   color: var(--text);
+  white-space: nowrap;
 }
 
 .autocomplete-container {
@@ -193,6 +195,53 @@ input[type="search"] {
     &.results {
       position: absolute;
       z-index: 19;
+      background-color: var(--background);
+      box-shadow: 1px 1px 5px var(--neutral600);
+      
+      a {
+        color: var(--text);
+        display: block;
+        white-space: nowrap;
+        max-width: 300px;
+        text-overflow: ellipsus;
+        padding: 3px 5px;
+        text-decoration: none;
+        
+        &:hover {
+          background-color: var(--neutral100);
+        }
+      }
+    }
+    
+    &.tags {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+      
+      li {
+        display: inline-flex;
+        gap: 3px;
+        cursor: grab;
+        white-space: nowrap;
+        max-width: 100%;
+        text-overflow: ellipsus;
+      }
+      
+      a {
+        color: var(--accent-text);
+        border-radius: 100%;
+        padding: 2px;
+        aspect-ratio: 1 / 1;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--accent);
+        border-bottom: 0;
+        text-decoration: none;
+        font-size: 0.8em;
+        line-height: 1;
+        box-sizing: border-box;
+      }
     }
   }
 }

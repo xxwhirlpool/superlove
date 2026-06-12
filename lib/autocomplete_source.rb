@@ -131,7 +131,6 @@ module AutocompleteSource
       search_param = options[:search_param]
       autocomplete_prefix = options[:autocomplete_prefix]
       if REDIS_AUTOCOMPLETE.exists?(autocomplete_cache_key(autocomplete_prefix, search_param)) # rubocop:disable Style/IfUnlessModifier
-        puts "redis_autocomplete exists"
         return REDIS_AUTOCOMPLETE.zrange(autocomplete_cache_key(autocomplete_prefix, search_param), 0, -1)
       end
 
