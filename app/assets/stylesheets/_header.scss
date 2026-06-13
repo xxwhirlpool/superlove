@@ -40,11 +40,19 @@ header#header {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    padding-right: .375rem;
+    padding-right: 0;
     z-index: 99;
+    
+    details {
+      summary {
+        position: relative;
+        z-index: 19;
+      }
+    }
   }
 
   #small-login {
+    position: absolute;
     background-color: var(--secondary-bg);
     border: 2px var(--background) solid;
     padding: 2.5rem .375rem .375rem;

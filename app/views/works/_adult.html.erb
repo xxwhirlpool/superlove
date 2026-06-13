@@ -22,4 +22,7 @@
   <%= t(".footnote") %>
 </div>
 
-<%= render "works/work_blurb", work: @work %>
+<div id="work_<%= @work.id %>" class="work <% if is_author_of?(@work) %> own<% end %><% if @work.unrevealed? %> mystery<% end %><%= css_classes_for_creation_blurb(@work) %>">
+  <%= render "works/work_module", work: @work %>
+  <%= render "works/work_author_actions", work: @work %>
+</div>

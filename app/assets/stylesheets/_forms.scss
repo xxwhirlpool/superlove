@@ -143,6 +143,11 @@ details.actions summary {
   font-size: inherit;
 }
 
+.action input[type="checkbox"] {
+  margin: 0 5px 1px 0;
+  vertical-align: middle;
+}
+
 button.modal {
   border: none;
   padding: 0;

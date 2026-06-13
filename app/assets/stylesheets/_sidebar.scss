@@ -33,10 +33,12 @@ aside {
         border-radius: .25rem;
         display: block;
         color: var(--text);
+        text-decoration: none;
       }
       
       a:hover {
         background-color: var(--neutral300);
+        color: var(--accent);
       }
       
       span.current {

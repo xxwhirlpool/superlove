@@ -2,7 +2,7 @@
   # We need to override the ids to avoid accessibility issues on the new user
   # session page, which has a second user session form
 %>
-<div id="content">
+<div id="small-login">
   <%= form_for(User.new, url: user_session_path(return_to: request.fullpath.start_with?(new_user_session_path) ? params[:return_to] : request.fullpath), html: { id: "new_user_session_small" }) do |f| %>
     <div class="form-row">
       <%= f.label :login, t(".username_or_email"), for: "user_session_login_small" %>
