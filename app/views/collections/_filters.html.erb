@@ -1,50 +1,43 @@
 <%= form_for @search, as: :collection_search, url: collections_path, html: { method: :get, class: "narrow-hidden filters", id: "collection-filters" } do |f| %>
   <h3 class="landmark"><%= t(".landmark") %></h3>
   <%= field_set_tag t(".legend") do %>
-    <dl>
-      <dt class="landmark"><%= t(".submit.landmark") %></dt>
-      <dd class="submit actions"><%= submit_tag t(".submit.button") %></dd>
-      <dt class="sort">
-        <%= f.label :sort_column, t(".sort.column") %>
-      </dt>
-      <dd class="sort">
-        <%= f.select :sort_column, options_for_select(@search.sort_options, @search.sort_column) %>
-      </dd>
-      <dt class="sort">
-        <%= f.label :sort_direction, t(".sort.direction.label") %>
-      </dt>
-      <dd class="sort">
-        <%= f.select :sort_direction, options_for_select({ t(".sort.direction.ascending") => "asc", t(".sort.direction.descending") => "desc" }, @search.sort_direction) %>
-      </dd>
+    <div class="form-row submit">
+      <label class="landmark"><%= t(".submit.landmark") %></label>
+      <%= f.button t(".submit.button"), type: 'submit' %>
+    </div>
+    <div class="form-row">
+      <%= f.label :sort_column, t(".sort.column") %>
+      <%= f.select :sort_column, options_for_select(@search.sort_options, @search.sort_column) %>
+    </div>
+    <div class="form-row">
+      <%= f.label :sort_direction, t(".sort.direction.label") %>
+      <%= f.select :sort_direction, options_for_select({ t(".sort.direction.ascending") => "asc", t(".sort.direction.descending") => "desc" }, @search.sort_direction) %>
+    </div>
 
-      <dt class="autocomplete search">
-        <%= f.label "title", t(".title") %>
-      </dt>
-      <dd class="autocomplete search">
-        <%= f.text_field "title", autocomplete_options("collection_title", data: { autocomplete_token_limit: 1 }) %>
-      </dd>
+    <div class="form-row">
+      <%= f.label "title", t(".title") %>
+      <%= f.text_field "title", autocomplete_options("collection_title", data: { autocomplete_token_limit: 1 }) %>
+    </div>
 
-      <dt class="autocomplete search">
-        <%= f.label "tag", t(".tag") %>
-      </dt>
-      <dd class="autocomplete search">
-        <%= f.text_field "tag", autocomplete_options("tag", data: { autocomplete_token_limit: 5 }) %>
-      </dd>
+    <div class="form-row">
+      <%= f.label "tag", t(".tag") %>
+      <%= f.text_field "tag", autocomplete_options("tag", data: { autocomplete_token_limit: 5 }) %>
+    </div>
 
-     <dt><%= t(".multifandom.label") %></dt>
-      <dd>
-        <ul>
-          <li>
-            <%= f.label "multifandom", value: true do %>
-              <%= f.radio_button "multifandom", true %>
-              <%= label_indicator_and_text(t(".multifandom.only")) %>
-            <% end %>
-          </li>
-          <li>
-            <%= f.label "multifandom", value: false do %>
-              <%= f.radio_button "multifandom", false %>
-              <%= label_indicator_and_text(t(".multifandom.exclude")) %>
-            <% end %>
+     <div class="form-row">
+       <%= f.label :multifandom, t(".multifandom.label") %>
+       <ul class="radio-group">
+         <li>
+           <%= f.label "multifandom", value: true do %>
+             <%= f.radio_button "multifandom", true %>
+             <%= label_indicator_and_text(t(".multifandom.only")) %>
+           <% end %>
+         </li>
+         <li>
+           <%= f.label "multifandom", value: false do %>
+             <%= f.radio_button "multifandom", false %>
+             <%= label_indicator_and_text(t(".multifandom.exclude")) %>
+           <% end %>
           </li>
           <li>
             <%= f.label "multifandom", value: "" do %>
@@ -53,10 +46,10 @@
             <% end %>
           </li>
         </ul>
-      </dd>
-      <dt><%= t(".closed.label") %></dt>
-      <dd>
-        <ul>
+      </div>
+      <div clss="form-row">
+        <%= f.label :closed, t(".closed.label") %>
+        <ul class="radio-group">
           <li>
             <%= f.label "closed", value: true do %>
               <%= f.radio_button "closed", true %>
@@ -76,10 +69,10 @@
             <% end %>
           </li>
         </ul>
-      </dd>
-      <dt><%= t(".moderated.label") %></dt>
-      <dd>
-        <ul>
+      </div>
+      <div class="form-row">
+        <%= f.label :moderated, t(".moderated.label") %>
+        <ul class="radio-group">
           <li>
             <%= f.label "moderated", value: true do %>
               <%= f.radio_button "moderated", true %>
@@ -99,10 +92,10 @@
             <% end %>
           </li>
         </ul>
-      </dd>
-      <dt><%= t(".type.label") %></dt>
-      <dd>
-        <ul>
+      </div>
+      <div class="form-row">
+        <%= f.label :type, t(".type.label") %>
+        <ul class="radio-group">
           <li>
             <%= f.label "challenge_type", value: "GiftExchange" do %>
               <%= f.radio_button "challenge_type", "GiftExchange" %>
@@ -128,18 +121,19 @@
             <% end %>
           </li>
         </ul>
-      </dd>
-      <dt class="landmark"><%= t(".submit.landmark") %></dt>
-      <dd class="submit actions"><%= submit_tag t(".submit.button") %></dd>
-    </dl>
-    <p class="footnote">
-      <%= link_to t(".clear_filters"), collections_path %>
-    </p>
+      </div>
+      <div class="form-row submit">
+        <label class="landmark"><%= t(".submit.landmark") %></label>
+        <%= f.button t(".submit.button"), type: 'submit' %>
+      </div>
+      <div class="clear">
+        <%= link_to t(".clear_filters"), collections_path %>
+      </div>
   <% end %>
   <% # On narrow screens, link jumps to top of index when JavaScript is disabled and closes filters when JavaScript is enabled %>
-  <p class="narrow-shown hidden">
+  <div class="narrow-shown hidden">
     <a href="#main" id="leave_filters" class="close">
       <%= t(".leave_filters") %>
     </a>
-  </p>
+  </div>
 <% end %>

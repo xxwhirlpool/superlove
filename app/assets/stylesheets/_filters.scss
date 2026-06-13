@@ -1,0 +1,90 @@
+.filtered {
+  display: grid;
+  grid-template-areas: "flash flash"
+    "title title"
+    "actions actions"
+    "list filters";
+  grid-template-columns: 1fr 300px;
+  gap: 0 1rem;
+  
+  #flash-container {
+    grid-area: flash;
+  }
+  
+  h2 {
+    grid-area: title;
+  }
+  
+  .navigation {
+    grid-area: actions;
+  }
+  
+  #works {
+    grid-area: list;
+  }
+  
+  .actions {
+    grid-area: actions;
+  }
+  
+  .filters {
+    grid-area: filters;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .filtered {
+    display: block;
+  }
+  
+  .filters {
+    position: absolute;
+    width: 200px;
+    left: 100%;
+    top: 0;
+  }
+}
+
+.filters {
+  label {
+    border-bottom: 1px solid #f3efec;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  fieldset {
+    margin: 0;
+  }
+  
+  .radio-group {
+    background-color: transparent;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    
+    label {
+      border-bottom: none;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+    
+    li {
+      margin-bottom: 0.5rem;
+    }
+  }
+  
+  .submit {
+    margin-top: 1.5rem;
+    
+    button {
+      width: 100%;
+      text-align: center;
+    }
+  }
+  
+  .clear {
+    text-align: right;
+    margin-top: 1rem;
+    font-size: 0.75rem;
+  }
+}

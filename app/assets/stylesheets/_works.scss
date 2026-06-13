@@ -5,55 +5,6 @@
   }
 }
 
-.filtered {
-  display: grid;
-  grid-template-areas: "flash flash"
-    "title title"
-    "actions actions"
-    "list filters";
-  grid-template-columns: 1fr 300px;
-  gap: 0 1rem;
-  
-  #flash-container {
-    grid-area: flash;
-  }
-  
-  h2 {
-    grid-area: title;
-  }
-  
-  .navigation {
-    grid-area: actions;
-  }
-  
-  #works {
-    grid-area: list;
-  }
-  
-  .filters {
-    grid-area: filters;
-  }
-}
-
-@media only screen and (max-width: 767px) {
-  .filtered {
-    display: block;
-  }
-  
-  .filters {
-    position: absolute;
-    width: 200px;
-    left: 100%;
-    top: 0;
-  }
-}
-
-.filters {
-  fieldset {
-    margin: 0;
-  }
-}
-
 #work-content {
   margin: 1rem auto;
 }
@@ -103,5 +54,40 @@
   
   header {
     margin: 1.5rem 3rem;
+  }
+}
+
+.work.blurb {
+  header {
+    grid-template-areas: "required title date"
+      "required fandoms fandoms";
+    grid-template-columns: 53px 1fr auto;
+  }
+  
+  h4 {
+    grid-area: title;
+  }
+  
+  .datetime {
+    grid-area: date;
+  }
+  
+  .fandoms {
+    grid-area: fandoms;
+  }
+  
+  .required-tags {
+    display: grid;
+    grid-area: required;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 25px);
+    gap: 3px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    
+    .medium {
+      display: none;
+    }
   }
 }
