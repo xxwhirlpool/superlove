@@ -16,11 +16,19 @@
   --accent-text: #FFFFFF;
   --lightborder: #dddddd;
   
+  --alert-bg: #d1e1ef;
+  --alert-border: #b0c4d4;
+  --caution-bg: #FFE34F;
+  --caution-border: #d89e36;
+  --error-bg: #efd1d1;
+  --error-border: #990000;
+  
   --button-gradient: linear-gradient(var(--neutral100) 2%, var(--neutral300) 95%, var(--neutral500) 100%);
   --button-border: var(--neutral500);
   
   --secondary-bg: var(--neutral300);
   --shadow: #444444;
+  --inset-shadow: inset 1px 1px 3px var(--neutral500);
   
   --help-bg: #d1e1ef;
   --help-border: #2a547c;
@@ -174,7 +182,7 @@ details {
     border-radius: 0;
     border: none;
     margin: 0;
-    box-shadow: inset 1px 1px 3px var(--neutral500);
+    box-shadow: var(--inset-shadow);
     list-style: none;
   }
 }

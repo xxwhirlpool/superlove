@@ -42,10 +42,11 @@ list.each do |user|
   success_message = u.new_record? ? "Created and notified" : "Updated"
   u.email = email if email.present?
 
-  if u.password?
-    u.password = password
-    u.password_confirmation = password
-  end
+  u.password = password
+  u.password_confirmation = password
+  u.data_processing = true
+  u.age_over_13 = true
+  u.terms_of_service = true
 
   puts "==== #{u.login}"
   if u.save

@@ -14,6 +14,7 @@
         <%= f.check_box :remember_me %>
       </div>
       <div class="submit">
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
         <%= f.submit t(".log_in"), class: "submit" %>
       </div>
     </fieldset>

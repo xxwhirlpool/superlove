@@ -1,0 +1,23 @@
+.flash {
+  border-radius: 3px;
+  border-width: 1px;
+  border-style: solid;
+  box-shadow: var(--inset-shadow);
+  padding: 5px 6px;
+  line-height: 1.2;
+  
+  &.alert {
+    background-color: var(--alert-bg);
+    border-color: var(--alert-border);
+  }
+  
+  &.error {
+    background-color: var(--error-bg);
+    border-color: var(--error-border);
+  }
+  
+  &.caution {
+    background-color: var(--caution-bg);
+    border-color: var(--caution-border);
+  }
+}
