@@ -31,6 +31,15 @@ header#header {
     }
   }
   
+  @media only screen and (max-width: 767px) {
+    h1 {
+      sup {
+        font-size: .85rem;
+        max-width: 50%;
+      }
+    }
+  }
+  
   #intro,
   #greeting {
     grid-area: userinfo;

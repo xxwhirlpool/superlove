@@ -22,7 +22,7 @@
     <% end %>
     <% if @sort_and_filter %>
       <% # Filters button for narrow screens jumps to filters when JavaScript is disabled and opens filters when JavaScript is enabled %>
-      <li class="narrow-shown hidden"><a href="#collection-filters" id="go_to_filters"><%= ts("Filters") %></a></li>
+      <li class="narrow-shown hidden"><a href="#collection-filters" id="go-to-filters"><%= ts("Filters") %></a></li>
     <% end %>
   </ul>
 <% end %>
@@ -70,4 +70,20 @@
 
 <% unless @collections.blank? %>
   <%= will_paginate @collections %>
+<% end %>
+
+<%= content_for :footer_js do %>
+  <script type="text/javascript">
+    document.getElementById('go-to-filters').addEventListener('click', (e) => {
+      e.preventDefault();
+      e.target.classList.add('current');
+      document.body.classList.toggle('show-filters');
+    });
+    
+    document.querySelector('.filters .close').addEventListener('click', (e) => {
+      e.preventDefault();
+      document.body.classList.toggle('show-filters');
+      e.target.blur();
+    });
+  </script>
 <% end %>

@@ -2,6 +2,7 @@
   display: grid;
   grid-template-areas: "flash flash"
     "title title"
+    "counter counter"
     "actions actions"
     "list filters";
   grid-template-columns: 1fr 300px;
@@ -13,6 +14,11 @@
   
   h2 {
     grid-area: title;
+    margin-bottom: 0;
+  }
+  
+  h3 {
+    margin: 0;
   }
   
   .navigation {
@@ -25,6 +31,7 @@
   
   .actions {
     grid-area: actions;
+    justify-content: flex-end;
   }
   
   .filters {
@@ -34,14 +41,24 @@
 
 @media only screen and (max-width: 767px) {
   .filtered {
-    display: block;
+    grid-template-areas: "flash"
+      "title"
+      "counter"
+      "actions"
+      "list"
+      "filters";
+    grid-template-columns: auto;
+    gap: 1rem;
   }
   
   .filters {
-    position: absolute;
+    position: fixed;
+    height: 100vh;
     width: 200px;
-    left: 100%;
+    left: 0;
     top: 0;
+    transform: translateX(100vw);
+    overflow-y: auto;
   }
 }
 
@@ -86,5 +103,19 @@
     text-align: right;
     margin-top: 1rem;
     font-size: 0.75rem;
+  }
+  
+  .close {
+    position: absolute;
+    z-index: 29;
+    top: 1rem;
+    right: 1rem;
+    font-size: 0;
+    text-decoration: none;
+    
+    &:before {
+      content: "×";
+      font-size: 1rem;
+    }
   }
 }
