@@ -3,8 +3,23 @@
   border-width: 1px;
   border-style: solid;
   box-shadow: var(--inset-shadow);
-  padding: 5px 6px;
+  padding: 5px 12px;
   line-height: 1.2;
+  font-size: 0.875rem;
+  
+  p {
+    padding: 0;
+    margin: 0;
+    
+    & + p {
+      margin-top: 0.5rem;
+    }
+  }
+  
+  &.notice {
+    background-color: var(--alert-bg);
+    border-color: var(--alert-border);
+  }
   
   &.alert {
     background-color: var(--alert-bg);
@@ -19,5 +34,10 @@
   &.caution {
     background-color: var(--caution-bg);
     border-color: var(--caution-border);
+  }
+  
+  & + form {
+    margin-top: 0.5rem;
+    text-align: right;
   }
 }

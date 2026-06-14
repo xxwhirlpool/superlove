@@ -1,9 +1,14 @@
 main:has(aside) {
   display: grid;
-  grid-template-areas: "flash flash"
+  grid-template-areas: "sidebar flash"
     "sidebar content";
   grid-template-columns: 11rem 1fr;
+  grid-template-rows: auto 1fr;
   gap: 2rem;
+  
+  #flash-container {
+    grid-area: flash;
+  }
   
   #content {
     grid-area: content;
