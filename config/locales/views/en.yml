@@ -2235,7 +2235,7 @@ en:
         default: Default
         header: Customize
       development:
-        archive_version: otwarchive %{version_number}
+        archive_version: superlove %{version_number}
         gpl_2_0_or_later: GPL-2.0-or-later
         header: Development
         known_issues: Known Issues
