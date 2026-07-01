@@ -1,16 +1,16 @@
-<dl>
-  <dt><%= t(".sender") %></dt>
-  <dd><%= creator_link(@invitation) %></dd>
-  <dt><%= t(".invitation_token") %></dt>
-  <dd><%= @invitation.token %></dd>
-  <dt><%= t(".copy_link") %></dt>
-  <dd>
+<ul class="info-group">
+  <li><b><%= t(".sender") %>:</b> <%= creator_link(@invitation) %></li>
+  <li><b><%= t(".invitation_token") %>:</b> <%= @invitation.token %></li>
+  <li>
+    <b><%= t(".copy_link") %>:</b>
     <% unless @invitation.redeemed_at %>
-      <%= link_to t(".copy_and_use"), signup_path(invitation_token: @invitation.token) %>
+      <div class="field">
+        <%= link_to t(".copy_and_use"), signup_path(invitation_token: @invitation.token), class: 'button' %>
+      </div>
     <% end %>
-  </dd>
-  <dt><%= t(".sent_to") %></dt>
-  <dd>
+  </li>
+  <li>
+    <b><%= t(".sent_to") %>:</b>
     <% if @invitation.redeemed_at %>
       <% if @invitation.invitee_email.present? %>
         <%= link_to @invitation.invitee_email,
@@ -19,20 +19,19 @@
     <% else %>
       <%= form_for(@invitation) do |f| %>
         <%= error_messages_for @invitation %>
-        <p><%= f.label :invitee_email, t(".email_address_label") %> <%= f.text_field :invitee_email %></p>
-        <p><%= hidden_field_tag :user_id, @user.try(:login) %></p>
-        <p class="submit actions"><%= f.submit %></p>
+        <div class="form-row">
+          <%= f.label :invitee_email, t(".email_address_label") %>
+          <div class="field">
+            <%= f.text_field :invitee_email %>
+          </div>
+          <%= hidden_field_tag :user_id, @user.try(:login) %>
+        <div class="submit"><%= f.submit %></div>
       <% end %>
     <% end %>
-  </dd>
-  <dt><%= t(".redeemed_by") %></dt>
-  <dd><%= invitee_link(@invitation) || "-" %></dd>
-  <dt><%= t(".created_at") %></dt>
-  <dd><%= @invitation.created_at || "-" %></dd>
-  <dt><%= t(".sent_at") %></dt>
-  <dd><%= @invitation.sent_at || "-" %></dd>
-  <dt><%= t(".last_resent_at") %></dt>
-  <dd><%= @invitation.resent_at || "-" %></dd>
-  <dt><%= t(".redeemed_at") %></dt>
-  <dd><%= @invitation.redeemed_at || "-" %></dd>
-</dl>
+  </li>
+  <li><b><%= t(".redeemed_by") %>:</b> <%= invitee_link(@invitation) || "-" %></li>
+  <li><b><%= t(".created_at") %>:</b> <%= @invitation.created_at || "-" %></li>
+  <li><b><%= t(".sent_at") %>:</b> <%= @invitation.sent_at || "-" %></li>
+  <li><b><%= t(".last_resent_at") %>:</b> <%= @invitation.resent_at || "-" %></li>
+  <li><b><%= t(".redeemed_at") %>:</b> <%= @invitation.redeemed_at || "-" %></li>
+</ul>

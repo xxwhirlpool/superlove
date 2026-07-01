@@ -24,15 +24,15 @@
           <td>
             <% unless invitation.redeemed_at %>
             <% if invitation.external_author %>
-              <%= link_to t(".table.actions.copy_and_use"), claim_path(invitation_token: invitation.token) %>
+              <%= link_to t(".table.actions.copy_and_use"), claim_path(invitation_token: invitation.token), class: 'button' %>
             <% else %>
-              <%= link_to t(".table.actions.copy_and_use"), signup_path(invitation_token: invitation.token) %><% end %>
+              <%= link_to t(".table.actions.copy_and_use"), signup_path(invitation_token: invitation.token), class: 'button' %><% end %>
             <% end %>
           </td>
           <% if logged_in_as_admin? && invitation.redeemed_at.blank? %>
             <td>
               <%= link_to(t(".table.actions.delete"),
-                    invitation, data: { confirm: t(".table.actions.delete_confirmation") }, method: :delete) %>
+                    invitation, class: 'button', data: { confirm: t(".table.actions.delete_confirmation") }, method: :delete) %>
             </td>
           <% end %>
         </tr>

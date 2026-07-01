@@ -17,7 +17,7 @@
     <%= form_tag end_first_login_user_path(current_user), method: :post, remote: true do %>
       <div class="close">
         <%= button_tag t(".login_banner.dismiss"), type: 'submit' %>
-        <%= link_to "&times;".html_safe, nil, remote: true, id: "hide-first-login-help", title: t(".login_banner.hide") %>
+        <%= link_to "&times;".html_safe, nil, remote: true, id: "hide-first-login-help", title: t(".login_banner.hide"), class: 'button' %>
       </div>
     <% end %>
   <% end %>

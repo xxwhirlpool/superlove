@@ -137,6 +137,11 @@ details {
   position: absolute;
 }
 
+#flash-container {
+  display: grid;
+  gap: 1em;
+}
+
 #skiplinks {
   position: absolute;
   top: 0;
@@ -199,6 +204,29 @@ details {
   
   &.right {
     justify-content: flex-end;
+  }
+}
+
+.info-group {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1em;
+  
+  li {
+    display: grid;
+    grid-template-columns: 150px auto;
+    gap: 1em;
+  }
+  
+  b {
+    min-width: 150px;
+    display: inline-block;
+  }
+  
+  form {
+    display: inline-block;
   }
 }
 
