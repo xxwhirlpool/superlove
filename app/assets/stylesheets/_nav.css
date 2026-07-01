@@ -71,16 +71,10 @@ ul.dropdown {
   }
 }
 
-nav#primary {
-  grid-area: navigation;
-  background-color: var(--accent);
+nav#primary,
+nav#admin-nav {
   color: var(--accent-text);
   font-size: .875rem;
-  background-image: url(../images/texoverlay.png);
-  background-blend-mode: overlay;
-  box-shadow: inset 0 -6px 10px rgba(0, 0, 0, 0.35),
-      1px 1px 3px -1px rgba(0, 0, 0, 0.25),
-      inset 0 -1px 0 rgba(0, 0, 0, 0.85);
   padding: 0 .5rem;
   
   a {
@@ -89,7 +83,6 @@ nav#primary {
   
   > ul {
     display: grid;
-    grid-template-columns: repeat(6, auto) 1fr;
     
     > li {
       > a {
@@ -121,6 +114,29 @@ nav#primary {
     input[type="search"] {
       width: 11rem;
     }
+  }
+}
+
+nav#primary {
+  grid-area: navigation;
+  background-color: var(--accent);
+  background-image: url(../images/texoverlay.png);
+  background-blend-mode: overlay;
+  box-shadow: inset 0 -6px 10px rgba(0, 0, 0, 0.35),
+      1px 1px 3px -1px rgba(0, 0, 0, 0.25),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.85);
+  
+  > ul {
+    grid-template-columns: repeat(6, auto) 1fr;
+  }
+}
+
+nav#admin-nav {
+  grid-area: adminnav;
+  background-color: var(--altaccent);
+  
+  > ul {
+    grid-template-columns: repeat(13, auto) 1fr;
   }
 }
 

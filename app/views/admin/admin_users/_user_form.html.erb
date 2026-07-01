@@ -18,8 +18,10 @@
   <td>
     <% unless user.fannish_next_of_kin.blank? %>
       <%= link_to user.fannish_next_of_kin.kin_name, user_path(user.fannish_next_of_kin.kin_name) %>
+    <% else %>
+      <%= ts("N/A") %>
     <% end %>
   </td>
-  <td class="actions"><%= submit_tag ts("Update") %></td>
-  <td class="actions"><%= link_to ts("Details"), admin_user_path(user) %></td>
+  <td><%= submit_tag ts("Update") %></td>
+  <td><%= link_to ts("Details"), admin_user_path(user), class: 'button' %></td>
 <% end %>

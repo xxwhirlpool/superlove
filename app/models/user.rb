@@ -255,12 +255,10 @@ class User < ApplicationRecord
   def self.find_first_by_auth_conditions(tainted_conditions, options = {})
     conditions = devise_parameter_filter.filter(tainted_conditions).merge(options)
     login = conditions.delete(:login)
-    relation = self.where(conditions)
-
     if login.present?
       # MySQL is case-insensitive with utf8mb4_unicode_ci so we don't have to use
       # lowercase values
-      relation = relation.where(["login = :value OR email = :value",
+      relation = User.where(["login = :value OR email = :value",
                                  { value: login }])
     end
 

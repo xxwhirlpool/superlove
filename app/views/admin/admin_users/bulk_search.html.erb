@@ -1,32 +1,26 @@
-<div class="admin">
+<div id="content">
   <!--Descriptive page name, messages and instructions-->
   <h2><%= ts("Bulk Email Search") %></h2>
   <!--/descriptions-->
 
   <!--main content-->
-  <div>
-    <p class="notice"><%= ts("Please enter a list of email addresses to search below. This form will search for <strong>exact</strong> matches.").html_safe %></p>
-  </div>
+  <p class="notice"><%= ts("Please enter a list of email addresses to search below. This form will search for <strong>exact</strong> matches.").html_safe %></p>
 
   <%= form_tag url_for(controller: "admin/admin_users", action: :bulk_search, method: :post), class: "search", role: "search" do %>
     <fieldset>
-      <legend><%= ts("Email addresses") %></legend>
-      <dl>
-        <dt class="required"><%= label_tag "emails", ts("Email addresses *") %></dt>
-        <dd class="required"><%= text_area_tag "emails", @emails ? @emails.join("\n") : "", rows: 10, cols: 70, "aria-describedby" => "email-field-description" %>
-          <p class="footnote" id="email-field-description">
+      <div class="form-row side-label">
+        <%= label_tag "emails", ts("Email addresses *") %></dt>
+        <div class="field">
+          <%= text_area_tag "emails", @emails ? @emails.join("\n") : "", rows: 10, cols: 70, "aria-describedby" => "email-field-description", required: true %>
+          <p class="help" id="email-field-description">
             <%= ts("Email addresses to find; <strong>one per line.</strong>").html_safe %>
           </p>
-        </dd>
-      </dl>
-    </fieldset>
-
-    <fieldset>
-      <legend><%= ts("Find") %></legend>
-      <p class="submit actions">
+        </div>
+      </div>
+      <div class="submit">
         <%= submit_tag ts("Download CSV"), name: "download_button" %>
         <%= submit_tag ts("Find") %>
-      </p>
+      </div>
     </fieldset>
   <% end %>
 

@@ -1,11 +1,12 @@
 <% unless RedisHitCounter.prevent_hits?(@work) || current_user&.is_author_of?(@work) %>
   <% content_for :footer_js do %>
-    <script>
-      $j(document).on("loadedCSRF", function() {
-        function send() {
-          $j.post("<%= work_hit_count_path(@work, format: :json) %>")
-        }
-
+    <script type="text/javascript">
+      const send = () {
+        fetch("<%= work_hit_count_path(@work, format: :json) %>", {
+          method: 'POST'
+        });
+      }
+      document.addEventListener('loadedCSRF', (_e) => {
         // If a browser doesn't support prerendering, then document.prerendering
         // will be undefined, and we'll just send the hit count immediately.
         if (document.prerendering) {
@@ -13,7 +14,7 @@
         } else {
           send();
         }
-      })
+      });
     </script>
   <% end %>
 <% end %>

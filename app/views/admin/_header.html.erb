@@ -1,5 +1,5 @@
-<nav aria-label="<%= t(".nav.label") %>">
-  <ul class="admin primary navigation actions">
+<nav id="admin-nav" aria-label="<%= t(".nav.label") %>">
+  <ul class="dropdown">
     <% if policy(User).can_manage_users? %>
       <li>
         <%= link_to t(".nav.users.manage"), admin_users_path %>

@@ -1,0 +1,35 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+  
+  caption {
+    font-family: var(--font-titles);
+    font-size: 1rem;
+    font-weight: bold;
+    margin: .5rem 0;
+  }
+  
+  thead {
+    border-bottom: 1px var(--lightborder) solid;
+    
+    th {
+      font-size: .9rem;
+    }
+  }
+  
+  tr:nth-child(2n+2) {
+    background-color: var(--neutral300);
+  }
+  
+  th, td {
+    padding: 5px;
+    text-align: center;
+  }
+  
+  &#user_history {
+    th, td {
+      text-align: left;
+    }
+  }
+}
+

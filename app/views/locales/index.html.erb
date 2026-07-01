@@ -27,8 +27,8 @@
         <td><%= locale.email_enabled %></td>
         <td><%= locale.interface_enabled %></td>
         <td><%= locale.updated_at %></td>
-        <td class="actions">
-          <%= link_to ts('Edit'), {controller: :locales, action: :edit, id: locale.iso} %>
+        <td>
+          <%= link_to ts('Edit'), {controller: :locales, action: :edit, id: locale.iso}, class: 'button' %>
         </td>
       </tr>
     <% end %>
