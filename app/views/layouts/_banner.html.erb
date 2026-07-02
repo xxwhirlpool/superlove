@@ -1,6 +1,6 @@
 <% if @admin_banner&.active? %>
   <% unless session[:hide_banner] || current_user&.preference&.banner_seen %>
-    <div class="<%= @admin_banner.banner_type %> announcement" id="admin-banner">
+    <div class="<%= @admin_banner.banner_type %> announcement banner" id="admin-banner">
       <%= raw sanitize_field(@admin_banner, :content, image_safety_mode: true) %>
       <% if current_user.nil? %>
         <%= link_to current_path_with(hide_banner: true), "aria-label": t(".hide"), class: "showme" do

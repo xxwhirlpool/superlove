@@ -6,12 +6,10 @@
 
 <div class="admin" role="article">
   <% if policy(ArchiveFaq).translation_access? %>
-    <div class="header">
-      <h3>
-        <% if Globalize.locale.to_s != "en" || policy(ArchiveFaq).full_access? -%>
-          <%= link_to t(".edit"), edit_archive_faq_path(@archive_faq) %>
-        <% end %>
-      </h3>
+    <div class="actions right">
+      <% if Globalize.locale.to_s != "en" || policy(ArchiveFaq).full_access? -%>
+        <%= link_to t(".edit"), edit_archive_faq_path(@archive_faq) %>
+      <% end %>
     </div>
   <% end %>
 

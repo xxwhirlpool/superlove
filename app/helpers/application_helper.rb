@@ -342,7 +342,7 @@ module ApplicationHelper
   # see above
   def link_to_remove_section(linktext, form, class_of_section_to_remove="removeme")
     form.hidden_field(:_destroy) + "\n" +
-    link_to_function(linktext, "remove_section(this, \"#{class_of_section_to_remove}\")", class: "hidden showme")
+    link_to_function(linktext, "remove_section(this, \"#{class_of_section_to_remove}\")", class: "remove-section")
   end
 
   # show time in the time zone specified by the first argument

@@ -44,7 +44,7 @@
   </div>
   <% if Globalize.locale.to_s == "en" %>
     <div class="actions right">
-      <%= link_to_add_section("Add Question", form, :questions, "question_answer_fields", id: 'add-question') %>
+      <%= link_to_add_section("Add Question", form, :questions, "question_answer_fields", index: form.object.questions.length, id: 'add-question') %>
     </div>
   <% end %>
   <fieldset>

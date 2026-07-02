@@ -1,4 +1,4 @@
-<div class="faq-item">
+<div class="faq-item" data-index="<%= index.is_a?(String) ? index : index + 1 %>">
   <% index ||= 0 %>
   <fieldset>
     <% if index.is_a? String %>
@@ -55,4 +55,3 @@
     <% end %>
   </fieldset>
 </div>
-<div class="last_id" style="display:none;"><%= index.is_a?(String) ? index : index+1 %></div>
