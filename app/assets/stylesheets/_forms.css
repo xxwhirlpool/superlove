@@ -88,6 +88,9 @@ label {
       label {
         border-bottom: none;
       }
+      input[type="number"] {
+        width: auto;
+      }
     }
     
     .help {
@@ -165,7 +168,8 @@ label.action,
 a.button,
 input[type="submit"],
 input[type="reset"],
-details.actions summary {
+details.actions summary,
+.showme {
   border: 1px var(--button-border) solid;
   border-bottom: 1px color-mix(in srgb-linear, var(--button-border), black 40%) solid;
   border-radius: 0.25rem;

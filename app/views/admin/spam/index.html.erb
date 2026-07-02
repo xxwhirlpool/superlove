@@ -3,7 +3,7 @@
 <!--/descriptions-->
 
 <!--subnav-->
-<ul class="navigation actions" role="navigation">
+<ul class="actions right">
   <li>
     <%= span_if_current ts("Unreviewed Works"), admin_spam_index_path, params[:show].blank? %>
   </li>
@@ -77,7 +77,7 @@
       <% end %>
     </tbody>
   </table>
-  <%= submit_button nil, ts("Update Works") %>
+  <%= submit_button nil, ts("Update Works"), "actions right" %>
 <% end %>
 
 <%= will_paginate @works %>

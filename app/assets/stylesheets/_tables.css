@@ -1,6 +1,7 @@
 table {
   width: 100%;
   border-collapse: collapse;
+  margin: 1rem 0;
   
   caption {
     font-family: var(--font-titles);

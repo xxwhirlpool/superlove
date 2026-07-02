@@ -1,10 +1,10 @@
-<div class="admin">
+<div id="content">
 <!--Descriptive page name, messages and instructions-->
   <h2><%= ts("Manage the Invitation Queue") %></h2>
 <!--/descriptions-->
 
 <!--subnav-->
-  <ul class="actions">
+  <ul class="actions right">
     <li class="search" role="search">
       <%= form_tag manage_invite_requests_path, method: :get,
           id: "invite-request-search", class: "simple search" do %>

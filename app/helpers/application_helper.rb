@@ -186,12 +186,18 @@ module ApplicationHelper
     options[:title] ||= options[:id]
 
     html_options = { class: "modal", title: options[:title], popovertarget: options[:id], type: 'button' }
-    button_tag(content, html_options) + "<div popover id='#{options[:id]}'><div class='popover-inner'>#{File.read(options[:path])}</div><div class='footer-bar'><span class='title'>#{options[:title]}</span><button class='button' type='button' popovertarget='#{options[:id]}' popovertargetaction='hide'>Close</button></div></div>".html_safe
+    button_tag(content, html_options) + "<div popover id='#{options[:id]}'>
+      <div class='popover-inner'>#{render(options[:path])}</div>
+      <div class='footer-bar'>
+        <span class='title'>#{options[:title]}</span>
+        <button class='button' type='button' popovertarget='#{options[:id]}' popovertargetaction='hide'>Close</button>
+      </div>
+    </div>".html_safe
   end
 
   # TODO: AO3-7208 Make help modals dynamic and translatable and use link_to_help_modal instead of this method
   def link_to_help(help_entry, link = '<span class="icon question">?</span>'.html_safe)
-    help_file = "#{Rails.root}/public#{ArchiveConfig.HELP_DIRECTORY}/#{help_entry}.html"
+    help_file = "help_files/#{help_entry}"
 
     " ".html_safe + link_to_modal(link, path: help_file, id: help_entry, title: help_entry.split('-').join(' ').capitalize).html_safe
   end
@@ -330,7 +336,7 @@ module ApplicationHelper
       form.fields_for(nested_model_name, new_nested_model, child_index: child_index) {|child_form|
         render(partial: partial_to_render, locals: {form: child_form, index: child_index}.merge(locals))
       }
-    link_to_function(linktext, "add_section(this, \"#{nested_model_name}\", \"#{escape_javascript(rendered_partial_to_add)}\")", class: "hidden showme")
+    link_to_function(linktext, "add_section(this, \"#{nested_model_name}\", \"#{escape_javascript(rendered_partial_to_add)}\")", class: "showme", id: "add-#{nested_model_name}")
   end
 
   # see above
@@ -533,9 +539,9 @@ module ApplicationHelper
       "#{filter_attrib}>#{none_text}</a></li></ul>").html_safe
   end
 
-  def submit_button(form=nil, button_text=nil)
+  def submit_button(form=nil, button_text=nil, additional_classes=nil)
     button_text ||= (form.nil? || form.object.nil? || form.object.new_record?) ? ts("Submit") : ts("Update")
-    content_tag(:p, (form.nil? ? submit_tag(button_text) : form.submit(button_text)), class: "submit")
+    content_tag(:div, (form.nil? ? submit_tag(button_text) : form.submit(button_text)), class: "submit#{additional_classes ? " #{additional_classes}" : ''}")
   end
 
   def submit_fieldset(form=nil, button_text=nil)

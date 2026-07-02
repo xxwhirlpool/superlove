@@ -24,6 +24,11 @@
   --error-bg: #efd1d1;
   --error-border: #990000;
   
+  --announcement-bg: #d1e1ef;
+  --announcement-border: #c2d2df;
+  --event-bg: #770000;
+  --event-border: #660000;
+  
   --button-gradient: linear-gradient(var(--neutral100) 2%, var(--neutral300) 95%, var(--neutral500) 100%);
   --button-border: var(--neutral500);
   

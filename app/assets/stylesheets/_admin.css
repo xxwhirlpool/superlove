@@ -28,15 +28,47 @@
 }
 
 #blacklisted-emails-list {
-  min-width: 400px;
+  max-width: 100%;
+  width: 600px;
   list-style: none;
   margin: 0;
   padding: 0;
   
   li {
-    display: inline-flex;
+    display: flex;
     justify-content: space-between;
     gap: 1em;
     align-items: center;
+    border-bottom: 1px var(--lightborder) solid;
+    padding: 3px 5px;
+    
+    &:nth-child(2n+2) {
+      background-color: var(--neutral300);
+    }
+    
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
+
+#spam_works {
+  .actions {
+    display: inline-flex;
+    margin-left: 5px;
+  }
+}
+
+#invite-request-search {
+  .form-row {
+    display: inline-flex;
+    gap: 10px;
+  }
+}
+
+.faq-item {
+  h4 {
+    font-family: var(--font-body);
+    margin: 0 0 1em;
   }
 }

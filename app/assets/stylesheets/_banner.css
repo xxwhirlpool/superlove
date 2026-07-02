@@ -1,0 +1,30 @@
+#admin-banner {
+  border-width: 1px;
+  border-style: solid;
+  box-shadow: var(--inset-shadow);
+  padding: 5px 12px;
+  line-height: 1.2;
+  font-size: 0.875rem;
+  position: relative;
+  
+  &.announcement {
+    background-color: var(--announcement-bg);
+    border: 1px solid var(--announcement-border);
+  }
+  
+  &.event {
+    background-color: var(--event-bg);
+    border-color: var(--event-border);
+  }
+    
+  &.action {
+    background-color: var(--background);
+    border: 1px solid var(--neutral500);
+  }
+  
+  .showme {
+    position: absolute;
+    bottom: 5px;
+    right: 12px;
+  }
+}

@@ -42,6 +42,11 @@ module AdminHelper
     options[:disabled] = admin_setting_disabled?(field_name)
     form.text_field(field_name, options)
   end
+  
+  def admin_setting_number_field(form, field_name, options = {})
+    options[:disabled] = admin_setting_disabled?(field_name)
+    form.number_field(field_name, options)
+  end
 
   def admin_can_update_user_roles?
     return unless logged_in_as_admin?
