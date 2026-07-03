@@ -1,6 +1,5 @@
 <!--title, author, fandom-->
-<div class="header module">
-
+<header>
   <h4>
     <% # so bookmarks go to the external work page, not directly to the external link %>
     <% if external_work ||= @bookmarkable %>
@@ -20,7 +19,7 @@
 
   <%= get_symbols_for(external_work) %>
   <div class="datetime"><%= set_format_for_date(external_work.created_at) %></div>
-</div>
+</header>
 
 <p class="notice"><%= t("external_works.notice") %></p>
 

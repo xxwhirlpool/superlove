@@ -62,7 +62,7 @@
 <% end %>
 <!---/subnav-->
 
-<%= pagy_nav @pagy %>
+<%== pagy_nav @pagy %>
 
 <% content_for :footer_js do %>
   <%= javascript_include_tag :search, "data-turbo-track": "reload" %>

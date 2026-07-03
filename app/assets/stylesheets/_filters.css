@@ -8,6 +8,31 @@
   grid-template-columns: 1fr 300px;
   gap: 0 1rem;
   
+  &:has(.pagy) {
+    grid-template-areas: "flash flash"
+      "title title"
+      "counter counter"
+      "actions actions"
+      "paginationtop paginationtop"
+      "list filters"
+      "paginationbottom paginationbottom";
+    
+    .pagy {
+      &:first-of-type {
+        grid-area: paginationtop;
+      }
+      
+      &:last-of-type {
+        grid-area: paginationbottom;
+      }
+      
+      &.actions {
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+  
   #flash-container {
     grid-area: flash;
   }
