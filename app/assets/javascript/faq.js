@@ -1,7 +1,10 @@
 const add_section = (elt, model, content) => {
+  const addQBtn = document.getElementById('add-question');
   const group = document.getElementById(model);
   const index = parseInt(group.querySelector('.faq-item:last-of-type').getAttribute('data-index'));
   group.innerHTML += content;
+  const onClickFxn = addQBtn.onclick;
+  addQBtn.onclick = onClickFxn.replaceAll(index.toString(), (index+1).toString());
 }
 
 document.addEventListener('click', (e) => {

@@ -3,7 +3,6 @@
     <%= form_tag({}, {:method => :get}) do %>
       <fieldset>
         <legend><%= ts("Add Questions") %></legend>
-        <h3 class="landmark"><%= ts("Add Questions") %></h3>
         <p class="notes">
           <%= ts("Since you don't have JavaScript turned on, please tell us how many questions you want this category to have. (This must be greater than the current number of questions, which is %{num}.) ", num: @archive_faq.questions.count) %>
         </p>
@@ -28,7 +27,6 @@
       <%= form.label :title, ts("Category name") + "*" %>
       <div class="field">
         <%= form.text_field :title, required: true %>
-        <%= live_validation_for_field(field_id(form, "title").to_sym, failureMessage: ts("Please enter a category name.")) %>
       </div>
     </div>
   </fieldset>
@@ -54,3 +52,4 @@
     </div>
   </fieldset>
 <% end %>
+<%= javascript_include_tag 'faq', "data-turbo-track": "reload" %>
