@@ -24,7 +24,6 @@ const autocomplete = ({ input, fetch, onSelect }) => {
           const removeBtn = document.createElement('a');
           removeBtn.textContent = "×";
           removeBtn.classList.add('delete');
-          removeBtn.addEventListener('click', ())
           tagElement.textContent = tag;
           
         })

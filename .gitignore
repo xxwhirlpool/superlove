@@ -117,3 +117,6 @@ config/keys/deterministickey
 config/keys/derivationsalt
 config/credentials.yml.enc
 >>>>>>> main
+
+# Vite
+/public/vite
