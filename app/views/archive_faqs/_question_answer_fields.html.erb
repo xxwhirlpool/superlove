@@ -1,10 +1,10 @@
-<div class="faq-item" data-index="<%= index.is_a?(String) ? index : index + 1 %>">
+<div class="faq-item" id="faq-item-<%= index + 1 %>" data-index="<%= index + 1 %>">
   <% index ||= 0 %>
   <fieldset>
     <% if index.is_a? String %>
-      <% question_label = ts("Question #{index}") %>
+      <% question_label = ts("Question <span>#{index}</span>") %>
     <% else %>
-      <% question_label = ts("Question #{(index + 1)}") %>
+      <% question_label = ts("Question <span>#{index + 1}</span>") %>
     <% end %>
     <h4><%= question_label %></h4>
 

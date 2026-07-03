@@ -329,7 +329,7 @@ module ApplicationHelper
       form.fields_for(nested_model_name, new_nested_model, child_index: child_index) {|child_form|
         render(partial: partial_to_render, locals: {form: child_form, index: child_index}.merge(locals))
       }
-    link_to_function(linktext, "add_section(this, \"#{nested_model_name}\", \"#{escape_javascript(rendered_partial_to_add)}\")", class: "showme", id: "add-#{nested_model_name}")
+    link_to_function(linktext, "add_section(this, \"#{nested_model_name}\", \"#{rendered_partial_to_add}\")", class: "showme", id: "add-#{nested_model_name}")
   end
 
   # see above

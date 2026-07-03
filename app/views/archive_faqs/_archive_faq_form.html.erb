@@ -42,7 +42,7 @@
   </div>
   <% if Globalize.locale.to_s == "en" %>
     <div class="actions right">
-      <%= link_to_add_section("Add Question", form, :questions, "question_answer_fields", index: form.object.questions.length, id: 'add-question') %>
+      <%= link_to(ts("Add Question"), '#', id: 'add-question', class: 'button') %>
     </div>
   <% end %>
   <fieldset>
@@ -52,4 +52,5 @@
     </div>
   </fieldset>
 <% end %>
+
 <%= javascript_include_tag 'faq', "data-turbo-track": "reload" %>
