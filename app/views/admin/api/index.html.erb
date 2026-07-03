@@ -1,4 +1,4 @@
-<div class="admin">
+<div id="content">
   <h2><%= t(".page_heading") %></h2>
 
   <!--subnav-->
@@ -9,13 +9,16 @@
 
   <!--main content-->
   <%= form_tag url_for(controller: "admin/api", action: "index"), method: :get, class: "search", role: "search" do %>
-    <p class="note"><%= t(".search_by_name") %></p>
-    <dl>
-      <dt><%= label_tag "query", t(".search_box.label") %></dt>
-      <dd><%= text_field_tag "query", params[:query] %>
-        </dd>
-    </dl>
-    <p class="submit actions"><%= submit_tag t(".actions.find") %></p>
+    <fieldset>
+      <p class="note"><%= t(".search_by_name") %></p>
+      <div class="form-row side-label">
+        <%= label_tag "query", t(".search_box.label") %>
+        <div class="field">
+          <%= text_field_tag "query", params[:query] %>
+        </div>
+      </div>
+      <div class="submit"><%= submit_tag t(".actions.find") %></div>
+    </fieldset>
   <% end %>
 
   <table summary="<%= t(".table.summary") %>">
@@ -39,9 +42,7 @@
         <td><%= api_key.created_at %></td>
         <td><%= api_key.updated_at %></td>
         <td>
-          <ul class="actions">
-            <li><%= link_to t(".table.actions.edit"), edit_admin_api_path(api_key) %></li>
-          </ul>
+          <%= link_to t(".table.actions.edit"), edit_admin_api_path(api_key), class: 'button' %>
         </td>
       </tr>
     <% end %>

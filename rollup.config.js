@@ -5,7 +5,8 @@ export default {
     "app/assets/javascript/application.js",
     "app/assets/javascript/skineditor.js",
     "app/assets/javascript/workeditor.js",
-    "app/assets/javascript/search.js"
+    "app/assets/javascript/search.js",
+    "app/assets/javascript/rte.js"
   ],
   output: {
     dir: "app/assets/builds",

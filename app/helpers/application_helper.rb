@@ -268,14 +268,7 @@ module ApplicationHelper
 
   ## Allow use of tiny_mce WYSIWYG editor
   def use_tinymce
-    @content_for_tinymce = ""
-    content_for :tinymce do
-      javascript_include_tag "tinymce/tinymce.min.js", skip_pipeline: true
-    end
-    @content_for_tinymce_init = ""
-    content_for :tinymce_init do
-      javascript_include_tag "mce_editor.min.js", skip_pipeline: true
-    end
+    ""
   end
 
   # check for pages that allow tiny_mce before loading the massive javascript

@@ -21,3 +21,8 @@
 @import '_collections.css';
 @import '_banner.css';
 @import '_admin.css';
+@import '../../../node_modules/prosemirror-view/style/prosemirror.css';
+@import '../../../node_modules/prosemirror-menu/style/menu.css';
+@import '../../../node_modules/prosemirror-example-setup/style/style.css';
+@import '../../../node_modules/prosemirror-gapcursor/style/gapcursor.css';
+@import '_rte.css';

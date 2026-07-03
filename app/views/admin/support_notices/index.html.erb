@@ -10,7 +10,7 @@
   <%== pagy_nav(@pagy) %>
 
   <!--main content-->
-  <ul class="support banner index group">
+  <ul id="support-notices" class="blurb-list">
     <%= render partial: "support_notice_blurb", collection: @support_notices, as: :support_notice %>
   </ul>
   <!--/content-->

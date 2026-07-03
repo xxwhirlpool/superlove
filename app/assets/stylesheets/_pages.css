@@ -12,7 +12,7 @@
     padding: .125rem;
   }
   
-  ul:not(.actions) {
+  ul:not(.actions):not(.ProseMirror-menu-dropdown-item) {
     margin: 0.65rem auto;
     padding: 0;
     

@@ -19,6 +19,12 @@
     "@parcel/watcher": "^2.5.6",
     "@toast-ui/editor": "^3.2.2",
     "autocompleter": "^9.3.2",
-    "codemirror": "^6.0.2"
+    "codemirror": "^6.0.2",
+    "prosemirror-example-setup": "^1.2.3",
+    "prosemirror-model": "^1.25.9",
+    "prosemirror-schema-basic": "^1.2.4",
+    "prosemirror-schema-list": "^1.5.1",
+    "prosemirror-state": "^1.4.4",
+    "prosemirror-view": "^1.42.0"
   }
 }
