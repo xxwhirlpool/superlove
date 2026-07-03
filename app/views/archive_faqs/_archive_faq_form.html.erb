@@ -37,11 +37,8 @@
     <% form.object.questions.each_with_index do |question, index| %>
       <%= form.fields_for :questions, question do |question_form| %>
         <%= render "question_answer_fields", form: question_form, index: index %>
-        test1
       <% end %>
-      test2
     <% end %>
-    test3
   </div>
   <% if Globalize.locale.to_s == "en" %>
     <div class="actions right">

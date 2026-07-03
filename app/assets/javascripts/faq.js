@@ -8,6 +8,9 @@ document.getElementById('add-question').addEventListener('click', (e) => {
   template.id = `faq-item-${index+1}`;
   console.log(template.querySelector('h4 span'));
   template.querySelector('h4 span').textContent = index.toString();
+  template.querySelectorAll('input[type="text"], textarea').forEach((elt) => {
+    elt.value = "";
+  });
   group.append(template);
   const indexField = document.createElement('input');
   indexField.type = "hidden";
@@ -22,6 +25,9 @@ document.addEventListener('click', (e) => {
   if (e.target.closest('.remove-section')) {
     e.preventDefault();
     const container = e.target.closest('.faq-item');
+    const index = parseInt(container.getAttribute('data-index'));
+    const idField = document.getElementById(`archive_faq_questions_attributes_${index - 1}_id`);
+    idField.remove();
     // TODO: add this to translations somehow
     const confirmation = confirm("Are you sure you'd like to delete this FAQ item?");
     if (confirmation) container.remove();
