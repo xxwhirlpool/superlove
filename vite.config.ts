@@ -6,15 +6,14 @@ export default defineConfig({
     rails({
       input: [
         "javascripts/application.js",
-        "javascripts/faq.js",
+        "javascripts/faqadd.js",
+        "javascripts/faqdrag.js",
         "javascripts/rte.js",
         "javascripts/search.js",
         "javascripts/skineditor.js",
         "javascripts/workeditor.js",
         "javascripts/tip.mjs",
         "javascripts/autocompleter.mjs",
-        "javascripts/highlightjs/css.min.js",
-        "javascripts/highlightjs/highlight.min.js",
         "javascripts/oneko.js",
         "stylesheets/application.css",
         "stylesheets/nekobutton.css",

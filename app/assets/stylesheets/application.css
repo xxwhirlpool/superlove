@@ -1,8 +1,9 @@
 @import '_globals.css';
-@import '_forms.css';
-@import '_tables.css';
-@import '_popovers.css';
-@import '_flash.css';
+@import 'components/_forms.css';
+@import 'components/_tables.css';
+@import 'components/_popovers.css';
+@import 'components/_sortablelist.css';
+@import 'components/_flash.css';
 @import '_header.css';
 @import '_nav.css';
 @import '_main.css';
