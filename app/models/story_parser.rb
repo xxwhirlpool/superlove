@@ -39,7 +39,7 @@ class StoryParser
 
   # places for which we have a custom parse_story_from_[source] method
   # for getting information out of the downloaded text
-  KNOWN_STORY_PARSERS = %w[deviantart dw lj].freeze
+  KNOWN_STORY_PARSERS = %w[ao3 deviantart dw lj].freeze
 
   # places for which we have a custom parse_author_from_[source] method
   # which returns an external_author object including an email address
@@ -55,6 +55,7 @@ class StoryParser
 
   # regular expressions to match against the URLS
   SOURCE_LJ = '((live|dead|insane)journal\.com)|journalfen(\.net|\.com)|dreamwidth\.org'.freeze
+  SOURCE_AO3 = '(archiveofourown\.org|ao3\.org)'.freeze
   SOURCE_DW = 'dreamwidth\.org'.freeze
   SOURCE_FFNET = '(^|[^A-Za-z0-9-])fanfiction\.net'.freeze
   SOURCE_DEVIANTART = 'deviantart\.com'.freeze
@@ -735,6 +736,95 @@ class StoryParser
     end
 
     work_params
+  end
+
+  # THANK YOU BRENNAN
+  # https://brennan.day/fixing-work-imports-from-other-otw-based-archives/
+  #
+  # _story: the raw HTML string passed in by the importer (used only as a last-resort fallback)
+  # detect_tags: when true, also scrape metadata (rating, warnings, fandoms, etc.) from the work page
+  def parse_story_from_ao3(_story, detect_tags = true)
+    work_params = { chapter_attributes: {} }
+
+    # Title: prefer the visible <h2> heading on the page over the browser <title> tag.
+    # The <title> tag appends " [Archive of Our Own]" which we strip out with a regex,
+    # but the h2.title.heading is cleaner and always present on a valid work page.
+    title_node = @doc.at_css('h2.title.heading')
+    work_params[:title] = if title_node
+      title_node.inner_text.strip
+    else
+      # Fallback: strip the site suffix from the <title> tag (e.g. "My Fic [Archive of Our Own]" → "My Fic")
+      @doc.at_css('title')&.inner_text&.sub(/\s*\[Archive of Our Own\]\s*$/i, '')&.strip.to_s
+    end
+
+    # Summary: the blockquote inside .summary.module holds the author-written work summary.
+    # clean_storytext sanitizes the HTML (strips dangerous tags, normalizes whitespace, etc.)
+    summary_node = @doc.at_css('.summary.module blockquote.userstuff')
+    work_params[:summary] = clean_storytext(summary_node.inner_html) if summary_node
+
+    # Author's beginning notes: scoped inside .preface.group so we don't accidentally
+    # grab end notes, which live in a separate .notes.module outside the preface.
+    preface = @doc.at_css('.preface.group')
+    if preface
+      notes_node = preface.at_css('.notes.module blockquote.userstuff')
+      work_params[:notes] = clean_storytext(notes_node.inner_html) if notes_node
+    end
+
+    # Story text: #chapters contains the actual chapter content. We target .userstuff
+    # inside it to get only the prose and not chapter headings, chapter navigation, etc.
+    # Without this, the fallback parser would grab the entire <body>, including AO3's
+    # full site navigation, header, login forms, and footer.
+    chapters_div = @doc.at_css('#chapters')
+    if chapters_div
+      userstuff = chapters_div.at_css('.userstuff')
+      # If .userstuff is missing for some reason, fall back to the whole #chapters div
+      storytext = userstuff ? userstuff.inner_html : chapters_div.inner_html
+    else
+      # Last resort: use the raw <body> HTML, or the original _story string if even that is missing
+      storytext = @doc.at_css('body')&.inner_html || _story
+    end
+    work_params[:chapter_attributes][:content] = clean_storytext(storytext)
+
+    # Tag metadata lives in a <dl class="work meta group"> on every AO3 work page.
+    # Each tag category is a <dd> with a specific class, containing <li><a class="tag"> items.
+    # We map each <a> to its text, then pass it to the existing OTWA tag-processing helpers.
+    if detect_tags
+      meta_group = @doc.at_css('dl.work.meta.group')
+      if meta_group
+        # Rating is a single value (e.g. "Teen And Up Audiences"); convert_rating_string maps
+        # to the OTWA internal rating constant
+        rating = meta_group.css('dd.rating.tags li a.tag').map { |a| a.inner_text.strip }
+        work_params[:rating_string] = convert_rating_string(rating.first) if rating.any?
+
+        # Archive warnings (e.g. "No Archive Warnings Apply", "Graphic Depictions Of Violence")
+        warnings = meta_group.css('dd.warning.tags li a.tag').map { |a| a.inner_text.strip }
+        work_params[:archive_warning_string] = warnings.join(', ') if warnings.any?
+
+        # Fandoms, relationships, characters, and freeform tags can all be multi-value.
+        # DELIMITER_FOR_OUTPUT is the separator OTWA uses internally between tag values (typically ", ").
+        # clean_tags normalizes capitalization and strips any characters invalid for tag names.
+        fandoms = meta_group.css('dd.fandom.tags li a.tag').map { |a| a.inner_text.strip }
+        work_params[:fandom_string] = clean_tags(fandoms.join(ArchiveConfig.DELIMITER_FOR_OUTPUT)) if fandoms.any?
+
+        relationships = meta_group.css('dd.relationship.tags li a.tag').map { |a| a.inner_text.strip }
+        work_params[:relationship_string] = clean_tags(relationships.join(ArchiveConfig.DELIMITER_FOR_OUTPUT)) if relationships.any?
+
+        characters = meta_group.css('dd.character.tags li a.tag').map { |a| a.inner_text.strip }
+        work_params[:character_string] = clean_tags(characters.join(ArchiveConfig.DELIMITER_FOR_OUTPUT)) if characters.any?
+
+        # Freeform tags are the author's custom tags (the "Additional Tags" field on AO3)
+        freeforms = meta_group.css('dd.freeform.tags li a.tag').map { |a| a.inner_text.strip }
+        work_params[:freeform_string] = clean_tags(freeforms.join(ArchiveConfig.DELIMITER_FOR_OUTPUT)) if freeforms.any?
+
+        # Use the AO3 publish date as the OTWA revised_at timestamp
+        published = meta_group.at_css('dd.published')
+        work_params[:revised_at] = convert_revised_at(published.inner_text.strip) if published
+      end
+    end
+
+    # post_process_meta applies final OTWA-side transformations to work_params
+    # (e.g. resolving tag objects, setting defaults) before the work is saved
+    post_process_meta(work_params)
   end
 
   # Move and/or copy any meta attributes that need to be on the chapter rather
