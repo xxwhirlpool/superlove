@@ -2,47 +2,49 @@
 <div class="faq-item" id="faq-item-<%= index + 1 %>" data-index="<%= index + 1 %>">
   <fieldset>
     <% if index.is_a? String %>
-      <% question_label = ts("Question <span>#{index}</span>") %>
+      <% question_label = t(".question_label", index: index) %>
     <% else %>
-      <% question_label = ts("Question <span>#{index + 1}</span>") %>
+      <% question_label = t(".question_label", index: index + 1) %>
     <% end %>
     <h4><%== question_label %></h4>
 
     <div class="form-row side-label required">
-      <%= form.label :question, ts("Question") + "*" %>
+      <%= form.label :question, t(".question") + "*" %>
       <div class="field">
         <%= form.text_field :question, required: true %>
       </div>
     </div>
 
     <div class="form-row side-label required">
-      <%= form.label :anchor, ts("Anchor name") + "*" %>
+      <%= form.label :anchor, t(".anchor_name") + "*" %>
       <div class="field">
         <%= form.text_field :anchor, disabled: (I18n.locale != I18n.default_locale), required: true %>
       </div>
     </div>
 
     <div class="form-row side-label required">
-      <%= form.label :content, ts("Answer") + "*" %>
+      <%= form.label :content, t(".answer") + "*" %>
       <div class="field">
         <%= form.text_area :content, required: true, minlength: ArchiveConfig.CONTENT_MIN.to_s %>
       </div>
     </div>
 
     <div class="form-row side-label">
-      <%= form.label :screencast, ts("Screencast URL") %>
+      <%= form.label :screencast, t(".screencast_url") %>
       <div class="field">
         <%= form.text_field :screencast %>
         <% if Globalize.locale.to_s != "en" %>
-          <dt><%= form.check_box :is_translated %></dt>
-          <dd><%= form.label :is_translated, ts("Question translated") %></dd>
+          <%= form.label :is_translated, t(".question_translated") do |l| %>
+            <%= form.check_box :is_translated %>
+            <%= t(".question_translated") %>
+          <% end %>
         <% end %>
       </div>
     </div>
     <% if Globalize.locale.to_s == "en" %>
       <% # TODO: DELETE A QUESTION %>
       <div class="actions">
-        <% removetext = ts("Remove Question") %>
+        <% removetext = t(".remove_question") %>
         <%= link_to_remove_section(removetext, form) %>
         <% # TODO: DELETE QUESTION WITHOUT JAVASCRIPT %>
         <noscript>

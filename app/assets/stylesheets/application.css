@@ -3,6 +3,7 @@
 @import 'components/_tables.css';
 @import 'components/_popovers.css';
 @import 'components/_sortablelist.css';
+@import 'components/_breadcrumbs.css';
 @import 'components/_flash.css';
 @import '_header.css';
 @import '_nav.css';

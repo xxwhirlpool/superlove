@@ -14,8 +14,6 @@ done
 
 container-compose up -d
 
-sleep 60
-
 container-compose run --rm web script/reset_database.sh
 
 # The development database reset will do everything except run migrations for

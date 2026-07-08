@@ -10,7 +10,7 @@
   <%= will_paginate @admin_banners %>
 
   <!--main content-->
-  <ul class="banner index group">
+  <ul class="blurb-list">
     <% for admin_banner in @admin_banners %>
       <li class="blurb">
         <%= render "banner", admin_banner: admin_banner %>

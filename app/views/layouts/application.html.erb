@@ -43,7 +43,10 @@
           <!-- BEGIN sidebar -->
           <%= yield :sidebar %>
           <!-- END sidebar -->
-          <%= yield %>
+          <div id="content">
+            <%= yield :breadcrumbs %>
+            <%= yield %>
+          </div>
         </main>
         <!-- END main -->
       </div>

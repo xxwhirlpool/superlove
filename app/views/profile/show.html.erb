@@ -4,60 +4,57 @@
   <% end %>
 <% end %>
 
-<div id="content">
-  <%= render 'users/header' %>
+<%= render 'users/header' %>
 
-  <!--main content-->
-  <% if @profile.title.present? %>
-    <h2><%=h @profile.title %></h2>
-  <% end %>
+<!--main content-->
+<% if @profile.title.present? %>
+  <h2><%=h @profile.title %></h2>
+<% end %>
 
-  <ul id="user-meta" class="outset meta">
-    <li id="pseuds">
-      <b><%= ts("My pseuds:") %></b>
-      <div class="meta-value">
-        <%= print_pseud_list(@user, @pseuds) %>
-      </div>
-    </li>
-    <li id="joindate">
-      <b><%= ts("I joined on:") %></b>
-      <div class="meta-value">
-        <%= l(@profile.created_at) %>
-      </div>
-    </li>
-    <li id="userid">
-      <b><%= ts("My user ID is:") %></b>
-      <div class="meta-value">
-        <%= @user.id %>
-      </div>
-  </ul>
-
-  <% if @profile.about_me.present? %>
-    <div id="bio">
-      <h3><%=h ts("Bio") %></h3>
-      <div id="bio-content">
-        <%=raw sanitize_field(@profile, :about_me) %>
-      </div>
+<ul id="user-meta" class="outset meta">
+  <li id="pseuds">
+    <b><%= ts("My pseuds:") %></b>
+    <div class="meta-value">
+      <%= print_pseud_list(@user, @pseuds) %>
     </div>
-  <% end %>
-  <!--/content-->
+  </li>
+  <li id="joindate">
+    <b><%= ts("I joined on:") %></b>
+    <div class="meta-value">
+      <%= l(@profile.created_at) %>
+    </div>
+  </li>
+  <li id="userid">
+    <b><%= ts("My user ID is:") %></b>
+    <div class="meta-value">
+      <%= @user.id %>
+    </div>
+</ul>
 
-  <!--subnav-->
-  <% if logged_in? && current_user == @user %>
-    <h3 class="landmark"><%= ts("Actions") %></h3>
-    <ul class="actions right">
-      <li><%= link_to t(".edit_my_works"), show_multiple_user_works_path(@user) %></li>
-      <li><%= link_to t(".edit_my_profile"), edit_user_profile_path(@user) %></li>
-      <li><%= link_to t(".edit_my_preferences"), user_preferences_path(@user) %></li>
-      <li><%= link_to t(".edit_my_pseuds"), user_pseuds_path(@user) %></li>
-      <li><%= link_to t(".delete_my_account"), @user, data: { confirm: t(".delete_account_confirmation") }, method: :delete %></li>
-    </ul>
-  <% elsif policy(@user.profile).full_access? %>
-    <h3 class="landmark"><%= t("admin.admin_options.landmark") %></h3>
-    <ul class="actions right">
-      <li><%= link_to t(".edit_profile"), edit_user_profile_path(@user) %></li>
-    </ul>
-  <% end %>
-  <!--/subnav-->
+<% if @profile.about_me.present? %>
+  <div id="bio">
+    <h3><%=h ts("Bio") %></h3>
+    <div id="bio-content">
+      <%=raw sanitize_field(@profile, :about_me) %>
+    </div>
+  </div>
+<% end %>
+<!--/content-->
 
-</div>
+<!--subnav-->
+<% if logged_in? && current_user == @user %>
+  <h3 class="landmark"><%= ts("Actions") %></h3>
+  <ul class="actions right">
+    <li><%= link_to t(".edit_my_works"), show_multiple_user_works_path(@user) %></li>
+    <li><%= link_to t(".edit_my_profile"), edit_user_profile_path(@user) %></li>
+    <li><%= link_to t(".edit_my_preferences"), user_preferences_path(@user) %></li>
+    <li><%= link_to t(".edit_my_pseuds"), user_pseuds_path(@user) %></li>
+    <li><%= link_to t(".delete_my_account"), @user, data: { confirm: t(".delete_account_confirmation") }, method: :delete %></li>
+  </ul>
+<% elsif policy(@user.profile).full_access? %>
+  <h3 class="landmark"><%= t("admin.admin_options.landmark") %></h3>
+  <ul class="actions right">
+    <li><%= link_to t(".edit_profile"), edit_user_profile_path(@user) %></li>
+  </ul>
+<% end %>
+<!--/subnav-->

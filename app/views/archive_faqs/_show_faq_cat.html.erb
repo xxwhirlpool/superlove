@@ -4,40 +4,38 @@
   </div>
 <% end %>
 
-<div class="admin" role="article">
-  <% if policy(ArchiveFaq).translation_access? %>
-    <div class="actions right">
-      <% if Globalize.locale.to_s != "en" || policy(ArchiveFaq).full_access? -%>
-        <%= link_to t(".edit"), edit_archive_faq_path(@archive_faq) %>
+<% if policy(ArchiveFaq).translation_access? %>
+  <div class="actions right">
+    <% if Globalize.locale.to_s != "en" || policy(ArchiveFaq).full_access? -%>
+      <%= link_to t(".edit"), edit_archive_faq_path(@archive_faq) %>
+    <% end %>
+  </div>
+<% end %>
+
+<% if @archive_faq.questions.blank? %>
+  <div class="notice"><%= t(".no_category_entries") %></div>
+<% else %>
+  <div <% if rtl? %> dir="rtl"<% end %> class="userstuff">
+    <nav id="toc" aria-labelledby="toc-nav-heading" class="toc">
+      <ul class="toc">
+        <% for q in @archive_faq.questions %>
+          <li><%= link_to q.question, archive_faq_path(@archive_faq, anchor: q.anchor) %></li>
+        <% end %>
+      </ul>
+    </nav>
+
+    <div id="faq">
+      <% for q in @archive_faq.questions %>
+        <h3 id="<%= q.anchor %>">
+          <%= q.question %>
+        </h3>
+        <% unless q.screencast.to_s == "" %>
+          <p class="screencast">
+            <span class="label"><%= t(".screencast") %></span> <%= link_to q.question, q.screencast.to_s %>
+          </p>
+        <% end %>
+        <%= raw sanitize_field(q, :content) %>
       <% end %>
     </div>
-  <% end %>
-
-  <% if @archive_faq.questions.blank? %>
-    <div class="notice"><%= t(".no_category_entries") %></div>
-  <% else %>
-    <div <% if rtl? %> dir="rtl"<% end %> class="userstuff">
-      <nav id="toc" aria-labelledby="toc-nav-heading" class="toc">
-        <ul class="toc">
-          <% for q in @archive_faq.questions %>
-            <li><%= link_to q.question, archive_faq_path(@archive_faq, anchor: q.anchor) %></li>
-          <% end %>
-        </ul>
-      </nav>
-
-      <div id="faq">
-        <% for q in @archive_faq.questions %>
-          <h3 id="<%= q.anchor %>">
-            <%= q.question %>
-          </h3>
-          <% unless q.screencast.to_s == "" %>
-            <p class="screencast">
-              <span class="label"><%= t(".screencast") %></span> <%= link_to q.question, q.screencast.to_s %>
-            </p>
-          <% end %>
-          <%= raw sanitize_field(q, :content) %>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
-</div>
+  </div>
+<% end %>

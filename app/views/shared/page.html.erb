@@ -1,10 +1,11 @@
+<% if @page_breadcrumbs %>
+  <%= @page_breadcrumbs.html_safe %>
+<% end %>
 <h2><%= @page_heading.html_safe %></h2>
 <% if @page_nav %>
   <%= @page_nav.html_safe %>
 <% end %>
-<div id="content">
-  <%= @page_content.html_safe %>
-</div>
+<%= @page_content.html_safe %>
 <% if @page_nav %>
   <%= @page_nav.html_safe %>
 <% end %>

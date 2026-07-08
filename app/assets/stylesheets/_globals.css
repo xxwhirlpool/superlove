@@ -17,17 +17,23 @@
   --lightborder: #dddddd;
   --altaccent: #333333;
   
-  --alert-bg: #d1e1ef;
-  --alert-border: #b0c4d4;
+  --alert-bg: #fece3f;
+  --alert-border: #edb202;
+  --alert-text: #333333;
   --caution-bg: #FFE34F;
+  --caution-text: #000000;
   --caution-border: #d89e36;
   --error-bg: #efd1d1;
   --error-border: #990000;
   
   --announcement-bg: #d1e1ef;
   --announcement-border: #c2d2df;
-  --event-bg: #770000;
+  --announcement-text: var(--text);
+  --announcement-shadow: inset 1px 1px 3px var(--inset-shadow);
+  --event-bg: linear-gradient(to bottom, #700 0%, #a00 100%) #770000;
   --event-border: #660000;
+  --event-text: var(--background);
+  --event-shadow: inset 1px 1px 3px var(--event-border);
   
   --button-gradient: linear-gradient(var(--neutral100) 2%, var(--neutral300) 95%, var(--neutral500) 100%);
   --button-border: var(--neutral500);

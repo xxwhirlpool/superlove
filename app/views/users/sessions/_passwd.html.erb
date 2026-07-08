@@ -1,22 +1,20 @@
-<div id="content">
-  <%= form_for(User.new, url: new_user_session_path(return_to: params[:return_to])) do |f| %>
-    <fieldset>
-      <div class="form-row side-label">
-        <%= f.label :login, t(".username_or_email") %>
-        <%= f.text_field :login %>
-      </div>
-      <div class="form-row side-label">
-        <%= f.label :password, t(".password") %>
-        <%= f.password_field :password %>
-      </div>
-      <div class="form-row side-label checkbox">
-        <%= f.label :remember_me, t(".remember_me") %>
-        <%= f.check_box :remember_me %>
-      </div>
-      <div class="submit">
-        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-        <%= f.submit t(".log_in"), class: "submit" %>
-      </div>
-    </fieldset>
-  <% end %>
-</div>
+<%= form_for(User.new, url: new_user_session_path(return_to: params[:return_to])) do |f| %>
+  <fieldset>
+    <div class="form-row side-label">
+      <%= f.label :login, t(".username_or_email") %>
+      <%= f.text_field :login %>
+    </div>
+    <div class="form-row side-label">
+      <%= f.label :password, t(".password") %>
+      <%= f.password_field :password %>
+    </div>
+    <div class="form-row side-label checkbox">
+      <%= f.label :remember_me, t(".remember_me") %>
+      <%= f.check_box :remember_me %>
+    </div>
+    <div class="submit">
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <%= f.submit t(".log_in"), class: "submit" %>
+    </div>
+  </fieldset>
+<% end %>

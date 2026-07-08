@@ -2,17 +2,17 @@
   <% if Globalize.locale.to_s == "en" %>
     <%= form_tag({}, {:method => :get}) do %>
       <fieldset>
-        <legend><%= ts("Add Questions") %></legend>
+        <legend><%= t(".add_questions") %></legend>
         <p class="notes">
-          <%= ts("Since you don't have JavaScript turned on, please tell us how many questions you want this category to have. (This must be greater than the current number of questions, which is %{num}.) ", num: @archive_faq.questions.count) %>
+          <%= t(".no_javascript.explanation", num: @archive_faq.questions.count) %>
         </p>
         <div class="form-row side-label">
-          <%= label_tag "num_questions", ts("Questions:") %>
+          <%= label_tag "num_questions", t(".no_javascript.questions_count_label") %>
           <div class="field">
             <%= number_field_tag "num_questions", params["num_questions"], class: "number" %>
           </div>
         </div>
-        <div class="submit"><%= submit_tag ts("Update Form") %></div>
+        <div class="submit"><%= submit_tag t(".no_javascript.submit") %></div>
       </fieldset>
     <% end %>
   <% end %>
@@ -20,11 +20,11 @@
 
 <%= form_for(@archive_faq, html: { class: "create faq" }) do |form| %>
   <%= error_messages_for @archive_faq %>
-  <p class="required notice"><%= ts("* Required information") %></p>
+  <p class="required notice"><%= t(".required") %></p>
   <fieldset>
-    <legend><%= ts("Set Preferences") %></legend>
+    <legend><%= t(".set_preferences") %></legend>
     <div class="form-row side-label required">
-      <%= form.label :title, ts("Category name") + "*" %>
+      <%= form.label :title, t(".category_name") + "*" %>
       <div class="field">
         <%= form.text_field :title, required: true %>
       </div>
@@ -32,7 +32,7 @@
   </fieldset>
 
   <% # TODO: If you have the form set up to create 3 questions and you only fill in 2, you get an error instead of the totally empty section being ignored. This is the same with requests/offers in challenge signups. %>
-  <h3><%= ts("Questions") %></h3>
+  <h3><%= t(".questions_heading") %></h3>
   <div id="questions">
     <% form.object.questions.each_with_index do |question, index| %>
       <%= form.fields_for :questions, question do |question_form| %>
@@ -42,15 +42,14 @@
   </div>
   <% if Globalize.locale.to_s == "en" %>
     <div class="actions right">
-      <%= link_to(ts("Add Question"), '#', id: 'add-question', class: 'button') %>
+      <%= link_to(t(".add_question"), '#', id: 'add-question', class: 'button') %>
     </div>
   <% end %>
   <fieldset>
-    <legend><%= ts("Submit") %></legend>
     <div class="submit">
-      <%= submit_tag ts("Post"), name: "post_button" %>
+      <%= submit_tag t(".submit"), name: "post_button" %>
     </div>
   </fieldset>
 <% end %>
 
-<%= javascript_include_tag 'faqadd', "data-turbo-track": "reload" %>
+<%= vite_tags 'javascripts/faqadd.js' %>

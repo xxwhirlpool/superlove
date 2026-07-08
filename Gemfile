@@ -11,6 +11,7 @@ gem "rails-i18n", "~> 8.0", git: "https://github.com/svenfuchs/rails-i18n", ref:
 gem "rack", "~> 2.2"
 gem "sprockets", "< 4"
 gem "rails_vite"
+gem "herb"
 
 gem 'rails-observers', git: 'https://github.com/rails/rails-observers'
 gem 'actionpack-page_caching'

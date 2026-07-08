@@ -76,9 +76,6 @@ services:
       RUBY_VERSION: 3.4.6
       # Disable rack-timeout
       RACK_TIMEOUT_SERVICE_TIMEOUT: 0
-      CODESPACES: ${CODESPACES:-}
-      CODESPACE_NAME: ${CODESPACE_NAME:-}
-      GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN: ${GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN:-}
       ACTIVE_RECORD_ENCRYPTION_PRIMARY_KEY: bEZjYLY9tCYGh6WlcMtEJpIi7GO2plZC
       ACTIVE_RECORD_ENCRYPTION_DETERMINISTIC_KEY: PpLWizzsQHIWnIihtECw8nDHZQd0amzf
       ACTIVE_RECORD_ENCRYPTION_KEY_DERIVATION_SALT: 3S99KdpdEWLnCYudBgUfdCFDBWePWCud
@@ -102,7 +99,7 @@ services:
     build:
       context: .
       dockerfile: ./config/docker/Dockerfile
-    command: bash -c "bundle exec rake environment resque:scheduler & bundle exec rake environment resque:work"
+    #command: bash -c "bundle exec rake environment resque:scheduler & bundle exec rake environment resque:work"
     volumes:
       - .:/otwa
     environment:
@@ -134,7 +131,6 @@ services:
       - CUCUMBER_PUBLISH_QUIET=true
       # Silence ebook-convert warning about running as root
       - QTWEBENGINE_CHROMIUM_FLAGS=--no-sandbox
-    command: sleep infinity
     volumes:
       - .:/otwa
     ports:

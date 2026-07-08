@@ -4,31 +4,29 @@
   <% end %>
 <% end %>
 
-<div id="content">
-  <!--Descriptive page name, messages and instructions-->
-  <h2><%= ts("Pseuds for %{user}", :user => @user.login) %></h2>
-  <!--/descriptions-->
+<!--Descriptive page name, messages and instructions-->
+<h2><%= ts("Pseuds for %{user}", :user => @user.login) %></h2>
+<!--/descriptions-->
 
-  <!--subnav-->
-  <% if current_user == @user %>
-    <h3 class="landmark"><%= ts("Navigation") %></h3>
-    <ul class="navigation">
-      <li><%= link_to ts('New Pseud'), new_user_pseud_path(@user) %></li>
-    </ul>
-  <% end %>
-  <%= will_paginate @pseuds %>
-  <!--/subnav-->
-
-  <!--main content-->
-  <h3 class="landmark"><%= ts("List of Pseuds") %></h3>
-  <ul id="pseuds-list">
-    <% @pseuds.each do |pseud| %>
-      <%= render :partial => 'pseuds/pseud_blurb', :locals => {:pseud => pseud} %>
-    <% end %>
+<!--subnav-->
+<% if current_user == @user %>
+  <h3 class="landmark"><%= ts("Navigation") %></h3>
+  <ul class="navigation">
+    <li><%= link_to ts('New Pseud'), new_user_pseud_path(@user) %></li>
   </ul>
-  <!--/content-->
+<% end %>
+<%= will_paginate @pseuds %>
+<!--/subnav-->
 
-  <!--subnav-->
-  <%= will_paginate @pseuds %>
-  <!--/subnav-->
-</div>
+<!--main content-->
+<h3 class="landmark"><%= ts("List of Pseuds") %></h3>
+<ul id="pseuds-list">
+  <% @pseuds.each do |pseud| %>
+    <%= render :partial => 'pseuds/pseud_blurb', :locals => {:pseud => pseud} %>
+  <% end %>
+</ul>
+<!--/content-->
+
+<!--subnav-->
+<%= will_paginate @pseuds %>
+<!--/subnav-->

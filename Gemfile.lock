@@ -341,6 +341,13 @@ GEM
       bigdecimal
       rake (~> 13.3)
     hashdiff (1.2.1)
+    herb (0.10.1-aarch64-linux-gnu)
+    herb (0.10.1-aarch64-linux-musl)
+    herb (0.10.1-arm-linux-gnu)
+    herb (0.10.1-arm-linux-musl)
+    herb (0.10.1-arm64-darwin)
+    herb (0.10.1-x86_64-linux-gnu)
+    herb (0.10.1-x86_64-linux-musl)
     highline (3.1.2)
       reline
     htmlentities (4.4.2)
@@ -834,6 +841,7 @@ DEPENDENCIES
   globalize (~> 7.0)
   god (~> 0.13.7)
   google_visualr!
+  herb
   htmlentities
   httparty
   i18n-tasks
