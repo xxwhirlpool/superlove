@@ -25,7 +25,8 @@
             <%= f.text_field :invitee_email %>
           </div>
           <%= hidden_field_tag :user_id, @user.try(:login) %>
-        <div class="submit"><%= f.submit %></div>
+          <div class="submit"><%= f.submit %></div>
+        </div>
       <% end %>
     <% end %>
   </li>

@@ -11,38 +11,33 @@
     <% end %>
   </h3>
   <div class="wrapper">
-    <dl class="meta group">
-      <dt><%= ts('Active since:') %>
-      <dd><%= l(@collection.created_at.to_date) %></dd>
+    <ul>
+      <li><b><%= ts('Active since:') %></b> <%= l(@collection.created_at.to_date) %></li>
       <% unless @collection.tag_string.blank? %>
-        <dt><%= t(".meta.collection_tags") %></dt>
-        <dd>
+        <li><b><%= t(".meta.collection_tags") %></b>
           <ul class="tags commas">
             <% @collection.tags.each do |tag| %>
               <li><%= link_to_tag_works(tag) %></li>
             <% end %>
           </ul>
-        </dd>
+        </li>
       <% end %>
-      <dt class="maintainers"><%= ts('Maintainers:') %></dt>
-      <dd class="maintainers">
+      <li class="maintainers"><b><%= ts('Maintainers:') %></b>
         <ul class="commas">
           <%= safe_join(@collection.maintainers.uniq.map { |maintainer| content_tag(:li, link_to(maintainer.byline, maintainer.user), class: @collection.user_is_owner?(maintainer.user) ? "owner" : "mod") }, "\n") %>
         </ul>
-      </dd>
+      </li>
       <% unless @collection.email.blank? %>
-        <dt><%= ts('Contact:') %></dt>
-        <dd><%= @collection.email %></dd>
+        <li><b><%= ts('Contact:') %></b> <%= @collection.email %></li>
       <% end %>
       <% if @collection.challenge.present? %>
         <% tag_sets_counted = tag_set_count(@collection) %>
         <% if tag_sets_counted.present? %>
-          <dt><%= tag_sets_counted > 1 ?  ts('Tag Sets:') : ts('Tag Set:') %></dt>
-          <dd>
+          <li><b><%= tag_sets_counted > 1 ?  ts('Tag Sets:') : ts('Tag Set:') %></b>
             <ul class="commas">
             <%= (@collection.challenge_type == "GiftExchange" ? @collection.challenge.offer_restriction.owned_tag_sets : @collection.challenge.request_restriction.owned_tag_sets).map {|tag_set| content_tag(:li, link_to(tag_set.title, tag_set_path(tag_set)))}.join("\n").html_safe %>
             </ul>
-          </dd>
+          </li>
         <% end %>
       <% end %>
       <% if @collection.challenge %>
@@ -50,7 +45,7 @@
         <%= render "challenge/#{challenge_class_name(@collection)}/challenge_meta" %>
       <!-- end challenge subsection -->
       <% end %>
-    </dl>
+    </ul>
   </div>
 
 

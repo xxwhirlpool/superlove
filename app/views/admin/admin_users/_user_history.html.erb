@@ -32,20 +32,20 @@
           <% end %>
         </td>
       </tr>
-      <% unless @log_items.blank?
-         @log_items.each do |item| %>
-        <tr>
-          <td><%= item.created_at %></td>
-          <td><%= log_item_action_name(item) %><%= item.role&.name %><%= item.enddate %></td>
-          <td><%= item.note %></td>
-        </tr>
+      <% unless @log_items.blank? %>
+        <% @log_items.each do |item| %>
+          <tr>
+            <td><%= item.created_at %></td>
+            <td><%= log_item_action_name(item) %><%= item.role&.name %><%= item.enddate %></td>
+            <td><%= item.note %></td>
+          </tr>
+        <% end %>
       <% end %>
-    <% end %>
-    <tr>
-      <td><%= @user.created_at %></td>
-      <td><%= t("admin.admin_users.history.table.creation.action") %></td>
-      <td><%= t("admin.admin_users.history.table.creation.details") %></td>
-    </tr>
+      <tr>
+        <td><%= @user.created_at %></td>
+        <td><%= t("admin.admin_users.history.table.creation.action") %></td>
+        <td><%= t("admin.admin_users.history.table.creation.details") %></td>
+      </tr>
     </tbody>
   </table>
 </div>

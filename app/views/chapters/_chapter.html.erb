@@ -20,7 +20,7 @@
 <%# Both Entire Work and Chapter by Chapter mode write to and read from this cache. Only content needed for both modes should be included here. %>
 <% cache_if(!@preview_mode, "#{@work.cache_key}/#{chapter.cache_key}-show-v7", skip_digest: true) do %>
 
-  <div class="chapter<%= ' preface' unless @preview_mode %> group">
+  <div class="<%= ' preface' unless @preview_mode %>">
     <h3 class="title">
       <%= link_to chapter.chapter_header, [chapter.work, chapter] %><% unless chapter.title.blank? %>: <%= chapter.title.html_safe %><% end %>
     </h3>
@@ -79,7 +79,7 @@
       </div>
     </div>
   <% end %>
+  
+  <% end %><!-- end of cache -->
 
 </div>
-
-<% end %><!-- end of cache -->

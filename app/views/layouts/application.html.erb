@@ -25,7 +25,7 @@
     <%= phraseapp_in_context_editor_js %>
   </head>
 
-  <body class="<%= logged_in? || logged_in_as_admin? ? 'logged-in' : 'logged-out' %><%= logged_in_as_admin? ? ' admin' : '' %>" <%= PhraseApp::InContextEditor.enabled? ? "data-no-turbolink" : "" %>>
+  <body class="<%= logged_in? || logged_in_as_admin? ? 'logged-in' : 'logged-out' %><%= logged_in_as_admin? ? ' admin' : '' %>"<% if PhraseApp::InContextEditor.enabled? %> data-no-turbolink<% end %>>
     <!--
       <%= controller.controller_name %>
     -->

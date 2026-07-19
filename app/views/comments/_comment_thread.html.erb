@@ -13,11 +13,11 @@
         <% else %>
           <li>
             <%= render 'comments/comment_thread', comments: child_comments, depth: depth+1 %>
-            </ol> <!-- needed to close thread -->
           </li>
         <% end %>
       <% end %>
 
     <% end %>
   <% end %>
+</ol>
 <!-- END thread -->

@@ -22,8 +22,8 @@
   <li>If you have a single carriage return between two lines of text, we will put in a break tag for you.</li> 
   <li>If you have two break tags in a row (&lt;br /&gt;&lt;br /&gt;) with nothing between them, we will turn that into paragraph tags.</li>
   <li>If you have two blank lines in a row between paragraphs, we will add extra whitespace in for you (with &lt;p&gt;&amp;nbsp;&lt;/p&gt;)</li> 
-  <li>If you have mis-nested tags like this: &lt;em&gt;&lt;strong&gt;<em><strong>text!</em></strong>&lt;/em&gt;&lt;/strong&gt; we will fix the mis-nesting 
-      (so it would become &lt;em&gt;&lt;strong&gt;<em><strong>text!</em></strong>&lt;/strong&gt;&lt;/em&gt;).</li>
+  <li>If you have mis-nested tags like this: &lt;em&gt;&lt;strong&gt;text!&lt;/em&gt;&lt;/strong&gt; we will fix the mis-nesting 
+      (so it would become &lt;em&gt;&lt;strong&gt;text!&lt;/strong&gt;&lt;/em&gt;).</li>
   <li>If you have forgotten to close a formatting tag, it will be closed at the end of the paragraph for you.</li>
   <li>If you open a formatting tag in one paragraph and close it several paragraphs later, we will reopen/close it within each paragraph.</li>
   <li>If you have put in some custom HTML (eg a list of items inside a &lt;ul&gt;) and you don't want break tags or paragraphs inserted,
@@ -52,7 +52,7 @@
   please resist!
   The work skin feature allows you to apply custom CSS to works, and that lets you make them look 
   just about any way you want them to (and is easier if you are starting from good HTML).
-<p>
+</p>
 
 <p>Some specific recommendations:</p>
 

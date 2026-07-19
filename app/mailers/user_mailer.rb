@@ -203,12 +203,40 @@ class UserMailer < ApplicationMailer
       subject: default_i18n_subject(app_name: ArchiveConfig.APP_SHORT_NAME, collection_title: @collection.title)
     )
   end
+  
+  def styled_tag_list(tags)
+    return nil if !tags || tags.empty?
+    to_sentence(tags.map { |tag| style_link(tag.name, tag_works_url(tag)) })
+  end
 
   def challenge_assignment_notification(collection_id, assigned_user_id, assignment_id)
     @collection = Collection.find(collection_id)
     @assigned_user = User.find(assigned_user_id)
     @assignment = ChallengeAssignment.find(assignment_id)
-    @request = @assignment.request_signup
+    @request = @assignment.request_signup.requests.map do |prompt, index|
+      tag_groups = prompt.tag_groups
+      {
+        :title => prompt.title,
+        :fandoms => prompt.any_fandom ? t(".any") : styled_tag_list(tag_groups["Fandom"]),
+        :chars => prompt.any_character ? t(".any") : styled_tag_list(tag_groups["Character"]),
+        :ships => prompt.any_relationship ? t(".any") : styled_tag_list(tag_groups["Relationship"]),
+        :ratings => prompt.any_rating ? t(".any") : (tag_groups["Rating"] ? get_title_string(tag_groups["Rating"]) : nil),
+        :warnings => prompt.any_archive_warning ? t(".any") : (tag_groups["ArchiveWarning"] ? get_title_string(tag_groups["ArchiveWarning"]) : nil),
+        :categories => prompt.any_category ? t(".any") : (tag_groups["Category"] ? get_title_string(tag_groups["Category"]) : nil),
+        :atags => prompt.any_freeform ? t(".any") : styled_tag_list(tag_groups["Freeform"]),
+        :otags => prompt.optional_tag_set ? styled_tag_list(prompt.optional_tag_set.tags) : nil,
+        :fandoms_count => prompt.any_fandom ? 1 : tag_groups["Fandom"].count,
+        :chars_count => prompt.any_character ? 1 : tag_groups["Character"].count,
+        :ships_count => prompt.any_relationship ? 1 : tag_groups["Relationship"].count,
+        :ratings_count => prompt.any_rating ? 1 : tag_groups["Rating"].count,
+        :warnings_count => prompt.any_archive_warning ? 1 : tag_groups["ArchiveWarning"].count,
+        :categories_count => prompt.any_category ? 1 : tag_groups["Category"].count,
+        :atags_count => prompt.any_freeform ? 1 : tag_groups["Freeform"].count,
+        :url => prompt.url,
+        :description => prompt.description
+      }
+    end
+
     mail(
       to: @assigned_user.email,
       subject: default_i18n_subject(app_name: ArchiveConfig.APP_SHORT_NAME, collection_title: @collection.title)

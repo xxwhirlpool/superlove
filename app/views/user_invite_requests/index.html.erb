@@ -27,7 +27,7 @@
           <td><%= link_to request.user.login, request.user %></td>
           <td><%= request.reason %></td>
           <td><%= text_field_tag "requests[#{request.id}]", request.quantity, :size => 2, :id => "requests[#{request.user.login}]" %></td>
-          <td><%= request.created_at %>
+          <td><%= request.created_at %></td>
           <td><%= link_to_previous_invite_requests(request) %></td>
         </tr>
       <% end %>

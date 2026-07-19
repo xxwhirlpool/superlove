@@ -7,57 +7,41 @@
 
   <%= style_metadata_label(t(".prompts")) %>
 
-  <% @request.requests.each_with_index do |prompt, index| %>
-    <% tag_groups = prompt.tag_groups %>
-
-    <% def styled_tag_list(tags) %>
-      <% return nil if !tags || tags.empty? %>
-      <% to_sentence(tags.map { |tag| style_link(tag.name, tag_works_url(tag)) }) %>
-    <% end %>
-
-    <% fandoms = prompt.any_fandom ? t(".any") : styled_tag_list(tag_groups["Fandom"]) %>
-    <% chars = prompt.any_character ? t(".any") : styled_tag_list(tag_groups["Character"]) %>
-    <% ships = prompt.any_relationship ? t(".any") : styled_tag_list(tag_groups["Relationship"]) %>
-    <% ratings = prompt.any_rating ? t(".any") : (tag_groups["Rating"] ? get_title_string(tag_groups["Rating"]) : nil) %>
-    <% warnings = prompt.any_archive_warning ? t(".any") : (tag_groups["ArchiveWarning"] ? get_title_string(tag_groups["ArchiveWarning"]) : nil) %>
-    <% categories = prompt.any_category ? t(".any") : (tag_groups["Category"] ? get_title_string(tag_groups["Category"]) : nil) %>
-    <% atags = prompt.any_freeform ? t(".any") : styled_tag_list(tag_groups["Freeform"]) %>
-    <% otags = prompt.optional_tag_set ? styled_tag_list(prompt.optional_tag_set.tags) : nil %>
-
+  <% @request.each_with_index do |prompt, index| %>
     <%= styled_divider %>
     <%= index + 1 %>. <%= style_bold(prompt.title) %>
 
     <p>
-      <% if fandoms %>
-        <%= style_metadata_label(t("activerecord.models.fandom", count: prompt.any_fandom ? 1 : tag_groups["Fandom"].count)) %><%= fandoms %>
+      <% if prompt.fandoms %>
+        <%= style_metadata_label(t("activerecord.models.fandom", count: prompt.fandoms_count)) %><%= prompt.fandoms %>
         <br />
       <% end %>
-      <% if chars %>
-        <%= style_metadata_label(t("activerecord.models.character", count: prompt.any_character ? 1 : tag_groups["Character"].count)) %><%= chars %>
+      <% if prompt.chars %>
+        <%= style_metadata_label(t("activerecord.models.character", count: prompt.chars_count)) %><%= chars %>
         <br />
       <% end %>
-      <% if ships %>
-        <%= style_metadata_label(t("activerecord.models.relationship", count: prompt.any_relationship ? 1 : tag_groups["Relationship"].count)) %><%= ships %>
+      <% if prompt.ships %>
+        <%= style_metadata_label(t("activerecord.models.relationship", count: prompt.ships_count)) %><%= prompt.ships %>
         <br />
       <% end %>
-      <% if ratings %>
-        <%= style_metadata_label(t("activerecord.models.rating", count: prompt.any_rating ? 1 : tag_groups["Rating"].count)) %><%= ratings %>
+      <% if prompt.ratings %>
+        <%= style_metadata_label(t("activerecord.models.rating", count: prompt.ratings_count)) %><%= prompt.ratings %>
         <br />
       <% end %>
-      <% if warnings %>
-        <%= style_metadata_label(t("activerecord.models.archive_warning", count: prompt.any_archive_warning ? 1 : tag_groups["ArchiveWarning"].count)) %><%= warnings %>
+      <% if prompt.warnings %>
+        <%= style_metadata_label(t("activerecord.models.archive_warning", count: prompt.warnings_count)) %><%= prompt.warnings %>
         <br />
       <% end %>
-      <% if categories %>
-        <%= style_metadata_label(t("activerecord.models.category", count: prompt.any_category ? 1 : tag_groups["Category"].count)) %><%= categories %>
+      <% if prompt.categories %>
+        <%= style_metadata_label(t("activerecord.models.category", count: prompt.categories_count)) %><%= prompt.categories %>
         <br />
       <% end %>
-      <% if atags %>
-        <%= style_metadata_label(t("activerecord.models.freeform", count: prompt.any_freeform ? 1 : tag_groups["Freeform"].count)) %><%= atags %>
+      <% if prompt.atags %>
+        <%= style_metadata_label(t("activerecord.models.freeform", count: prompt.atags_count)) %><%= prompt.atags %>
         <br />
       <% end %>
       <% if otags %>
-        <%= style_metadata_label(t(".optional_tags")) %><%= otags %>
+        <%= style_metadata_label(t(".optional_tags")) %><%= prompt.otags %>
         <br />
       <% end %>
       <% if prompt.url && !prompt.url.blank? %>

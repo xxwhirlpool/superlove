@@ -6,6 +6,7 @@ export default defineConfig({
     rails({
       input: [
         "javascripts/application.js",
+        "javascripts/checkbox_section_toggle.js",
         "javascripts/faqadd.js",
         "javascripts/faqdrag.js",
         "javascripts/rte.js",

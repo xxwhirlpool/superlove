@@ -1,4 +1,4 @@
-<% # implied opening fieldset tag %>
+<fieldset>
   <p class="notes">
     <%= ts("To add or remove an owner or moderator, enter their name. If they are already on the list they will be removed; if not, they will be added.
   You can't remove the sole owner of a tag set.") %>
@@ -60,4 +60,4 @@
       <dd><%= form.text_field "#{tag_type}_nomination_limit".to_sym, :class => "number" %></dd>
     <% end %>
   </dl>
-<% # implied closing fieldset tag %>
+</fieldset>

@@ -53,6 +53,7 @@ class CollectionsController < ApplicationController
       @sort_and_filter = true
       @search = CollectionSearchForm.new(collection_filter_params.merge(page: params[:page]))
       @collections = @search.search_results.scope(:for_search)
+      puts @search.search_results.inspect
       flash_search_warnings(@collections)
     end
   end

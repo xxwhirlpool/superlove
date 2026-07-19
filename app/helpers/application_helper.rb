@@ -184,10 +184,11 @@ module ApplicationHelper
     options[:path] ||= ""
     options[:id] ||= ""
     options[:title] ||= options[:id]
-
+    options[:params] ||= {}
+    puts options[:path].inspect
     html_options = { class: "modal", title: options[:title], popovertarget: options[:id], type: 'button' }
     button_tag(content, html_options) + "<div popover id='#{options[:id]}'>
-      <div class='popover-inner'>#{render(options[:path])}</div>
+      <div class='popover-inner'>#{render(options[:path], options[:params])}</div>
       <div class='footer-bar'>
         <span class='title'>#{options[:title]}</span>
         <button class='button' type='button' popovertarget='#{options[:id]}' popovertargetaction='hide'>Close</button>
@@ -498,16 +499,18 @@ module ApplicationHelper
 
     # if there are only a few choices, don't show the scrolling and the toggle
     size = choices.size
-    css_class = checkbox_section_css_class(size, options[:concise])
-    checkboxes_ul = content_tag(:ul, checkboxes, class: css_class)
-
-    toggle = "".html_safe
+    
+    toggle_class = ""
+    
     if options[:include_toggle] && !options[:concise] && size > (ArchiveConfig.OPTIONS_TO_SHOW * 6)
-      toggle = checkbox_section_toggle(checkboxes_id, size)
+      toggle_class = " checkbox-toggle"
     end
+    
+    css_class = checkbox_section_css_class(size, options[:concise])
+    checkboxes_ul = content_tag(:ul, checkboxes, class: "#{css_class}#{toggle_class} radio-group")
 
     # We wrap the whole thing in a div
-    return content_tag(:div, checkboxes_ul + toggle + (options[:include_blank] ? hidden_field_tag(field_name, " ") : ''.html_safe), id: checkboxes_id)
+    return content_tag(:div, checkboxes_ul + (options[:include_blank] ? hidden_field_tag(field_name, " ") : ''.html_safe), id: checkboxes_id, "data-css-class": css_class)
   end
 
   def checkbox_section_css_class(size, concise=false)

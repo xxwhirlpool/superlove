@@ -17,7 +17,7 @@
     <% if @challenge_assignments.size == 1 %>
       <li><%= span_if_current ts("My Assignment"), collection_assignment_path(@collection, @challenge_assignments.first) %></li>
     <% elsif @challenge_assignments.size > 1 %>
-      <li><%= span_if_current ts("My Assignments"), user_assignments_path(current_user, :collection_id => @collection.name) %>
+      <li><%= span_if_current ts("My Assignments"), user_assignments_path(current_user, :collection_id => @collection.name) %></li>
     <% end %>
   <% end %>
 

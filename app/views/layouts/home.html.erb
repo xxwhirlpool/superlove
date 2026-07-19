@@ -29,7 +29,7 @@
     <%= render 'layouts/includes' %>
   </head>
 
-  <body id="home" <%= PhraseApp::InContextEditor.enabled? ? "data-no-turbolink" : "" %>>
+  <body id="home" <% if PhraseApp::InContextEditor.enabled? %> data-no-turbolink<% end %>>
       <div id="outer">
         <ul id="skiplinks"><li><a href="#main"><%= ts("Main Content") %></a></li><li><a href="#signup"><%= ts("Sign Up") %></a></li></ul>
   

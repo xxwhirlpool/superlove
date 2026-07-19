@@ -7,7 +7,7 @@
     <!--subnav-->
     <div class="actions">
       <% if policy(@admin_post).edit? || policy(@admin_post).destroy? || (logged_in_as_admin? && @admin_post.find_all_comments.unreviewed_only.exists?) %>
-        <h3 class="landmark"><%= t(".navigation.admin.landmark") %></h4>
+        <h3 class="landmark"><%= t(".navigation.admin.landmark") %></h3>
         <ul class="management actions">
           <% if policy(@admin_post).edit? %>
             <li><%= link_to t(".navigation.admin.edit"), edit_admin_post_path(@admin_post) %></li>
@@ -28,7 +28,7 @@
           <% end %>
         </ul>
       <% end %>
-      <h3 class="landmark"><%= t(".navigation.landmark") %></h4>
+      <h3 class="landmark"><%= t(".navigation.landmark") %></h3>
       <ul class="actions">
         <% if @previous_admin_post %>
           <li><%= link_to t(".navigation.previous"), @previous_admin_post %></li>

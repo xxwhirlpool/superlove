@@ -22,12 +22,12 @@ document.querySelectorAll('[data-autocomplete-method]').forEach((elt) => {
   const searchProgress = `<li class="progress">${autocompleteSearching}</li>`;
   const searchNoResults = `<li class="noresults">${autocompleteNoResults}</li>`;
   const resultsElt = document.createElement('ul');
-  resultsElt.id = id+"-results";
+  resultsElt.id = id+"_results";
   resultsElt.classList.add('results', 'hidden');
   resultsElt.innerHTML = searchHint;
   const results = elt.closest('.autocomplete-wrapper')
   const tagsElt = document.createElement('ul');
-  tagsElt.id = id+"-tags";
+  tagsElt.id = id+"_tags";
   tagsElt.classList.add('tags', 'hidden');
   elt.before(tagsElt);
   tagsElt.after(visibleInput);

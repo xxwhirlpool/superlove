@@ -5,7 +5,7 @@
 <!--/descriptions-->
 
 <!--subnav-->
-<% # Filters button for narrow screens jumps to filters when JavaScript is disabled and opens filters when JavaScript is enabled %>
+<!-- Filters button for narrow screens jumps to filters when JavaScript is disabled and opens filters when JavaScript is enabled -->
 <div class="narrow-shown hidden actions">
   <a href="#inbox-filters" id="go_to_filters"><%= ts("Filters") %></a>
 </div>
@@ -39,7 +39,7 @@
               <%= render "inbox_comment_contents", feedback_comment: feedback_comment %>
             <% end %>
 
-            <div class="landmark"><%= ts("Comment Actions") %></h5>
+            <div class="landmark"><%= ts("Comment Actions") %></div>
 
             <ul class="actions" role="menu">
               <% unless inbox_comment.read? %>

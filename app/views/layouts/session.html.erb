@@ -30,7 +30,7 @@
     <%= phraseapp_in_context_editor_js %>
   </head>
 
-  <body class="<%= logged_in? ? 'logged-in' : 'logged-out' %>" <%= PhraseApp::InContextEditor.enabled? ? "data-no-turbolink" : "" %>>
+  <body class="<% if logged_in? %>logged-in<% else %>logged-out<% end %>"<% if PhraseApp::InContextEditor.enabled? %> data-no-turbolink<% end %>>
     <div id="outer">
       <ul id="skiplinks"><li><a href="#main"><%= ts("Main Content") %></a></li></ul>
       <%= render "layouts/header" %>

@@ -15,6 +15,7 @@ stdout
 /.rspec
 .pnpm-store
 REVISION
+HERB.txt
 
 .env
 

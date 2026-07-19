@@ -2,73 +2,68 @@
 <% challenge = @collection.challenge %>
 <% zone = (challenge.time_zone || Time.zone.name) %>
 <% if challenge.signup_open %>
-  <dt><%= ts("Sign-up:")%></dt>
-  <dd><strong><%= link_to ts("Open"), new_collection_signup_path(@collection) %></strong></dd>
+  <li><b><%= ts("Sign-up:")%></b> <strong><%= link_to ts("Open"), new_collection_signup_path(@collection) %></strong></li>
 
-  <dt><%= ts("Sign-up Closes:")%></dt>
-  <dd class="datetime"><%= time_in_zone(challenge.signups_close_at, zone) %></dd>
+  <li><b><%= ts("Sign-up Closes:")%></b> <%= time_in_zone(challenge.signups_close_at, zone) %></li>
 
 <% elsif Time.now < (challenge.signups_open_at || 1.day.ago) %>
 
-  <dt><%= ts("Sign-up Opens:")%></dt>
-  <dd class="datetime"><%= time_in_zone(challenge.signups_open_at, zone) %></dd>
+  <li><b><%= ts("Sign-up Opens:")%></b> <%= time_in_zone(challenge.signups_open_at, zone) %></li>
 
-  <dt><%= ts("Sign-up Closes:")%></dt>
-  <dd class="datetime"><%= time_in_zone(challenge.signups_close_at, zone) %></dd>
+  <li><b><%= ts("Sign-up Closes:")%></b> <%= time_in_zone(challenge.signups_close_at, zone) %></li>
 
 <% elsif Time.now < (challenge.signups_close_at || 1.day.ago) %>
-  <dt><%= ts("Sign-up:")%></dt>
-  <dd><strong><%= ts("Closed")%></strong></dd>
+  <li><b><%= ts("Sign-up:")%></b> <strong><%= ts("Closed")%></strong></li>
 <% end %>
 
-<dt><%= ts("Assignments Due:")%></dt>
-<dd class="datetime"><%= time_in_zone(challenge.assignments_due_at, zone) %></dd>
+<li><b><%= ts("Assignments Due:")%></b> <%= time_in_zone(challenge.assignments_due_at, zone) %></li>
 
 <% if @collection.unrevealed? %>
-  <dt><%= ts("Works Revealed:")%></dt>
-  <dd class="datetime"><%= time_in_zone(challenge.works_reveal_at, zone) %></dd>
+  <li><b><%= ts("Works Revealed:")%></b> <%= time_in_zone(challenge.works_reveal_at, zone) %></li>
 <% end %>
 
 <% if @collection.anonymous? %>
-  <dt><%= ts("Creators Revealed:")%></dt>
-  <dd class="datetime"><%= time_in_zone(challenge.authors_reveal_at, zone) %></dd>
+  <li><b><%= ts("Creators Revealed:")%></b> <%= time_in_zone(challenge.authors_reveal_at, zone) %></li>
 <% end %>
 
-<dt><%= ts("Signed up:") %></dt>
-<dd>
+<li><b><%= ts("Signed up:") %></b>
   <%= signup_count = @collection.signups.count %>
   <% if signup_count < 6 %>
     <%= ts("Too few sign-ups to display names") %>
   <% else %>  
     <% num_to_show = 20 # arbitrary number for how many names to list %>
     <ul>
-      <% @collection.signups.includes(:pseud => :user).collect(&:pseud).compact.each_with_index do |pseud, index| %>
-        <% if index == num_to_show %>
-          </ul>
-          <h5 id="show_signups" style="display:none" class="showme"><%= ts("(See all...)") %></h5>
-          <ul id="more_signups" class="hideme">
-        <% end %>
-        <li><%= "#{pseud.byline}" + (index != (num_to_show-1) && index != (signup_count-1) ? "," : "") %></li>
+      <% @collection.signups.includes(:pseud => :user).collect(&:pseud).compact.slice(0, 20).each_with_index do |pseud, index| %>
+        <li><%= "#{pseud.byline}" + (index != (num_to_show-1) && index != (signup_count - 1) ? "," : "") %></li>
       <% end %>
     </ul>
+      
     <% if signup_count > num_to_show %>
-      <h5 style="display:none" id="hide_signups"><%= ts("(See fewer...)") %></h5>
-      <%= content_for :footer_js do %>
-        <%= javascript_tag do %>
-          $j(document).ready(function(){
-            $j('#show_signups').click(function() {
-                $j('#more_signups').show();
-                $j('#hide_signups').show();
-                $j(this).hide();
-              });
-            $j('#hide_signups').click(function() {
-                $j('#more_signups').hide();
-                $j('#show_signups').show(); 
-                $j(this).hide();
-              });
-          })
+      <h5 id="show_signups" style="display:none" class="showme"><%= ts("(See all...)") %></h5>
+      <ul id="more_signups" class="hideme">
+        <% @collection.signups.includes(:pseud => :user).collect(&:pseud).compact.slice(21, -1).each_with_index do |pseud, index| %>
+          <li><%= "#{pseud.byline}" + (index != (num_to_show - 1) && index != (signup_count - 1) ? "," : "") %></li>
         <% end %>
-      <% end %>
+      </ul>
+      <h5 style="display:none" id="hide_signups"><%= ts("(See fewer...)") %></h5>
     <% end %>
   <% end %>
-</dd>
+</li>
+
+<%= content_for :footer_js do %>
+  <%= javascript_tag do %>
+  document.addEventListener('ready', (_e) => {
+    document.getElementById('show_signups').addEventListener('click', (e) => {
+      document.getElementById('more_signups').style.display = "block";
+      document.getElementById('hide_signups').style.display = "block";
+      e.target.style.display = "none";
+    });
+    
+    document.getElementById('hide_signups').addEventListener('click', (e) => {
+      document.getElementById('more_signups').style.display = "none";
+      document.getElementById('show_signups').style.display = "block";
+      e.target.style.display = "none";
+    });
+  });
+  <% end %>
+<% end %>

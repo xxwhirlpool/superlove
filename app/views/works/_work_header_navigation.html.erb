@@ -31,7 +31,7 @@
         <%= select_tag :selected_id, options_for_select(options, params[:id].to_i) %>
         <span class="submit"><%= submit_tag t(".chapter_index.submit") %></span>
       <% end %>
-    </details>
+    </details></li>
     <li><%= link_to t(".chapter_index.full_page"), navigate_work_path(@work) %></li>
   <% elsif @chapters && @chapters.length > 1 %>
     <li id="by-chapter"><%= link_to ts("Chapter by Chapter"), [@work, @chapter] %></li>
@@ -89,7 +89,7 @@
 
   <% unless @work.unrevealed? || @work.users.all? {|u| u.preference.disable_share_links?} %>
     <li id="share" class="hidden">
-      <%= link_to_modal ts("Share"), :for => share_work_path(@work), :title => ts("Share Work") %>
+      <%= link_to_modal ts("Share"), :path => 'share', :title => ts("Share Work"), :params => {:workId => @work.id} %>
     </li>
   <% end %>
 
