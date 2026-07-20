@@ -12,7 +12,6 @@ export default defineConfig({
         "javascripts/rte.js",
         "javascripts/search.js",
         "javascripts/skineditor.js",
-        "javascripts/workeditor.js",
         "javascripts/tip.mjs",
         "javascripts/autocompleter.mjs",
         "javascripts/oneko.js",
