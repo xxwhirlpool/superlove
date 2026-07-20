@@ -1,25 +1,20 @@
-<fieldset>
-  <legend><%= t(".legend") %></legend>
+<ul class="actions right">
+  <% unless @work.posted? %>
+    <li><%= submit_tag t(".actions.save_draft"), name: "save_button" %></li>
+  <% end %>
 
-  <ul class="actions">
-    <% unless @work.posted? %>
-      <li><%= submit_tag t(".actions.save_draft"), name: "save_button" %></li>
-    <% end %>
+  <% if @preview_mode %>
+    <li><%= submit_tag t(".actions.edit"), name: "edit_button" %></li>
+  <% else %>
+    <li><%= submit_tag t(".actions.preview"), name: "preview_button" %></li>
+  <% end %>
 
-    <% if @preview_mode %>
-      <li><%= submit_tag t(".actions.edit"), name: "edit_button" %></li>
-    <% else %>
-      <li><%= submit_tag t(".actions.preview"), name: "preview_button" %></li>
-    <% end %>
+  <%# Update if work is already posted, Post if it's not. %>
+  <% if @work.posted? %>
+    <li><%= submit_tag t(".actions.update"), name: "update_button" %></li>
+  <% else %>
+    <li><%= submit_tag t(".actions.post"), name: "post_button", data: { disable_with: t(".actions.please_wait") } %></li>
+  <% end %>
 
-    <%# Update if work is already posted, Post if it's not. %>
-    <% if @work.posted? %>
-      <li><%= submit_tag t(".actions.update"), name: "update_button" %></li>
-    <% else %>
-      <li><%= submit_tag t(".actions.post"), name: "post_button", data: { disable_with: t(".actions.please_wait") } %></li>
-    <% end %>
-
-    <li><%= link_to t(".actions.cancel"), @work.new_record? ? user_works_path(current_user) : work_path(@work) %></li>
-  </ul>
-
-</fieldset>
+  <li><%= link_to t(".actions.cancel"), @work.new_record? ? user_works_path(current_user) : work_path(@work) %></li>
+</ul>

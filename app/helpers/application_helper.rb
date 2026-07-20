@@ -181,14 +181,15 @@ module ApplicationHelper
 
   def link_to_modal(content = "", options = {})
     options[:class] ||= ""
-    options[:path] ||= ""
+    options[:for] ||= ""
     options[:id] ||= ""
     options[:title] ||= options[:id]
     options[:params] ||= {}
     puts options[:path].inspect
     html_options = { class: "modal", title: options[:title], popovertarget: options[:id], type: 'button' }
+    puts options.inspect
     button_tag(content, html_options) + "<div popover id='#{options[:id]}'>
-      <div class='popover-inner'>#{render(options[:path], options[:params])}</div>
+      <div class='popover-inner'>#{render(options[:for], options[:params])}</div>
       <div class='footer-bar'>
         <span class='title'>#{options[:title]}</span>
         <button class='button' type='button' popovertarget='#{options[:id]}' popovertargetaction='hide'>Close</button>
@@ -200,7 +201,7 @@ module ApplicationHelper
   def link_to_help(help_entry, link = '<span class="icon question">?</span>'.html_safe)
     help_file = "help_files/#{help_entry}"
 
-    " ".html_safe + link_to_modal(link, path: help_file, id: help_entry, title: help_entry.split('-').join(' ').capitalize).html_safe
+    " ".html_safe + link_to_modal(link, for: help_file, id: help_entry, title: help_entry.split('-').join(' ').capitalize).html_safe
   end
 
   def link_to_help_modal(help_path, title)
@@ -569,7 +570,7 @@ module ApplicationHelper
   # element in each pair is the radio button's value, and the second element in
   # each pair is the radio button's label.
   def radio_button_list(form, field_name, option_array)
-    content_tag(:ul) do
+    content_tag(:ul, class: 'radio-group') do
       form.collection_radio_buttons(field_name, option_array, :first, :second,
                                     include_hidden: false) do |builder|
         content_tag(:li, builder.label { builder.radio_button + builder.text })

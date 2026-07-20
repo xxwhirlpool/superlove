@@ -20,21 +20,19 @@
   <% if editor_pseuds.size == 1 %>
     <%= creator_form.hidden_field :ids, value: editor_pseuds.first.id, multiple: true %>
   <% else %>
-    <dt class="byline">
+    <div class="form-row side-label">
       <%= creator_form.label :ids, ts("Creator/Pseud(s)") %>
-    </dt>
-    <dd class="byline">
-      <%= creator_form.collection_select :ids, editor_pseuds, :id, :name, { selected: editor_selected.map(&:id) }, { multiple: true } %>
-    </dd>
+      <div class="field">
+        <%= creator_form.collection_select :ids, editor_pseuds, :id, :name, { selected: editor_selected.map(&:id) }, { multiple: true } %>
+      </div>
+    </div>
   <% end %>
 
   <% if approved.any? %>
-    <dt class="byline">
-      <%= ts("Current co-creators") %>
-    </dt>
-    <dd class="byline">
-      <fieldset>
-        <ul>
+    <div class="form-row side-label">
+      <%= label_tag :coauthors, ts("Current co-creators") %>
+      <div class="field">
+        <ul class="radio-group">
           <%= creator_form.collection_check_boxes :coauthors, approved, :id, :byline, { checked: selected.map(&:id), disabled: saved.map(&:id) } do |builder| %>
             <li>
               <%= builder.label do %>
@@ -44,17 +42,15 @@
             </li>
           <% end %>
         </ul>
-      </fieldset>
-    </dd>
+      </div>
+    </div>
   <% end %>
 
   <% if invited.any? %>
-    <dt class="byline">
-      <%= ts("Invited co-creators") %>
-    </dt>
-    <dd class="byline">
-      <fieldset>
-        <ul>
+    <div class="form-row side-label">
+      <%= label_tag :coauthors, ts("Invited co-creators") %>
+      <div class="field">
+        <ul class="radio-group">
           <%= creator_form.collection_check_boxes :coauthors, invited, :id, :byline, { checked: selected.map(&:id), disabled: saved.map(&:id) } do |builder| %>
             <li>
               <%= builder.label do %>
@@ -64,27 +60,27 @@
             </li>
           <% end %>
         </ul>
-      </fieldset>
-    </dd>
+      </div>
+    </div>
   <% end %>
 
-  <dt class="byline coauthors">
-   <%= label_tag "co-authors-options-show", t("works.byline.show_co-creator_options") %>
-  </dt>
-  <dd class="byline coauthors">
-    <%= check_box_tag "co-authors-options-show", "1", object.creatorships.any?(&:ambiguous?), class: "toggle_formfield" %>
-    <fieldset id="co-authors-options" title="<%= t("works.byline.add_co-creators") %>">
-      <%= creator_form.text_field :byline, autocomplete_options("pseud", size: 50).merge(id: "pseud_byline") %>
-      <% object.creatorships.each do |creatorship| %>
-        <% next unless creatorship.ambiguous? %>
-        <% name = creatorship.byline %>
-        <% pseuds = creatorship.ambiguous_pseuds %>
-        <% key = :"author_attributes_#{name.downcase.gsub(/\W+/, "")}" %>
-        <p class="error">
-          <%= label_tag key, ts("There's more than one user with the pseud %{name}. Please choose the one you want:", name: name) %>
-          <%= creator_form.collection_select :coauthors, pseuds, :id, :user_login, { include_blank: true }, { id: key, name: "#{creator_form.object_name}[coauthors][]" } %>
-        </p>
-      <% end %>
-    </fieldset>
-  </dd>
+  <div class="form-row side-label">
+    <%= label_tag "co-authors-options-show", t("works.byline.show_co-creator_options") %>
+    <div class="field">
+      <%= check_box_tag "co-authors-options-show", "1", object.creatorships.any?(&:ambiguous?), class: "toggle_formfield" %>
+      <div id="co-authors-options" title="<%= t("works.byline.add_co-creators") %>">
+        <%= creator_form.text_field :byline, autocomplete_options("pseud", size: 50).merge(id: "pseud_byline") %>
+        <% object.creatorships.each do |creatorship| %>
+          <% next unless creatorship.ambiguous? %>
+          <% name = creatorship.byline %>
+          <% pseuds = creatorship.ambiguous_pseuds %>
+          <% key = :"author_attributes_#{name.downcase.gsub(/\W+/, "")}" %>
+          <div class="error">
+            <%= label_tag key, ts("There's more than one user with the pseud %{name}. Please choose the one you want:", name: name) %>
+            <%= creator_form.collection_select :coauthors, pseuds, :id, :user_login, { include_blank: true }, { id: key, name: "#{creator_form.object_name}[coauthors][]" } %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 <% end %>

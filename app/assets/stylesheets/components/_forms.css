@@ -164,6 +164,7 @@ label {
 
 button,
 .actions a,
+.actions span,
 label.action,
 a.button,
 input[type="submit"],
@@ -183,31 +184,31 @@ details.actions summary,
   display: inline-block;
   font-family: inherit;
   font-size: inherit;
+  
+  &.current {
+    color: var(--text);
+    border: 1px var(--button-border) solid;
+    padding: 0.25rem 0.75rem;
+    line-height: 1.2;
+    white-space: nowrap;
+    font-size: inherit;
+    border-radius: 0.25rem;
+    box-shadow: inset 1px 1px 3px var(--shadow);
+    background-color: var(--neutral400);
+    display: inline-block;
+  }
+  
+  &.modal {
+    border: none;
+    padding: 0;
+    background: none;
+    border-radius: 0;
+  }
 }
 
 .action input[type="checkbox"] {
   margin: 0 5px 1px 0;
   vertical-align: middle;
-}
-
-button.modal {
-  border: none;
-  padding: 0;
-  background: none;
-  border-radius: 0;
-}
-
-.actions span.current {
-  color: var(--text);
-  border: 1px var(--button-border) solid;
-  padding: 0.25rem 0.75rem;
-  line-height: 1.2;
-  white-space: nowrap;
-  font-size: inherit;
-  border-radius: 0.25rem;
-  box-shadow: inset 1px 1px 3px var(--shadow);
-  background-color: var(--neutral400);
-  display: inline-block;
 }
 
 input[type="search"] {

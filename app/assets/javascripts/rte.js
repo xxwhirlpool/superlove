@@ -10,11 +10,48 @@ import {exampleSetup} from "prosemirror-example-setup"
 const mySchema = new Schema({
   nodes: addListNodes(schema.spec.nodes, "paragraph block*", "block"),
   marks: schema.spec.marks
-})
+});
 
-window.view = new EditorView(document.querySelector("#rteditor"), {
+const rte = document.getElementById('rteditor');
+
+window.view = new EditorView(rte, {
   state: EditorState.create({
-    doc: DOMParser.fromSchema(mySchema).parse(document.querySelector("#plaintext")),
+    doc: DOMParser.fromSchema(mySchema).parse(rte.nextElementSibling),
     plugins: exampleSetup({schema: mySchema})
   })
-})
+});
+rte.addEventListener('input', (e) => {
+  const doc = e.target.innerHTML;
+  document.getElementById("plaintext").value = doc;
+});
+setTimeout(() => {
+  rte.querySelector('.ProseMirror').style.minHeight = `${window.innerHeight - 40}px`;
+  document.getElementById('plaintext').style.minHeight = `${window.innerHeight - 40}px`;
+}, 1000);
+const rteToggles = document.querySelectorAll('.rtf-html-switch');
+if (rteToggles) {
+  window.addEventListener('load', (_e) => {
+    rteToggles.forEach((t) => {
+      t.classList.remove('hidden');
+      t.querySelector('.rtf-link').addEventListener('click', (rtf) => {
+        rtf.preventDefault();
+        const rtid = rtf.target.getAttribute('data-rteditor');
+        const ptid = rtf.target.getAttribute('data-pteditor');
+        console.log(document.getElementById(rtid));
+        console.log(document.getElementById(ptid));
+        document.getElementById(rtid).classList.remove('hidden');
+        document.getElementById(ptid).classList.add('hidden');
+      });
+      t.querySelector('.html-link').addEventListener('click', (pt) => {
+        pt.preventDefault();
+        const rtid = pt.target.getAttribute('data-rteditor');
+        const ptid = pt.target.getAttribute('data-pteditor');
+        console.log(document.getElementById(rtid));
+        console.log(document.getElementById(ptid));
+        document.getElementById(rtid).classList.add('hidden');
+        document.getElementById(ptid).classList.remove('hidden');
+      });
+    });
+    document.getElementById('plaintext').classList.add('hidden');
+  });
+}
