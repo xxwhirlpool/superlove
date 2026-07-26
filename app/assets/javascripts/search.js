@@ -33,10 +33,10 @@ document.querySelectorAll('[data-autocomplete-method]').forEach((elt) => {
   tagsElt.after(visibleInput);
   visibleInput.after(resultsElt);
   
-  const getAllTags = () => {
+  const getAllTags = (id) => {
     if (document.getElementById(`${id}_tags`)) {
       const tags = Array.from(document.getElementById(`${id}_tags`).querySelectorAll('li')).map((t) => {
-        return t.getAttribute('data-tag');
+        return t.textContent;
       });
       return tags.join(",");
     }
@@ -55,6 +55,27 @@ document.querySelectorAll('[data-autocomplete-method]').forEach((elt) => {
   visibleInput.addEventListener('blur', (e) => {
     if (resultsElt.classList.contains('hasresults')) return;
     resultsElt.classList.add('hidden');
+  });
+  visibleInput.addEventListener('keydown', (e) => {
+    if (e.key === ',') {
+      e.preventDefault();
+      const token = visibleInput.value;
+      const newLi = document.createElement('li');
+      const deleteTag = document.createElement('a');
+      deleteTag.classList.add('delete-tag');
+      deleteTag.addEventListener('click', (ev) => {
+        ev.preventDefault();
+        ev.parentElement.remove();
+        elt.value = getAllTags(id);
+      });
+      deleteTag.textContent = '╳';
+      newLi.textContent = token;
+      newLi.append(deleteTag);
+      tagsElt.append(newLi);
+      if (tagsElt.classList.contains('hidden')) tagsElt.classList.remove('hidden');
+      visibleInput.value = "";
+      elt.value = getAllTags(id);
+    }
   });
   visibleInput.addEventListener('keyup', (e) => {
     const text = e.target.value;

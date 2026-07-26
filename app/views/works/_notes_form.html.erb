@@ -9,20 +9,20 @@
         <% end %>
       <% else %>
         <%= label_tag 'front-notes-options-show' do %>
-          <%= check_box_tag "front-notes-options-show", "1", !f.object.notes.blank?, :class => "toggle_formfield" %>
+          <%= check_box_tag "front-notes-options-show", "1", !f.object.notes.blank?, :class => "toggle_formfield", :"data-toggle" => "front-notes-options" %>
           <%= ts("at the beginning") %>
         <% end %>
       <% end %>
-      <span class="warning<%= f.object.notes.blank? ? ' hidden' : '' %>">
+      <p class="warning help hidden" id="notes-warning">
         <%= ts("Warning: Unchecking this box will delete the existing beginning note.") %>
-      </span>
-      <div id="front-notes-options" class="start">
+      </p>
+      <div id="front-notes-options" class="hidden">
         <legend><%= f.label :notes, ts("Notes") %></legend>
         <% if @posting_claim && @posting_claim.prompt_description.present? %>
-          <%= f.text_area :notes, :class => "observe_textlength", :value => "<strong>Prompt:</strong> #{@posting_claim.prompt_description}" %>
+          <%= f.text_area :notes, :class => "observe_textlength", :value => "<strong>Prompt:</strong> #{@posting_claim.prompt_description}", :"data-dirty" => "notes-warning" %>
           <%= generate_countdown_html("#{type}_notes", ArchiveConfig.NOTES_MAX) %>
         <% else %>
-          <%= f.text_area :notes, :class => "observe_textlength" %>
+          <%= f.text_area :notes, :class => "observe_textlength", :"data-dirty" => "notes-warning" %>
           <%= generate_countdown_html("#{type}_notes", ArchiveConfig.NOTES_MAX) %>
         <% end %>
       </div>
@@ -30,15 +30,15 @@
 
     <div class="form-row">
       <%= label_tag 'end-notes-options-show' do %>
-        <%= check_box_tag "end-notes-options-show", "1", !f.object.endnotes.blank?, :class => "toggle_formfield" %>
+        <%= check_box_tag "end-notes-options-show", "1", !f.object.endnotes.blank?, :class => "toggle_formfield", :"data-toggle" => "end-notes-options" %>
         <%= ts("at the end") %>
       <% end %>
-      <span class="warning<%= f.object.endnotes.blank? ? ' hidden' : '' %>">
+      <p class="warning help hidden" id="endnotes-warning">
         <%= ts("Warning: Unchecking this box will delete the existing end note.") %>
-      </span>
-      <div id="end-notes-options" class="end">
+      </p>
+      <div id="end-notes-options" class="hidden">
         <legend><%= f.label :endnotes, ts("End Notes") %></legend>
-        <%= f.text_area :endnotes, :class => "observe_textlength" %>
+        <%= f.text_area :endnotes, :class => "observe_textlength", :"data-dirty" => "endnotes-warning" %>
         <%= generate_countdown_html("#{type}_endnotes", ArchiveConfig.NOTES_MAX) %>
       </div>
     </div>

@@ -198,10 +198,10 @@ module ApplicationHelper
   end
 
   # TODO: AO3-7208 Make help modals dynamic and translatable and use link_to_help_modal instead of this method
-  def link_to_help(help_entry, link = '<span class="icon question">?</span>'.html_safe)
+  def link_to_help(help_entry, title = nil, link = '<span class="icon question">?</span>'.html_safe)
     help_file = "help_files/#{help_entry}"
 
-    " ".html_safe + link_to_modal(link, for: help_file, id: help_entry, title: help_entry.split('-').join(' ').capitalize).html_safe
+    " ".html_safe + link_to_modal(link, for: help_file, id: help_entry, title: title ? title : help_entry.split(/[\-_]/).join(' ').capitalize).html_safe
   end
 
   def link_to_help_modal(help_path, title)
@@ -281,9 +281,9 @@ module ApplicationHelper
 
   # see: http://www.w3.org/TR/wai-aria/states_and_properties#aria-valuenow
   def generate_countdown_html(field_id, max)
-    max = max.to_s
-    span = content_tag(:span, max, id: "#{field_id}_counter", class: "value", "data-maxlength" => max)
-    content_tag(:p, span + ts(' characters left'), class: "character_counter", "tabindex" => 0)
+    max = "#{max.to_s} #{ts('characters remaining')}"
+    span = content_tag(:span, max, id: "#{field_id}_counter", class: "value", "data-maxlength" => max, "data-singular" => ts(' character remaining'), 'data-plural' => ts(' characters remaining'))
+    content_tag(:div, span, class: "character_counter", "tabindex" => 0)
   end
 
   # expand/contracts all expand/contract targets inside its nearest parent with the target class (usually index or listbox etc)

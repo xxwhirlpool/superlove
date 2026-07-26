@@ -1,13 +1,4 @@
 main {
-  form fieldset {
-    display: block;
-    background: #ddd;
-    border: 2px solid #f3efec;
-    margin: 0.65rem;
-    padding: 0.65rem;
-    box-shadow: inset 1px 0 5px var(--neutral700);
-  }
-  
   &.about {
     .content {
       dt::after {

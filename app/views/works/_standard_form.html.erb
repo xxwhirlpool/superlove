@@ -1,5 +1,5 @@
 <!--REVIEW: trying out articles on these fieldsets to see if that's a better chunker, but may revert after testing. Have also tossed in landmarks on top level groups-->
-<%= form_for(@work, html: { id: "work-form" }) do |f| %>
+<%= form_for(@work, html: { id: "work-form", 'x-data': 'work' }) do |f| %>
   <div class="required notice">* <%= ts("Required information") %></div>
 
   <%= render "work_form_tags", include_blank: false %>
@@ -89,9 +89,9 @@
           <%= link_to_help "parent-works-help" %>
         <% end %>
         <div class="field">
-          <%= check_box_tag "parent-options-show", "1", check_parent_box(@work), class: "toggle_formfield" %>
+          <%= check_box_tag "parent-options-show", "1", check_parent_box(@work), class: "toggle_formfield", "data-toggle": "parent-options" %>
           <!-- Toggles on with parent checkbox -->
-          <fieldset id="parent-options">
+          <fieldset id="parent-options" class="hidden">
             <% new_parent, existing_parents = @work.parent_work_relationships.partition(&:new_record?) %>
             <% new_parent << @work.parent_work_relationships.build if new_parent.empty? %>
   
@@ -165,9 +165,9 @@
           <%= link_to_help "choosing-series" %>
         <% end %>
         <div class="field">
-          <%= check_box_tag "series-options-show", "1", check_series_box(@work), class: "toggle_formfield" %>
+          <%= check_box_tag "series-options-show", "1", check_series_box(@work), class: "toggle_formfield", "data-toggle": "series-options" %>
           <!-- Toggles on with series checkbox -->
-          <fieldset id="series-options">
+          <fieldset id="series-options" class="hidden">
             <%= fields_for "work[series_attributes]" do |s| %>
               <div class="form-row">
                 <%= s.label "id", ts("Choose one of your existing series:") %>
@@ -212,8 +212,8 @@
             <%= ts("This work has multiple chapters") %>
           <% end %>
           <div class="field">
-            <%= check_box_tag "chapters-options-show", "1", @work.chaptered?, class: "toggle_formfield" %>
-            <fieldset id="chapters-options">
+            <%= check_box_tag "chapters-options-show", "1", @work.chaptered?, class: "toggle_formfield", "data-toggle": "chapters-options" %>
+            <fieldset id="chapters-options" class="hidden">
               <div class="form-row">
                 <%= f.label :wip_length, ts("Chapter 1 of") %>
                 <%= f.text_field :wip_length, class: "number" %>
@@ -233,8 +233,8 @@
             <%= link_to_help "backdating-help" %>
           <% end %>
           <div class="field">
-            <%= f.check_box :backdate, { id: "backdate-options-show", class: "toggle_formfield" } %>
-            <fieldset id="backdate-options" class="optional">
+            <%= f.check_box :backdate, { id: "backdate-options-show", class: "toggle_formfield", "data-toggle": "backdate-options" } %>
+            <fieldset id="backdate-options" class="optional hidden">
               <div class="form-row">
                 <%= label_tag "published_at", ts("Set publication date") %>
                   <!--BACK END, this select box does not seem to be acquiring the label published_at -->
@@ -325,7 +325,7 @@
         <%= c.text_area :content, value: @chapter.content,
               class: "observe_textlength large", id: "plaintext", maxlength: ArchiveConfig.CONTENT_MAX_DISPLAYED, minlength: ArchiveConfig.CONTENT_MIN %>
 
-        <%= generate_countdown_html("content", ArchiveConfig.CONTENT_MAX_DISPLAYED) %>
+        <%= generate_countdown_html("plaintext", ArchiveConfig.CONTENT_MAX_DISPLAYED) %>
       </div>
     <% end %>
 
@@ -337,6 +337,7 @@
 
 <%= content_for :footer_js do %>
   <%= vite_tag "javascripts/rte.js" %>
+  <%= vite_tag "javascripts/counter.js" %>
   <%= javascript_tag do %>
     document.addEventListener('ready', (_e) => {
       document.querySelectorAll('.toggle_formfield').addEventListener('click', (e) => {

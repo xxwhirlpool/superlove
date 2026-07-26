@@ -67,8 +67,8 @@
   <div class="form-row side-label">
     <%= label_tag "co-authors-options-show", t("works.byline.show_co-creator_options") %>
     <div class="field">
-      <%= check_box_tag "co-authors-options-show", "1", object.creatorships.any?(&:ambiguous?), class: "toggle_formfield" %>
-      <div id="co-authors-options" title="<%= t("works.byline.add_co-creators") %>">
+      <%= check_box_tag "co-authors-options-show", "1", object.creatorships.any?(&:ambiguous?), class: "toggle_formfield", "data-toggle": "co-authors-options" %>
+      <div id="co-authors-options" title="<%= t("works.byline.add_co-creators") %>" class="hidden">
         <%= creator_form.text_field :byline, autocomplete_options("pseud", size: 50).merge(id: "pseud_byline") %>
         <% object.creatorships.each do |creatorship| %>
           <% next unless creatorship.ambiguous? %>
