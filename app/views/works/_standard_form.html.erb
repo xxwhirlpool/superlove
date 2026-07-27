@@ -260,7 +260,7 @@
           </div>
         </div>
 
-  </fieldset>
+      </fieldset>
 
   <!-- privacy settings -->
   <fieldset class="privacy">
@@ -338,6 +338,7 @@
 <%= content_for :footer_js do %>
   <%= vite_tag "javascripts/rte.js" %>
   <%= vite_tag "javascripts/counter.js" %>
+  <%= vite_tags 'javascripts/workform.js' %>
   <%= javascript_tag do %>
     document.addEventListener('ready', (_e) => {
       document.querySelectorAll('.toggle_formfield').addEventListener('click', (e) => {
