@@ -4,6 +4,7 @@ CONF="/home/katmac3/superlove/otwarchive/config/unicorn.rb"
 WORKDIR="/home/katmac3/superlove/otwarchive"
 export UNICORN_PORT=9292
 export UNICORNS=8
+export VIPS_BLOCK_UNTRUSTED=1
 unicorn_master_pid=`ps ax | grep $me.sock | grep master | awk '{print $1}'`
 if [ "$unicorn_master_pid" != "" ]; then
   echo "removing old unicorn master"
