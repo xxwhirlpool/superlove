@@ -169,12 +169,12 @@
           <!-- Toggles on with series checkbox -->
           <fieldset id="series-options" class="hidden">
             <%= fields_for "work[series_attributes]" do |s| %>
-              <div class="form-row">
+              <div class="form-row side-label">
                 <%= s.label "id", ts("Choose one of your existing series:") %>
                 <%= s.collection_select(:id, @series, :id, :title, { selected: work_series_value(:id), prompt: true }) %>
               </div>
 
-              <div class="form-row">
+              <div class="form-row side-label">
                 <%= s.label :title, ts("Or create and use a new one:") %>
                 <%= s.text_field :title, value: work_series_value(:title) %>
               </div>
@@ -214,13 +214,17 @@
           <div class="field">
             <%= check_box_tag "chapters-options-show", "1", @work.chaptered?, class: "toggle_formfield", "data-toggle": "chapters-options" %>
             <fieldset id="chapters-options" class="hidden">
-              <div class="form-row">
+              <div class="form-row side-label">
                 <%= f.label :wip_length, ts("Chapter 1 of") %>
-                <%= f.text_field :wip_length, class: "number" %>
+                <div class="field">
+                  <%= f.number_field :wip_length %>
+                </div>
               </div>
-              <div class="form-row">
+              <div class="form-row side-label">
                 <%= c.label :title, ts("Chapter Title:") %>
-                <%= c.text_field :title, value: @chapter.title %>
+                <div class="field">
+                  <%= c.text_field :title, value: @chapter.title %>
+                </div>
               </div>
             </fieldset>
           </div>
@@ -235,10 +239,11 @@
           <div class="field">
             <%= f.check_box :backdate, { id: "backdate-options-show", class: "toggle_formfield", "data-toggle": "backdate-options" } %>
             <fieldset id="backdate-options" class="optional hidden">
-              <div class="form-row">
+              <div class="form-row side-label">
                 <%= label_tag "published_at", ts("Set publication date") %>
-                  <!--BACK END, this select box does not seem to be acquiring the label published_at -->
-                <%= c.date_select("published_at", :start_year => Date.current.year, :end_year => 1950, :default => Date.current, :value => @chapter.published_at, :order => [:day, :month, :year]) %>
+                <div class="field">
+                  <%= c.date_select("published_at", :start_year => Date.current.year, :end_year => 1950, :default => Date.current, :value => @chapter.published_at, :order => [:day, :month, :year]) %>
+                </div>
               </div>
             </fieldset>
           </div>
@@ -304,7 +309,7 @@
   </fieldset>
   <% unless @chapters %>
     <!-- Work text field (chapter_attributes_content) -->
-    <fieldset class="work">
+    <fieldset id="work" class="work">
       <ul class="rtf-html-switch hidden actions right">
         <li><button class="rtf-link" data-rteditor="rteditor" data-pteditor="plaintext"><%= ts("Rich Text") %></button></li>
         <li><button class="html-link" data-rteditor="rteditor" data-pteditor="plaintext"><%= ts("HTML") %></button></li>
@@ -323,7 +328,7 @@
         <%= label_tag :content, "#{ts("Work Text")} *" %>
         <div id="rteditor"></div>
         <%= c.text_area :content, value: @chapter.content,
-              class: "observe_textlength large", id: "plaintext", maxlength: ArchiveConfig.CONTENT_MAX_DISPLAYED, minlength: ArchiveConfig.CONTENT_MIN %>
+              class: "observe_textlength large", id: "plaintext", maxlength: ArchiveConfig.CONTENT_MAX_DISPLAYED, "data-plural": " characters remaining", "data-singular": " character remaining", minlength: ArchiveConfig.CONTENT_MIN %>
 
         <%= generate_countdown_html("plaintext", ArchiveConfig.CONTENT_MAX_DISPLAYED) %>
       </div>

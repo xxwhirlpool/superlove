@@ -22,7 +22,14 @@ window.view = new EditorView(rte, {
 });
 rte.addEventListener('input', (e) => {
   const doc = e.target.innerHTML;
-  document.getElementById("plaintext").value = doc;
+  const pt = document.getElementById("plaintext");
+  pt.value = doc;
+  const curLength = pt.value.length;
+  const maxLength = parseInt(pt.getAttribute('maxlength'));
+  const plural = pt.getAttribute('data-plural');
+  const singular = pt.getAttribute('data-singular');
+  const str = `${maxLength - curLength}${maxLength - curLength !== 1 ? plural : singular}`;
+  document.getElementById('plaintext_counter').innerHTML = str;
 });
 setTimeout(() => {
   rte.querySelector('.ProseMirror').style.minHeight = `${window.innerHeight - 40}px`;
@@ -37,8 +44,6 @@ if (rteToggles) {
         rtf.preventDefault();
         const rtid = rtf.target.getAttribute('data-rteditor');
         const ptid = rtf.target.getAttribute('data-pteditor');
-        console.log(document.getElementById(rtid));
-        console.log(document.getElementById(ptid));
         document.getElementById(rtid).classList.remove('hidden');
         document.getElementById(ptid).classList.add('hidden');
       });
@@ -46,8 +51,6 @@ if (rteToggles) {
         pt.preventDefault();
         const rtid = pt.target.getAttribute('data-rteditor');
         const ptid = pt.target.getAttribute('data-pteditor');
-        console.log(document.getElementById(rtid));
-        console.log(document.getElementById(ptid));
         document.getElementById(rtid).classList.add('hidden');
         document.getElementById(ptid).classList.remove('hidden');
       });
