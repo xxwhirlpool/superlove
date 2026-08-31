@@ -1,11 +1,11 @@
 <!--Descriptive page name, messages and instructions-->
-<h2 class="heading"><%= t(".page_heading") %></h2>
+<h2><%= t(".page_heading") %></h2>
 <%= error_messages_for :work %>
 <!--/descriptions-->
 
 <!--main content-->
 <div id="previewpane">
-  <div class="draft work">
+  <div class="draft-work">
     <%= render "works/meta" %>
 
     <%= render "works/work_skin" %>
@@ -13,20 +13,20 @@
     <div id="workskin">
       <%= render "works/preface" %>
 
-      <div id="chapters">
+      <div id="work-content">
         <% if @chapters %>
           <% @chapters.each do |chapter| %>
             <%= render "chapters/chapter", chapter: chapter %>
           <% end %>
         <% else %>
-          <div class="userstuff"><%=raw sanitize_field(@chapter, :content) %></div>
+          <div class="chapter-text"><%=raw sanitize_field(@chapter, :content) %></div>
         <% end %>
       </div>
 
       <% inspired_by = get_inspired_by(@work) %>
       <% if !@work.endnotes.blank? || !@work.serial_works.blank? || !inspired_by.empty? %>
         <!--afterword-->
-        <div class="afterword preface group">
+        <div class="afterword">
           <% unless @work.endnotes.blank? %>
             <%= render "works/work_endnotes" %>
           <% end %>
@@ -45,13 +45,10 @@
   </div>
   <!-- END draft -->
 
-  <div class="clear"><!--presentational--></div>
-
   <%= form_for(@work) do |f| %>
     <%= render "hidden_fields", form: f %>
 
     <%= render "posting_fieldset" %>
-
   <% end %>
 </div>
 <!-- END previewpane -->

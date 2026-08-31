@@ -9,7 +9,7 @@
 <!--/subnav-->
 
 <!--main content-->
-<h3 class="landmark heading"><%= ts('Notes') %></h3>
+<h3 class="landmark"><%= ts('Notes') %></h3>
 <ul class="notes">
   <li><%= ts('Tag sets are used for running a challenge.') %></li>
   <li><%= ts('"Visible" tag sets are shown to all users.') %></li>
@@ -18,7 +18,7 @@
   <li><%= ts('Tag names have to be unique. If necessary the archive may add on the tag type. (For instance, if you entered a character "Firefly", you\'d see "Firefly - Character" in your tag set instead since the tag Firefly is already used for the show.') %></li>
 </ul>
 
-<h3 class="landmark heading"><%= ts('Tag Set Settings') %></h3>
+<h3 class="landmark"><%= ts('Tag Set Settings') %></h3>
 
 <%= form_for(@tag_set, :url => (@tag_set.new_record? ? tag_sets_path : tag_set_path(@tag_set)), :html => {:method => (@tag_set.new_record? ? :post : :put), :class => "tagset verbose post"}) do |tag_set_form| %>
   <%= error_messages_for @tag_set %>
@@ -30,7 +30,7 @@
 
   <fieldset class="tagset">
     <legend>Tags In Set <% unless @tag_set.new_record? || !@tag_set.tag_set || @tag_set.tag_set.tags.empty? %><%= ts('(check to remove)') %><% end %></legend>
-    <h3 class="landmark heading"><%= ts('Tags in Set') %></h3>
+    <h3 class="landmark"><%= ts('Tags in Set') %></h3>
     <% @tag_set.build_tag_set unless @tag_set.tag_set %>
     <%= tag_set_form.fields_for :tag_set do |internal_tag_set_form| %>
       <div><%= internal_tag_set_form.hidden_field :from_owned_tag_set, :value => true %></div>
@@ -46,7 +46,7 @@
     <% associations_for_add = @tag_set.tag_set_associations.select {|assoc| assoc.new_record?} %>
     <legend>Tag Associations <%= associations_for_remove.empty? ? '' : ts('(check to remove)') %> <%= link_to_help('tagset-tag-associations')%></legend>
 
-    <h3 class="landmark heading"><%= ts('Tag Associations') %> </h3>
+    <h3 class="landmark"><%= ts('Tag Associations') %> </h3>
     <% unless associations_for_remove.empty? %>
       <%= render "tag_set_associations_remove", :form => tag_set_form %>
     <% end %>

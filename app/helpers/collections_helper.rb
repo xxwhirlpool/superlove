@@ -133,6 +133,6 @@ module CollectionsHelper
 
   # Wraps the collection's standard_icon_url in an image tag
   def collection_icon_display(collection)
-    image_tag(standard_icon_url(collection), size: "100x100", alt: collection.icon_alt_text, class: "icon", skip_pipeline: true)
+    image_tag(standard_icon_url(collection), size: "100x100", alt: collection.icon_alt_text, skip_pipeline: true)
   end
 end

@@ -1,6 +1,7 @@
+<h2><%= ts("Manage Invitation \##{@invitation.id}")%></h2>
 <!--subnav-->
 <% if @user %>
-<p class="navigation actions" role="navigation"><%= link_to 'Back to invitations', user_invitations_path(@user) %></p>
+<div class="actions" role="navigation"><%= link_to 'Back to invitations', user_invitations_path(@user) %></div>
 <% end %>
 <!--/subnav-->
 

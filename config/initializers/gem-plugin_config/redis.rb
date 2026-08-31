@@ -22,6 +22,9 @@ redis_configs.each_pair do |name, redis_config|
     #         port: 26380
     redis_options = redis_config[rails_env]
   else
+    if redis_config[rails_env].nil?
+      break
+    end
     redis_host, redis_port = redis_config[rails_env].split(":")
     redis_options[:host] = redis_host
     redis_options[:port] = redis_port

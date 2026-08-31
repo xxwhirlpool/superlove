@@ -1,16 +1,4 @@
 GIT
-  remote: https://github.com/otwcode/devise
-  revision: fade89f61c64e766d87f24cfcb980ee533a5d5f2
-  ref: fade89f
-  specs:
-    devise (5.0.2)
-      bcrypt (~> 3.0)
-      orm_adapter (~> 0.1)
-      railties (>= 7.0)
-      responders
-      warden (~> 1.2.3)
-
-GIT
   remote: https://github.com/rails/rails-observers
   revision: 389b577322d8b17336730b2dc4e179060a23c8e7
   specs:
@@ -203,6 +191,8 @@ GEM
     crass (1.0.6)
     css_parser (2.0.0)
       addressable
+    cssbundling-rails (1.4.3)
+      railties (>= 6.0.0)
     csv (3.3.5)
     cucumber (10.2.0)
       base64 (~> 0.2)
@@ -239,6 +229,9 @@ GEM
       timecop
     dalli (5.0.2)
       logger
+    dartsass-rails (0.5.1)
+      railties (>= 6.0.0)
+      sass-embedded (~> 1.63)
     database_cleaner (2.1.0)
       database_cleaner-active_record (>= 2, < 3)
     database_cleaner-active_record (2.2.2)
@@ -250,6 +243,12 @@ GEM
       activerecord (>= 7.2.0)
       mysql2 (>= 0.4.0, < 0.6.0)
       railties (>= 7.2.0)
+    devise (5.0.2)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 7.0)
+      responders
+      warden (~> 1.2.3)
     devise-async (1.0.0)
       activejob (>= 5.0)
       devise (>= 4.0)
@@ -308,6 +307,7 @@ GEM
     ffi (1.17.3-aarch64-linux-musl)
     ffi (1.17.3-arm-linux-gnu)
     ffi (1.17.3-arm-linux-musl)
+    ffi (1.17.3-arm64-darwin)
     ffi (1.17.3-x86_64-linux-gnu)
     ffi (1.17.3-x86_64-linux-musl)
     fugit (1.12.1)
@@ -324,7 +324,32 @@ GEM
       activesupport (>= 7.0, < 8.2)
       request_store (~> 1.0)
     god (0.13.7)
+    google-protobuf (4.34.0)
+      bigdecimal
+      rake (~> 13.3)
+    google-protobuf (4.34.0-aarch64-linux-gnu)
+      bigdecimal
+      rake (~> 13.3)
+    google-protobuf (4.34.0-aarch64-linux-musl)
+      bigdecimal
+      rake (~> 13.3)
+    google-protobuf (4.34.0-arm64-darwin)
+      bigdecimal
+      rake (~> 13.3)
+    google-protobuf (4.34.0-x86_64-linux-gnu)
+      bigdecimal
+      rake (~> 13.3)
+    google-protobuf (4.34.0-x86_64-linux-musl)
+      bigdecimal
+      rake (~> 13.3)
     hashdiff (1.2.1)
+    herb (0.10.1-aarch64-linux-gnu)
+    herb (0.10.1-aarch64-linux-musl)
+    herb (0.10.1-arm-linux-gnu)
+    herb (0.10.1-arm-linux-musl)
+    herb (0.10.1-arm64-darwin)
+    herb (0.10.1-x86_64-linux-gnu)
+    herb (0.10.1-x86_64-linux-musl)
     highline (3.1.2)
       reline
     htmlentities (4.4.2)
@@ -359,6 +384,8 @@ GEM
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     jmespath (1.6.2)
+    jsbundling-rails (1.3.1)
+      railties (>= 6.0.0)
     json (2.19.1)
     kgio (2.10.0)
     launchy (2.5.2)
@@ -449,6 +476,8 @@ GEM
       racc (~> 1.4)
     nokogiri (1.19.1-arm-linux-musl)
       racc (~> 1.4)
+    nokogiri (1.19.1-arm64-darwin)
+      racc (~> 1.4)
     nokogiri (1.19.1-x86_64-linux-gnu)
       racc (~> 1.4)
     nokogiri (1.19.1-x86_64-linux-musl)
@@ -474,6 +503,10 @@ GEM
       prettyprint
     prettyprint (0.2.0)
     prism (1.9.0)
+    propshaft (1.3.1)
+      actionpack (>= 7.0.0)
+      activesupport (>= 7.0.0)
+      rack
     pry (0.16.0)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -537,6 +570,8 @@ GEM
     rails-html-sanitizer (1.7.0)
       loofah (~> 2.25)
       nokogiri (>= 1.15.7, != 1.16.7, != 1.16.6, != 1.16.5, != 1.16.4, != 1.16.3, != 1.16.2, != 1.16.1, != 1.16.0.rc1, != 1.16.0)
+    rails_vite (0.2.3)
+      railties (>= 7.0)
     railties (8.1.3.1)
       actionpack (= 8.1.3.1)
       activesupport (= 8.1.3.1)
@@ -642,6 +677,20 @@ GEM
     sanitize (7.0.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.16.8)
+    sass-embedded (1.98.0-aarch64-linux-gnu)
+      google-protobuf (~> 4.31)
+    sass-embedded (1.98.0-aarch64-linux-musl)
+      google-protobuf (~> 4.31)
+    sass-embedded (1.98.0-arm-linux-gnueabihf)
+      google-protobuf (~> 4.31)
+    sass-embedded (1.98.0-arm-linux-musleabihf)
+      google-protobuf (~> 4.31)
+    sass-embedded (1.98.0-arm64-darwin)
+      google-protobuf (~> 4.31)
+    sass-embedded (1.98.0-x86_64-linux-gnu)
+      google-protobuf (~> 4.31)
+    sass-embedded (1.98.0-x86_64-linux-musl)
+      google-protobuf (~> 4.31)
     securerandom (0.4.1)
     selenium-webdriver (4.41.0)
       base64 (~> 0.2)
@@ -743,6 +792,7 @@ PLATFORMS
   aarch64-linux-musl
   arm-linux-gnu
   arm-linux-musl
+  arm64-darwin-23
   x86_64-linux-gnu
   x86_64-linux-musl
 
@@ -767,14 +817,16 @@ DEPENDENCIES
   capybara-screenshot
   connection_pool (~> 2.4.1)
   css_parser
+  cssbundling-rails
   csv (~> 3.3.5)
   cucumber
   cucumber-rails
   cucumber-timecop
   dalli
+  dartsass-rails
   database_cleaner
   departure (~> 8.0)
-  devise!
+  devise
   devise-async
   devise-pwned_password
   devise-two-factor
@@ -790,10 +842,12 @@ DEPENDENCIES
   globalize (~> 7.0)
   god (~> 0.13.7)
   google_visualr!
+  herb
   htmlentities
   httparty
   i18n-tasks
   image_processing (~> 1.12)
+  jsbundling-rails
   kgio (= 2.10.0)
   launchy
   lograge
@@ -809,6 +863,7 @@ DEPENDENCIES
   permit_yo
   phraseapp-in-context-editor-ruby (>= 1.0.6)
   pickle
+  propshaft
   pry-byebug
   puma (~> 6.5.0)
   puma_worker_killer
@@ -821,6 +876,7 @@ DEPENDENCIES
   rails-controller-testing
   rails-i18n (~> 8.0)!
   rails-observers!
+  rails_vite
   redis (< 5.0)
   redis-namespace
   resque (>= 1.14.0)

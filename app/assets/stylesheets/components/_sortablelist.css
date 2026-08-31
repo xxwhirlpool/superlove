@@ -1,0 +1,37 @@
+.sortable-list {
+  list-style: none;
+  margin: 0;
+  padding: .5rem;
+  display: grid;
+  gap: .5rem;
+  
+  [dragging] {
+    opacity: 0.5;
+  }
+  
+  .placeholder {
+    border: 1px var(--lightborder) dotted;
+  }
+  
+  li {
+    display: grid;
+    grid-template-areas: "pos title";
+    grid-template-columns: 50px 1fr;
+    gap: .5rem;
+    
+    .position {
+      grid-area: pos;
+    }
+    
+    h3 {
+      grid-area: title;
+      border-bottom: none;
+      font-size: 1.1rem;
+      margin: 0;
+    }
+    
+    input[type="number"] {
+      text-align: center;
+    }
+  }
+}

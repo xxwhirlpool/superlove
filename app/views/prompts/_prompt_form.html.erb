@@ -1,6 +1,6 @@
 <!-- prompt form -->
 <div class="removeme">
-  <% # CODE NOTES: 
+  <!-- CODE NOTES: 
     # This is meant to be used as a nested form inside other forms, so that multiple prompts can be submitted within a single form. 
     # It is also meant to be used with javascript-based live adding (that is, not with ajax) which means locals will not be re-evaluated when it is added;
     #   keep this in mind when using the add_section code!
@@ -8,7 +8,7 @@
     # If the local variable "index" is passed in, that will represent which prompt this is, if there are multiple prompts being submitted
     # If the local variable "required" is passed in, this prompt is required
     # See the challenge_signup form for an example of how this is used. 
-  %>
+  -->
 
   <% index ||= 0 %>
   <% required ||= false %>
@@ -25,11 +25,11 @@
     <% end %>
 
     <legend><%= prompt_label %></legend>
-    <h3 class="heading"><%= form.object.new_record? ? prompt_label : link_to(prompt_label, collection_prompt_path(@collection, form.object)) %></h3>  
+    <h3><%= form.object.new_record? ? prompt_label : link_to(prompt_label, collection_prompt_path(@collection, form.object)) %></h3>  
 
     <dl>
       <% if restriction.title_allowed %>
-        <dt<%= restriction.title_required ? ' class="required"'.html_safe : '' %>>
+        <dt<% if restriction.title_required %> class="required"<% end %>>
           <% if restriction.title_required %>
             <%= form.label :title, (ts("Title:") + " *") %>
           <% else %>
@@ -43,7 +43,7 @@
       <%= render "prompts/prompt_form_tag_options", :form => form, :restriction => restriction %>
     
       <% if restriction.url_allowed %>
-        <dt<%= restriction.url_required ? ' class="required"'.html_safe : '' %>>
+        <dt<% if restriction.url_required %> class="required"<% end %>>
           <% url_label = @challenge.send("#{prompt_type}_url_label") %>
           <% if restriction.url_required %>
             <%= form.label :url , (url_label.blank? ? (ts("Prompt URL:") + " *") : url_label + " *") %>
@@ -55,7 +55,7 @@
       <% end %>
 
       <% if restriction.description_allowed  %>
-        <dt<%= restriction.description_required ? ' class="required"'.html_safe : '' %>>
+        <dt<% if restriction.description_required %> class="required"<% end %>>
           <% desc_label = @challenge.send("#{prompt_type}_description_label") %>
           <% if restriction.description_required %>
             <%= form.label :description, (desc_label.blank? ? (ts("Description:") + " *") : desc_label + " *") %>
@@ -82,10 +82,10 @@
       <% end %>
     
       <% if @collection.challenge.respond_to?(:anonymous) %>
-        <% # TODO ANONYMITY REFACTOR: Anonymity should not be based on a type of challenge but on whether the specific challenge ALLOWS anonymity or not, 
+        <!-- # TODO ANONYMITY REFACTOR: Anonymity should not be based on a type of challenge but on whether the specific challenge ALLOWS anonymity or not, 
            # (currently the prompt memes don't allow a mod to specify no anonymity allowed)
            # and should probably be done via an Anonymous user like the Orphan user.  
-        %>
+        -->
         <dt><%= form.label :anonymous, ts("Semi-anonymous Prompt?") %></dt>
         <dd>
           <%= form.check_box :anonymous, :checked => @collection.challenge.anonymous? ? true : form.object.anonymous %>

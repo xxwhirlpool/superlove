@@ -1,7 +1,7 @@
 <ul class="navigation actions" role="navigation">
   <% if @user %>
     <li><%= span_if_current ts("External Authors"), user_external_authors_path(@user) %></li>
-    <li><%= span_if_current ts("Profile"), user_profile_path(@user) %>
+    <li><%= span_if_current ts("Profile"), user_profile_path(@user) %></li>
   <% elsif permit?("opendoors") %>
     <li><%= span_if_current ts("External Authors"), opendoors_external_authors_path %></li>
     <li class="search" role="search">

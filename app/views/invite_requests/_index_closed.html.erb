@@ -1,5 +1,5 @@
 <!--Descriptive page name, messages and instructions-->
-<h2 class="heading">
+<h2>
   <%= t(".page_heading") %>
 </h2>
 
@@ -9,7 +9,7 @@
 <p>
   <%= t(".already_requested_html", check_waitlist_position_link: link_to(t(".check_waitlist_position"), status_invite_requests_path)) %>
   <%= t(".waiting_list_count", count: InviteRequest.count) %>
-<p>
+</p>
 <!--/descriptions-->
 
 <!--main content-->

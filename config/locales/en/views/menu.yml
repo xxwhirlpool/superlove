@@ -1,0 +1,22 @@
+en:
+  menu:
+    menu_about: 
+      item_name: About Us
+      page_heading: About
+      donate: Donate or Volunteer
+      faq: FAQ
+      news: News
+      wrangling_guidelines: Wrangling Guidelines
+      site_status: Site Status
+    menu_browse:
+      bookmarks: Bookmarks
+      collections: Collections
+      tags: Tags
+      works: Works
+    menu_fandoms:
+      all: All Fandoms
+    menu_search:
+      bookmarks: Bookmarks
+      people: People
+      tags: Tags
+      works: Works

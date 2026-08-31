@@ -9,34 +9,29 @@ class ArchiveFaqsController < ApplicationController
   # GET /archive_faqs
   def index
     @archive_faqs = ArchiveFaq.order("position ASC")
-    unless logged_in_as_admin?
+    @page_heading = ts("superlove FAQ")
+    if logged_in_as_admin?
+      @page_content = view_context.render('admin_index')
+    else
       @archive_faqs = @archive_faqs.with_translations(I18n.locale)
+      @page_nav = view_context.render('filters')
+      @page_content = view_context.render('faq_index')
     end
-    respond_to do |format|
-      format.html # index.html.erb
-    end
+    render 'shared/page', layout: 'application'
   end
 
   # GET /archive_faqs/1
   def show
-    @questions = []
     @archive_faq = ArchiveFaq.find_by!(slug: params[:id])
-    if params[:language_id] == "en"
-      @questions = @archive_faq.questions
-    else
-      @archive_faq.questions.each do |question|
-        question.translations.each do |translation|
-          if translation.is_translated == "1" && params[:language_id].to_s == translation.locale.to_s
-            @questions << question
-          end
-        end
+    @page_heading = "#{view_context.link_to(t(".page_heading"), archive_faqs_path).html_safe} > #{@archive_faq.title}"
+    unless params[:language_id] == "en"
+      @archive_faq = @archive_faq.questions.filter do |q|
+        question.translations.filter {|t| translation.is_translated == "1" && params[:language_id].to_s == translation.locale.to_s }.length > 0
       end
     end
     @page_subtitle = @archive_faq.title + ts(" FAQ")
-
-    respond_to do |format|
-      format.html # show.html.erb
-    end
+    @page_content = view_context.render("show_faq_cat")
+    render 'shared/page', layout: 'application'
   end
 
   protected

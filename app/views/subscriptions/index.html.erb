@@ -1,5 +1,5 @@
 <!--Descriptive page name, messages and instructions-->
-<h2 class="heading">
+<h2>
   <% if @subscribable_type %>
     <%= t(".page_heading.#{@subscribable_type}") %>
   <% else %>
@@ -9,7 +9,7 @@
 <!--/descriptions-->
 
 <!--subnav-->
-<h3 class="landmark heading"><%= t("a11y.navigation") %></h3>
+<h3 class="landmark"><%= t("a11y.navigation") %></h3>
 <ul class="navigation actions" role="navigation">
   <li>
     <%= span_if_current(t(".navigation.all"),
@@ -46,8 +46,8 @@
 <!--main content-->
 <%= will_paginate @subscriptions %>
 
-<h3 class="landmark heading"><%= t(".heading.landmark.list") %></h3>
-<dl class="subscription index group">
+<h3 class="landmark"><%= t(".heading.landmark.list") %></h3>
+<dl id="subscriptions" class="index">
   <% @subscriptions.each do |subscription| %>
     <dt>
       <% if subscription.subscribable %>

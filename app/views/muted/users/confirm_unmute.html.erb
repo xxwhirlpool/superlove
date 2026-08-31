@@ -1,4 +1,4 @@
-<h2 class="heading"><%= t(".title", name: @mute.muted.login) %></h2>
+<h2><%= t(".title", name: @mute.muted.login) %></h2>
 
 <%= form_tag user_muted_user_path(@user, @mute), method: :delete do %>
   <div class="caution notice">

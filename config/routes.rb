@@ -475,7 +475,7 @@ Rails.application.routes.draw do
     member do
       get :confirm_delete
     end
-    resource :profile, controller: "collection_profile"
+    resource :profile
     resources :collections
     resources :works
     resources :gifts

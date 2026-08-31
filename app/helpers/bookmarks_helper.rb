@@ -87,12 +87,12 @@ module BookmarksHelper
 
     creation = bookmark.bookmarkable
     if creation.nil?
-      "bookmark blurb group #{bookmarker_id_for_css_classes(bookmark)}"
+      "work blurb #{bookmarker_id_for_css_classes(bookmark)}"
     else
       Rails.cache.fetch("#{creation.cache_key_with_version}_#{bookmark.cache_key}/blurb_css_classes") do
         creation_id = creation_id_for_css_classes(creation)
         user_ids = user_ids_for_bookmark_blurb(bookmark).join(" ")
-        "bookmark blurb group #{creation_id} #{user_ids}".squish
+        "work blurb #{creation_id} #{user_ids}".squish
       end
     end
   end

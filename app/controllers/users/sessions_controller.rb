@@ -5,6 +5,8 @@ class Users::SessionsController < Devise::SessionsController
 
   # POST /users/login
   def create
+    puts "hello world"
+    puts resource.inspect
     super do |resource|
       unless resource.remember_me
         message = ts(" <strong>You'll stay logged in for %{number} weeks even if you close your browser, so make sure to log out if you're using a public or shared computer.</strong>", number: ArchiveConfig.DEFAULT_SESSION_LENGTH_IN_WEEKS)

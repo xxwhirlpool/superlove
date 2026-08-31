@@ -1,7 +1,7 @@
 <% work_skin = params[:skin_type] && params[:skin_type] == 'WorkSkin' %>
 
 <!--subnav-->
-<h3 class="landmark heading"><%= ts('Navigation') %></h3>
+<h3 class="landmark"><%= ts('Navigation') %></h3>
 <ul class="navigation actions" role="navigation">
 
   <% if session[:site_skin] || (logged_in? && current_user.preference.skin_id != AdminSetting.default_skin_id) %>

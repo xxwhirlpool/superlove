@@ -1,5 +1,5 @@
 <!--Descriptive page name, messages and instructions-->
-<h2 class="heading"><%= t(".page_heading") %></h2>
+<h2><%= t(".page_heading") %></h2>
 <!--/descriptions-->
 
 <!--subnav-->
@@ -7,19 +7,29 @@
 
 <!--main content-->
 <%= form_tag url_for(controller: "admin/admin_invitations", action: "find"), autocomplete: "off", class: "invitation simple search", method: :get do %>
-  <dl>
-    <dt><%= label_tag "invitation[user_name]", t(".username") %></dt>
-    <dd><%= text_field_tag "invitation[user_name]", params[:invitation][:user_name] %></dd>
-    <dt><%= label_tag "invitation[token]", t(".token") %></dt>
-    <dd><%= text_field_tag "invitation[token]", params[:invitation][:token] %></dd>
-    <dt><%= label_tag "invitee_email", t(".email") %></dt>
-    <dd><%= text_field_tag "invitation[invitee_email]", params[:invitation][:invitee_email], id: "invitee_email" %></dd>
-  </dl>
-  <p class="submit actions"><%= submit_tag t(".search") %></p>
+  <div class="form-row side-label">
+    <%= label_tag "invitation[user_name]", t(".username") %>
+    <div class="field">
+      <%= text_field_tag "invitation[user_name]", params[:invitation][:user_name] %>
+    </div>
+  </div>
+  <div class="form-row side-label">
+    <%= label_tag "invitation[token]", t(".token") %>
+    <div class="field">
+      <%= text_field_tag "invitation[token]", params[:invitation][:token] %>
+    </div>
+  </div>
+  <div class="form-row side-label">
+    <%= label_tag "invitee_email", t(".email") %>
+    <div class="field">
+      <%= text_field_tag "invitation[invitee_email]", params[:invitation][:invitee_email], id: "invitee_email" %>
+    </div>
+  </div>
+  <div class="submit"><%= submit_tag t(".search") %></div>
 <% end %>
 
 <% if @user %>
-<h3 class="heading"><%= t(".invitations_for_html", user_invitations_link: link_to(@user.login, user_invitations_path(@user))) %></h3>
+<h3><%= t(".invitations_for_html", user_invitations_link: link_to(@user.login, user_invitations_path(@user))) %></h3>
 <% end %>
 <% if @invitations %>
 <%= render "invitations/user_invitations", invitations: @invitations %>

@@ -17,7 +17,7 @@ superlove
 <%= t("mailer.general.footer.why_support.text", contact_support_url: new_feedback_report_url) %>
 <% end %>
 
-<%= t("mailer.general.footer.about.text", your_donations_url: donate_url) %>
+<%= t("mailer.general.footer.about.text", donate_url: donate_url) %>
 <% if content_for?(:sent_at) %>
 
 <%= t("mailer.general.footer.sent_at", sent_at: yield(:sent_at).strip) %>

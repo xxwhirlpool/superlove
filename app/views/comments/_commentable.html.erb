@@ -1,9 +1,7 @@
 <!-- Gets embedded anywhere we need to list comments on a top-level commentable. We need the local variable "commentable" here. -->
-<div id="feedback" class="feedback">
-
-  <h3 class="landmark heading"><%= ts("Actions") %></h3>
-
-  <ul class="actions">
+<div id="feedback">
+  <h3 class="landmark"><%= ts("Actions") %></h3>
+  <ul class="actions right" role="navigation">
     <% if @work || @admin_post %>
       <li><%= link_to '&#8593; '.html_safe + ts('Top'), "#main" %></li>
     <% end %>
@@ -77,52 +75,52 @@
   <% end %>
 
 
-  <h3 class="landmark heading"><a id="comments"><%= ts("Comments") %></a></h3>
+  <h3 class="landmark"><a id="comments"><%= ts("Comments") %></a></h3>
   <%= flash_div :comment_error, :comment_notice %>
 
   <% commentable_parent = find_parent(commentable) %>
   <% if AdminSetting.current.guest_comments_off? && guest? %>
-    <p class="notice">
+    <div class="notice">
       <%= t(".guest_comments_disabled") %>
-    </p>
+    </div>
   <% elsif commentable_parent.is_a?(AdminPost) && commentable_parent.disable_all_comments? %>
-    <p class="notice">
+    <div class="notice">
       <%= t(".permissions.admin_post.disable_all") %>
-    </p>
+    </div>
   <% elsif commentable_parent.is_a?(AdminPost) && commentable_parent.disable_anon_comments? && !logged_in? %>
-    <p class="notice">
+    <div class="notice">
       <%= t(".permissions.admin_post.disable_anon") %>
       <%= t(".permissions.admin_post.alt_action", support_link: link_to(t(".permissions.admin_post.support_link"), new_feedback_report_path)).html_safe %>
-    </p>
+    </div>
   <% elsif commentable_parent.is_a?(Work) && commentable_parent.disable_all_comments? %>
-    <p class="notice">
+    <div class="notice">
       <%= t(".permissions.work.disable_all") %>
-    </p>
+    </div>
   <% elsif commentable_parent.is_a?(Work) && commentable_parent.disable_anon_comments? && !logged_in? %>
-    <p class="notice">
+    <div class="notice">
       <%= t(".permissions.work.disable_anon") %>
       <%= t(".permissions.work.alt_action") %>
-    </p>
+    </div>
   <% elsif commentable_parent.is_a?(Work) && commentable_parent.hidden_by_admin? %>
-    <p class="notice">
+    <div class="notice">
       <%= t(".permissions.work.hidden") %>
-    </p>
+    </div>
   <% elsif commentable_parent.is_a?(Work) && commentable_parent.in_unrevealed_collection %>
-    <p class="notice">
+    <div class="notice">
       <%= t(".permissions.work.unrevealed") %>
-    </p>
-  <% elsif (commentable.is_a?(Work) || commentable.is_a?(Chapter)) && !commentable.posted %>
-    <p class="notice">
-      <%= t(".permissions.work.draft") %>
-    </p>
+    </div>
   <% elsif commentable_parent.is_a?(Work) && blocked_by?(commentable_parent) %>
-    <p class="notice">
+    <div class="notice">
       <%= t(".blocked") %>
-    </p>
+    </div>
+  <% elsif (commentable.is_a?(Work) || commentable.is_a?(Chapter)) && !commentable.posted %>
+    <div class="notice">
+      <%= t(".permissions.work.draft") %>
+    </div>
   <% elsif logged_in_as_admin? %>
-    <p class="notice">
+    <div class="notice">
       <%= t(".logged_as_admin") %>
-    </p>
+    </div>
   <% else %>
     <div id="add_comment_placeholder" title="top level comment">
       <div id="add_comment">
@@ -138,7 +136,6 @@
       <% @comments = CommentDecorator.for_commentable(commentable, page: params[:page]) %>
       <%= will_paginate @comments, params: { anchor: :comments } %>
       <%= render 'comments/comment_thread', { :depth => 0, :comments => @comments } %>
-      </ol><!-- need to tack this on to close thread -->
       <%= will_paginate @comments, params: { anchor: :comments } %>
     <% end %>
   </div>

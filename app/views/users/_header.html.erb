@@ -1,9 +1,9 @@
 <!--Descriptive page name, messages and instructions-->
-<div class="primary header module">
-  <h2 class="heading">
+<header id="user-header">
+  <h2>
     <%= @pseud ? @pseud.byline : @user.login %>
   </h2>
-  <p class="icon"><%= icon_display(@user, @pseud) %></p>
+  <div class="avatar"><%= icon_display(@user, @pseud) %></div>
 <!--/descriptions-->
 
   <!--subnav-->
@@ -12,4 +12,4 @@
   <% end %>
   <!--/subnav-->
 
-</div>
+</header>

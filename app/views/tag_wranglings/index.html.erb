@@ -1,147 +1,143 @@
-<div class="tag wrangling home">
-  <!--Descriptive page name, messages and instructions-->
-  <h2 class="heading"><%= t(".page_heading") %></h2>
-  <% unless params[:show] %>
-    <h4 class="landmark heading"><%= t(".notes.landmark") %></h4>
-	<p>
-		hi me
-	</p>
+<%= content_for :sidebar do %>
+  <% if show_wrangling_dashboard %>
+    <%= render :partial => 'tag_wranglings/wrangler_dashboard' %>
   <% end %>
+<% end %>
 
-  <!--/descriptions-->
+<!--Descriptive page name, messages and instructions-->
+<h2><%= t(".page_heading") %></h2>
+<% unless params[:show] %>
+  <h4 class="landmark"><%= t(".notes.landmark") %></h4>
+<% end %>
+<!--/descriptions-->
+
+<!--main content-->
+<!--Eventually, something less redundant will go here-->
+<% unless params[:show].blank? %>
+  <h3><%= ts('Mass Wrangle New/Unwrangled Tags') %></h3>
+<% end %>
+
+<% if @tags && @tags.empty? %>
+  <p><%= ts('There are no unwrangled tags in this category at the moment.') %></p>
+<% elsif @tags %>
+  <%= will_paginate @tags %>
+
+  <%= form_tag url_for(controller: 'tag_wranglings', action: 'wrangle'), method: :post, id: 'wrangulator' do %>
+    <fieldset>
+      <legend><%= ts('Assign and Mass Select') %></legend>
+      <% if params[:show] == 'fandoms' %>
+        <div class="form-row side-label">
+          <%= label_tag :media, ts('Wrangle to Media') %>
+          <div class="field">
+            <%= select_tag :media, options_for_select(@media_names) %>
+          </div>
+        </div>
+      <% else %>
+        <div class="form-row side-label">
+          <%= label_tag :fandom_string, ts('Wrangle to Fandom(s)') %>
+          <div class="field">
+            <%= text_field_tag 'fandom_string', params[:fandom_string], autocomplete_options('fandom') %>
+          </div>
+        </div>
+      <% end %>
+      <div class="submit">
+        <%= submit_tag ts('Wrangle') %>
+      </div>
+    </fieldset>
+
+    <fieldset class="table">
+      <legend><%= ts('Choose tags from a table') %></legend>
+
+      <h3 class="landmark"><%= ts('Individual Selection Table') %></h3>
+
+      <div class="wrapper">
+        <table summary="<%= ts('A subset of tags listed by name, with options to edit, wrangle, or view works tagged thus. Also listed is when each tag was created, whether each is canonical, and the number of works tagged thus.') %>" id="wrangulise">
+          <caption><%= @tags.first.class.to_s.pluralize %> <%= ts('to be Wrangled') %></caption>
+
+          <colgroup>
+            <col class="name" />
+            <col span="3" />
+          </colgroup>
+          
+          <thead role="navigation">
+            
+            <tr>
+              <th scope="col">
+                <%= sort_link ts('Tag Name'), :name %>
+                <ul class="actions" role="menu">
+                  <li><a id="wrangle_all_select" title="<%= ts('select') %>"><%= ts('All') %></a></li>
+                  <li><a id="wrangle_all_deselect" title="<%= ts('select') %>"><%= ts('None') %></a></li>
+                </ul>
+              </th>
+              <th scope="col" title="<%= ts('sort by') %>">
+                <%= sort_link ts('Created'), :created_at, {sort_default: true} %>
+              </th>
+              <th scope="col">
+                <%= ts('Canonical') %>
+                <ul class="actions" role="menu">
+                  <li><a id="canonize_all_select" title="<%= ts('select') %>"><%= ts('All') %></a></li>
+                  <li><a id="canonize_all_deselect" title="<%= ts('select') %>"><%= ts('None') %></a></li>
+                </ul>
+              </th>
+              <th scope="col" title="<%= ts('sort by') %>">
+                <%= sort_link ts('Taggings'), :taggings_count_cache, { desc_default: true } %>
+              </th>
+              <th scope="col"><%= ts('Manage') %></th>
+            </tr>
+          </thead>
+
+          <tfoot>
+            <tr>
+              <th scope="row" colspan="4"><%= ts('Action:') %></th>
+              <td><span class="submit actions"><%= submit_tag ts('Wrangle') %></span></td>
+            </tr>
+          </tfoot>
+
+          <tbody>
+            <% @tags.each do |tag| %>
+              <% if tag.unwrangled? %>
+                <tr>
+                  <th scope="row" title="<%= ts("tag") %>">
+                    <%= check_box_tag "selected_tags[]", tag.id, nil, id: "selected_tags_#{tag.id}" %>
+                    <%= label_tag "selected_tags_#{tag.id}", tag.name.to_s %>
+                  </th>
+
+                  <td title="<%= ts("created") %>"><%= l(tag.created_at.to_date) %></td>
+
+                  <td title="<%= ts("canonical?") %>">
+                    <% if tag.canonical? %>
+                      <%= ts("Yes") %>
+                    <% else %>
+                      <%= check_box_tag "canonicals[]", tag.id, tag.canonical?, id: "canonicals_#{tag.id}" %>
+                    <% end %>
+                  </td>
+
+                  <td title="<%= ts("taggings") %>"><%= tag.taggings_count_cache %></td>
+
+                  <td>
+                    <ul class="actions">
+                      <li><%= link_to t(".manage.edit"), edit_tag_path(tag) %></li>
+                      <li><%= link_to t(".manage.wrangle"), wrangle_tag_path(tag) %></li>
+                      <li><%= link_to t(".manage.works"), tag_works_path(tag) %></li>
+                      <li><%= link_to t(".manage.comments", count: tag.count_visible_comments), tag_comments_path(tag) %></li>
+                    </ul>
+                  </td>
+                </tr>
+              <% end %>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </fieldset>
+    <%= hidden_field_tag :show, params[:show] %>
+    <%= hidden_field_tag :sort_column, params[:sort_column] %>
+    <%= hidden_field_tag :sort_direction, params[:sort_direction] %>
+    <%= hidden_field_tag :page, params[:page] %>
+  <% end %>
+  <!--/content-->
 
   <!--subnav-->
-  <!--/subnav-->
-
-  <!--main content-->
-  <!--Eventually, something less redundant will go here-->
-  <% unless params[:show].blank? %>
-    <h3 class="heading"><%= ts('Mass Wrangle New/Unwrangled Tags') %></h3>
-  <% end %>
-
-  <% if @tags && @tags.empty? %>
-    <p><%= ts('There are no unwrangled tags in this category at the moment.') %></p>
-  <% elsif @tags %>
-    <%= will_paginate @tags %>
-
-    <%= form_tag url_for(controller: 'tag_wranglings', action: 'wrangle'), method: :post, id: 'wrangulator' do %>
-      <fieldset>
-        <legend><%= ts('Assign and Mass Select') %></legend>
-
-        <dl>
-          <% if params[:show] == 'fandoms' %>
-            <dt><%= label_tag :media, ts('Wrangle to Media') %></dt>
-            <dd><%= select_tag :media, options_for_select(@media_names) %></dd>
-          <% else %>
-            <dt><%= label_tag :fandom_string, ts('Wrangle to Fandom(s)') %></dt>
-            <dd title="<%= ts('wrangle to fandom(s)') %>"><%= text_field_tag 'fandom_string', params[:fandom_string], autocomplete_options('fandom') %></dd>
-          <% end %>
-          <dt class="landmark"><%= ts('Submit') %></dt>
-          <dd class="submit"><%= submit_tag ts('Wrangle') %></dd>
-        </dl>
-      </fieldset>
-
-      <fieldset class="table">
-        <legend><%= ts('Choose tags from a table') %></legend>
-
-        <h3 class="landmark heading"><%= ts('Individual Selection Table') %></h3>
-
-        <div class="wrapper">
-          <table summary="<%= ts('A subset of tags listed by name, with options to edit, wrangle, or view works tagged thus. Also listed is when each tag was created, whether each is canonical, and the number of works tagged thus.') %>" id="wrangulise">
-            <caption><%= @tags.first.class.to_s.pluralize %> <%= ts('to be Wrangled') %></caption>
-
-            <colgroup>
-              <col class="name" />
-              <col span="3" />
-            </colgroup>
-            
-            <thead role="navigation">
-              
-              <tr>
-                <th scope="col">
-                  <%= sort_link ts('Tag Name'), :name %>
-                  <ul class="actions" role="menu">
-                    <li><a id="wrangle_all_select" title="<%= ts('select') %>"><%= ts('All') %></a></li>
-                    <li><a id="wrangle_all_deselect" title="<%= ts('select') %>"><%= ts('None') %></a></li>
-                  </ul>
-                </th>
-                <th scope="col" title="<%= ts('sort by') %>">
-                  <%= sort_link ts('Created'), :created_at, {sort_default: true} %>
-                </th>
-                <th scope="col">
-                  <%= ts('Canonical') %>
-                  <ul class="actions" role="menu">
-                    <li><a id="canonize_all_select" title="<%= ts('select') %>"><%= ts('All') %></a></li>
-                    <li><a id="canonize_all_deselect" title="<%= ts('select') %>"><%= ts('None') %></a></li>
-                  </ul>
-                </th>
-                <th scope="col" title="<%= ts('sort by') %>">
-                  <%= sort_link ts('Taggings'), :taggings_count_cache, { desc_default: true } %>
-                </th>
-                <th scope="col"><%= ts('Manage') %></th>
-              </tr>
-            </thead>
-
-            <tfoot>
-              <tr>
-                <th scope="row" colspan="4"><%= ts('Action:') %></th>
-                <td><span class="submit actions"><%= submit_tag ts('Wrangle') %></span></td>
-              </tr>
-            </tfoot>
-
-            <tbody>
-              <% @tags.each do |tag| %>
-                <% if tag.unwrangled? %>
-                  <tr>
-                    <th scope="row" title="<%= ts("tag") %>">
-                      <%= check_box_tag "selected_tags[]", tag.id, nil, id: "selected_tags_#{tag.id}" %>
-                      <%= label_tag "selected_tags_#{tag.id}", tag.name.to_s %>
-                    </th>
-
-                    <td title="<%= ts("created") %>"><%= l(tag.created_at.to_date) %></td>
-
-                    <td title="<%= ts("canonical?") %>">
-                      <% if tag.canonical? %>
-                        <%= ts("Yes") %>
-                      <% else %>
-                        <%= check_box_tag "canonicals[]", tag.id, tag.canonical?, id: "canonicals_#{tag.id}" %>
-                      <% end %>
-                    </td>
-
-                    <td title="<%= ts("taggings") %>"><%= tag.taggings_count_cache %></td>
-
-                    <td>
-                      <ul class="actions">
-                        <li><%= link_to t(".manage.edit"), edit_tag_path(tag) %></li>
-                        <li><%= link_to t(".manage.wrangle"), wrangle_tag_path(tag) %></li>
-                        <li><%= link_to t(".manage.works"), tag_works_path(tag) %></li>
-                        <li><%= link_to t(".manage.comments", count: tag.count_visible_comments), tag_comments_path(tag) %></li>
-                      </ul>
-                    </td>
-                  </tr>
-                <% end %>
-              <% end %>
-            </tbody>
-          </table>
-        </div>
-      </fieldset>
-
-      <div>
-        <%= hidden_field_tag :show, params[:show] %>
-        <%= hidden_field_tag :sort_column, params[:sort_column] %>
-        <%= hidden_field_tag :sort_direction, params[:sort_direction] %>
-        <%= hidden_field_tag :page, params[:page] %>
-      </div>
-    <% end %>
-    <!--/content-->
-    <div class="clear"><!--presentational, phase me out--></div>
-
-    <!--subnav-->
-    <%= will_paginate @tags %>
-  <% end %>
-  <!--/subnav-->
-</div>
-
-<% content_for :footer_js do %>
-  <%= javascript_include_tag 'select_all', skip_pipeline: true %>
+  <%= will_paginate @tags %>
 <% end %>
+<!--/subnav-->
+

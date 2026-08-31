@@ -1,17 +1,24 @@
-<% # expects 'form' and any of 'collectibles', 'collectible' or '@collectible which can be 1 or more collectibles %>
+<!-- expects 'form' and any of 'collectibles', 'collectible' or '@collectible which can be 1 or more collectibles -->
 
 <% collectibles = [collectible] if (!collectibles && collectible) %>
 <% collectibles = [@collectible] if (!collectibles && @collectible) %>
 <!-- collections -->
 <% unless (collections = collectibles.collect(&:collections).flatten.uniq).empty? %>
-  <dt><%= form.label :collections_to_remove, ts("Current Collections") %></dt>
-  <dd class="listbox group">
-    <h4 class="heading"><%= ts("Check to remove") %></h4>
-    <%= checkbox_section(form, :collections_to_remove, collections, :name_method => "title") %>
-  </dd>
+  <div class="form-row">
+    <%= form.label :collections_to_remove, ts("Current Collections") %>
+    <div class="field">
+      <h4><%= ts("Check to remove") %></h4>
+      <%= checkbox_section(form, :collections_to_remove, collections, :name_method => "title") %>
+    </div>
 <% end %>
   
-<dt><%= form.label :collections_to_add, ts("Add to collections") %> <%= link_to_help "add-collectible-to-collection" %></dt>
-<dd title="add to collection">
-  <%= form.text_field :collections_to_add, autocomplete_options("open_collection_names") %>
-</dd>
+<div class="form-row">
+  <%= form.label :collections_to_add, ts("Add to collections") %> <%= link_to_help "add-collectible-to-collection" %></dt>
+  <div class="field">
+    <%= form.text_field :collections_to_add, autocomplete_options("open_collection_names") %>
+  </div>
+</div>
+
+<% content_for :footer_js do %>
+  <%= vite_tags 'javascripts/checkbox_section_toggle.js' %>
+<% end %>

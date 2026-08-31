@@ -1,0 +1,6 @@
+en:
+  pagy:
+    aria_label:
+      nav: Pagination
+    next: Next →
+    prev: "← Previous"

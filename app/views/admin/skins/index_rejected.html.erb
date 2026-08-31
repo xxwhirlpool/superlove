@@ -1,6 +1,5 @@
-<div class="admin">
 <!--Descriptive page name, messages and instructions-->
-<h2 class="heading"><%= ts('Manage Rejected Skins') %></h2>
+<h2><%= ts('Manage Rejected Skins') %></h2>
 <!--/descriptions-->
 
 <!--subnav-->
@@ -10,13 +9,10 @@
 <!--main content-->
 <%= form_tag update_admin_skin_path, {:method => :put} do %>
   <!-- review of rejected skins -->
-  <fieldset>
-    <legend><%= ts('Rejected Skins') %></legend>
-    <h3 class="heading"><%= ts('Rejected Skins') %></h3>
-    <table id="rejected_skins" summary="<%= ts('Details of rejected skins, along with administrative notes and the option to unreject the skin.') %>">
-      <caption><%= ts('Rejected Skins') %></caption>
-      <thead>
-        <tr>
+  <table id="rejected_skins" summary="<%= ts('Details of rejected skins, along with administrative notes and the option to unreject the skin.') %>">
+    <caption><%= ts('Rejected Skins') %></caption>
+    <thead>
+      <tr>
         <th scope="col"><%= ts('Skin') %></th>
         <th scope="col"><%= ts('Type') %></th>
         <th scope="col"><%= ts('Creator') %></th>
@@ -28,7 +24,7 @@
       <% @rejected_skins.each_with_index do |skin, i| %>
         <% disabled = !policy(skin).update? %>
         <tr>
-          <th scope="row"><%= link_to skin.title, skin_path(skin) %></td>
+          <th scope="row"><%= link_to skin.title, skin_path(skin) %></th>
           <td><%= skin.type == 'WorkSkin' ? 'Work Skin' : 'Site Skin' %></td>
           <td><%= skin_author_link(skin) %></td>
           <td><%=h skin.admin_note %></td>
@@ -37,15 +33,7 @@
         </tr>
       <% end %>
     </tbody>
-    </table>
-  </fieldset>
-
-  <p class="submit"><%= submit_tag ts('Update') %></p>
-
+  </table>
+  <div class="submit"><%= submit_tag ts('Update') %></div>
 <% end %>
-
 <!--/content-->
-
-<!--subnav-->
-<!--/subnav-->
-</div>

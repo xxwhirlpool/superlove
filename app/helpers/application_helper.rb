@@ -26,16 +26,16 @@ module ApplicationHelper
 
     case controller.controller_name
     when "abuse_reports", "feedbacks", "known_issues"
-      class_names = "system support #{controller.controller_name} #{controller.action_name}"
+      class_names = "docs #{controller.controller_name}-#{controller.action_name}"
     when "archive_faqs"
-      class_names = "system docs support faq #{controller.action_name}"
+      class_names = "docs #{controller.controller_name}-#{controller.action_name}"
     when "wrangling_guidelines"
-      class_names = "system docs guideline #{controller.action_name}"
+      class_names = "docs #{controller.controller_name}-#{controller.action_name}"
     when "home"
-      class_names = if %w(content privacy).include?(controller.action_name)
-                      "system docs tos tos-#{controller.action_name}"
+      class_names = if %w(content privacy about).include?(controller.action_name)
+                      "docs"
                     else
-                      "system docs #{controller.action_name}"
+                      "docs home"
                     end
     when "errors"
       class_names = "system #{controller.controller_name} error-#{controller.action_name}"
@@ -182,26 +182,31 @@ module ApplicationHelper
   def link_to_modal(content = "", options = {})
     options[:class] ||= ""
     options[:for] ||= ""
-    options[:title] ||= options[:for]
-
-    html_options = { class: "#{options[:class]} modal", title: options[:title] }
-    link_to content, options[:for], html_options
+    options[:id] ||= ""
+    options[:title] ||= options[:id]
+    options[:params] ||= {}
+    puts options[:path].inspect
+    html_options = { class: "modal", title: options[:title], popovertarget: options[:id], type: 'button' }
+    puts options.inspect
+    button_tag(content, html_options) + "<div popover id='#{options[:id]}'>
+      <div class='popover-inner'>#{render(options[:for], options[:params])}</div>
+      <div class='footer-bar'>
+        <span class='title'>#{options[:title]}</span>
+        <button class='button' type='button' popovertarget='#{options[:id]}' popovertargetaction='hide'>Close</button>
+      </div>
+    </div>".html_safe
   end
 
   # TODO: AO3-7208 Make help modals dynamic and translatable and use link_to_help_modal instead of this method
-  def link_to_help(help_entry, link = '<span class="symbol question"><span>?</span></span>'.html_safe)
-    help_file = ""
+  def link_to_help(help_entry, title = nil, link = '<span class="icon question">?</span>'.html_safe)
+    help_file = "help_files/#{help_entry}"
 
-    unless !help_file.blank? && File.exists?("#{Rails.root}/public/#{help_file}")
-      help_file = "#{ArchiveConfig.HELP_DIRECTORY}/#{help_entry}.html"
-    end
-
-    " ".html_safe + link_to_modal(link, for: help_file, title: help_entry.split('-').join(' ').capitalize, class: "help symbol question").html_safe
+    " ".html_safe + link_to_modal(link, for: help_file, id: help_entry, title: title ? title : help_entry.split(/[\-_]/).join(' ').capitalize).html_safe
   end
 
   def link_to_help_modal(help_path, title)
-    link = tag.span(tag.span(t("application_helper.help_modal.help_symbol")), class: %w[symbol question])
-    " ".html_safe + link_to_modal(link, for: help_path, title: title, class: "help symbol question")
+    link = tag.span(tag.span(t("application_helper.help_modal.help_symbol")))
+    " ".html_safe + link_to_modal(link, for: help_path, title: title)
   end
 
   # Inserts the flash alert messages for flash[:key] wherever
@@ -265,14 +270,7 @@ module ApplicationHelper
 
   ## Allow use of tiny_mce WYSIWYG editor
   def use_tinymce
-    @content_for_tinymce = ""
-    content_for :tinymce do
-      javascript_include_tag "tinymce/tinymce.min.js", skip_pipeline: true
-    end
-    @content_for_tinymce_init = ""
-    content_for :tinymce_init do
-      javascript_include_tag "mce_editor.min.js", skip_pipeline: true
-    end
+    ""
   end
 
   # check for pages that allow tiny_mce before loading the massive javascript
@@ -283,9 +281,9 @@ module ApplicationHelper
 
   # see: http://www.w3.org/TR/wai-aria/states_and_properties#aria-valuenow
   def generate_countdown_html(field_id, max)
-    max = max.to_s
-    span = content_tag(:span, max, id: "#{field_id}_counter", class: "value", "data-maxlength" => max)
-    content_tag(:p, span + ts(' characters left'), class: "character_counter", "tabindex" => 0)
+    max = "#{max.to_s} #{ts('characters remaining')}"
+    span = content_tag(:span, max, id: "#{field_id}_counter", class: "value", "data-maxlength" => max, "data-singular" => ts(' character remaining'), 'data-plural' => ts(' characters remaining'))
+    content_tag(:div, span, class: "character_counter", "tabindex" => 0)
   end
 
   # expand/contracts all expand/contract targets inside its nearest parent with the target class (usually index or listbox etc)
@@ -319,7 +317,8 @@ module ApplicationHelper
         autocomplete_hint_text: ts("Start typing for suggestions!"),
         autocomplete_no_results_text: ts("(No suggestions found)"),
         autocomplete_min_chars: 1,
-        autocomplete_searching_text: ts("Searching...")
+        autocomplete_searching_text: ts("Searching..."),
+        autocomplete_type: method
       }
     }.deep_merge(options)
   end
@@ -332,13 +331,13 @@ module ApplicationHelper
       form.fields_for(nested_model_name, new_nested_model, child_index: child_index) {|child_form|
         render(partial: partial_to_render, locals: {form: child_form, index: child_index}.merge(locals))
       }
-    link_to_function(linktext, "add_section(this, \"#{nested_model_name}\", \"#{escape_javascript(rendered_partial_to_add)}\")", class: "hidden showme")
+    link_to_function(linktext, "add_section(this, \"#{nested_model_name}\", \"#{rendered_partial_to_add}\")", class: "showme", id: "add-#{nested_model_name}")
   end
 
   # see above
   def link_to_remove_section(linktext, form, class_of_section_to_remove="removeme")
     form.hidden_field(:_destroy) + "\n" +
-    link_to_function(linktext, "remove_section(this, \"#{class_of_section_to_remove}\")", class: "hidden showme")
+    link_to_function(linktext, "remove_section(this, \"#{class_of_section_to_remove}\")", class: "remove-section")
   end
 
   # show time in the time zone specified by the first argument
@@ -501,16 +500,18 @@ module ApplicationHelper
 
     # if there are only a few choices, don't show the scrolling and the toggle
     size = choices.size
-    css_class = checkbox_section_css_class(size, options[:concise])
-    checkboxes_ul = content_tag(:ul, checkboxes, class: css_class)
-
-    toggle = "".html_safe
+    
+    toggle_class = ""
+    
     if options[:include_toggle] && !options[:concise] && size > (ArchiveConfig.OPTIONS_TO_SHOW * 6)
-      toggle = checkbox_section_toggle(checkboxes_id, size)
+      toggle_class = " checkbox-toggle"
     end
+    
+    css_class = checkbox_section_css_class(size, options[:concise])
+    checkboxes_ul = content_tag(:ul, checkboxes, class: "#{css_class}#{toggle_class} radio-group")
 
     # We wrap the whole thing in a div
-    return content_tag(:div, checkboxes_ul + toggle + (options[:include_blank] ? hidden_field_tag(field_name, " ") : ''.html_safe), id: checkboxes_id)
+    return content_tag(:div, checkboxes_ul + (options[:include_blank] ? hidden_field_tag(field_name, " ") : ''.html_safe), id: checkboxes_id, "data-css-class": css_class)
   end
 
   def checkbox_section_css_class(size, concise=false)
@@ -535,9 +536,9 @@ module ApplicationHelper
       "#{filter_attrib}>#{none_text}</a></li></ul>").html_safe
   end
 
-  def submit_button(form=nil, button_text=nil)
+  def submit_button(form=nil, button_text=nil, additional_classes=nil)
     button_text ||= (form.nil? || form.object.nil? || form.object.new_record?) ? ts("Submit") : ts("Update")
-    content_tag(:p, (form.nil? ? submit_tag(button_text) : form.submit(button_text)), class: "submit")
+    content_tag(:div, (form.nil? ? submit_tag(button_text) : form.submit(button_text)), class: "submit#{additional_classes ? " #{additional_classes}" : ''}")
   end
 
   def submit_fieldset(form=nil, button_text=nil)
@@ -569,7 +570,7 @@ module ApplicationHelper
   # element in each pair is the radio button's value, and the second element in
   # each pair is the radio button's label.
   def radio_button_list(form, field_name, option_array)
-    content_tag(:ul) do
+    content_tag(:ul, class: 'radio-group') do
       form.collection_radio_buttons(field_name, option_array, :first, :second,
                                     include_hidden: false) do |builder|
         content_tag(:li, builder.label { builder.radio_button + builder.text })

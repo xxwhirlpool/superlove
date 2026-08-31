@@ -1,0 +1,21 @@
+main {
+  &.about {
+    .content {
+      dt::after {
+        content: ":";
+      }
+      
+      dd {
+      	margin-block-start: 1rem;
+      	margin-block-end: 2rem;
+      	margin-inline-start: 1rem;
+      }
+      
+      address {
+      	font-family: monospace;
+      	font-size: initial;
+      	display: inline;
+      }
+    }
+  }
+}

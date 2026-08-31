@@ -1,7 +1,7 @@
 <div id="user-page" class="tag wrangler home profile">
   <div class="primary header module">
     <!--Descriptive page name, messages and instructions-->
-    <h2 class="heading"><%= ts("%{wrangler_login}'s Wrangling Page", :wrangler_login => @wrangler.login) %></h2>
+    <h2><%= ts("%{wrangler_login}'s Wrangling Page", :wrangler_login => @wrangler.login) %></h2>
     <p class="icon"><%= icon_display(@wrangler) %></p>
     <!--/descriptions-->
     <!--subnav-->
@@ -17,7 +17,7 @@
   <!--TEST NOTE: these tds are titled to expose headings to Chromevox, which doesn't read scope
     feedback needed from real use (is it annoying having the announcement on every cell, and is it doubling up, basically?)-->
   <div class="assigned module">
-    <h3 class="heading"><%= ts('Assigned Fandoms') %></h3>
+    <h3><%= ts('Assigned Fandoms') %></h3>
     <% if @fandoms.empty? %>
       <p><%= ts("Your lack of fandoms makes the wrangulator sad. Fandoms can be assigned via the") %> <%= link_to ts('tag wranglers page'), tag_wranglers_path %>.</p>
     <% else %>

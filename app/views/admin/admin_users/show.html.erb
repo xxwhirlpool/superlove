@@ -1,95 +1,83 @@
-<div class="admin">
-  <!--Descriptive page name, messages and instructions-->
-  <h2 class="heading"><%= t(".page_heading", login: @user.login, id: @user.id) %></h2>
-  <!--/descriptions-->
+<!--Descriptive page name, messages and instructions-->
+<h2><%= t(".page_heading", login: @user.login, id: @user.id) %></h2>
+<!--/descriptions-->
 
-  <!--subnav-->
-  <ul class="navigation actions">
+<!--subnav-->
+<ul class="actions right">
+  <li>
+    <%= link_to t(".navigation.invitations.manage"), manage_user_invitations_path(user_id: @user.login) %>
+  </li>
+  <li>
+    <%= link_to t(".navigation.invitations.add"), user_invitations_path(user_id: @user.login) %>
+  </li>
+  <li><%= link_to t(".navigation.troubleshoot"), troubleshoot_admin_user_path(id: @user.login) %></li>
+  <li>
+    <%= button_to t(".navigation.activate"), { action: "activate", id: @user }, disabled: @user.active? %>
+  </li>
+  <li>
+    <%= link_to t(".navigation.rename"), change_username_user_path(@user) %>
+  </li>
+  <li>
+    <%= link_to t(".navigation.roles"), { action: "index", user_id: @user.id } %>
+  </li>
+  <% if policy(User).can_access_creation_summary? %>
     <li>
-      <%= link_to t(".navigation.invitations.manage"), manage_user_invitations_path(user_id: @user.login) %>
+      <%= link_to t(".navigation.creations"), creations_admin_user_path(@user) %>
     </li>
-    <li>
-      <%= link_to t(".navigation.invitations.add"), user_invitations_path(user_id: @user.login) %>
-    </li>
-    <li><%= link_to t(".navigation.troubleshoot"), troubleshoot_admin_user_path(id: @user.login) %></li>
-    <li>
-      <%= button_to t(".navigation.activate"), { action: "activate", id: @user }, disabled: @user.active? %>
-    </li>
-    <li>
-      <%= link_to t(".navigation.rename"), change_username_user_path(@user) %>
-    </li>
-    <li>
-      <%= link_to t(".navigation.roles"), { action: "index", user_id: @user.id } %>
-    </li>
-    <% if policy(User).can_access_creation_summary? %>
-      <li>
-        <%= link_to t(".navigation.creations"), creations_admin_user_path(@user) %>
-      </li>
+  <% end %>
+</ul>
+<!--/subnav-->
+
+<!--main content-->
+<p class="notes"><%= t(".note") %></p>
+<h3><%= t(".info.heading") %></h3>
+<ul id="user-info">
+  <li><b><%= t(".info.email") %></b> <a href="mailto:<%= @user.email %>"><%= @user.email %></a></li>
+  <li><b><%= t(".info.invitation") %></b> <%= @user.invitation ? link_to(@user.invitation.id, invitation_path(@user.invitation.id)) : t(".info.no_invitation") %></li>
+  <li><b><%= t(".info.role", count: @user.roles.size) %></b> <%= @user.roles.any? ? @user.roles.map { |role| t("activerecord.attributes.role.#{role.name}") }.to_sentence : t(".info.no_role") %></li>
+  <% if policy(User).can_view_past? %>
+    <% past_logins = @user.historic_values("login") %>
+    <% if past_logins.present? %>
+      <li><b><%= t(".info.past_logins", count: past_logins.size) %></b> <%= past_logins.to_sentence %></li>
     <% end %>
-  </ul>
-  <!--/subnav-->
-
-  <!--main content-->
-  <p class="notes"><%= t(".note") %></p>
-  <h3 class="heading"><%= t(".info.heading") %></h3>
-  <div class="wrapper">
-    <dl class="user meta group">
-      <dt><%= t(".info.email") %></dt>
-      <dd><%= @user.email %></dd>
-      <dt><%= t(".info.invitation") %></dt>
-      <dd><%= @user.invitation ? link_to(@user.invitation.id, invitation_path(@user.invitation.id)) : t(".info.no_invitation") %></dd>
-      <dt><%= t(".info.role", count: @user.roles.size) %></dt>
-      <dd><%= @user.roles.any? ? @user.roles.map { |role| t("activerecord.attributes.role.#{role.name}") }.to_sentence : t(".info.no_role") %></dd>
-      <% if policy(User).can_view_past? %>
-        <% past_logins = @user.historic_values("login") %>
-        <% if past_logins.present? %>
-          <dt><%= t(".info.past_logins", count: past_logins.size) %></dt>
-          <dd>
-            <%= past_logins.to_sentence %>
-          </dd>
-        <% end %>
-        <% past_emails = @user.historic_values("email") %>
-        <% if past_emails.present? %>
-          <dt><%= t(".info.past_emails", count: past_emails.size) %></dt>
-          <dd>
-            <%= past_emails.to_sentence %>
-          </dd>
-        <% end %>
-      <% end %>
-    </dl>
-  </div>
-
-  <h3 class="heading"><%= t(".fnok.heading") %></h3>
-  <%= form_tag action: "update_next_of_kin", controller: "admin/admin_users" do %>
-    <%= error_messages_for @user.fannish_next_of_kin %>
-    <%= hidden_field_tag "user_login", @user.login %>
-    <%= field_set_tag t(".fnok.heading"), disabled: !policy(@user).can_manage_next_of_kin? do %>
-      <dl>
-        <dt>
-          <%= label_tag "next_of_kin_name", t(".fnok.form.name") %>
-        </dt>
-        <dd>
-          <%= text_field_tag "next_of_kin_name", @user.fannish_next_of_kin.try(:kin_name), autocomplete: "off" %>
-        </dd>
-        <dt>
-          <%= label_tag "next_of_kin_email", t(".fnok.form.email") %>
-        </dt>
-        <dd>
-          <%= text_field_tag "next_of_kin_email", @user.fannish_next_of_kin.try(:kin_email), autocomplete: "off" %>
-        </dd>
-      </dl>
-      <p class="submit"><%= submit_tag t(".fnok.form.submit") %></p>
+    <% past_emails = @user.historic_values("email") %>
+    <% if past_emails.present? %>
+      <li><b><%= t(".info.past_emails", count: past_emails.size) %></b> <%= past_emails.to_sentence %></li>
     <% end %>
   <% end %>
+</ul>
 
-  <h3 class="heading"><%= t(".status.heading") %></h3>
-  <%= form_tag action: "update_status", controller: "admin/admin_users" do %>
-    <%= hidden_field_tag "user_login", @user.login %>
-    <%= field_set_tag t(".status.heading"), disabled: !policy(UserManager).can_manage_users? do %>
-      <fieldset>
-        <legend><%= t(".status.form.admin_action.legend") %></legend>
-        <h4 class="heading"><%= t(".status.form.admin_action.legend") %></h4>
-        <ul>
+<h3><%= t(".fnok.heading") %></h3>
+<%= form_tag action: "update_next_of_kin", controller: "admin/admin_users" do %>
+  <%= error_messages_for @user.fannish_next_of_kin %>
+  <%= hidden_field_tag "user_login", @user.login %>
+  <%= field_set_tag t(".fnok.heading"), disabled: !policy(@user).can_manage_next_of_kin? do %>
+    <div class="form-row side-label">
+      <%= label_tag "next_of_kin_name", t(".fnok.form.name") %>
+      <div class="field">
+        <%= text_field_tag "next_of_kin_name", @user.fannish_next_of_kin.try(:kin_name), autocomplete: "off" %>
+      </div>
+    </div>
+    <div class="form-row side-label">
+      <%= label_tag "next_of_kin_email", t(".fnok.form.email") %>
+      <div class="field">
+        <%= text_field_tag "next_of_kin_email", @user.fannish_next_of_kin.try(:kin_email), autocomplete: "off" %>
+      </div>
+    </div>
+    <div class="submit">
+      <%= submit_tag t(".fnok.form.submit") %>
+    </div>
+  <% end %>
+<% end %>
+
+<h3><%= t(".status.heading") %></h3>
+<%= form_tag action: "update_status", controller: "admin/admin_users" do %>
+  <%= hidden_field_tag "user_login", @user.login %>
+  <%= field_set_tag t(".status.heading"), disabled: !policy(UserManager).can_manage_users? do %>
+    <div class="form-row side-label">
+      <%= label_tag "admin_action_notes_and_warnings", t(".status.form.admin_action.legend") %>
+      <div class="field">
+        <ul class="radio-group">
           <li>
             <%= radio_button_tag "admin_action", "note" %>
             <%= label_tag "admin_action_note", t(".status.form.admin_action.note") %>
@@ -105,8 +93,10 @@
             <% else %>
               <%= radio_button_tag "admin_action", "suspend", false, disabled: @user.banned? %>
               <%= label_tag "admin_action_suspend", t(".status.form.admin_action.suspend") %>
-              <%= text_field_tag "suspend_days", "", class: "number", size: 2, disabled: @user.banned? %>
-              <%= live_validation_for_field("suspend_days", presence: false, numericality: true) %>
+              <div class="supplemental">
+                <%= text_field_tag "suspend_days", "", class: "number", size: 2, disabled: @user.banned? %>
+                <%= live_validation_for_field("suspend_days", presence: false, numericality: true) %>
+              </div>
             <% end %>
           </li>
           <li>
@@ -123,22 +113,22 @@
             <%= label_tag "admin_action_spamban", t(".status.form.admin_action.spamban") %>
           </li>
         </ul>
-      </fieldset>
-      <fieldset>
-        <legend><%= t(".status.form.notes.legend") %></legend>
-        <h4 class="heading"><%= label_tag "admin_note", t(".status.form.notes.legend") %></h4>
-        <p class="note">
-          <%= t(".status.form.notes.required") %>
-        </p>
-        <p>
-          <%= text_area_tag "admin_note", nil, class: "observe_textlength" %>
-          <%= generate_countdown_html("admin_note", ArchiveConfig.LOGNOTE_MAX) %>
-        </p>
-      <% end %>
-      <p class="submit"><%= submit_tag t(".status.form.submit") %></p>
-    </fieldset>
-  <% end %>
+      </div>
+    </div>
+    <legend><%= t(".status.form.notes.legend") %></legend>
+    <div class="form-row side-label">
+      <%= label_tag "admin_note", t(".status.form.notes.legend") %>
+      <div class="field">
+        <%= text_area_tag "admin_note", nil, class: "observe_textlength" %>
+        <p class="help"><%= t(".status.form.notes.required") %></p>
+        <%= generate_countdown_html("admin_note", ArchiveConfig.LOGNOTE_MAX) %>
+      </div>
+    </div>
+    <div class="submit">
+      <%= submit_tag t(".status.form.submit") %>
+    </div>
+  <% end%>
+<% end %>
 
-  <%= render "user_history", user: @user %>
-  <!--/content-->
-</div>
+<%= render "user_history", user: @user %>
+<!--/content-->

@@ -1,6 +1,6 @@
 <% # accessed through My Assignment on challenge dashboard %>
 <!--Descriptive page name, messages and instructions-->
-<h2 class="heading"><%= ts("Assignment for") %> <%= @challenge_assignment.offer_byline %> <% if @challenge_assignment.collection.challenge.user_allowed_to_see_assignments?(current_user) %><%= challenge_assignment_email(@challenge_assignment) %><% end %></h2>
+<h2><%= ts("Assignment for") %> <%= @challenge_assignment.offer_byline %> <% if @challenge_assignment.collection.challenge.user_allowed_to_see_assignments?(current_user) %><%= challenge_assignment_email(@challenge_assignment) %><% end %></h2>
 <!--/descriptions-->
 
 <!--subnav-->
@@ -31,7 +31,7 @@
 <% if @challenge_assignment.request_signup %>
   <%= render "challenge_signups/show_requests", challenge_signup: @challenge_assignment.request_signup %>
 <% else %>
-  <h3 class="heading"><%= ts("No request!") %></h3>
+  <h3><%= ts("No request!") %></h3>
   <p class="note"><%= ts("Contact challenge moderators for help.") %></p>
 <% end %>
 

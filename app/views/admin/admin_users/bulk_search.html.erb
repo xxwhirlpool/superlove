@@ -1,46 +1,38 @@
-<div class="admin">
-  <!--Descriptive page name, messages and instructions-->
-  <h2 class="heading"><%= ts("Bulk Email Search") %></h2>
-  <!--/descriptions-->
+<!--Descriptive page name, messages and instructions-->
+<h2><%= ts("Bulk Email Search") %></h2>
+<!--/descriptions-->
 
-  <!--main content-->
-  <div>
-    <p class="notice"><%= ts("Please enter a list of email addresses to search below. This form will search for <strong>exact</strong> matches.").html_safe %></p>
-  </div>
+<!--main content-->
+<p class="notice"><%= ts("Please enter a list of email addresses to search below. This form will search for <strong>exact</strong> matches.").html_safe %></p>
 
-  <%= form_tag url_for(controller: "admin/admin_users", action: :bulk_search, method: :post), class: "search", role: "search" do %>
-    <fieldset>
-      <legend><%= ts("Email addresses") %></legend>
-      <dl>
-        <dt class="required"><%= label_tag "emails", ts("Email addresses *") %></dt>
-        <dd class="required"><%= text_area_tag "emails", @emails ? @emails.join("\n") : "", rows: 10, cols: 70, "aria-describedby" => "email-field-description" %>
-          <p class="footnote" id="email-field-description">
-            <%= ts("Email addresses to find; <strong>one per line.</strong>").html_safe %>
-          </p>
-        </dd>
-      </dl>
-    </fieldset>
+<%= form_tag url_for(controller: "admin/admin_users", action: :bulk_search, method: :post), class: "search", role: "search" do %>
+  <fieldset>
+    <div class="form-row side-label">
+      <%= label_tag "emails", ts("Email addresses *") %>
+      <div class="field">
+        <%= text_area_tag "emails", @emails ? @emails.join("\n") : "", rows: 10, cols: 70, "aria-describedby" => "email-field-description", required: true %>
+        <p class="help" id="email-field-description">
+          <%= ts("Email addresses to find; <strong>one per line.</strong>").html_safe %>
+        </p>
+      </div>
+    </div>
+    <div class="submit">
+      <%= submit_tag ts("Download CSV"), name: "download_button" %>
+      <%= submit_tag ts("Find") %>
+    </div>
+  </fieldset>
+<% end %>
 
-    <fieldset>
-      <legend><%= ts("Find") %></legend>
-      <p class="submit actions">
-        <%= submit_tag ts("Download CSV"), name: "download_button" %>
-        <%= submit_tag ts("Find") %>
-      </p>
-    </fieldset>
+<% if @results[:not_found_emails] || @results[:users] %>
+  <p><%= ts("#{pluralize(@results[:total], "email")} entered. #{@results[:searched]} searched. " + 
+            "#{@results[:found_users].size} found. #{@results[:not_found_emails].size} not found. #{pluralize(@results[:duplicates], "duplicate")}.") %></p>
+
+  <% if @results[:not_found_emails]&.any? %>
+    <h3><%= ts("Not found") %></h3>
+    <p><%= @results[:not_found_emails].join(", ") %></p>
   <% end %>
 
-  <% if @results[:not_found_emails] || @results[:users] %>
-    <p><%= ts("#{pluralize(@results[:total], "email")} entered. #{@results[:searched]} searched. " + 
-              "#{@results[:found_users].size} found. #{@results[:not_found_emails].size} not found. #{pluralize(@results[:duplicates], "duplicate")}.") %></p>
-
-    <% if @results[:not_found_emails]&.any? %>
-      <h3 class="heading"><%= ts("Not found") %></h3>
-      <p><%= @results[:not_found_emails].join(", ") %></p>
-    <% end %>
-
-    <% if @users %>
-      <%= render "user_table", users: @users %>
-    <% end %>
+  <% if @users %>
+    <%= render "user_table", users: @users %>
   <% end %>
-</div>
+<% end %>

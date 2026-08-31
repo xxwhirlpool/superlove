@@ -1,8 +1,4 @@
-<%# IMPORTANT: Also update current_tos_version in application_controller %>
-<%# To ensure proper formatting, this must always be rendered inside an element
-  with the userstuff class. The userstuff element must be inside an element with
-  the classes "docs system". %>
-<p><big><strong><%= t(".intro.archive_description") %></strong></big></p>
+<h3><%= t(".intro.archive_description") %></h3>
 <p>
   <%= t(".intro.ao3_exists_to_host_html",
         personal_information_link: link_to(t(".intro.personal_information"), "#III.A.1")) %>
@@ -21,7 +17,7 @@
 <% unless local_assigns[:suppress_toc] %>
   <nav aria-labelledby="nav-toc-heading" class="toc">
     <details open>
-      <summary><h3 class="heading" id="nav-toc-heading"><%= t(".toc.header") %></h3></summary>
+      <summary><h3 id="nav-toc-heading"><%= t(".toc.header") %></h3></summary>
       <p><%= t(".toc.intro") %></p>
       <ol class="toc" style="list-style-type:upper-roman;">
         <li><%= tos_table_of_contents_section("tos") %></li>
@@ -32,8 +28,8 @@
   </nav>
 <% end %>
 
-<h3 class="heading"><%= t(".privacy_policy_heading") %></h3>
-<h4 class="heading" id="III.A"><span id="applicability"><%= t(".applicability.heading") %></span></h4>
+<h3><%= t(".privacy_policy_heading") %></h3>
+<h4 id="III.A"><span id="applicability"><%= t(".applicability.heading") %></span></h4>
 <ol style="list-style-type:decimal;">
   <li id="III.A.1"><p><%= t(".applicability.policy_covers") %></p></li>
   <li id="III.A.2">
@@ -48,7 +44,7 @@
   </li>
 </ol>
 
-<h4 class="heading" id="III.B"><span id="scope"><%= t(".information_scope.heading") %></span></h4>
+<h4 id="III.B"><span id="scope"><%= t(".information_scope.heading") %></span></h4>
 <ol style="list-style-type:decimal;">
   <li id="III.B.1">
     <p>
@@ -60,7 +56,7 @@
   <li id="III.B.2"><p><%= t(".information_scope.collect_through_use") %></p></li>
 </ol>
 
-<h4 class="heading" id="III.C"><span id="information_types"><%= t(".types_of_information.heading") %></span></h4>
+<h4 id="III.C"><span id="information_types"><%= t(".types_of_information.heading") %></span></h4>
 <ol style="list-style-type:decimal;">
   <li id="III.C.1">
     <p><strong><%= t(".types_of_information.emails.heading") %></strong></p>
@@ -107,13 +103,13 @@
   </li>
 </ol>
 
-<h4 class="heading" id="III.D"><span id="aggregate_anonymous"><%= t(".aggregate_anonymous_info.heading") %></span></h4>
+<h4 id="III.D"><span id="aggregate_anonymous"><%= t(".aggregate_anonymous_info.heading") %></span></h4>
 <ol style="list-style-type:decimal;">
   <li id="III.D.1"><p><%= t(".aggregate_anonymous_info.understand_ao3_usage") %></p></li>
   <li id="III.D.2"><p><%= t(".aggregate_anonymous_info.anonymous_non_personal") %></p></li>
 </ol>
 
-<h4 class="heading" id="III.E"><span id="requests"><%= t(".your_rights.heading") %></span></h4>
+<h4 id="III.E"><span id="requests"><%= t(".your_rights.heading") %></span></h4>
 <ol style="list-style-type:decimal;">
   <li id="III.E.1">
     <p>
@@ -130,7 +126,7 @@
   <li id="III.E.3"><p><%= t(".your_rights.require_user_specific_proof") %></p></li>
 </ol>
 
-<h4 class="heading" id="III.F"><span id="sharing"><%= t(".third_parties.heading") %></span></h4>
+<h4 id="III.F"><span id="sharing"><%= t(".third_parties.heading") %></span></h4>
 <ol style="list-style-type:decimal;">
   <li id="III.F.1"><p><%= t(".third_parties.do_not_sell_information") %></p></li>
   <li id="III.F.2"><p><%= t(".third_parties.third_party_tools") %></p></li>
@@ -186,7 +182,7 @@
   </li>
 </ol>
 
-<h4 class="heading" id="III.G"><span id="termination"><%= t(".account_termination.heading") %></span></h4>
+<h4 id="III.G"><span id="termination"><%= t(".account_termination.heading") %></span></h4>
 <ol style="list-style-type:decimal;">
   <li id="III.G.1">
     <p>
@@ -212,10 +208,10 @@
   <li id="III.G.2"><p><%= t(".account_termination.legal_enforcement_retention") %></p></li>
 </ol>
 
-<h4 class="heading" id="III.H"><span id="retention"><%= t(".retention_of_information.heading") %></span></h4>
+<h4 id="III.H"><span id="retention"><%= t(".retention_of_information.heading") %></span></h4>
 <p><%= t(".retention_of_information.text") %></p>
 
-<h4 class="heading" id="III.I"><span id="contact"><%= t(".contact_us.heading") %></span></h4>
+<h4 id="III.I"><span id="contact"><%= t(".contact_us.heading") %></span></h4>
 <p>
   <%= t(".contact_us.html",
         contact_pac_link: link_to(t(".contact_us.contact_pac"), new_abuse_report_path)) %>
@@ -223,14 +219,12 @@
 
 <hr />
 <p><%= t(".effective") %></p>
-<p id="license">
-  <small>
-    <%= t(".license_html",
-          terms_of_service_link: link_to(t(".terms_of_service"), tos_path),
-          content_policy_link: link_to(t(".content_policy"), content_path),
-          privacy_policy_link: link_to(t(".privacy_policy"), privacy_path),
-          cc_attribution_4_0_international_link: link_to(t(".cc_attribution_4_0_international"),
-            "https://creativecommons.org/licenses/by/4.0/",
-            rel: "nofollow")) %>
-  </small>
+<p id="license" class="smaller">
+  <%= t(".license_html",
+        terms_of_service_link: link_to(t(".terms_of_service"), tos_path),
+        content_policy_link: link_to(t(".content_policy"), content_path),
+        privacy_policy_link: link_to(t(".privacy_policy"), privacy_path),
+        cc_attribution_4_0_international_link: link_to(t(".cc_attribution_4_0_international"),
+          "https://creativecommons.org/licenses/by/4.0/",
+          rel: "nofollow")) %>
 </p>

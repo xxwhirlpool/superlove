@@ -1,22 +1,16 @@
 <% if @admin_banner&.active? %>
   <% unless session[:hide_banner] || current_user&.preference&.banner_seen %>
-    <div class="<%= @admin_banner.banner_type %> announcement group" id="admin-banner">
-      <blockquote class="userstuff">
-        <%= raw sanitize_field(@admin_banner, :content, image_safety_mode: true) %>
-      </blockquote>
+    <div class="<%= @admin_banner.banner_type %> announcement banner" id="admin-banner">
+      <%= raw sanitize_field(@admin_banner, :content, image_safety_mode: true) %>
       <% if current_user.nil? %>
-        <p class="submit">
-          <%= link_to current_path_with(hide_banner: true), "aria-label": t(".hide"), class: "showme action" do
-                content_tag(:span, "&times;".html_safe, "aria-hidden": true)
-              end %>
-        </p>
+        <%= link_to current_path_with(hide_banner: true), "aria-label": t(".hide"), class: "showme" do
+              content_tag(:span, "&times;".html_safe, "aria-hidden": true)
+            end %>
       <% else %>
         <%= form_tag end_banner_user_path(current_user), method: :post, remote: true do %>
-          <p class="submit">
-          <%= button_tag "aria-label": t(".hide"), class: "showme action" do
-                content_tag(:span, "&times;".html_safe, "aria-hidden": true)
-              end %>
-          </p>
+          <%= button_tag "aria-label": t(".hide"), class: "showme" do
+              content_tag(:span, "&times;".html_safe, "aria-hidden": true)
+            end %>
         <% end %>
       <% end %>
     </div>

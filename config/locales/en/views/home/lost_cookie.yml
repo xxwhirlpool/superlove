@@ -1,0 +1,5 @@
+en:
+  home:
+    lost_cookie:
+      page_title: Forced Logout
+      page_content: "You have been automatically logged out to protect your privacy. Please make sure that your browser is set to accept cookies from archiveofourown.org and delete any existing Archive cookies. If you continue to have problems logging in, please try using the <a href=\"%{login_path}\">Log In</a> page. If you still have problems after trying that, please <a href=\"%{feedback_path}\">contact Support</a>"

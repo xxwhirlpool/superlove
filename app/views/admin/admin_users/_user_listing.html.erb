@@ -4,5 +4,5 @@
 <td><%= ts("Archivist") if user.archivist %></td>
 <td><%= ts("Suspended") if user.suspended %></td>
 <td><%= ts("Banned") if user.banned %></td>
-<td><%= link_to ts("Edit"), { url: edit_admin_user_path(user), method: :get }, remote: true, href: edit_admin_user_path(user) %>
+<td><%= link_to ts("Edit"), { url: edit_admin_user_path(user), method: :get }, remote: true, href: edit_admin_user_path(user) %></td>
 <td><%= ts("Delete") %></td>

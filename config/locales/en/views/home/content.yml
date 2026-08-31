@@ -1,0 +1,143 @@
+en:
+  home:
+    content:
+      cc_attribution_4_0_international: Creative Commons Attribution 4.0 International License
+      commercial_promotion:
+        heading: II.C. Commercial Promotion
+        not_allowed: Promotion, solicitation, and advertisement of commercial products or activities are not allowed.
+        tos_faq: FAQ for Section II.C
+        tos_faq_in_parens_html: "(%{tos_faq_link})"
+        tos_faq_link_label: Commercial Promotion FAQ
+      content_policy: Content Policy
+      content_policy_heading: II. Content Policy
+      copyright_infringement:
+        epigraphs_small_quotations_allowed: Epigraphs and short quotations are allowed, as is Content that is set within or based on an existing work.
+        heading: II.D. Copyright Infringement
+        not_allowed: Reproductions of large excerpts of copyrighted works are not allowed without the consent of the copyright owner. This includes stories, artwork, songs, poems, transcripts, and other copyrighted material. Crediting the original creator does not give you the right to upload, podfic, or translate someone else's work without permission, regardless of whether the source is a fanwork or a professionally published work.
+        tos_faq: FAQ for Section II.D
+        tos_faq_in_parens_html: "(%{tos_faq_link})"
+        tos_faq_link_label: Copyright Infringement and Plagiarism FAQ
+        transformative_fanworks: transformative fanworks
+        transformative_works_legal_html: We believe that %{transformative_fanworks_link} are legal. Complaints about the mere existence of fanworks that mention trademarks or are based on copyrighted material will not be pursued.
+      effective: 'Effective: November 19, 2024'
+      fanworks:
+        bookmarks: Bookmarks
+        bookmarks_only_fanworks_html: "%{bookmarks_link} must only be created for fanworks. You may create %{external_bookmarks_link} for fanworks hosted on third-party sites."
+        external_bookmarks: external bookmarks
+        heading: II.B. Fanworks
+        must_be_fanworks_html: Works must be fanworks. Posting a Work that primarily consists of %{non_fanwork_content_link} is not allowed.
+        non_fanwork_content: non-fanwork Content
+        tos_faq: FAQ for Section II.B
+        tos_faq_in_parens_html: "(%{tos_faq_link})"
+        tos_faq_link_label: Fanworks and Non-Fanwork Content FAQ
+      harassment:
+        advocating_harm:
+          heading: Advocating Harm
+          text: Content that advocates specific, real, harmful actions towards real people is not allowed. This includes, but is not limited to, directing death threats or slurs at people outside of fiction, as well as encouraging others to harass or harm specific people or groups.
+        applies_to_all: it applies to all aspects of the Service
+        blocking: blocking
+        definition: Harassment is any behavior that produces a generally hostile environment for its target. Examples include bullying, threats, and personal attacks by or towards individuals or groups of people.
+        filtering: filtering
+        heading: II.H. Harassment
+        muting: muting
+        not_allowed_and_context: Harassment is not allowed. When judging whether a specific incident or item of Content constitutes harassment and/or when determining the appropriate severity of a penalty, the Policy & Abuse committee will consider relevant context. This includes whether the behavior was repeated, targeted, difficult to avoid encountering, or related to a general pattern of harassment by an individual or a group, among other factors. Additionally, submitting repeated and/or baseless complaints, particularly those targeting a specific user or group, may be considered harassment.
+        otw:
+          abbreviated: OTW
+          full: Organization for Transformative Works
+        policy_applicability_html: The Harassment Policy is primarily focused on user conduct and non-fictional Content. However, %{applies_to_all_link}, including interactions with the Policy & Abuse committee, the Support committee, and other AO3 or %{otw_abbreviation} volunteers.
+        rpf:
+          heading: Real-Person Fiction (RPF)
+          text: Creating RPF never constitutes harassment in and of itself. Posting works where someone dies, is subjected to slurs, or is otherwise harmed as part of the plot is usually not a violation of the Harassment Policy. However, deliberately posting such Content in a manner designed to be seen by the subject of the work, such as by gifting them the work, may result in a judgment of harassment.
+        threatening_versus_annoying_html: In general, threatening Content will be considered harassment, while Content that is merely rude or annoying will be allowed. Not everyone agrees about what is offensive and unacceptable. Users are encouraged to use tools such as %{blocking_link}, %{muting_link}, and %{filtering_link} to control their own environment on AO3.
+        tos_faq: FAQ for Section II.H
+        tos_faq_in_parens_html: "(%{tos_faq_link})"
+        tos_faq_link_label: Harassment FAQ
+      illegal_inappropriate_content:
+        automated_spam_check_html: We may use automated means to filter out spam. If you submit Content that is erroneously caught in a spam filter, please %{contact_ao3_administrators_link}.
+        conduct_threatening_technical_integrity_html: Conduct that threatens the %{technical_integrity_link} of AO3, for example attempting to hack AO3 or spread viruses through it, is prohibited. Uploading technically misnamed files or Content (such as non-image files with an image file extension used to disguise their actual format) constitutes a threat to the technical integrity of the site.
+        contact_ao3_administrators: contact AO3 administrators
+        heading: II.K. Illegal and Inappropriate Content
+        images_of_real_children: photographic or photorealistic images of real children
+        no_illegal_content_html: You may not upload Content that appears or purports to contain, link to, or provide instructions for obtaining sexually explicit or suggestive %{images_of_real_children_link}; malware, warez, cracks, hacks, or other executable files and their associated utilities; or trade secrets, restricted technologies, or other classified information.
+        report_it_to_us: report it to us
+        spamming_behavior: Spamming behavior is prohibited. Repeated identical or nearly identical posts in multiple places may be considered spam regardless of commercial content.
+        technical_integrity: technical integrity
+        tos_faq: FAQ for Section II.K
+        tos_faq_in_parens_html: "(%{tos_faq_link})"
+        tos_faq_link_label: Offensive Content vs Illegal Content FAQ
+        violates_us_law_html: If you encounter Content that you believe violates a specific law of the United States, you can %{report_it_to_us_link}.
+      impersonation:
+        function: function
+        heading: II.G. Impersonation
+        html: You may not impersonate or misrepresent your affiliation with any person, entity, or %{function_link}. Fiction clearly marked as such is not considered impersonation.
+        tos_faq: FAQ for Section II.G
+        tos_faq_in_parens_html: "(%{tos_faq_link})"
+        tos_faq_link_label: Fannish Identities and Impersonation FAQ
+      intro:
+        all_content_must_comply_html: All %{content_link} on AO3 must comply with our Content Policy.
+        archive_description: The Archive of Our Own (AO3) exists to host transformative, non-commercial works created by fans from all over the world.
+        content: content
+        maximum_inclusiveness: maximum inclusiveness of fanwork content
+        our_goal_html: Our goal is %{maximum_inclusiveness_link}. We want to provide a safe and permanent home for fanworks, including works that might be at risk on other sites due to being deemed immoral, explicit, or otherwise objectionable. Users should always observe and heed the ratings and warnings provided before accessing works on AO3.
+        report_it_to_us: report it to us
+        review_before_posting_html: "%{all_content_must_comply_bold} Please review this page carefully before you begin posting. Answers to common questions about the Content Policy can be found in the %{tos_faq_link}."
+        tos_faq: TOS FAQ
+        we_do_not_prescreen: We do not prescreen content on AO3.
+        you_can_report_html: If you encounter content that you believe violates our Content Policy, you can %{report_it_to_us_link}. %{we_do_not_prescreen_bold}
+      license_html: The AO3 %{terms_of_service_link}, including the %{content_policy_link} and %{privacy_policy_link}, are licensed under the %{cc_attribution_4_0_international_link}.
+      mandatory_tags:
+        any_archive_warning: any Archive Warning
+        ao3_may_designate_html: AO3 software may designate some tag fields (e.g. Rating, Archive Warnings, Fandom, or Language) as mandatory in order to post, import, or edit a Work using the appropriate forms. Tags entered into mandatory fields must meet the %{minimum_criteria_link} described in the TOS FAQ.
+        applying_nonspecific_tag_html: Applying a non-specific tag (such as "Not Rated", "Creator Chose Not To Use Archive Warnings", or "Unspecified Fandom") is always considered sufficient tagging for that field. A Work that is labeled with a non-specific Rating may contain Content of the highest rating. A Work that is labeled with a non-specific Archive Warning may contain Content pertaining to %{any_archive_warning_link}.
+        archive_warning: Archive Warning
+        choose_no_warnings_html: A creator may choose not to apply specific %{rating_link} and/or %{archive_warning_link} tags to their Work, but they must signal such choices by applying AO3's %{non_specific_tags_link} indicating that they have opted out of choosing a specific Rating and/or Archive Warning.
+        heading: II.J. Mandatory Tags
+        minimum_criteria: minimum criteria
+        non_specific_tags: non-specific tag(s)
+        not_available: not available
+        rating: Rating
+        tags_applied_automatically_html: Some tags may be automatically applied to Works. In addition, AO3 administrators may determine that tags in a mandatory tag field on a Work are inaccurate or insufficient. In such cases, AO3 administrators may remove inaccurate tags; add non-specific tags to the Work; add specific tags to the Work in fields where non-specific tags are %{not_available_link}; require the creator to appropriately adjust the Work's tags; hide the Work; or take other appropriate action to address the matter. Refer to the %{tos_faq_link} for details about when AO3 administrators may enforce the presence or removal of tags in mandatory fields.
+        tos_faq: TOS FAQ
+        tos_faq_endnote: FAQ for Section II.J
+        tos_faq_in_parens_html: "(%{tos_faq_link})"
+        tos_faq_link_label: Ratings and Archive Warnings FAQ
+      offensive_content:
+        heading: II.A. Offensive Content
+        removal_not_just_offensiveness: Unless it violates some other policy, we will not remove Content for offensiveness.
+        tos_faq: FAQ for Section II.A
+        tos_faq_in_parens_html: "(%{tos_faq_link})"
+        tos_faq_link_label: Offensive Content vs Illegal Content FAQ
+      page_content_landmark: Main Text
+      page_heading: Content Policy
+      personal_information:
+        disclosing_personal_data_html: disclosing personal data, including %{special_categories_of_personal_data_link}.
+        heading: II.F. Personal Information and Fannish Identities
+        linking_fannish_identity: linking someone's fannish identity (such as their AO3 username) to their legal or professional identity (such as their "real life" name);
+        not_allowed: 'You may not upload Content that contains seemingly accurate, non-public information about another individual without authorization. This includes:'
+        orphaned: Orphaned
+        revealing_orphaned_creator_html: revealing the identity of the creator of an %{orphaned_link} fanwork;
+        right_to_hide_delete: We reserve the right to delete, hide, or otherwise make such Content unavailable.
+        rpf_exception: As Real-Person Fiction (RPF) is fictional, Content in RPF that would normally be deemed personal data (e.g. full names, usernames on social media services, city of residence, or birth date) will not ordinarily be considered as such.
+        sharing_sufficient_information: sharing information sufficient to identify someone else's legal or professional identity or their physical location (e.g. phone numbers, email addresses, residential addresses, or hotel room numbers); and
+        special_categories_of_personal_data: Special Categories of Personal Data
+        tos_faq: FAQ for Section II.F
+        tos_faq_in_parens_html: "(%{tos_faq_link})"
+        tos_faq_link_label: Fannish Identities and Impersonation FAQ
+      plagiarism:
+        heading: II.E. Plagiarism
+        html: Plagiarism is the use of someone else's words, or %{their_expressions_of_their_ideas_link}, without attribution. Minor alterations (such as replacing names, substituting synonyms, or rearranging a few words) are insufficient to make a work your own. Plagiarism is not allowed. Deliberately creating a work using the same general idea as another work is not plagiarism, but citation may be appropriate.
+        their_expressions_of_their_ideas: their expressions of their ideas
+        tos_faq: FAQ for Section II.E
+        tos_faq_in_parens_html: "(%{tos_faq_link})"
+        tos_faq_link_label: Copyright Infringement and Plagiarism FAQ
+      privacy_policy: Privacy Policy
+      terms_of_service: Terms of Service
+      toc:
+        header: Table of Contents for the Terms of Service (TOS)
+        intro: The Content Policy is the second part of the AO3 Terms of Service.
+      user_icons:
+        heading: II.I. User Icons
+        text: User icons must be appropriate for general audiences. They must not depict genital nudity, explicit sexual activity, hate symbols, or imagery that promotes, advocates, or causes harm.
+        tos_faq: FAQ for Section II.I
+        tos_faq_in_parens_html: "(%{tos_faq_link})"
+        tos_faq_link_label: Usernames, Icons, and Profiles FAQ

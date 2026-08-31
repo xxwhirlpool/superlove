@@ -5,7 +5,7 @@
 # if dynamic is true then this has been rendered via ajax 
 %>
 <div class="<% if bookmark.new_record? && bookmarkable.class == ExternalWork %>verbose <% end %>post bookmark" id="bookmark-form">
-  <h3 class="landmark heading"><%= ts("Bookmark") %></h3>
+  <h3 class="landmark"><%= ts("Bookmark") %></h3>
 
   <% bookmark ||= Bookmark.new %>
   <% bookmarkable ||= bookmark.bookmarkable %>
@@ -21,21 +21,21 @@
 
   <%= form_for(:bookmark, :url => bookmark_form_path(bookmark, bookmarkable), :html => {:method => bookmark.new_record? ? :post : :put}) do |f| %>
     <% if bookmarkable.class == ExternalWork && bookmarkable.new_record? %>
-      <p class="required notice">* <%= ts('Required information') %></p>
+      <div class="required notice">* <%= ts('Required information') %></div>
     <% end %>
     <fieldset>
       <legend><%= ts("Bookmark") %></legend>
       <% if in_page %>
-        <p class="close actions">
+        <div class="close">
           <% if dynamic %>
             <a id="bookmark_form_close_for_<%= bookmark_form_id %>" aria-label="<%= ts('cancel') %>">&times;</a>
           <% else %>
             <a class="bookmark_form_placement_close" href="#comments" aria-label="<%= ts('cancel') %>">&times;</a>
           <% end %>
-        </p>
+        </div>
       <% end %>
 
-      <h4 class="heading">
+      <h4>
         <% if current_user.pseuds.count > 1 %>
           <%= select_tag "bookmark[pseud_id]", 
             options_for_select(current_user.pseuds.map{|pseud| [pseud.name, pseud.id]}, 

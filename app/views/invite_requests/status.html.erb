@@ -1,5 +1,4 @@
-<!--Descriptive page name, messages and instructions-->
-<h2 class="heading">
+<h2>
   <%= t(".heading") %>
 </h2>
 
@@ -16,13 +15,13 @@
 <!--main content-->
 <%= form_tag show_invite_request_path, { remote: true, method: :get, class: "simple" } do %>
   <fieldset>
-    <p>
+    <div class="form-row">
       <%= label_tag :email %>
       <%= text_field_tag :email %>
-      <span class="submit actions">
-        <%= submit_tag t(".search") %>
-      </span>
-    </p>
+    </div>
+    <div class="submit">
+      <%= submit_tag ts("Look me up") %>
+    </div>
   </fieldset>
 <% end %>
 

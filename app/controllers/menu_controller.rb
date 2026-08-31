@@ -2,7 +2,9 @@ class MenuController < ApplicationController
 
   # about menu
   def about
-    render action: "about", layout: "application"
+    @page_heading = t('.menu_about.page_heading', key: 'header')
+    @page_content = view_context.render('menu/menu_about')
+    render "shared/page", layout: "application"
   end
   
   # browse menu

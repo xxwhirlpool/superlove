@@ -1,0 +1,27 @@
+en:
+  archive_faqs:
+    new:
+      heading: Create New Archive FAQ Category
+    archive_faq_form:
+      add_questions: Add Questions
+      no_javascript:
+        explanation: Since you don't have JavaScript turned on, please tell us how many questions you want this category to have. (This must be greater than the current number of questions, which is %{num}.)
+        questions_count_label: "Questions:"
+        submit: Update Form
+      required: "* Required information"
+      set_preferences: Set Preferences
+      category_name: Category name
+      questions_heading: Questions
+      add_question: Add Question
+      submit: Post
+    question_answer_fields:
+      question_label: Question <span>%{index}</span>
+      question: Question
+      anchor_name: Anchor name
+      answer: Answer
+      screencast_url: Screencast URL
+      question_translated: Question translated
+      remove_question: Remove Question
+    show_faq_cat:
+      page_heading: Archive FAQs
+      edit: Edit

@@ -1,0 +1,9 @@
+en:
+  kudos:
+    guest_header:
+      one: "%{count} guest has also left kudos"
+      other: "%{count} guests have also left kudos"
+    user_links:
+      more_link:
+        one: "%{count} more user"
+        other: "%{count} more users"

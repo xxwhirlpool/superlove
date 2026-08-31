@@ -1,24 +1,12 @@
-<div class="intro module">
-  <h2 class="heading"><%= ts("for fanfiction, original fiction, multimedia fanworks, and more") %></h2>
-  <p class="stats"><%= ts("more than %{fandom_count} fandoms | %{user_count} users | %{work_count} works", fandom_count: content_tag(:span, number_with_delimiter(@fandom_count), class: "count"), user_count: content_tag(:span, number_with_delimiter(@user_count), class: "count"), work_count: content_tag(:span, number_with_delimiter(@work_count), class: "count")).html_safe %></p>
+<div id="intro" class="module">
+  <h2><%= ts("for fanfiction, original fiction, multimedia fanworks, and more") %></h2>
+  <div class="stats"><%= ts("more than <b>%{fandom_count}</b> fandoms | <b>%{user_count}</b> users | <b>%{work_count}</b> works", fandom_count: content_tag(:span, number_with_delimiter(@fandom_count), class: "count"), user_count: content_tag(:span, number_with_delimiter(@user_count), class: "count"), work_count: content_tag(:span, number_with_delimiter(@work_count), class: "count")).html_safe %></div>
   <p class="parent"><%= ts("superlove is a project by") %> <%= link_to ts("girl on the moon"), "http://girlonthemoon.xyz" %>.</p>
   <p class="parent">DAYS SINCE SUPERLOVE GOT CALLED ANTI-RUN: <%= Date.today.mjd - Date.parse("2026-08-30").mjd %></p>
   <p class="parent">DAYS SINCE SUPERLOVE GOT CALLED PROSHIPPER-RUN: <%= Date.today.mjd - Date.parse("2026-08-30").mjd %></p>
 
-  <div class="account module">
-
-    <% if !AdminSetting.current.invite_from_queue_enabled? && AdminSetting.current.creation_requires_invite? %>
-      <p>
-        <%= ts("Joining superlove currently requires an invitation; however, we 
-				are not accepting new invitation requests at this time. Please check
-				the %{news} for more information.",
-				news: link_to("\"update\" tag on superlove News",
-				      admin_posts_path(tag: 2))
-            ).html_safe %>
-      </p>
-    <% end %>
-
-    <h4 class="heading"><%= ts("%{short_name} is:", short_name: ArchiveConfig.APP_SHORT_NAME) %></h4>
+  <div id="account" class="inset">
+    <h3><%= ts("%{short_name} is:", short_name: ArchiveConfig.APP_SHORT_NAME) %></h3>
     <ul>
       <li><%= ts("a place for freaks") %></li>
       <li><%= ts("a community before an archive") %></li>
@@ -32,12 +20,12 @@
 
     <% if AdminSetting.current.invite_from_queue_enabled? && AdminSetting.current.creation_requires_invite? && AdminSetting.current.request_invite_enabled? %>
       <p><%= ts("You can join by getting an invitation from another user or by") %> <%= link_to ts("contacting the admin"), about_path %></p>
-      <p class="actions"><%= link_to ts("Get Invited!"), invite_requests_path %></p>
+      <div class="actions center"><%= link_to ts("Get Invited!"), invite_requests_path %></div>
     <% elsif AdminSetting.current.invite_from_queue_enabled? && AdminSetting.current.creation_requires_invite? %>
       <p><%= ts("You can join by getting an invitation from our queue and waiting for admin approval.") %></p>
-      <p class="actions"><%= link_to ts("Get Invited!"), invite_requests_path %></p>
+      <div class="actions center"><%= link_to ts("Get Invited!"), invite_requests_path %></div>
     <% elsif AdminSetting.current.account_creation_enabled? && !AdminSetting.current.creation_requires_invite? %>
-      <p class="actions"><%= link_to ts("Create an Account!"), signup_path %></p>
+      <div class="actions center"><%= link_to ts("Create an Account!"), signup_path %></div>
     <% end %>
   </div>
 </div>

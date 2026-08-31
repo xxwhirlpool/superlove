@@ -2,12 +2,12 @@
   <%= fields_for("collection_items[]", collection_item) do |form| %>
     <div class="header module">
       <!--title-->
-      <h4 class="heading" id="collection_item_<%= collection_item.id %>">
+      <h4 id="collection_item_<%= collection_item.id %>">
         <%= error_messages_for collection_item %>
         <%= link_to collection_item_display_title(collection_item), collection_item.item %>
       </h4>
 
-      <h5 class="heading">
+      <h5>
         <% if @user %>
           <% # user version %>
           <%= ts("in") %> <span class="collection"><%= link_to collection_item.collection.title, collection_path(collection_item.collection) %></span>

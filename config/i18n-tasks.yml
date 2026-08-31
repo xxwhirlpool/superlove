@@ -15,7 +15,7 @@ data:
 
   # Locale files or `Find.find` patterns where translations are read from:
   read:
-    - config/locales/**/en.yml
+    - config/locales/en/**/*.yml
     - config/locales/phrase-exports/%{locale}.yml
     # - locales/views/zh-CN.yml # These are also in the phrase exports
 

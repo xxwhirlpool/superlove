@@ -1,0 +1,21 @@
+en:
+  challenge:
+    gift_exchange:
+      challenge_signups:
+        close_offers_html: Close Offers &#8593;
+        close_requests_html: Close Requests &#8593;
+        heading:
+          for_collection: Sign-ups for %{collection}
+          for_search:
+            one: Sign-up
+            other: Sign-ups
+        navigation:
+          download_csv: Download (CSV)
+          search: Search
+          search_by_pseud: Search by Pseud
+        no_sign_ups_yet: No sign-ups yet!
+        offers_html: Offers &#8595;
+        requests_html: Requests &#8595;
+    shared:
+      challenge_requests:
+        fandom: Fandom %{allowed_fandom_count}

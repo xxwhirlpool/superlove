@@ -1,5 +1,5 @@
 <!--Descriptive page name, messages and instructions-->
-<h2 class="heading">
+<h2>
   <% if logged_in_as_admin? %>
     <%= t(".page_heading.preview_tags_and_language") %>
   <% else %>
@@ -11,7 +11,7 @@
 
 <!--main content-->
 <div id="previewpane">
-  <div class="draft work">
+  <div class="draft-work">
     <%= render "works/meta" %>
   </div>
 </div>

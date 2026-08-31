@@ -1,0 +1,27 @@
+en:
+  admin_posts:
+    admin_post_form:
+      comment_permissions:
+        label: Who can comment on this news post
+      language:
+        label: Choose a language
+      tags:
+        label: Tags
+      translated_post:
+        footnote_comment_permissions: Comment permissions from the selected post will replace any permissions selected on this page.
+        footnote_tags: Tags from the selected post will replace any tags entered on this page.
+        label: Translation of
+    show:
+      navigation:
+        admin:
+          confirm_delete: Are you sure you want to delete this news post?
+          delete: Delete Post
+          edit: Edit Post
+          landmark: Admin Actions
+          unreviewed_comments:
+            one: Unreviewed Comments (%{count})
+            other: Unreviewed Comments (%{count})
+        landmark: News Post Navigation
+        next: Next Post
+        previous: Previous Post
+      page_heading: superlove News

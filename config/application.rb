@@ -47,7 +47,7 @@ module Otwarchive
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
-    config.time_zone = "EST"
+    config.time_zone = "UTC"
 
     # The default locale is :en.
     config.i18n.default_locale = ArchiveConfig.DEFAULT_LOCALE_ISO.to_sym
@@ -87,9 +87,9 @@ module Otwarchive
     ]
 
     # Set admin two-factor authentication keys
-    config.active_record.encryption.primary_key = File.read(Rails.root.join("config/keys/primarykey"))
-    config.active_record.encryption.deterministic_key = File.read(Rails.root.join("config/keys/deterministickey"))
-    config.active_record.encryption.key_derivation_salt = File.read(Rails.root.join("config/keys/derivationsalt"))
+    #config.active_record.encryption.primary_key = File.read(Rails.root.join("config/keys/primarykey"))
+    #config.active_record.encryption.deterministic_key = File.read(Rails.root.join("config/keys/deterministickey"))
+    #config.active_record.encryption.key_derivation_salt = File.read(Rails.root.join("config/keys/derivationsalt"))
 
 	config.credentials.content_path = "config/credentials.yml.enc"
 

@@ -1,0 +1,23 @@
+en:
+  profile:
+    edit:
+      about_me: About Me
+      browser_title: Edit Profile
+      change_profile_landmark: Change Profile
+      page_heading: Edit My Profile
+      privacy_policy: Privacy Policy
+      public_information_notice_html: Any personal information you post on your public AO3 profile, including but not limited to your name, email, age, location, personal relationships, gender or sexual identity, racial or ethnic background, religious or political views, and/or account usernames for other sites, will be accessible by the general public. To learn more about what data AO3 collects when you're on the site and how we use it, check out our %{privacy_policy_link}.
+      title: Title
+      update: Update
+    pseud_list:
+      more_pseuds:
+        one: "%{count} more pseud"
+        other: "%{count} more pseuds"
+    show:
+      delete_account_confirmation: This will permanently delete your account and cannot be undone. Are you sure?
+      delete_my_account: Delete My Account
+      edit_my_preferences: Set My Preferences
+      edit_my_profile: Edit My Profile
+      edit_my_pseuds: Manage My Pseuds
+      edit_my_works: Edit My Works
+      edit_profile: Edit Profile

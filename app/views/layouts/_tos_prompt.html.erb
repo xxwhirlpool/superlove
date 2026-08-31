@@ -1,9 +1,9 @@
 <div id="tos_prompt" class="hidden">
-  <h2 class="heading">
+  <h2>
     <span><%= t(".page_heading") %></span>
   </h2>
   <div class="agreement">
-    <p class="summary">
+    <div class="summary">
       <%= ts("%{site} is run by one person. If you see anything you don't like please
             don't fucking attack me I am just some guy who decided to self host ao3
             and none of this is really that serious. I strongly moderate the works
@@ -19,65 +19,83 @@
             tos: link_to(ts("Terms of Service"), tos_path),
             privacy: link_to(ts("Privacy Policy"), tos_path(anchor: "privacy"))
           ).html_safe %>
-    </p>
+    </div>
 
-    <p class="confirmation">
+    <div class="form-row confirmation">
       <input type="checkbox" id="tos_agree" />
       <label for="tos_agree"><%= t(".read_and_understood") %></label>
-    </p>
+    </div>
+    
+    <div class="form-row confirmation">
+      <input type="checkbox" id="data_processing_agree" />
+      <label for="data_processing_agree"><%= t(".data_processing_agreement") %></label>
+    </div>
 
     <% if current_user.nil? %>
-      <p class="submit">
+      <div class="submit">
         <%= button_tag t(".agree_and_consent"), disabled: true, type: "button", id: "accept_tos" %>
-      </p>
+      </div>
     <% else %>
       <%= form_tag end_tos_prompt_user_path(current_user),
             method: :post,
             remote: true do %>
-        <p class="submit">
+        <div class="submit">
           <%= submit_tag t(".agree_and_consent"), disabled: true, id: "accept_tos" %>
-        </p>
+        </div>
       <% end %>
     <% end %>
 
   </div>
 </div>
 
-<%# content_for footer renders this when we don't want it %>
 <%= javascript_tag do %>
-  $j(document).ready(function() {
-    var body = document.body;
-    var container = $j("#tos_prompt");
-    var outer = document.getElementById("outer");
-    var button = document.getElementById("accept_tos");
-    var tosCheckbox = document.getElementById("tos_agree");
-    var dataProcessingCheckbox = document.getElementById("data_processing_agree");
-
-    dataProcessingCheckbox.onclick = checkboxClicked;
-    tosCheckbox.onclick = checkboxClicked;
-    button.onclick = acceptTOSPrompt;
-
+  document.addEventListener('ready', (_e) => {
+    const container = document.getElementById('tos_prompt');
+    const outer = document.getElementById('outer');
+    const button = document.getElementById('accept_tos');
+    const agree = document.getElementById('tos_agree');
+    const dataAgree = document.getElementById("data_processing_agree");
+    
     setTimeout(showTOSPrompt, 1500);
-
-    function showTOSPrompt() {
-      body.style.overflow = "hidden";
-      $j.when(container.fadeIn(500)).done(function() {
-        outer.style.visibility = "hidden";
-        outer.setAttribute("aria-hidden", "true");
-      });
+    
+    const checkboxClicked = () => {
+      button.disabled = !agree.checked || !dataAgree.checked;
     }
-
-    function checkboxClicked() {
-      button.disabled = !tosCheckbox.checked || !dataProcessingCheckbox.checked;
+    
+    const showTOSPrompt = () => {
+      container.classList.remove('hidden');
+      outer.classList.add('hidden');
+      outer.setAttribute('aria-hidden', true);
     }
-
-    function acceptTOSPrompt() {
+    
+    const acceptTOSPrompt = () => {
       acceptTOS();
       body.style.overflow = "";
       outer.removeAttribute("style");
       outer.removeAttribute("aria-hidden");
-      $j.when(container.fadeOut(500)).done(function() {
+      container.classList.add('hidden');
+      setTimeout(() => {
         container.remove();
+      }, 500)
+    }
+    
+    if (agree) {
+      agree.addEventListener('click', (e) => {
+        checkboxClicked();
+        acceptTOSPrompt();
+      });
+    }
+    
+    if (dataAgree) {
+      dataAgree.addEventListener('click', (e) => {
+        checkboxClicked();
+        acceptTOSPrompt();
+      });
+    }
+    
+    if (button) {
+      button.addEventListener('click', () => {
+        acceptTOSPrompt();
       });
     }
   });

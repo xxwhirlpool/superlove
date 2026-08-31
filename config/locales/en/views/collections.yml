@@ -1,0 +1,103 @@
+en:
+  collection_items:
+    collection_item_form:
+      add: Add
+      add_bookmark_header: Add Bookmark to collections
+      add_work_header_html: Add %{title} to collections
+      invite: Invite
+      invite_header_html: Invite %{title} to collections
+    index:
+      collection:
+        notice:
+          unreviewed_by_user: Works and bookmarks listed here have been invited to this collection. Once a work's creator has approved inclusion in this collection, the work will be moved to "Approved."
+        page_heading_html: Items in %{collection_link}
+      navigation:
+        approved: Approved
+        rejected_by_collection: Rejected by Collection
+        rejected_by_user: Rejected by User
+        unreviewed_by_collection: Awaiting Collection Approval
+        unreviewed_by_user: Awaiting User Approval
+      no_items: Nothing to review here!
+      user:
+        notice:
+          unreviewed_by_collection: Works and bookmarks listed here have been added to a collection but need approval from a collection moderator before they are listed in the collection.
+        page_heading: Items by %{username} in Collections
+  collection_profile:
+    show:
+      meta:
+        collection_tags: 'Collection tags:'
+  collections:
+    collection_blurb:
+      collection_tags: 'Collection Tags:'
+    filters:
+      clear_filters: Clear Filters
+      closed:
+        exclude: 'No'
+        include: Either
+        label: Closed
+        only: 'Yes'
+      landmark: Filters
+      leave_filters: Top of Collections Index
+      legend: 'Filter collections:'
+      moderated:
+        exclude: 'No'
+        include: Either
+        label: Moderated
+        only: 'Yes'
+      multifandom:
+        exclude: 'No'
+        include: Either
+        label: Multifandom
+        only: 'Yes'
+      sort:
+        column: Sort by
+        direction:
+          ascending: Ascending
+          descending: Descending
+          label: Sort direction
+      submit:
+        button: Sort and Filter
+        landmark: Sort and Filter
+      tag: Filter by tag
+      title: Filter by title
+      type:
+        any: Any
+        gift_exchange: Gift Exchange Challenge
+        label: Collection Type
+        no_challenge: No Challenge
+        prompt_meme: Prompt Meme Challenge
+    form:
+      header_image_url:
+        footnote: PNG, JPEG, GIF
+        label: Custom header URL
+      icon:
+        delete: Delete collection icon and revert to our default. This will also remove the icon alt text and comment text.
+      multifandom:
+        footnote: Use this if your collection is not fandom-specific.
+        label: Multifandom
+    index:
+      page_heading:
+        challenges_subcollections_in: Challenges/Subcollections in %{collection}
+        collections_in_the: Collections in the %{archive}
+        collections_including: Collections including %{work}
+        users_collections: "%{user}'s Collections"
+    sidebar:
+      bookmarks: Bookmarked Items (%{count})
+      challenge_settings: Challenge Settings
+      collection_settings: Collection Settings
+      dashboard: Dashboard
+      fandoms: Fandoms (%{count})
+      faq: FAQ
+      landmark:
+        choices: Choices
+        contents: Contents
+        dashboard: Dashboard
+      manage_items: Manage Items
+      parent_collection: Parent Collection
+      people: People
+      profile: Profile
+      random_items: Random Items
+      rules: Rules
+      subcollections: Subcollections (%{count})
+      tags: Tags
+      works: Works (%{count})

@@ -1,5 +1,5 @@
 <!--Descriptive page name, messages and instructions-->
-<h2 class="heading">
+<h2>
   <% if logged_in_as_admin? %>
     <%= t(".page_heading.edit_tags_and_language_html", title: @work.title) %>
   <% else %>
@@ -12,14 +12,14 @@
 
 <!--main content-->
 <%= form_for(@work, html: { id: "work-form", class: "verbose work post" }, url: { action: "update_tags" }) do |f| %>
-  <p class="required notice">* <%= ts('Required information') %></p>
+  <div class="required notice">* <%= ts('Required information') %></div>
 
   <%= render 'work_form_tags', include_blank: false %>
 
   <% if logged_in_as_admin? %>
     <fieldset role="article">
       <legend><%= t("works.associations.title") %></legend>
-      <h3 class="landmark heading"><%= t("works.associations.title") %></h3>
+      <h3 class="landmark"><%= t("works.associations.title") %></h3>
       <dl>
         <%= render 'work_form_associations_language', f: f %>
       </dl>

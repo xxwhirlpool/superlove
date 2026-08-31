@@ -1,0 +1,93 @@
+.works {
+  .title,
+  .byline {
+    text-align: center;
+  }
+}
+
+#work-content {
+  margin: 1rem auto;
+}
+
+#work-meta {
+  > li {
+    &.warning {
+      b {
+        font-weight: bold;
+      }
+      
+      a {
+        font-weight: bold;
+      }
+    }
+    
+    &.stats {
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+    }
+  }
+}
+
+#download-formats {
+  list-style: none;
+  margin: 0;
+  padding: .375rem;
+  background-color: var(--background);
+  border: 2px var(--neutral500) solid;
+  box-shadow: 2px 2px 5px var(--neutral500);
+  position: absolute;
+  top: 100%;
+  right: 0;
+  display: flex;
+  gap: .25rem;
+}
+
+#workskin {
+  max-width: 72rem;
+  margin: auto;
+  
+  header {
+    margin: 1.5rem 3rem;
+  }
+}
+
+.work.blurb {
+  header {
+    grid-template-areas: "required title date"
+      "required fandoms fandoms";
+    grid-template-columns: 53px 1fr auto;
+  }
+  
+  h4 {
+    grid-area: title;
+  }
+  
+  .datetime {
+    grid-area: date;
+  }
+  
+  .fandoms {
+    grid-area: fandoms;
+  }
+  
+  .required-tags {
+    display: grid;
+    grid-area: required;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 25px);
+    gap: 3px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    
+    .medium {
+      display: none;
+    }
+  }
+}

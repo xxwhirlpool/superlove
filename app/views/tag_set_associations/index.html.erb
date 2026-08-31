@@ -1,6 +1,6 @@
 <div class="tag tagset"><!--this is probably what we should do for each feature, reckon?-->
 <!--Descriptive page names, messages and instructions-->
-	<h2 class="heading"><%= ts("Review Associations for %{title}", :title => @tag_set.title) %></h2>
+	<h2><%= ts("Review Associations for %{title}", :title => @tag_set.title) %></h2>
 <!-- /descriptions-->
 
 <!--subnav-->
@@ -22,7 +22,7 @@
   <% else %>
     <fieldset class="tagset listbox group">
       <legend>Approve Nominated Associations</legend>
-      <h3 class="heading"><%= ts("Approve Nominated Associations") %></h3>
+      <h3><%= ts("Approve Nominated Associations") %></h3>
       <%= check_all_none %>
       <ul id="nominated_associations_to_add" class="options many index group">
         <% @tags_to_associate.each do |tag| %>

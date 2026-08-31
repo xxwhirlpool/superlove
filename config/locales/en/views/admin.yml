@@ -1,0 +1,434 @@
+en:
+  admin:
+    activities:
+      index:
+        activities_table:
+          action: Action
+          admin: Admin
+          caption: Admin Activity
+          date: Date
+          summary: List of admin activity with links to full summaries.
+          target: Target
+        page_heading: Admin Activities
+      show:
+        action: Action
+        admin: Admin
+        date: Date
+        landmark:
+          details: Action Details
+        navigation:
+          index: Admin Activities
+        page_heading: Admin Activity
+        summary: Summary
+        target: Target
+    admin_invitations:
+      find:
+        email: All or part of an email address
+        invitations_for_html: Invitations for %{user_invitations_link}
+        page_heading: Track invitations
+        search: Search
+        token: Invite token
+        username: Username
+      index:
+        find:
+          email: All or part of an email address
+          heading: Track invitations
+          invite_token: Invite token
+          landmark_submit: Submit
+          search: Search
+          username: Username
+        grant_invites:
+          all: All
+          generate_invitations: Generate invitations
+          heading: Give invite codes to current users
+          landmark_submit: Submit
+          number_of_invitations: Number of invitations
+          users: Users
+          with_no_unused: With no unused invitations
+        invite_from_queue:
+          heading_html: Send invite codes to people in our %{invitations_queue_link}
+          invitations_queue: Invitations queue
+          invite_from_queue: Invite from queue
+          number_to_invite: Number of people to invite
+          requests_in_queue:
+            one: There is %{count} request in the queue.
+            other: There are %{count} requests in the queue.
+        navigation:
+          queue: Manage Queue
+          requests: Manage Requests
+        page_heading: Invite New Users
+        send_to_email:
+          description: Email address
+          heading: Send to Email
+          invite_by_email_title: Invite by email
+          invite_user: Invite user
+    admin_nav:
+      ao3_news: AO3 News
+      archive_faq: Archive FAQ
+      faq:
+        reorder_questions: Reorder Questions
+      known_issues: Known Issues
+      landmark: Admin Navigation
+      news:
+        delete_post: Delete Post
+      post_ao3_news: Post AO3 News
+      wrangling_guidelines: Wrangling Guidelines
+    admin_options:
+      delete:
+        bookmark: Delete Bookmark
+        confirmation: Are you sure you want to delete this?
+        external_work: Delete External Work
+        series: Delete Series
+        work: Delete Work
+      edit:
+        external_work: Edit External Work
+      edit_tags: Edit Tags and Language
+      hide:
+        bookmark: Hide Bookmark
+        external_work: Hide External Work
+        series: Hide Series
+        work: Hide Work
+      landmark: Admin Actions
+      not_spam: Mark Not Spam
+      remove_pseud: Remove Pseud
+      remove_pseud_confirmation: Are you sure you want to remove the creator's pseud from this work?
+      spam: Mark As Spam
+      unhide:
+        bookmark: Make Bookmark Visible
+        external_work: Make External Work Visible
+        series: Make Series Visible
+        work: Make Work Visible
+    admin_users:
+      confirm_delete_user_creations:
+        caution_html: Are you sure you want to <strong><em>delete</em></strong> all the works and comments created by this user, along with their %{bookmarks} bookmarks, %{series} series, and %{collections} collections? This <strong>cannot be undone</strong>.
+        confirm: Are you sure? Remember this will destroy ALL these objects!
+        page_heading: Delete Spammer Creations
+        submit: Yes, Delete All Spammer Creations
+      creations:
+        navigation:
+          admin_user: User Administration
+          creations: Creations
+        no_creations: This user has no works or comments.
+        page_heading: Works and Comments by %{user} (%{id})
+        page_title: "%{login} - User Creations"
+      history:
+        heading: User History
+        table:
+          caption: History of User Actions
+          creation:
+            action: Account Created
+            details: System Generated
+          head:
+            action: Action
+            date: Date/Time
+            details: Details
+          sign_in:
+            current:
+              action: Most Recent Login
+              no_details: No login recorded
+            details: 'IP Address: %{ip}'
+            last:
+              action: Previous Login
+              no_details: No previous login recorded
+          summary: Shows what notable actions, such as creating an account, a user performed, and when they did them.
+      index:
+        role: Role
+        settings:
+          label: Search settings
+          past: Include past usernames and emails
+      show:
+        fnok:
+          form:
+            email: Fannish next of kin's email
+            name: Fannish next of kin's username
+            submit: Update Fannish Next of Kin
+          heading: Fannish Next of Kin
+        info:
+          email: 'Email:'
+          heading: User Information
+          invitation: 'Invitation:'
+          no_invitation: Created without invitation
+          no_role: No roles
+          past_emails:
+            one: 'Past email:'
+            other: 'Past emails:'
+          past_logins:
+            one: 'Past username:'
+            other: 'Past usernames:'
+          role:
+            one: 'Role:'
+            other: 'Roles:'
+        navigation:
+          activate: Activate
+          creations: Creations
+          invitations:
+            add: Add Invitations
+            manage: Manage Invitations
+          rename: Rename
+          roles: Manage Roles
+          troubleshoot: Troubleshoot
+        note: To fix common errors with this user's Subscriptions and Stats pages, and to reindex their works and bookmarks, choose "Troubleshoot."
+        page_heading: 'User: %{login} (%{id})'
+        page_title: "%{login} - User Administration"
+        status:
+          form:
+            admin_action:
+              ban: Suspend permanently (ban user)
+              legend: Warnings and Suspensions
+              note: Record note
+              spamban: 'Spammer: ban and delete all creations'
+              suspend: 'Suspend: enter a whole number of days'
+              unban: Lift permanent suspension, effective immediately.
+              unsuspend: Lift temporary suspension, effective immediately.
+              warn: Record warning
+            notes:
+              legend: Notes
+              required: Required when adding or removing a warning or suspension to an account.
+            submit: Update
+          heading: Record Warnings, Suspensions, or Notes
+    api:
+      edit:
+        page_title: Edit API Token
+      index:
+        actions:
+          find: Find
+        page_heading: API Tokens
+        page_title: API Tokens
+        search_box:
+          label: Name
+        search_by_name: Search for an API token by name
+        table:
+          actions:
+            edit: Edit
+          caption: API Tokens
+          headings:
+            actions: Actions
+            banned: Banned?
+            created: Created
+            name: Name
+            token: Token
+            updated: Updated
+          summary: Existing API tokens along with the dates they were created and updated and options for editing them.
+      new:
+        page_title: New API Token
+    banners:
+      index:
+        actions:
+          active: Active
+          confirm_delete: Are you sure you want to delete this banner?
+          delete: Delete
+          edit: Edit
+        page_heading: Banners
+      navigation:
+        confirm_delete: Are you sure you want to delete this banner?
+        delete: Delete Banner
+        edit: Edit Banner
+        index: Banners
+        new: New Banner
+    blacklist:
+      emails_found:
+        one: one email found
+        other: "%{count} emails found"
+    blacklisted_emails:
+      create:
+        browser_title: Create Banned Email
+      index:
+        browser_title: Banned Emails
+        confirm_remove: Are you sure you want to remove %{email} from the banned emails list?
+        form:
+          new:
+            label: Email to ban
+            submit: Ban Email
+          search:
+            submit: Search Banned Emails
+        heading:
+          new: Ban email address
+          search: Find banned emails
+        notes:
+          canonical_format: All emails are stored in a single canonical format and common variants of the same address are not allowed (for instance, foo+whatever@example.com will not be allowed if foo@example.com is banned).
+          guest_comments: Banned email addresses cannot be used in guest comments and cannot be added to the invitation queue.
+          unaffected_users: They will not affect users with that address or prevent invitations sent to that email address from being used.
+        page_heading: Manage Banned Emails
+    header:
+      nav:
+        activities: Activities
+        api_tokens: API Tokens
+        banned_emails: Banned Emails
+        banners: Banners
+        invitations:
+          invitations: Invitations
+          new: Invite New Users
+          queue: Manage Queue
+          requests: Manage Requests
+        label: Admin
+        locales: Locales
+        posts:
+          admin_posts: Admin Posts
+          faqs: Archive FAQ
+          known_issues: Known Issues
+          news: AO3 News
+          post_news: Post AO3 News
+          wrangling_guidelines: Wrangling Guidelines
+        settings: Settings
+        skins:
+          approved: Approved Skins
+          queue: Approval Queue
+          rejected: Rejected Skins
+          skins: Skins
+        spam: Spam
+        support_notices: Support Notices
+        users:
+          email_search: Bulk Email Search
+          manage: Manage Users
+          search: Find Users
+        wrangling: Tag Wrangling
+    passwords:
+      edit:
+        describedby:
+          password_length: "%{minimum} to %{maximum} characters"
+        label:
+          confirmation: Confirm new password
+          password: New password
+        landmark:
+          submit: Submit
+        page_heading: Set My Admin Password
+        submit: Set Admin Password
+      new:
+        instructions: If you've forgotten or would like to change your admin password, we can send instructions that will allow you to reset it. Please tell us the username for your admin account.
+        page_heading: Forgotten your admin password?
+        reset_login_html: Admin username
+        submit: Reset Admin Password
+    sessions:
+      new:
+        label:
+          login: Admin username
+          password: Admin password
+        landmark:
+          reset: Reset password
+        page_heading: Log In as Admin
+        reset_link: Forgot admin password?
+        submit: Log In as Admin
+      totp:
+        enter_totp: Enter the verification code from your authenticator app to finish logging in to your admin account.
+        page_heading: Two-Step Verification
+        submit: Log In as Admin
+        totp_label: 6-digit verification code
+    settings:
+      index:
+        fields:
+          account_age_threshold_for_comment_spam_check: How old (in days) accounts should be before we stop checking comments for spam
+          account_age_threshold_for_comment_spam_check_note: Enter 0 to turn off comment spam checks for all logged in users.
+          account_creation_enabled: Account creation enabled
+          cache_expiration: How often (in minutes) should we refresh caching
+          creation_requires_invite: Account creation requires invitation
+          days_to_purge_unactivated: How many weeks you have to activate your account before we purge it
+          disable_support_form: Turn off support form
+          disabled_support_form_text: Disabled support form text
+          downloads_enabled: Allow downloads
+          enable_test_caching: Turn on caching (currently experimental)
+          guest_comments_off: Turn off guest comments across the site
+          hide_spam: Automatically hide spam works
+          invite_from_queue_enabled: Invite from queue enabled (People can add themselves to the queue and invitations are sent out automatically)
+          invite_from_queue_frequency: How often (in hours) should we invite people from the queue
+          invite_from_queue_number: Number of people to invite from the queue at once
+          request_invite_enabled: Users can request invitations
+          suspend_filter_counts: Suspend some filter tracking due to high posting volume
+          tag_wrangling_off: Turn off tag wrangling for non-admins
+        heading: superlove Settings
+        last_updated_by_admin: Settings last updated on %{updated_at} by %{admin_name}.
+        legend:
+          account_and_invitations: Accounts and Invitations
+          actions: Actions
+          content: Content
+          disable_support_form: Turn Off Support Form
+          performance_and_misc: Performance and Misc
+        queue_status:
+          one: "%{count} person is scheduled to be sent an invitation at %{time}."
+          other: "%{count} people are scheduled to be sent invitations at %{time}."
+        queue_status_help: "(The automatic task that invites people from the queue runs at most every hour. Don't be alarmed if the time you see is within the last hour. Do be alarmed if the time you see is more than one hour in the past and the queue is supposed to be active.)"
+        update: Update
+      update:
+        success: superlove settings were successfully updated.
+    support_notices:
+      confirm_delete:
+        delete: Delete Support Notice
+        submit: Yes, Delete Support Notice
+        warning_html: Are you sure you want to <strong><em>delete</em></strong> this support notice?
+      edit:
+        page_heading: Edit Support Notice
+      index:
+        page_heading: Support Notices
+      navigation:
+        confirm_delete: Are you sure you want to delete this support notice?
+        delete: Delete Support Notice
+        edit: Edit Support Notice
+        index: Support Notices
+        new: New Support Notice
+      new:
+        page_heading: New Support Notice
+      show:
+        page_heading: Support Notice
+      support_notice_blurb:
+        active: Active
+        confirm_delete: Are you sure you want to delete this support notice?
+        delete: Delete
+        edit: Edit
+        landmark: Support Notice Actions
+      support_notice_form:
+        actions:
+          create: Create Support Notice
+          update: Update Support Notice
+        active: Active
+        landmark:
+          actions: Actions
+          content: Support Notice
+        legend:
+          actions: Actions
+          content: Support Notice
+        required_information: Required information
+        text: Support notice text
+        type:
+          caution: Caution
+          error: Error
+          label: Support notice type
+          notice: Notice
+    totp:
+      confirm_disable:
+        page_heading: Disable Two-Step Verification
+        password_label: Admin password
+        required_before_disabling: Before disabling two-step verification, you need to verify your password.
+        submit: Disable Two-Step Verification
+      new:
+        page_heading: Confirm Password
+        password_label: Admin password
+        required_before_enabling: Before enabling two-step verification, you need to verify your password.
+        submit: Continue
+      reauthenticate_create:
+        about:
+          effects_of_enabling: When two-step verification is enabled, logging in to your %{app_name} admin account will require both your admin password and a verification code from your authenticator app.
+          general_info: Two-step verification, also called two-factor authentication, helps prevent other people from accessing your account even if they know your password. All you need to set it up is an authenticator app such as 1Password, Google Authenticator, or Twilio Authy.
+          heading: About Two-Step Verification
+        app_setup:
+          heading: 'Step 1: Set up your authenticator app'
+          instructions: Use your authenticator app to scan the QR code or enter the manual setup key. The app will give you a 6-digit code, which you'll use in the next step.
+          key:
+            format_note: Spaces and capitalization don't matter
+            heading: Setup Key
+        enter_code:
+          heading: 'Step 2: Enter your 6-digit code'
+          instructions: Enter the 6-digit code from your app to enable two-step verification
+          label: 6-digit code
+          please_wait: Please wait...
+          submit: Enable Two-Step Verification
+        page_heading: Set Up Two-Step Verification
+      show_backup_codes:
+        finish: Finish
+        page_heading: Two-Step Verification Backup Codes
+        write_codes_down: 'Keep these backup codes in a safe and secure place in case you lose access to your authenticator app:'
+    user_creations:
+      confirm_remove_pseud:
+        caution: Are you sure you want to remove the creator's pseud from this work?
+        choose: Please choose which creators' pseuds you would like to remove from this work.
+        page_heading: Remove Pseud
+        submit_multiple: Remove Pseuds
+        submit_one: Yes, Remove Pseud

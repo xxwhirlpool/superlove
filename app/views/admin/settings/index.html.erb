@@ -1,5 +1,5 @@
 <!--Descriptive page name, messages and instructions-->
-<h2 class="heading"><%= t(".heading") %></h2>
+<h2><%= t(".heading") %></h2>
 <!--/descriptions-->
 
 <!--main content-->
@@ -7,86 +7,141 @@
   <%= error_messages_for @admin_setting %>
   <fieldset>
     <legend><%= t(".legend.account_and_invitations") %></legend>
-    <dl>
-      <dt><%= admin_setting_checkbox(f, :account_creation_enabled) %></dt>
-      <dd><%= f.label :account_creation_enabled, t(".fields.account_creation_enabled") %></dd>
+    <div class="form-row side-label">
+      <%= f.label :account_creation_enabled, t(".fields.account_creation_enabled") %>
+			<div class="field">
+				<%= admin_setting_checkbox(f, :account_creation_enabled) %>
+			</div>
+	  </div>
 
-      <dt><%= admin_setting_checkbox(f, :creation_requires_invite) %></dt>
-      <dd><%= f.label :creation_requires_invite, t(".fields.creation_requires_invite") %></dd>
+    <div class="form-row side-label">
+		  <%= f.label :creation_requires_invite, t(".fields.creation_requires_invite") %>
+			<div class="field">
+        <%= admin_setting_checkbox(f, :creation_requires_invite) %>
+			
+			</div>
+		</div>
 
-      <dt><%= admin_setting_checkbox(f, :request_invite_enabled) %></dt>
-      <dd><%= f.label :request_invite_enabled, t(".fields.request_invite_enabled") %></dd>
+    <div class="form-row side-label">
+      <%= f.label :request_invite_enabled, t(".fields.request_invite_enabled") %>
+			<div class="field">
+				<%= admin_setting_checkbox(f, :request_invite_enabled) %>
+			</div>
+		</div>
 
-      <dt><%= admin_setting_checkbox(f, :invite_from_queue_enabled) %></dt>
-      <dd><%= f.label :invite_from_queue_enabled, t(".fields.invite_from_queue_enabled") %></dd>
+    <div class="form-row side-label">
+			<%= f.label :invite_from_queue_enabled, t(".fields.invite_from_queue_enabled") %>
+  		<div class="field">
+        <%= admin_setting_checkbox(f, :invite_from_queue_enabled) %>
+  		</div>
+  	</div>
 
-      <dt><%= f.label :invite_from_queue_number, t(".fields.invite_from_queue_number") %></dt>
-      <dd><%= admin_setting_text_field(f, :invite_from_queue_number, size: "3") %></dd>
+    <div class="form-row side-label">
+			<%= f.label :invite_from_queue_number, t(".fields.invite_from_queue_number") %>
+			<div class="field">
+				<%= admin_setting_number_field(f, :invite_from_queue_number, size: "3") %>
+			</div>
+		</div>
 
-      <dt><%= f.label :invite_from_queue_frequency, t(".fields.invite_from_queue_frequency") %></dt>
-      <dd><%= admin_setting_text_field(f, :invite_from_queue_frequency, size: "3") %></dd>
+    <div class="form-row side-label">
+			<%= f.label :invite_from_queue_frequency, t(".fields.invite_from_queue_frequency") %>
+			<div class="field">
+				<%= admin_setting_number_field(f, :invite_from_queue_frequency, size: "3") %>
+			</div>
+		</div>
 
-      <dt><%= f.label :days_to_purge_unactivated, t(".fields.days_to_purge_unactivated") %></dt>
-      <dd><%= admin_setting_text_field(f, :days_to_purge_unactivated, size: "3") %></dd>
-    </dl>
+    <div class="form-row side-label">
+			<%= f.label :days_to_purge_unactivated, t(".fields.days_to_purge_unactivated") %>
+			<div class="field">
+				<%= admin_setting_number_field(f, :days_to_purge_unactivated, size: "3") %>
+			</div>
+		</div>
   </fieldset>
 
   <fieldset>
     <legend><%= t(".legend.disable_support_form") %></legend>
-    <dl>
-      <dt><%= admin_setting_checkbox(f, :disable_support_form) %></dt>
-      <dd>
-        <%= f.label :disable_support_form, t(".fields.disable_support_form") %>
-        <fieldset>
-          <legend><%= f.label :disabled_support_form_text, t(".fields.disabled_support_form_text") %></legend>
-          <p><%= allowed_html_instructions %></p>
-          <%= f.text_area :disabled_support_form_text,
-                disabled: admin_setting_disabled?(:disabled_support_form_text) %>
-        </fieldset>
-      </dd>
-    </dl>
+    <div class="form-row side-label">
+      <%= f.label :disable_support_form, t(".fields.disable_support_form") %>
+      <div class="field">
+        <%= admin_setting_checkbox(f, :disable_support_form) %>
+      </div>
+    </div>
+    <div class="form-row side-label">
+      <%= f.label :disabled_support_form_text, t(".fields.disabled_support_form_text") %>
+      <div class="field">
+        <%= f.text_area :disabled_support_form_text,
+              disabled: admin_setting_disabled?(:disabled_support_form_text) %>
+        <%= allowed_html_instructions %>
+      </div>
+    </div>
   </fieldset>
 
   <fieldset>
     <legend><%= t(".legend.performance_and_misc") %></legend>
-    <dl>
-      <dt><%= admin_setting_checkbox(f, :suspend_filter_counts) %></dt>
-      <dd><%= f.label :suspend_filter_counts, t(".fields.suspend_filter_counts") %></dd>
+    <div class="form-row side-label">
+			<%= f.label :suspend_filter_counts, t(".fields.suspend_filter_counts") %>
+			<div class="field">
+  			<%= admin_setting_checkbox(f, :suspend_filter_counts) %>
+			</div>
+		</div>
 
-      <dt><%= admin_setting_checkbox(f, :tag_wrangling_off) %></dt>
-      <dd><%= f.label :tag_wrangling_off, t(".fields.tag_wrangling_off") %></dd>
+    <div class="form-row side-label">
+			<%= f.label :tag_wrangling_off, t(".fields.tag_wrangling_off") %>
+			<div class="field">
+  			<%= admin_setting_checkbox(f, :tag_wrangling_off) %>
+			</div>
+		</div>
 
-      <dt><%= admin_setting_checkbox(f, :downloads_enabled) %></dt>
-      <dd><%= f.label :downloads_enabled, t(".fields.downloads_enabled") %></dd>
+    <div class="form-row side-label">
+			<%= f.label :downloads_enabled, t(".fields.downloads_enabled") %>
+			<div class="field">
+        <%= admin_setting_checkbox(f, :downloads_enabled) %>
+			</div>
+		</div>
 
-      <dt><%= admin_setting_checkbox(f, :enable_test_caching) %></dt>
-      <dd><%= f.label :enable_test_caching, t(".fields.enable_test_caching") %></dd>
+    <div class="form-row side-label">
+			<%= f.label :enable_test_caching, t(".fields.enable_test_caching") %>
+			<div class="field">
+        <%= admin_setting_checkbox(f, :enable_test_caching) %>
+			</div>
+		</div>
 
-      <dt><%= f.label :cache_expiration, t(".fields.cache_expiration") %></dt>
-      <dd><%= admin_setting_text_field(f, :cache_expiration, size: "3") %></dd>
-    </dl>
+    <div class="form-row side-label">
+			<%= f.label :cache_expiration, t(".fields.cache_expiration") %>
+			<div class="field">
+				<%= admin_setting_number_field(f, :cache_expiration, size: "3") %>
+			</div>
+		</div>
   </fieldset>
 
   <fieldset>
     <legend><%= t(".legend.content") %></legend>
-    <dl>
-      <dt><%= admin_setting_checkbox(f, :hide_spam) %></dt>
-      <dd><%= f.label :hide_spam, t(".fields.hide_spam") %></dd>
+    <div class="form-row side-label">
+			<%= f.label :hide_spam, t(".fields.hide_spam") %>
+			<div class="field">
+        <%= admin_setting_checkbox(f, :hide_spam) %>
+			</div>
+		</div>
 
-      <dt><%= admin_setting_checkbox(f, :guest_comments_off) %></dt>
-      <dd><%= f.label :guest_comments_off, t(".fields.guest_comments_off") %></dd>
+    <div class="form-row side-label">
+			<%= f.label :guest_comments_off, t(".fields.guest_comments_off") %>
+			<div class="field">
+        <%= admin_setting_checkbox(f, :guest_comments_off) %>
+			</div>
+		</div>
 
-      <dt><%= f.label :account_age_threshold_for_comment_spam_check, t(".fields.account_age_threshold_for_comment_spam_check") %></dt>
-      <dd>
-        <%= admin_setting_text_field(f, :account_age_threshold_for_comment_spam_check, size: "3", "aria-describedby": "account-age-threshold-for-comment-spam-check-note") %>
-        <p id="account-age-threshold-for-comment-spam-check-note" class="footnote"><%= t(".fields.account_age_threshold_for_comment_spam_check_note") %></p>
-      </dd>
-    </dl>
+    <div class="form-row side-label">
+      <%= f.label :account_age_threshold_for_comment_spam_check, t(".fields.account_age_threshold_for_comment_spam_check") %>
+      <div class="field">
+        <%= admin_setting_number_field(f, :account_age_threshold_for_comment_spam_check, size: "3", "aria-describedby": "account-age-threshold-for-comment-spam-check-note") %>
+        <p id="account-age-threshold-for-comment-spam-check-note" class="help"><%= t(".fields.account_age_threshold_for_comment_spam_check_note") %></p>
+      </div>
+    </div>
   </fieldset>
 
   <fieldset>
     <legend><%= t(".legend.actions") %></legend>
-    <p class="submit actions"><%= f.submit t(".update") %></p>
+    <div class="submit"><%= f.submit t(".update") %></div>
   </fieldset>
 <% end %>
 

@@ -1,11 +1,11 @@
 <!--Descriptive page name, messages and instructions-->
 <%= error_messages_for :feedback %>
 
-<h2 class="heading"><%= t(".heading.page_title") %></h2>
+<h2><%= t(".heading.page_title") %></h2>
 <!--/descriptions-->
 
 <!--subnav-->
-<h4 class="landmark heading"><%= t(".heading.landmark.reference") %></h4>
+<h4 class="landmark"><%= t(".heading.landmark.reference") %></h4>
 <ul class="navigation actions" role="navigation">
   <li><%= link_to t(".navigation.faqs"), archive_faqs_path %></li>
   <li><%= link_to t(".navigation.release_notes"), admin_posts_path(:tag => 1) %></li>
@@ -19,7 +19,7 @@
     <%= raw sanitize_field(@admin_setting, :disabled_support_form_text) %>
   </div>
 <% else %>
-  <h3 class="heading"><%= t(".heading.instructions") %></h3>
+  <h3><%= t(".heading.instructions") %></h3>
   <div class="userstuff">
     <p><%= t(".status.current_html",
              status_page_link: link_to(t(".status.status_page"), "https://www.otwstatus.org"),

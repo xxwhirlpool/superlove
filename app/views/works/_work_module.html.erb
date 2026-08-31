@@ -4,9 +4,9 @@
   <%= render "works/mystery_blurb", item: work %>
 <% else %>
   <!--title, author, fandom-->
-  <div class="header module">
+  <header>
     <!-- updated_at=<%= work.updated_at.to_i.to_s %> -->
-    <h4 class="heading">
+    <h4>
       <% if (work.unrevealed? || work.anonymous?) && is_author_of?(work) %>
         <span class="status">
           <% if work.unrevealed? %>
@@ -22,9 +22,6 @@
       <!-- do not cache -->
       <%= byline(work, visibility: "public") %>
 
-<% #### CACHE show/hide ####, if you update the key edit lib/tasks/memcached.rake %>
-<% cache("#{work.cache_key}-#{Work.work_blurb_version(work.id)}-#{hide_warnings?(work) ? 'nowarn' : 'showwarn'}-#{hide_freeform?(work)  ? 'nofreeform' : 'showfreeform'}-v11", skip_digest: true) do %>
-
       <% tag_groups = work.tag_groups %>
 
       <% if work.gifts.not_rejected.exists? %>
@@ -34,34 +31,37 @@
       <% if work.hidden_by_admin %><%= image_tag("lockred.png", :size => "15x15", :alt => "(Hidden by Admin)", :title => "Hidden by Administrator", skip_pipeline: true) %><% end %>
     </h4>
 
-    <h5 class="fandoms heading">
+    <div class="fandoms">
       <span class="landmark"><%= ts("Fandoms") %>:</span>
       <% fandoms = tag_groups['Fandom'] %>
       <%= fandoms.collect{|tag| link_to_tag_works(tag) }.join(', ').html_safe if fandoms %>
       &nbsp;
-    </h5>
+    </div>
 
     <!--required tags-->
     <%= get_symbols_for(work, tag_groups) %>
-    <p class="datetime"><%= set_format_for_date(work.revised_at) %></p>
-  </div>
+    <div class="datetime"><%= set_format_for_date(work.revised_at) %></div>
+  </header>
 
+  <% if !work.posted? %>
+   <div class="caution notice"><%= t('.draft_deletion_notice_html', deletion_date: date_in_zone(work.created_at + 29.days)) %></div>
+  <% end %>
   <!--warnings again, cast, freeform tags-->
-  <h6 class="landmark heading"><%= ts("Tags") %></h6>
+  <div class="landmark"><%= ts("Tags") %></div>
   <ul class="tags commas">
     <%= blurb_tag_block(work, tag_groups) %>
   </ul>
 
   <!--summary-->
   <% unless work.summary.blank? %>
-    <h6 class="landmark heading"><%= ts("Summary") %></h6>
-    <blockquote class="userstuff summary">
+    <div class="landmark"><%= ts("Summary") %></div>
+    <div class="summary">
       <%=raw strip_images(sanitize_field(work, :summary)) %>
-    </blockquote>
+    </div>
   <% end %>
 
   <% unless work.series.empty? %>
-    <h6 class="landmark heading"><%= ts("Series") %></h6>
+    <div class="landmark"><%= ts("Series") %></div>
     <ul class="series">
       <% work.series.each do |series| %>
         <li>
@@ -73,46 +73,41 @@
 
   <!--stats-->
 
-  <dl class="stats">
+  <ul class="stats">
     <% if work.language.present? %>
-      <dt class="language"><%= ts("Language") %>:</dt>
-      <dd class="language" lang="<%= work.language.short %>"><%= work.language.name %></dd>
+      <li id="language">
+        <b><%= ts("Language") %>:</b>
+        <span class="meta-value" lang="<%= work.language.short %>"><%= work.language.name %></span>
+      </li>
     <% end %>
-    <dt class="words"><%= ts('Words') %>:</dt>
-    <dd class="words"><%= number_with_delimiter(work.word_count) %></dd>
-    <dt class="chapters"><%= ts('Chapters') %>:</dt>
-    <dd class="chapters"><%= chapter_total_display_with_link(work) %></dd>
-
-<% end %>
-<% #### END CACHE show/hide %>
+    <li id="words"><b>Words:</b> <span class="meta-value"><%= number_with_delimiter(work.word_count) %></span></li>
+    <li id="chapters"><b>Chapters:</b> <span class="meta-value"><%= chapter_total_display_with_link(work) %></span></li>
 
 <% #### CACHE stats #### %>
 <% cache("#{work.cache_key}/stats-v4", expires_in: 1.hour, skip_digest: true) do %>
-  <% unless work.approved_collections.empty? %>
-    <dt class="collections"><%= ts('Collections') %>:</dt>
-    <dd class="collections"><%= link_to number_with_delimiter(work.approved_collections.length), work_collections_path(work) %></dd>
-  <% end %>
+    <% unless work.approved_collections.empty? %>
+      <li id="collections"><b>Collections:</b> <span class="meta-value"><%= link_to number_with_delimiter(work.approved_collections.length), work_collections_path(work) %></span></li>
+    <% end %>
 
-  <% if work.count_visible_comments > 0 %>
-    <dt class="comments"><%= ts('Comments') %>:</dt>
-    <dd class="comments"><%= link_to number_with_delimiter(work.count_visible_comments), work.number_of_posted_chapters > 1 ? work_path(work, anchor: "comments", show_comments: true, view_full_work: "true") : work_path(work, anchor: "comments", show_comments: true) %></dd>
-  <% end %>
+    <% if work.count_visible_comments > 0 %>
+      <li id="comments"><b>Comments:</b> <span class="meta-value"><%= link_to number_with_delimiter(work.count_visible_comments), work.number_of_posted_chapters > 1 ? work_path(work, anchor: "comments", show_comments: true, view_full_work: "true") : work_path(work, anchor: "comments", show_comments: true) %></span></li>
+    <% end %>
 
-  <% if work.all_kudos_count > 0 %>
-    <dt class="kudos"><%= ts('Kudos') %>:</dt>
-    <dd class="kudos"><%= link_to number_with_delimiter(work.all_kudos_count), work.number_of_posted_chapters > 1 ? work_path(work, anchor: "kudos", view_full_work: "true") : work_path(work, anchor: "kudos") %></dd>
+    <% if work.all_kudos_count > 0 %>
+      <li id="kudos"><b>Kudos:</b> <span class="meta-value"><%= link_to number_with_delimiter(work.all_kudos_count), work.number_of_posted_chapters > 1 ? work_path(work, anchor: "kudos", view_full_work: "true") : work_path(work, anchor: "kudos") %></span></li>
 
-  <% end %>
-  <% if (bookmark_count = work.public_bookmarks_count) > 0 %>
-    <dt class="bookmarks"><%= ts('Bookmarks') %>:</dt>
-    <dd class="bookmarks"><%= link_to_bookmarkable_bookmarks(work, number_with_delimiter(bookmark_count)) %></dd>
-  <% end %>
+    <% end %>
+    <% if (bookmark_count = work.public_bookmarks_count) > 0 %>
+      <li id="bookmarks"><b>Bookmarks:</b> <span class="meta-value"><%= link_to_bookmarkable_bookmarks(work, number_with_delimiter(bookmark_count)) %></span></li>
+    <% end %>
 
-  <dt class="hits"><%= ts("Hits") %>:</dt>
-  <dd class="hits"><%= number_with_delimiter(work.hits) %></dd>
+    <li id="hits">
+      <b><%= ts("Hits") %>:</b>
+      <span class="meta-value"><%= number_with_delimiter(work.hits) %></span>
+    </li>
 <% end %>
 <% #### END CACHE stats #### %>
 
-  </dl>
+  </ul>
 
 <% end %>

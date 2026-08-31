@@ -1,12 +1,18 @@
 <% # load and cache site skin %>
+<% if current_user.nil? || !current_user.nil? && !current_user.does_skin_override? %>
+  <%= vite_tags 'stylesheets/application.css' %>
+<% end %>
+
 <%= skin_tag %>
 
 <!--sandbox for developers	-->
 <%= stylesheet_link_tag 'sandbox', skip_pipeline: true %>
-<%= stylesheet_link_tag 'highlightjs/atelier-cave-light.min' %>
+<script type="text/javascript" src="/highlightjs/highlight.min.js"></script>
+<script type="text/javascript" src="/highlightjs/css.min.js"></script>
+<%= vite_tags "stylesheets/highlightjs/atelier-cave-light.min.css" %>
+<%= vite_tags "javascripts/oneko.js" %>
+<script type="text/javascript">hljs.highlightAll();</script>
 
 <%= mute_css %>
-
-<%= javascript_include_tag 'livevalidation_standalone', skip_pipeline: true %>
 
 <%= csrf_meta_tag %>

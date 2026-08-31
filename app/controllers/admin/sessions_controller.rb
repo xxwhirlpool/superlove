@@ -4,8 +4,8 @@ class Admin
   class SessionsController < Devise::SessionsController
     before_action :user_logout_required, except: :destroy
 
-    prepend_before_action :authenticate_with_totp_two_factor,
-                          if: -> { action_name == "create" && totp_two_factor_enabled? }
+    #prepend_before_action :authenticate_with_totp_two_factor,
+    #                      if: -> { action_name == "create" && totp_two_factor_enabled? }
     
     protect_from_forgery with: :exception, prepend: true, except: :destroy
 

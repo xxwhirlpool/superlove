@@ -1,7 +1,7 @@
 <!--TAG ZONE: tagsets-->
 <div class="tag tagset">
   <!--Descriptive page name and system messages, descriptions, and instructions.-->
-  <h2 class="heading">
+  <h2>
     <% if @user %>
       <%= ts('%{user_name}\'s Tag Sets', :user_name => @user.login) %> <%= link_to_help 'tagset-about' %>
     <% elsif @restriction %>
@@ -39,7 +39,7 @@
       <%= will_paginate @tag_sets %>
     <% end %>
 
-    <h3 class="landmark heading"><%= ts('Listing Tag Sets') %></h3>
+    <h3 class="landmark"><%= ts('Listing Tag Sets') %></h3>
 	  <ul class="index group">
       <% @tag_sets.each do |tag_set| %>
         <%= render 'tag_set_blurb', :tag_set => tag_set %>

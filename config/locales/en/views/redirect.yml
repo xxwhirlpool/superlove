@@ -1,0 +1,7 @@
+en:
+  redirect:
+    page_heading: Lookup Original Stories
+    instructions: If you are looking for a story that might have been imported into the archive from another URL, you can enter it here and we will try and look it up.
+    form_legend: Find story by URL
+    url_label: "Original URL of work:"
+    submit_label: Go

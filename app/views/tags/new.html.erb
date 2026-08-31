@@ -1,5 +1,5 @@
 <!--Descriptive page name, messages and instructions-->
-<h2 class="heading"><%= ts('New Tag') %></h2>
+<h2><%= ts('New Tag') %></h2>
 
 <%= error_messages_for :tag %>
 
@@ -12,34 +12,44 @@
 
 <!--main content-->
 <%= form_for @tag, as: :tag, url: { action: "create" }  do |f| %>
-  <dl>
-    <dt><%= f.label :name, ts('Name') %></dt>
-    <dd><%= f.text_field :name, size: ArchiveConfig.TAG_MAX %></dd>
+  <fieldset>
+    <div class="form-row side-label">
+      <%= f.label :name, ts('Name') %>
+      <div class="field">
+        <%= f.text_field :name, size: ArchiveConfig.TAG_MAX %>
+      </div>
+    </div>
 
-    <dt><%= f.label :canonical, ts('Canonical') %></dt>
-    <dd><%= f.check_box :canonical %></dd>
+    <div class="form-row side-label">
+      <%= f.label :canonical, ts('Canonical') %>
+      <div class="field">
+        <%= f.check_box :canonical %>
+      </div>
+    </div>
 
-    <dt><%= ts('Category') %></dt>
-    <dd>
-      <% if logged_in_as_admin? %>
-        <% types = Tag::TYPES  %>
-      <% else %>
-        <% types = Tag::USER_DEFINED %>
-      <% end %>
-      <ul>
-        <% types.each do |type| %>
-          <li>
-            <%= f.radio_button("type", type) %>
-            <%= f.label("type_#{type.downcase}", ts("%{type}", type: tag_type_label_name(type))) %>
-          </li>
+    <div class="form-row side-label">
+      <%= label_tag :type, ts('Category') %>
+      <div class="field">
+        <% if logged_in_as_admin? %>
+          <% types = Tag::TYPES  %>
+        <% else %>
+          <% types = Tag::USER_DEFINED %>
         <% end %>
-      </ul>
-    </dd>
-  </dl>
-
-  <p class="submit actions">
-    <%= f.submit %>
-  </p>
+        <ul class="radio-group">
+          <% types.each do |type| %>
+            <li>
+              <%= f.radio_button("type", type) %>
+              <%= f.label("type_#{type.downcase}", ts("%{type}", type: tag_type_label_name(type))) %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="submit">
+      <%= f.submit %>
+    </div>
+  </fieldset>
 <% end %>
 <!--/content-->
 

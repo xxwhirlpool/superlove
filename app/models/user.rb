@@ -15,7 +15,7 @@ class User < ApplicationRecord
          :lockable,
          :recoverable,
          reset_password_keys: [:email]
-  devise :pwned_password unless Rails.env.test?
+  devise :pwned_password if Rails.env.production?
 
   # Must come after Devise modules in order to alias devise_valid_password?
   # properly
@@ -255,12 +255,10 @@ class User < ApplicationRecord
   def self.find_first_by_auth_conditions(tainted_conditions, options = {})
     conditions = devise_parameter_filter.filter(tainted_conditions).merge(options)
     login = conditions.delete(:login)
-    relation = self.where(conditions)
-
     if login.present?
       # MySQL is case-insensitive with utf8mb4_unicode_ci so we don't have to use
       # lowercase values
-      relation = relation.where(["login = :value OR email = :value",
+      relation = User.where(["login = :value OR email = :value",
                                  { value: login }])
     end
 
@@ -303,6 +301,14 @@ class User < ApplicationRecord
     self.pseuds << Pseud.new(name: self.login, is_default: true)
     self.profile = Profile.new
     self.preference = Preference.new(locale: Locale.default)
+  end
+  
+  def does_skin_override?
+    unless self.preference[:skin_id] == 1
+      @skin = Skin.find(self.preference[:skin_id])
+      return true if @skin.role == 'override'
+    end
+    false
   end
 
   def prevent_password_resets?

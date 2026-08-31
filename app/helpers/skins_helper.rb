@@ -49,9 +49,7 @@ module SkinsHelper
     # skin.
     Rails.cache.fetch(
       [:v1, :site_skin, skin.id, logged_in_as_admin?],
-      version: [skin_cache_version(skin.id),
-                AdminSetting.default_skin_id,
-                skin_cache_version(AdminSetting.default_skin_id)]
+      version: [skin_cache_version(skin.id)]
     ) do
       skin.get_style(roles)
     end

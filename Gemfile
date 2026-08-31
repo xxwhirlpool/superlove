@@ -11,6 +11,8 @@ gem "rails", "~> 8.1.3.1"
 gem "rails-i18n", "~> 8.0", git: "https://github.com/svenfuchs/rails-i18n", ref: "54c1c7c2fdcc311427ec6f1dadd298a60db1ddef"
 gem "rack", "~> 2.2"
 gem "sprockets", "< 4"
+gem "rails_vite"
+gem "herb"
 
 gem 'rails-observers', git: 'https://github.com/rails/rails-observers'
 gem 'actionpack-page_caching'
@@ -39,6 +41,10 @@ gem 'will_paginate', '>=3.0.2'
 gem "pagy", "~> 9.3"
 gem 'acts_as_list', '~> 0.9.7'
 gem 'akismetor'
+gem 'propshaft'
+gem 'dartsass-rails'
+gem 'cssbundling-rails'
+gem 'jsbundling-rails'
 
 gem 'httparty'
 gem "csv", "~> 3.3.5"
@@ -62,7 +68,7 @@ gem "terrapin"
 gem 'fastimage'
 
 # Gems for authentication
-gem "devise", git: "https://github.com/otwcode/devise", ref: "fade89f"
+gem "devise"#, git: "https://github.com/otwcode/devise", ref: "fade89f"
 gem "devise-async" # To mails through queues
 gem "bcrypt"
 gem "devise-pwned_password"

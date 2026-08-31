@@ -1,0 +1,11 @@
+<!--Descriptive page name, messages and instructions-->
+<h2><%= @delete_heading %></h2>
+
+<!--main content-->
+<%= form_for(@form_for, :html => {:method => :delete, :class => "simple destroy"}) do |f| %>
+  <div class="caution notice"><%= @delete_content.html_safe %></div>
+  <div class="submit">
+    <%= f.submit @delete_submit %>
+  </div>
+<% end %>
+<!--/content-->

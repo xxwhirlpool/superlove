@@ -2,6 +2,7 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   config.hosts = ArchiveConfig.PERMITTED_HOSTS
+  config.hosts << "localhost"
 
   # Code is not reloaded between requests.
   config.enable_reloading = false

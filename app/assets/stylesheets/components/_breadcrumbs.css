@@ -1,0 +1,29 @@
+nav.breadcrumbs {
+  ol {
+    list-style: none;
+    margin: 0 0 1rem;
+    padding: 0;
+    display: flex;
+    gap: .5rem;
+    
+    li {
+      a {
+        color: var(--text);
+        text-decoration: underline;
+      }
+      
+      &:after {
+        content: "»";
+        margin-left: .5rem;
+      }
+      
+      &:last-of-type:after {
+        display: none;
+      }
+      
+      span {
+        font-weight: bold;
+      }
+    }
+  }
+}

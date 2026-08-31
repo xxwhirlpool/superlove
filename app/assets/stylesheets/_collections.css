@@ -1,0 +1,26 @@
+.collection {
+  &.blurb {
+    header {
+      grid-template-areas: "avatar name date"
+        "avatar tags tags";
+      grid-template-columns: 55px auto 1fr;
+      border-bottom: 1px var(--neutral400) solid;
+      
+      .avatar {
+        grid-area: avatar;
+      }
+      
+      h4 {
+        grid-area: name;
+      }
+      
+      .datetime {
+        grid-area: date;
+      }
+      
+      .tags {
+        grid-area: tags;
+      }
+    }
+  }
+}

@@ -1,9 +1,9 @@
 <% if @assignments_with_no_potential_recipients.present? %>
   <div class="matching listbox group">
-    <h3 class="heading"><%= ts("Participants with No Potential Recipients") %></h3>
+    <h3><%= ts("Participants with No Potential Recipients") %></h3>
     <dl class="index group">
       <% @assignments_with_no_potential_recipients.each do |assignment| %>
-        <dt class="byline" title="<%= ts("pseud") %>"><%= link_to assignment.offer_byline, collection_signup_path(@collection, assignment.offer_signup) %></dd>
+        <dt class="byline" title="<%= ts("pseud") %>"><%= link_to assignment.offer_byline, collection_signup_path(@collection, assignment.offer_signup) %></dt>
         <dd>
           <ul class="actions" role="menu">
             <li title="<%= ts("email") %>"><%= mailto_link assignment.offer_signup.pseud.user,  :subject => "[#{h(@collection.title)}] Message from Collection Maintainer" %></li>
@@ -14,7 +14,8 @@
                     method: :post %>
             </li>
             <li role="button"><%= link_to ts("Delete"),
-                collection_signup_path(@collection, assignment.offer_signup), data: {confirm: ts('Are you sure?')}, :method => :delete %></li></ul>
+                collection_signup_path(@collection, assignment.offer_signup), data: {confirm: ts('Are you sure?')}, :method => :delete %></li>
+          </ul>
         </dd>
       <% end %>
     </dl>

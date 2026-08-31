@@ -1,0 +1,19 @@
+en:
+  home:
+    index:
+      browse_or_favorite:
+        one: Browse fandoms by media or favorite up to %{count} tag to have it listed here!
+        other: Browse fandoms by media or favorite up to %{count} tags to have them listed here!
+      find_your_favorites: Find your favorites
+      media_navigation_label: Media
+      readings:
+        heading:
+          history_link: My History
+          title: Is it later already?
+        note: Some works you've marked for later.
+      social:
+        bluesky: "@status.archiveofourown.org on Bluesky"
+        heading: Follow us
+        note_html: Follow AO3 on Bluesky or Tumblr for status updates, and don't forget to check out the %{other_outlets_link} for updates on our other projects!
+        other_outlets: Organization for Transformative Works' news outlets
+        tumblr: ao3org on Tumblr

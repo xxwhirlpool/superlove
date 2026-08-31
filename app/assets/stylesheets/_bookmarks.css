@@ -1,0 +1,8 @@
+.blurb.bookmark {
+  grid-template-areas: "required title bookmarks"
+      "required fandoms date";
+      
+  .status {
+    grid-area: bookmarks;
+  }
+}

@@ -1,0 +1,122 @@
+en:
+  home:
+    privacy:
+      account_termination:
+        backup_copies_html: '"Active records" do not include the backup copies of Content created for legal and/or disaster recovery purposes (refer to the %{general_principles_link}).'
+        deletion_after_termination_html: If for any reason you %{terminate_your_account_link}, as soon as reasonably possible we will destroy active records containing your Personal Information that are visible to the public or to AO3 users, with the exception of Personal Information entered as Content that you have not deleted. "Reasonably" here means no more than thirty business days from the termination of the account.
+        general_principles: General Principles
+        heading: III.G. Termination of account
+        legal_enforcement_retention: We will retain some Personal Information accessible to AO3 administrators for legal and TOS enforcement purposes. For example, if we terminate your service or suspend your account, we may retain enough Personal Information to prevent you from creating an account or using AO3 in the future.
+        orphan: Orphan
+        orphans_excluded_html: If you choose to %{orphan_link} your works during the account deletion process, and choose to keep your %{pseud_link} associated with the works when Orphaning them, then your pseud will remain visible on the works.
+        pseud: pseud
+        terminate_your_account: terminate your account with us
+      aggregate_anonymous_info:
+        anonymous_non_personal: Nothing in this Privacy Policy restricts our use of anonymous information or other information or data that does not qualify as "Personal Information".
+        heading: III.D. Aggregate and anonymous information
+        understand_ao3_usage: We may use Personal Information in the aggregate to understand how our users use AO3. This is necessary for us to carry out our legitimate interests as a host of Content and a non-profit entity, including managing, maintaining, and ensuring the security of AO3 and our servers. Note that de-identified or aggregate information that is not linked with your other Personal Information, and does not otherwise identify you, will not be treated as Personal Information.
+      applicability:
+        consent_to_us_processing: By agreeing to this Privacy Policy, you consent to the processing of your Personal Information in the United States and in other jurisdictions in connection with our provision of AO3 and its related services to you.
+        global_subprocessors_html: While the OTW is a United States 501(c)(3) corporation, our users are global. Your use of AO3 may result in the transfer of Personal Information across international boundaries. For example, Personal Information collected within the European Economic Area (EEA) and Switzerland may be transferred to and processed in a country outside of the EEA and Switzerland, or by third-party %{subprocessors_link} located outside of the EEA and Switzerland, where you may have different legal rights in relation to your Personal Information.
+        heading: III.A. Applicability
+        policy_covers: This Privacy Policy covers the treatment of Personal Information submitted to AO3 or which we collect when you use our services. Except as otherwise stated in these Terms of Service, "Personal Information" (as used in this Privacy Policy) means information related to you that qualifies as "personal data" or "personal information" under the data privacy laws applicable to the Organization for Transformative Works (OTW). Changes to this Privacy Policy will only apply to the Personal Information that is processed by AO3 after the effective date of those changes. If you are concerned about how your Personal Information is used, you should review this Privacy Policy periodically.
+        subprocessors: Subprocessors
+        transfers_necessary_html: We make such transfers to the United States and the jurisdictions of our service providers with your consent or because it is necessary for the performance of a contract with you. %{consent_to_us_processing_bold}
+      cc_attribution_4_0_international: Creative Commons Attribution 4.0 International License
+      contact_us:
+        contact_pac: contact the Policy & Abuse committee
+        heading: III.I. Contact us
+        html: If you have any questions, concerns, or complaints about this Privacy Policy, or would like to submit a data request, please %{contact_pac_link}.
+      content_policy: Content Policy
+      effective: 'Effective: November 19, 2024'
+      information_scope:
+        collect_through_use: We may collect your Personal Information (such as your IP address and email address) when you request an AO3 invitation, register for an AO3 account, or otherwise access or use AO3.
+        content: Content
+        heading: III.B. Scope of Personal Information we process
+        information_in_content_html: Any Personal Information you include in your %{content_link} (including %{special_categories_link} and other types of Personal Information) may be accessible by AO3 administrators. It may also be accessible by the general public if the Content is made public, or by AO3 users if the Content is made available to AO3 users.
+        special_categories: Special Categories of Personal Data
+      intro:
+        answers_common_questions_html: Answers to common questions about the Privacy Policy can be found in the %{tos_faq_link}.
+        ao3_exists_to_host_html: 'AO3 exists to host content by and for fans from all over the world. To do so, we process certain data and information, including %{personal_information_link}. This is so that we can:'
+        archive_description: The Archive of Our Own (AO3) is a project of the Organization for Transformative Works (OTW), which is committed to fan privacy.
+        details_how_and_why_html: This Privacy Policy details how and why we collect and process this information. %{common_questions_bold}
+        enable_post_information: Enable you to post comments, kudos, bookmarks, and other information designed to be seen by other users
+        host_your_fanworks: Host or share your fanworks
+        personal_information: Personal Information
+        show_you_works: Show you works by other people
+        tos_faq: TOS FAQ
+      license_html: The AO3 %{terms_of_service_link}, including the %{content_policy_link} and %{privacy_policy_link}, are licensed under the %{cc_attribution_4_0_international_link}.
+      page_content_landmark: Main Text
+      page_heading: Privacy Policy
+      privacy_policy: Privacy Policy
+      privacy_policy_heading: III. Privacy Policy
+      retention_of_information:
+        heading: III.H. Retention of Personal Information
+        text: We will retain your Personal Information for no longer than reasonably necessary and proportionate to fulfill the purposes for which we originally collected or processed it, as set out in this Privacy Policy or as required by law. Once the purpose(s) for which the Personal Information was collected is/are no longer applicable, we will delete or otherwise dispose of that Personal Information.
+      terms_of_service: Terms of Service
+      third_parties:
+        do_not_sell_information: We will not sell, trade, or rent your Personal Information. We will not use your Personal Information to market third-party products and services to you. This means that we do not collect or use your Personal Information for targeted advertising, nor do we process Personal Information for automated decision-making purposes. If we begin to do so, that change will be reflected in this Privacy Policy, and you will have the right to restrict the use of that Personal Information accordingly.
+        heading: III.F. Information shared with third parties
+        sharing_exceptions:
+          challenge_signup:
+            challenge: Challenge
+            heading_html: 'If you sign up for a %{challenge_link}:'
+            text: We may share your email address with the maintainers of the Challenge.
+          external_processing:
+            heading: 'For external processing:'
+            html: We may use third-party services to store, process, or transmit data, or to perform other technical functions related to operating AO3. For example, we may use third-party email services. A list of third-party services is provided in our %{subprocessor_list_link}. We cannot guarantee other services' technical performance. We or the services we use may store or process your Personal Information in data centers which may be located in the United States or elsewhere.
+            subprocessor_list: Subprocessor List
+          handle_complaints:
+            dmca_notice: Digital Millennium Copyright Act (DMCA) notice
+            heading: 'To handle complaints submitted by you about TOS violations:'
+            html: If we receive a %{dmca_notice_link}, we reserve the right to disclose the information provided by the copyright owner or their legal representative to the subject of the complaint. If we receive a complaint from you about other matters, that information will be subject to the %{pac_confidentiality_policy_link}.
+            pac_confidentiality_policy: Policy & Abuse Confidentiality Policy
+          intro: 'We will not share your Personal Information with any third parties without your prior consent, except for the following cases:'
+          legal_reasons:
+            attempt_to_notify: We will attempt to notify you any time we disclose your Personal Information to a third party for legal reasons, unless legally prohibited from doing so or if, in our sole judgment, notification might hinder an ongoing investigation. In some cases, the Personal Information we have, such as an IP address, may be insufficient for us to notify you.
+            cooperating_law_enforcement: are cooperating with law enforcement authorities.
+            good_faith_comply: have a good-faith belief that such action is necessary to comply with a current judicial proceeding, court order, or legal process served on the OTW; or
+            heading: 'For legal reasons:'
+            intro: 'We may share Personal Information if we:'
+            law_enforcement_cooperation_details: We will cooperate with all investigations conducted by law enforcement authorities within the United States when legally required to do so. Cooperation with law enforcement authorities from other countries and cooperation when it is not legally required are at our sole discretion. Our discretion looks favorably on freedom and justice, and unfavorably on oppression and violence.
+            legally_compelled: are legally compelled to do so;
+          open_doors_import:
+            heading_html: 'If your work is imported via %{open_doors_link}:'
+            open_doors: Open Doors
+            text: If the email address associated with your AO3 account matches an email address that you used in connection with a non-AO3 archive that is being imported to AO3 via Open Doors, then we may share your email address with the entity that manages that imported archive.
+        third_party_tools: Third parties have developed applications, software, scripts, browser extensions, or other tools for use in connection with AO3. Such third parties may receive Personal Information from you if you use their tools to access AO3. This Privacy Policy does not cover your use of such tools.
+      toc:
+        header: Table of Contents for the Terms of Service (TOS)
+        intro: The Privacy Policy is the third part of the AO3 Terms of Service.
+      types_of_information:
+        cookies:
+          heading: 'Cookies:'
+          text: We and our Subprocessors use cookies to collect and store visitors' preferences; customize web pages' content based on visitors' preferences or other Personal Information that the visitor sends; prevent attacks on our servers; and record activity at AO3 in order to provide better service when visitors return to our site. AO3 has no access to cookies set by other sites. If you block or disable cookies, you may be unable to access or use AO3.
+        emails:
+          address_usage_html: We will use your email address internally for the purposes of managing AO3 and maintaining site integrity. We may occasionally send emails to you about AO3, your Content and account, or news that we reasonably believe to be of interest to our registered users. We will also send you your invitation to register for AO3 via email. By creating and maintaining an account on AO3, you consent to receiving such emails. We reserve the right to send you notice of complaints raised against you, or alleged violations of the TOS by you, as well as to reply to any email message you send to AO3 and/or its personnel. If you choose to participate in a %{challenge_link}, the Challenge maintainer(s) may have access to your email address for the purposes of communicating with you.
+          challenge: Challenge
+          collect_process_retain: We collect, process, and retain the email addresses of and from those who communicate with us via email, and any Content or Personal Information included in emails to us. We need this Personal Information so we can respond to you; so we can handle complaints about AO3 and any users who may have violated the TOS or other policies; and for other legal and accounting/audit reasons, including maintaining the integrity of AO3 and the Content that we host.
+          heading: 'Emails:'
+          unsubscribe: Although it is possible to unsubscribe from some emails (such as kudos updates and responses to comments), you cannot unsubscribe from receiving emails that we, in our sole discretion, deem necessary for legal purposes or to maintain the safety and integrity of your account or our services, including other OTW sites.
+        fnok:
+          heading: 'Fannish next-of-kin:'
+          text: We collect the contact information you and/or your fannish next-of-kin provide, and use it only to implement the fannish next-of-kin function.
+        heading: III.C. Types of Personal Information we collect and process
+        ip_addresses:
+          heading: 'IP addresses:'
+          text: We and our Subprocessors collect, process, and retain the IP addresses of AO3 visitors, including registered users. IP information may also be collected by our servers for logging purposes and used for limited technical assessments of AO3. We need this Personal Information so we can provide you with the Content that you are requesting; to allow you to submit Content to us; and for other legal, TOS enforcement, and accounting/audit reasons, including maintaining the integrity of AO3 and the Content that we host.
+        logs:
+          heading: 'Logs:'
+          text: We and our Subprocessors collect, process, and retain logs of server interactions. We need this Personal Information for legal, TOS enforcement, and accounting/audit reasons, including maintaining the integrity of AO3 and the Content that we host.
+        other_information:
+          heading: 'Other user-specific information:'
+          to_maintain_integrity: We and our Subprocessors collect, process, and retain Personal Information about what pages you access or visit, including your interactions with integral AO3 features such as comments, kudos, and bookmarks; referral information (i.e. data about what site you are coming to AO3 from); and whether there are errors in displaying Content to you. We need this Personal Information to maintain the integrity of AO3 and the Content that we host; to provide you with the Content that you are seeking; to prevent spam and abuse; and for other legal and accounting/audit reasons.
+          to_make_content_available_html: We and our Subprocessors collect, process, and retain Personal Information about Content that you submit to us. You consent to the collection of your Personal Information (such as your IP address) when you access AO3, including when you are not logged in. We use this Personal Information to make the Content you submit available to people who use AO3. By submitting Content to us, you are requesting that we make it available to those people and consenting to the use of your Content. For explanations of site features that use your Content and/or Personal Information and how they are used, please refer to the %{tos_faq_link}.
+          tos_faq: TOS FAQ
+      your_rights:
+        applicable_jurisdiction: applicable jurisdiction
+        heading: III.E. Your rights under applicable data privacy laws
+        other_rights: other rights regarding your Personal Information
+        potential_other_rights_html: You may have %{other_rights_link} under the laws of the jurisdiction in which you are located. We will not discriminate against you for making a request under the data privacy laws of applicable jurisdictions.
+        request_data_html: You can request that the OTW assemble the data that AO3 has about you, and provide you with a copy in electronic format. We agree to provide such data to you within a reasonable time if you are a resident or citizen of the European Union or another %{applicable_jurisdiction_link}.
+        require_user_specific_proof: We reserve the right to require user-specific proof of identity before providing Personal Information to a requester. This is necessary to protect the safety and privacy of our users and personnel.

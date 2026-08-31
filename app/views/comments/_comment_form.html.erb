@@ -48,7 +48,7 @@
         <% end %>
 
         <% if current_user.pseuds.count > 1 %>
-          <h4 class="heading"><%= t(".comment_as") %> <%= f.collection_select :pseud_id, current_user.pseuds, :id, :name, { selected: (comment.pseud ? comment.pseud.id.to_s : current_user.default_pseud.id.to_s) }, id: "comment_pseud_id_for_#{commentable.id}", title: t(".choose_name_field_title") %>
+          <h4><%= t(".comment_as") %> <%= f.collection_select :pseud_id, current_user.pseuds, :id, :name, { selected: (comment.pseud ? comment.pseud.id.to_s : current_user.default_pseud.id.to_s) }, id: "comment_pseud_id_for_#{commentable.id}", title: t(".choose_name_field_title") %>
             <% if controller.controller_name == "inbox" %>
               <span><%= t(".inbox_reference_html",
                           commentable_creator: commentable.by_anonymous_creator? ? t(".anonymous_creator") : get_commenter_pseud_or_name(commentable),
@@ -56,7 +56,7 @@
             <% end %>
           </h4>
         <% else %>
-          <h4 class="heading"><%= t(".comment_as") %> <span class="byline"><%= current_user.default_pseud.name %></span>
+          <h4><%= t(".comment_as") %> <span class="byline"><%= current_user.default_pseud.name %></span>
             <%= f.hidden_field :pseud_id, value: current_user.default_pseud.id.to_s, id: "comment_pseud_id_for_#{commentable.id}" %>
             <% if controller.controller_name == "inbox" %>
             <span><%= t(".inbox_reference_html",
