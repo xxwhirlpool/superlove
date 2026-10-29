@@ -1,1 +1,1 @@
-# $rollout = Rollout.new(REDIS_ROLLOUT)
+$rollout = Rollout.new(REDIS_ROLLOUT)

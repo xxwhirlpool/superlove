@@ -100,7 +100,8 @@ gem 'addressable'
 gem 'audited', '~> 5.3'
 
 # For controlling application behavour dynamically
-gem 'rollout'
+gem 'rollout', "~> 2.6.2"
+# gem "rollout-redis-adapter", "~> 0.1"
 
 #   Use update memcached client with kinder, gentler I/O for Ruby
 gem 'connection_pool', '~> 2.4.1'

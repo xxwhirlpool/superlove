@@ -593,8 +593,9 @@ GEM
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
     rexml (3.4.4)
-    rollout (3.3.0)
+    rollout (2.6.2)
       observer
+      redis (>= 4.0, < 6)
     rotp (6.4.0)
     rqrcode (3.2.0)
       chunky_png (~> 1.0)
@@ -826,7 +827,7 @@ DEPENDENCIES
   resque (>= 1.14.0)
   resque-scheduler
   rest-client (~> 2.1.0)
-  rollout
+  rollout (~> 2.6.2)
   rqrcode
   rspec-rails (~> 8.0)
   rubocop (= 1.22.3)
