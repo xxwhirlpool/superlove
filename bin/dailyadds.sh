@@ -190,7 +190,7 @@ echo "" >> dailyreport.txt
 
 #Now mail it out
 #person to email to
-MAILPERSON="melodicake@disroot.org"
+MAILPERSON="melo@sayitditto.net"
 
 {
         echo To: $MAILPERSON

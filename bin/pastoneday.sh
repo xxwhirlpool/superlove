@@ -102,7 +102,7 @@ echo "This is a list of all items added in the last day to the archive." >> last
 
 #Now mail it out
 #person to email to
-MAILPERSON="melodicake@disroot.org"
+MAILPERSON="melo@sayitditto.net"
 
 {
 	echo To: $MAILPERSON
