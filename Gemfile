@@ -1,7 +1,7 @@
 
 source 'https://rubygems.org'
 
-ruby "~> 3.4.6"
+ruby "~> 3.4.12"
 
 gem 'test-unit', '~> 3.2'
 
@@ -62,7 +62,7 @@ gem "terrapin"
 gem 'fastimage'
 
 # Gems for authentication
-gem "devise", git: "https://github.com/otwcode/devise", ref: "fade89f"
+gem "devise" , git: "https://github.com/otwcode/devise", ref: "5dd846e"
 gem "devise-async" # To mails through queues
 gem "bcrypt"
 gem "devise-pwned_password"
