@@ -577,7 +577,12 @@ class Comment < ApplicationRecord
   def spam?
     return true if local_spam?
 
-    AkismetClient.spam?(akismet_attributes)
+    # AkismetClient.spam?(akismet_attributes)
+  end
+
+  def spam?
+    return true if local_spam?
+    # AkismetClient.spam?(akismet_attributes)
   end
 
   # Local spam filter used for when Akismet is disabled
