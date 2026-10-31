@@ -574,5 +574,35 @@ class Comment < ApplicationRecord
     pseud_id.nil? || hidden_by_admin || parent_type.in?(ArchiveConfig.PARENTS_WITH_IMAGE_SAFETY_MODE)
   end
 
+  def spam?
+    return true if local_spam?
+
+    AkismetClient.spam?(akismet_attributes)
+  end
+
+  # Local spam filter used for when Akismet is disabled
+  # or for specific stuff like copy-paste Discord commission spam
+  def local_spam?
+    return false unless ArchiveConfig.LOCAL_SPAM_CHECK_ENABLED
+    return false if skip_spamcheck?
+    return false if comment_content.blank?
+
+    local_spam_score >= spam_score_threshold
+  end
+
+  def spam_score_threshold
+    pseud_id ? (ArchiveConfig.SPAM_SCORE_THRESHOLD || 4) : (ArchiveConfig.GUEST_SPAM_SCORE_THRESHOLD || 3)
+  end
+
+  def local_spam_score
+    return 0 if comment_content.blank?
+
+    content = comment_content.downcase
+    Array(ArchiveConfig.SPAM_KEYWORDS).sum do |keyword|
+      phrase = Regexp.escape(keyword.to_s.downcase)
+      Regexp.new("\\b#{phrase}\\b").match?(content) ? 1 : 0
+    end
+  end
+
   include Responder
 end
